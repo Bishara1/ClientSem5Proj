@@ -1,5 +1,6 @@
 package client;
 import gui_client.LoginController;
+import gui_client.LoginEkrutController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

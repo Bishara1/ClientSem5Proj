@@ -2,6 +2,11 @@ package gui_client;
 
 import java.awt.Label;
 
+import client.ChatClient;
+import client.ClientController;
+import client.ClientUI;
+import common.Command;
+import common.Message;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,17 +35,43 @@ public class LoginSubscriberController {
 	
 	
 	public void loginBtn(ActionEvent event) throws Exception {
-		((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
-		Stage primaryStage = new Stage();
+		String username = Usernametxt.getText();
+		String password = Passwordtxt.getText();
 		
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/StartOrder.fxml"));
+		ConnectNewClient();
+		Message msg = new Message(username, Command.Connect); //connects client to server
+		ClientUI.chat.accept(msg);
 		
-		Scene scene = new Scene(root);
-		//Parent root2 = FXMLLoader.load(getClass().getResource("/gui_client/StartOrder.fxml"));
-		//scene.getStylesheets().add(getClass().getResource("/gui/.css").toExternalForm());
-		primaryStage.setTitle("EKRUT");
-		primaryStage.setScene(scene);
-		
-		primaryStage.show();	
+		//check if password is correct/ if client exists and then proceed;
+		if(ChatClient.password == null)
+		{
+			//do smth
+		}
+		else if(ChatClient.password.equals(password))
+		{
+			((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
+			Stage primaryStage = new Stage();
+			
+			Parent root = FXMLLoader.load(getClass().getResource("/gui_client/SubscribersViewer.fxml"));
+			
+			Scene scene = new Scene(root);
+			//Parent root2 = FXMLLoader.load(getClass().getResource("/gui_client/StartOrder.fxml"));
+			//scene.getStylesheets().add(getClass().getResource("/gui/.css").toExternalForm());
+			primaryStage.setTitle("EKRUT");
+			primaryStage.setScene(scene);
+			
+			primaryStage.show();	
+		}
+		else
+		{
+			//do smth
+		}
+			
+	}
+	
+	public void ConnectNewClient() { //MUST ADD A DYNAMIC IP GETTER
+		// the server ip is hardcoded
+		ClientUI.chat = new ClientController("10.10.6.161", 5555);  // new client connected
+		///ClientUI.chat.accept("login"); // send to server that a client is connected
 	}
 }
