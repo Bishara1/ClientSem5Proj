@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0" prefWidth="455.0" style="-fx-background-color: #a2e4e9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.CEOReportsController">
+   <children>
+      <ImageView fitHeight="675.0" fitWidth="770.0" layoutX="-164.0" layoutY="-10.0" opacity="0.31" pickOnBounds="true">
+         <image>
+            <Image url="@../../../../../OneDrive%20-%20ort%20braude%20college%20of%20engineering/College/Semester%205/Engineering%20Methods%20For%20Software%20Systems%20Development/FinalProjectResources/style%20and%20fxml/quick-reportsa.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="126.0" layoutY="51.0" prefHeight="54.0" prefWidth="254.0" text="EKRUT" textFill="#1e0f5f">
+         <font>
+            <Font name="Cooper Black" size="48.0" />
+         </font>
+      </Label>
+      <Button fx:id="logOutBtn" layoutX="19.0" layoutY="574.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="107.0" style="-fx-background-color: #1e0f5f;" text="Logout" textFill="WHITE" />
+      <Label layoutX="94.0" layoutY="106.0" prefHeight="54.0" prefWidth="254.0" text="Welcome CEO" textFill="#1e0f5f">
+         <font>
+            <Font name="Cooper Black" size="36.0" />
+         </font>
+      </Label>
+      <Button fx:id="createOrderBtn" layoutX="160.0" layoutY="227.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="135.0" style="-fx-background-color: #1e0f5f;" text="Create Order" textFill="WHITE" />
+      <Button fx:id="monthlyReportBtn" layoutX="160.0" layoutY="331.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="135.0" style="-fx-background-color: #1e0f5f;" text="Monthly Report" textFill="WHITE" />
+      <Button fx:id="viewSubscribersBtn" layoutX="160.0" layoutY="438.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="135.0" style="-fx-background-color: #1e0f5f;" text="View Subscribers" textFill="WHITE" />
+   </children>
+</AnchorPane>
