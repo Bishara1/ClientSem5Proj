@@ -14,19 +14,31 @@
             <Image url="@../../../../../Desktop/Untitled.png" />
          </image>
       </ImageView>
-      <Button layoutX="128.0" layoutY="279.0" mnemonicParsing="false" onAction="#CreateOrderBtn" prefHeight="54.0" prefWidth="154.0" style="-fx-background-color: #1e0f5f;" text="Create Order" textFill="WHITE" />
-      <Button layoutX="130.0" layoutY="368.0" mnemonicParsing="false" onAction="#CreateRemoteBtn" prefHeight="54.0" prefWidth="154.0" style="-fx-background-color: #1e0f5f;" text="Remote Order" textFill="WHITE" />
+      <Button layoutX="128.0" layoutY="279.0" mnemonicParsing="false" onAction="#CreateOrderBtn" prefHeight="54.0" prefWidth="154.0" style="-fx-background-color: #1e0f5f;" text="Create Order" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button layoutX="130.0" layoutY="368.0" mnemonicParsing="false" onAction="#CreateRemoteBtn" prefHeight="54.0" prefWidth="154.0" style="-fx-background-color: #1e0f5f;" text="Remote Order" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
       <Label alignment="CENTER" layoutX="88.0" layoutY="35.0" prefHeight="54.0" prefWidth="254.0" text="EKRUT" textFill="#1e0f5f">
          <font>
             <Font name="Cooper Black" size="48.0" />
          </font>
       </Label>
-      <Button layoutX="30.0" layoutY="501.0" mnemonicParsing="false" onAction="#BackBtn" style="-fx-background-color: #1e0f5f;" text="Back" textFill="WHITE" />
+      <Button layoutX="30.0" layoutY="501.0" mnemonicParsing="false" onAction="#BackBtn" style="-fx-background-color: #1e0f5f;" text="Back" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
       <Label layoutX="47.0" layoutY="100.0" prefHeight="31.0" prefWidth="342.0" text="Count the memories NOT the calories" textFill="#1e0f5f">
          <font>
             <Font name="System Bold Italic" size="19.0" />
          </font>
       </Label>
-      <Button layoutX="128.0" layoutY="188.0" mnemonicParsing="false" onAction="#SubReqBtn" prefHeight="54.0" prefWidth="154.0" style="-fx-background-color: #1e0f5f;" text="Subscriber request" textFill="WHITE" />
+      <Button layoutX="128.0" layoutY="188.0" mnemonicParsing="false" onAction="#SubReqBtn" prefHeight="54.0" prefWidth="154.0" style="-fx-background-color: #1e0f5f;" text="Subscriber request" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
    </children>
 </AnchorPane>

@@ -20,7 +20,7 @@
             <Font name="Cooper Black" size="64.0" />
          </font>
       </Label>
-      <Label layoutX="104.0" layoutY="316.0" text="ID :" textFill="#1e0f5f">
+      <Label layoutX="68.0" layoutY="316.0" text="Password" textFill="#1e0f5f">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -30,8 +30,20 @@
             <Font name="System Bold Italic" size="19.0" />
          </font>
       </Label>
-      <TextField fx:id="idtxt" layoutX="166.0" layoutY="315.0" />
-      <Button fx:id="backBtn" layoutX="57.0" layoutY="514.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: #1e0f5f;" text="Back" textFill="WHITE" />
-      <Button fx:id="loginBtn" layoutX="305.0" layoutY="514.0" mnemonicParsing="false" onAction="#login" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: #1e0f5f;" text="Login" textFill="WHITE" />
+      <TextField fx:id="idtxt" layoutX="170.0" layoutY="315.0" />
+      <Button fx:id="backBtn" layoutX="57.0" layoutY="514.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: #1e0f5f;" text="Back" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button fx:id="loginBtn" layoutX="305.0" layoutY="514.0" mnemonicParsing="false" onAction="#login" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: #1e0f5f;" text="Login" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <TextField fx:id="idtxt1" layoutX="170.0" layoutY="274.0" />
+      <Label layoutX="68.0" layoutY="274.0" text="UserName" textFill="#1e0f5f">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
