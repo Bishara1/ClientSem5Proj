@@ -48,7 +48,7 @@ public class EKTLoginController {
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
-		primaryStage.setTitle("Teeest 3");
+		primaryStage.setTitle("EKRUT");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
 	}//
