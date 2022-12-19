@@ -24,7 +24,7 @@ public class LoginController {
 
 	public void start(Stage primaryStage) throws Exception {
 		
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/LoginEkrut.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
 				
 		Scene scene = new Scene(root);
 		//scene.getStylesheets().add(getClass().getResource("/gui/ServerPort.css").toExternalForm());  css
@@ -40,14 +40,14 @@ public class LoginController {
 	}
 	
 	public void LoginBtn(ActionEvent event) throws Exception {
-		ConnectNewClient();
-		Message msg = new Message(null, Command.DatabaseRead);
-		ClientUI.chat.accept(msg);
-		
+		/*
+		 * ConnectNewClient(); Message msg = new Message("", Command.Connect);
+		 * //connects client to server ClientUI.chat.accept(msg);
+		 */
 		((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
 		Stage primaryStage = new Stage();
 		
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/SubscribersViewer.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/LoginEkrut.fxml"));
 		Scene scene = new Scene(root);
 		
 		//scene.getStylesheets().add(getClass().getResource("/gui/.css").toExternalForm());
@@ -57,7 +57,7 @@ public class LoginController {
 		primaryStage.show();	
 	}
 	
-	public void ConnectNewClient() {
+	public void ConnectNewClient() { //added this method to LoginSubscriber
 		// the server ip is hardcoded
 		ClientUI.chat = new ClientController(hostIptxt.getText(), 5555);  // new client connected
 		///ClientUI.chat.accept("login"); // send to server that a client is connected

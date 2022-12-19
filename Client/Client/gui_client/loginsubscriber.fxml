@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0" prefWidth="455.0" style="-fx-background-color: #a2e4e9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.LoginSubscriberController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0" prefWidth="455.0" style="-fx-background-color: #a2e4e9;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.LoginSubscriberController">
    <children>
       <ImageView fitHeight="645.0" fitWidth="445.0" layoutX="25.0" layoutY="9.0" opacity="0.31" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -38,14 +38,11 @@
       <TextField layoutX="166.0" layoutY="370.0" />
       <TextField layoutX="166.0" layoutY="315.0" />
 
-      <Button fx:id="Backbtn" layoutX="57.0" layoutY="514.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: #1e0f5f;" text="Back" textFill="WHITE" />
-      <Button layoutX="305.0" layoutY="514.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: #1e0f5f;" text="Login" textFill="WHITE" />
-
-      <Button layoutX="57.0" layoutY="514.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: #1e0f5f;" text="Back" textFill="WHITE">
+      <Button fx:id="Backbtn" layoutX="56.0" layoutY="514.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: #1e0f5f;" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Button layoutX="305.0" layoutY="514.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: #1e0f5f;" text="Login" textFill="WHITE">
+      <Button fx:id="Loginbtn" layoutX="310.0" layoutY="514.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: #1e0f5f;" text="Login" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>

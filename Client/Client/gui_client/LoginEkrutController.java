@@ -28,7 +28,24 @@ public class LoginEkrutController {
 		primaryStage.show();	
 	}
 	
+
+public void start(Stage primaryStage) throws Exception {
+		
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/LoginEkrut.fxml"));
+				
+		Scene scene = new Scene(root);
+		//scene.getStylesheets().add(getClass().getResource("/gui/ServerPort.css").toExternalForm());  css
+		primaryStage.setTitle("Client");
+		primaryStage.setScene(scene);
+		
+		primaryStage.show();		
+	}
+	
+	public void EmailLoginBtn() {
+		
+	}
 	public void EKTBtn() {
+
 		
 	}
 }
