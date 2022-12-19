@@ -22,12 +22,12 @@
       <ButtonBar layoutX="189.0" layoutY="335.0" />
       <Button layoutX="178.0" layoutY="261.0" mnemonicParsing="false" onAction="#LoginBtn" prefHeight="45.0" prefWidth="86.0" style="-fx-background-color: #5d74a2;" text="Login" textFill="WHITE">
          <font>
-            <Font size="21.0" />
+            <Font name="System Bold" size="21.0" />
          </font>
       </Button>
       <Button layoutX="178.0" layoutY="363.0" mnemonicParsing="false" onAction="#ExitBtn" prefHeight="45.0" prefWidth="86.0" style="-fx-background-color: #5d74a2;" text="Exit" textFill="WHITE">
          <font>
-            <Font size="21.0" />
+            <Font name="System Bold" size="21.0" />
          </font>
       </Button>
       <Label layoutX="113.0" layoutY="181.0" prefHeight="23.0" prefWidth="60.0" text="Host IP:" textFill="#4246a1">

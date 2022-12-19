@@ -32,12 +32,12 @@
       </Label>
       <Button layoutX="319.0" layoutY="518.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="108.0" style="-fx-background-color: #1e0f5f;" text="EKT" textFill="WHITE">
          <font>
-            <Font name="Arial Narrow Bold" size="15.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Button>
       <Button layoutX="66.0" layoutY="519.0" mnemonicParsing="false" onAction="#emailloginBtn" prefHeight="42.0" prefWidth="108.0" style="-fx-background-color: #1e0f5f;" text="Email login" textFill="WHITE">
          <font>
-            <Font name="Arial Narrow Bold" size="15.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Button>
    </children>

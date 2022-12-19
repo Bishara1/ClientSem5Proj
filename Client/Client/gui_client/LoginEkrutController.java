@@ -28,7 +28,7 @@ public class LoginEkrutController {
 		primaryStage.show();	
 	}
 	
-	public void EmailLoginBtn() {
+	public void EKTBtn() {
 		
 	}
 }
