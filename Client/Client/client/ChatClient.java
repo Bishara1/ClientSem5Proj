@@ -34,6 +34,7 @@ public class ChatClient extends AbstractClient
   ChatIF clientUI; 
   public static boolean awaitResponse = false;
   public static ArrayList<Subscriber> subscribers;
+  public static String password;
 
   
   //Constructors ****************************************************
@@ -73,6 +74,10 @@ public class ChatClient extends AbstractClient
 	  		  
 	  	  case Disconnect:
 	  		  ClientUI.chat.display("Disconnected");
+	  		  break;
+	  	  
+	  	  case Connect:
+	  		  password = (String)(((Message)msg).getContent());
 	  		  break;
 	  		  
 	  default:
