@@ -25,6 +25,6 @@ public class ReportsCEOController {
 		primaryStage.setTitle("EKRUT");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
-	}
+	}//
 
 }
