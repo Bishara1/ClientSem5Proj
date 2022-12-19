@@ -86,14 +86,23 @@
             <Font name="System Bold Italic" size="15.0" />
          </font></Label>
       <TextField editable="false" layoutX="117.0" layoutY="478.0" prefHeight="31.0" prefWidth="113.0" />
-      <Button layoutX="297.0" layoutY="385.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="113.0" style="-fx-background-color: #1e0f5f;" text="Add to cart" textFill="WHITE" />
-      <Button layoutX="33.0" layoutY="549.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="65.0" style="-fx-background-color: #1e0f5f;" text="Back" textFill="WHITE" />
+      <Button layoutX="297.0" layoutY="385.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="113.0" style="-fx-background-color: #1e0f5f;" text="Add to cart" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button layoutX="33.0" layoutY="549.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="65.0" style="-fx-background-color: #1e0f5f;" text="Back" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
       <Label layoutX="194.0" layoutY="14.0" prefHeight="54.0" prefWidth="254.0" text="EKRUT" textFill="#1e0f5f">
          <font>
             <Font name="Cooper Black" size="48.0" />
          </font>
       </Label>
-      <Button layoutX="410.0" layoutY="549.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="131.0" style="-fx-background-color: #1e0f5f;" text="Proceed to Cart" textFill="WHITE" />
+      <Button layoutX="410.0" layoutY="549.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="131.0" style="-fx-background-color: #1e0f5f;" text="Proceed to Cart" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
       <Label layoutX="33.0" layoutY="483.0" prefHeight="21.0" prefWidth="88.0" text="Total Price:" textFill="#1e0f5f">
          <font>
             <Font name="System Bold Italic" size="15.0" />
