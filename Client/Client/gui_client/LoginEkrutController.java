@@ -28,6 +28,7 @@ public class LoginEkrutController {
 		primaryStage.show();	
 	}
 	
+
 public void start(Stage primaryStage) throws Exception {
 		
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/LoginEkrut.fxml"));
@@ -41,6 +42,10 @@ public void start(Stage primaryStage) throws Exception {
 	}
 	
 	public void EmailLoginBtn() {
+		
+	}
+	public void EKTBtn() {
+
 		
 	}
 }
