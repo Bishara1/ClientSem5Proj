@@ -51,7 +51,7 @@ public class EKTLoginController {
 		primaryStage.setTitle("Teeest 3");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
-	}
+	}//
 	
 
 }
