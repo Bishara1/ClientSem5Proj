@@ -13,7 +13,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -43,9 +46,10 @@ public class LoginSubscriberController {
 		ClientUI.chat.accept(msg);
 		
 		//check if password is correct/ if client exists and then proceed;
-		if(ChatClient.password == null)
+		if(username.equals("") || password.equals(""))
 		{
-			//do smth
+			Alert alert = new Alert(AlertType.ERROR,"Must enter username and password",ButtonType.OK);
+			alert.showAndWait();
 		}
 		else if(ChatClient.password.equals(password))
 		{
@@ -64,7 +68,17 @@ public class LoginSubscriberController {
 		}
 		else
 		{
-			//do smth
+			if(ChatClient.password.equals(""))
+			{
+				Alert alert = new Alert(AlertType.ERROR,"Username isn't in db",ButtonType.OK);
+				alert.showAndWait();
+			}
+			else 
+				if(!ChatClient.password.equals(password))
+			{
+				Alert alert = new Alert(AlertType.ERROR,"Incorrect password",ButtonType.OK);
+				alert.showAndWait();
+			}
 		}
 			
 	}
