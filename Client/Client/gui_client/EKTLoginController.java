@@ -44,10 +44,10 @@ public class EKTLoginController {
 	
 	public void BackBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui/loginsubscriber.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/loginsubscriber.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
+		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
 		primaryStage.setTitle("Teeest 3");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		

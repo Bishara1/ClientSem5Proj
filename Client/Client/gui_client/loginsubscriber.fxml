@@ -37,7 +37,7 @@
       </Label>
       <TextField layoutX="166.0" layoutY="370.0" />
       <TextField layoutX="166.0" layoutY="315.0" />
-      <Button layoutX="57.0" layoutY="514.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: #1e0f5f;" text="Back" textFill="WHITE" />
+      <Button fx:id="Backbtn" layoutX="57.0" layoutY="514.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: #1e0f5f;" text="Back" textFill="WHITE" />
       <Button layoutX="305.0" layoutY="514.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: #1e0f5f;" text="Login" textFill="WHITE" />
    </children>
 </AnchorPane>

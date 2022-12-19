@@ -70,11 +70,11 @@ public class MonthlyReportsController {
 	
 	public void BackBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui/CEOReports.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/CEOReports.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("/gui/CEOReports.css").toExternalForm());
-		primaryStage.setTitle("Test");
+	//	scene.getStylesheets().add(getClass().getResource("/gui/CEOReports.css").toExternalForm());
+		primaryStage.setTitle("EKRUT");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
 	}
