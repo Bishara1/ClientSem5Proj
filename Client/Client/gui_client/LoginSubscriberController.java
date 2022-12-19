@@ -88,4 +88,15 @@ public class LoginSubscriberController {
 		ClientUI.chat = new ClientController("10.10.6.161", 5555);  // new client connected
 		///ClientUI.chat.accept("login"); // send to server that a client is connected
 	}
+	
+	public void backBtn(ActionEvent event) throws Exception {
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/LoginEkrut.fxml"));
+		Stage primaryStage = new Stage();
+		Scene scene = new Scene(root);
+	//	scene.getStylesheets().add(getClass().getResource("/gui/LoginEkrut.css").toExternalForm());
+		primaryStage.setTitle("EKRUT");
+		primaryStage.setScene(scene);		
+		primaryStage.show();		
+	}
 }
