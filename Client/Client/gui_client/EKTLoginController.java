@@ -36,8 +36,6 @@ public class EKTLoginController {
 		id=getID();
 		if(id.trim().isEmpty())
 		{
-
-			//System.out.println("You must enter an id number");	// Alert ?
 			Alert alert = new Alert(AlertType.ERROR,"You must enter an ID!",ButtonType.OK);
 			alert.showAndWait();
 		}

@@ -1,15 +1,11 @@
 package gui_client;
 
 
-
-
-import java.awt.Label;
-import java.awt.TextField;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import logic.Items;
 
 public class CartController {
