@@ -1,10 +1,11 @@
 package gui_client;
 
-import java.awt.event.ActionEvent;
+
 import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -70,11 +71,11 @@ public class MonthlyReportsController {
 	
 	public void BackBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui/CEOReports.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/CEOReports.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("/gui/CEOReports.css").toExternalForm());
-		primaryStage.setTitle("Test");
+	//	scene.getStylesheets().add(getClass().getResource("/gui/CEOReports.css").toExternalForm());
+		primaryStage.setTitle("CEO Reports");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
 	}

@@ -1,10 +1,11 @@
 package gui_client;
 
-import java.awt.TextField;
-import java.awt.event.ActionEvent;
 
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 public class SubscriberLoginController {
 	

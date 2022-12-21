@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0" prefWidth="455.0" style="-fx-background-color: #a2e4e9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.PurchaseController">
+   <children>
+      <ImageView fitHeight="653.0" fitWidth="492.0" layoutX="31.0" layoutY="5.0" opacity="0.39" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@PurchasePic.jpeg" />
+         </image>
+      </ImageView>
+      <Label layoutX="75.0" layoutY="76.0" prefHeight="119.0" prefWidth="306.0" text="Purchase" textFill="#1e0f5f">
+         <font>
+            <Font name="Cooper Black" size="64.0" />
+         </font>
+      </Label>
+      <Label layoutX="84.0" layoutY="319.0" text="Credit Card:" textFill="#1e0f5f">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="87.0" layoutY="372.0" prefHeight="30.0" prefWidth="100.0" text="ID:" textFill="#1e0f5f">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="idtxt" layoutX="199.0" layoutY="372.0" />
+      <TextField fx:id="creditCardtxt" layoutX="199.0" layoutY="317.0" />
+      <Button fx:id="backBtn" layoutX="56.0" layoutY="514.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: #1e0f5f;" text="Back" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="310.0" layoutY="514.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: #1e0f5f;" text="Purchase" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="122.0" layoutY="456.0" text="Total price: " textFill="#1e0f5f">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="1.0" layoutX="234.0" layoutY="479.0" stroke="BLACK" strokeType="INSIDE" width="63.0" />
+   </children>
+</AnchorPane>

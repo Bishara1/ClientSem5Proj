@@ -28,6 +28,7 @@
             <Font name="System Bold Italic" size="19.0" />
          </font>
       </Label>
+<<<<<<< HEAD
       <Button layoutX="36.0" layoutY="658.0" mnemonicParsing="false" onAction="#Back" prefHeight="39.0" prefWidth="135.0" style="-fx-background-color: #1e0f5f;" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
@@ -64,6 +65,7 @@
             <Image url="@../../../../../Desktop/images.png" />
          </image>
       </ImageView>
+<<<<<<< HEAD
       <Button fx:id="removebtn" layoutX="394.0" layoutY="566.0" mnemonicParsing="false" onAction="#RemoveItem" style="-fx-background-color: #1e0f5f;" text="remove" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />

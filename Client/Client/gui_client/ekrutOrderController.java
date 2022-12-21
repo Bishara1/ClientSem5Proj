@@ -1,9 +1,10 @@
 package gui_client;
 
-import java.awt.TextField;
+
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 public class ekrutOrderController {
 
