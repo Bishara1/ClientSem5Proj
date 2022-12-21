@@ -1,14 +1,13 @@
 package gui_client;
 
-//import java.awt.Button;
 
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 
-public class RemoteOrderController {
-
+public class RemoteLocationController{
 		@FXML
 		private ComboBox location;
 		@FXML
@@ -16,6 +15,8 @@ public class RemoteOrderController {
 		@FXML
 		private Button startorderbtn ;
 		
+		@FXML
+		private TextField machineidtxt ;
 		
 		public void LocationCombo() {
 			
