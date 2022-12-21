@@ -87,7 +87,7 @@ public class LoginSubscriberController {
 	
 	public void ConnectNewClient() { //MUST ADD A DYNAMIC IP GETTER
 		// the server ip is hardcoded
-		ClientUI.chat = new ClientController("10.10.6.161", 5555);  // new client connected
+		ClientUI.chat = new ClientController("localhost", 5555);  // new client connected
 		///ClientUI.chat.accept("login"); // send to server that a client is connected
 	}
 	
