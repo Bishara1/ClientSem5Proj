@@ -24,7 +24,7 @@ public class LoginEkrutController {
 		
 		Scene scene = new Scene(root);
 		//scene.getStylesheets().add(getClass().getResource("/gui/ServerPort.css").toExternalForm());  css
-		primaryStage.setTitle("Client");
+		primaryStage.setTitle("Login Ekrut");
 		primaryStage.setScene(scene);
 		
 		primaryStage.show();		
@@ -37,7 +37,7 @@ public class LoginEkrutController {
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/loginsubscriber.fxml"));
 		Scene scene = new Scene(root);
 		
-		primaryStage.setTitle("EKRUT");
+		primaryStage.setTitle("Login Subscriber");
 		primaryStage.setScene(scene);
 		
 		primaryStage.show();	
@@ -50,7 +50,7 @@ public class LoginEkrutController {
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/EKTLogin.fxml"));
 		Scene scene = new Scene(root);
 		
-		primaryStage.setTitle("EKRUT");
+		primaryStage.setTitle("EKT Login");
 		primaryStage.setScene(scene);
 		
 		primaryStage.show();

@@ -22,7 +22,7 @@ public class ReportsCEOController {
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 		//scene.getStylesheets().add(getClass().getResource("/gui/MonthlyReports.css").toExternalForm());
-		primaryStage.setTitle("EKRUT");
+		primaryStage.setTitle("Monthly Reports");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
 	}//

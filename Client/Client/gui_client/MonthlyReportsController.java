@@ -74,7 +74,7 @@ public class MonthlyReportsController {
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 	//	scene.getStylesheets().add(getClass().getResource("/gui/CEOReports.css").toExternalForm());
-		primaryStage.setTitle("EKRUT");
+		primaryStage.setTitle("CEO Reports");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
 	}

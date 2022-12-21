@@ -61,7 +61,7 @@ public class LoginSubscriberController {
 			Scene scene = new Scene(root);
 			//Parent root2 = FXMLLoader.load(getClass().getResource("/gui_client/StartOrder.fxml"));
 			//scene.getStylesheets().add(getClass().getResource("/gui/.css").toExternalForm());
-			primaryStage.setTitle("EKRUT");
+			primaryStage.setTitle("Subscriber Viewer");
 			primaryStage.setScene(scene);
 			
 			primaryStage.show();	
@@ -97,7 +97,7 @@ public class LoginSubscriberController {
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 	//	scene.getStylesheets().add(getClass().getResource("/gui/LoginEkrut.css").toExternalForm());
-		primaryStage.setTitle("EKRUT");
+		primaryStage.setTitle("Login Ekrut");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
 	}
