@@ -49,11 +49,11 @@ public class EKTLoginController {
 	
 	public void BackBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/loginsubscriber.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/LoginEkrut.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
-		primaryStage.setTitle("EKRUT");
+		primaryStage.setTitle("Login EKRUT");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
 	}//

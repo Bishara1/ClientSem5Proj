@@ -35,23 +35,23 @@ public class LoginSubscriberController {
 	@FXML
 	private Button Backbtn;
 	
-	
-	
+
 	public void loginBtn(ActionEvent event) throws Exception {
 		String username = Usernametxt.getText();
 		String password = Passwordtxt.getText();
 		
-		ConnectNewClient();
-		Message msg = new Message(username, Command.Connect); //connects client to server
-		ClientUI.chat.accept(msg);
-		
-		//check if password is correct/ if client exists and then proceed;
 		if(username.equals("") || password.equals(""))
 		{
 			Alert alert = new Alert(AlertType.ERROR,"Must enter username and password",ButtonType.OK);
 			alert.showAndWait();
 		}
-		else if(ChatClient.password.equals(password))
+		else {
+			ConnectNewClient();
+		Message msg = new Message(username, Command.Connect); //connects client to server
+		ClientUI.chat.accept(msg);
+		
+		//check if password is correct/ if client exists and then proceed;
+		if(ChatClient.password.equals(password))
 		{
 			((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
 			Stage primaryStage = new Stage();
@@ -80,6 +80,8 @@ public class LoginSubscriberController {
 				alert.showAndWait();
 			}
 		}
+		}
+		
 			
 	}
 	
