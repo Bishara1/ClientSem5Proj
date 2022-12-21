@@ -35,23 +35,23 @@ public class LoginSubscriberController {
 	@FXML
 	private Button Backbtn;
 	
-	
-	
+
 	public void loginBtn(ActionEvent event) throws Exception {
 		String username = Usernametxt.getText();
 		String password = Passwordtxt.getText();
 		
-		ConnectNewClient();
-		Message msg = new Message(username, Command.Connect); //connects client to server
-		ClientUI.chat.accept(msg);
-		
-		//check if password is correct/ if client exists and then proceed;
 		if(username.equals("") || password.equals(""))
 		{
 			Alert alert = new Alert(AlertType.ERROR,"Must enter username and password",ButtonType.OK);
 			alert.showAndWait();
 		}
-		else if(ChatClient.password.equals(password))
+		else {
+			ConnectNewClient();
+		Message msg = new Message(username, Command.Connect); //connects client to server
+		ClientUI.chat.accept(msg);
+		
+		//check if password is correct/ if client exists and then proceed;
+		if(ChatClient.password.equals(password))
 		{
 			((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
 			Stage primaryStage = new Stage();
@@ -61,7 +61,7 @@ public class LoginSubscriberController {
 			Scene scene = new Scene(root);
 			//Parent root2 = FXMLLoader.load(getClass().getResource("/gui_client/StartOrder.fxml"));
 			//scene.getStylesheets().add(getClass().getResource("/gui/.css").toExternalForm());
-			primaryStage.setTitle("EKRUT");
+			primaryStage.setTitle("Subscriber Viewer");
 			primaryStage.setScene(scene);
 			
 			primaryStage.show();	
@@ -80,12 +80,14 @@ public class LoginSubscriberController {
 				alert.showAndWait();
 			}
 		}
+		}
+		
 			
 	}
 	
 	public void ConnectNewClient() { //MUST ADD A DYNAMIC IP GETTER
 		// the server ip is hardcoded
-		ClientUI.chat = new ClientController("10.10.6.161", 5555);  // new client connected
+		ClientUI.chat = new ClientController("localhost", 5555);  // new client connected
 		///ClientUI.chat.accept("login"); // send to server that a client is connected
 	}
 	
@@ -95,7 +97,7 @@ public class LoginSubscriberController {
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 	//	scene.getStylesheets().add(getClass().getResource("/gui/LoginEkrut.css").toExternalForm());
-		primaryStage.setTitle("EKRUT");
+		primaryStage.setTitle("Login Ekrut");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
 	}

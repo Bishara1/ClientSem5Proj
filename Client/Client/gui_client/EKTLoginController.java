@@ -1,14 +1,17 @@
 package gui_client;
 
-import java.awt.TextField;
-import java.awt.event.ActionEvent;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class EKTLoginController {
@@ -34,7 +37,9 @@ public class EKTLoginController {
 		if(id.trim().isEmpty())
 		{
 
-			System.out.println("You must enter an id number");	// Alert ?
+			//System.out.println("You must enter an id number");	// Alert ?
+			Alert alert = new Alert(AlertType.ERROR,"You must enter an ID!",ButtonType.OK);
+			alert.showAndWait();
 		}
 		else
 		{
@@ -44,11 +49,11 @@ public class EKTLoginController {
 	
 	public void BackBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/loginsubscriber.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/LoginEkrut.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
-		primaryStage.setTitle("Teeest 3");
+		primaryStage.setTitle("Login EKRUT");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
 	}//
