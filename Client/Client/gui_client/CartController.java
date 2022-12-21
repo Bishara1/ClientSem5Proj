@@ -46,8 +46,10 @@ public class CartController {
 	public void Back() {
 	}
 	
-	public void Remove() {
+	public void RemoveItem() {
 	}
-	
+
+    public void RemoveAll() {
+    }
 	}
 

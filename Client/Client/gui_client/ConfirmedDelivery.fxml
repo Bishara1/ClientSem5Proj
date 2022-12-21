@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="676.0" style="-fx-background-color: #a2e4e9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ConfirmedDeliveryController">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+      <TableView fx:id="tableDelivery" layoutX="43.0" layoutY="150.0" opacity="0.9" prefHeight="408.0" prefWidth="570.0">
+         <columns>
+            <TableColumn fx:id="orderIdcol" prefWidth="92.0" text="Order ID" />
+            <TableColumn fx:id="shippingDatecol" prefWidth="169.0" text="Shipping date" />
+            <TableColumn fx:id="estimatedcol" prefWidth="125.0" text="Estimated  date" />
+            <TableColumn fx:id="statuscol" prefWidth="83.0" text="Status" />
+            <TableColumn fx:id="deliveryIdcol" prefWidth="100.0" text="Delivery ID" />
+         </columns>
+      </TableView>
+      <Button layoutX="24.0" layoutY="663.0" mnemonicParsing="false" onAction="#Back" prefHeight="39.0" prefWidth="135.0" style="-fx-background-color: #1e0f5f;" text="Back" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="164.0" layoutY="50.0" prefHeight="84.0" prefWidth="349.0" text="Confirmed Deliveries" textFill="#1e0f5f">
+         <font>
+            <Font name="Cooper Black" size="30.0" />
+         </font>
+      </Label>
+      <Button layoutX="500.0" layoutY="663.0" mnemonicParsing="false" onAction="#Confirm" prefHeight="39.0" prefWidth="135.0" style="-fx-background-color: #1e0f5f;" text="Confirm" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

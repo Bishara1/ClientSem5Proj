@@ -28,19 +28,19 @@
             <Font name="System Bold Italic" size="19.0" />
          </font>
       </Label>
-      <Button layoutX="36.0" layoutY="658.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="135.0" style="-fx-background-color: #1e0f5f;" text="Back" textFill="WHITE">
+      <Button layoutX="36.0" layoutY="658.0" mnemonicParsing="false" onAction="#Back" prefHeight="39.0" prefWidth="135.0" style="-fx-background-color: #1e0f5f;" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Button layoutX="325.0" layoutY="658.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="146.0" style="-fx-background-color: #1e0f5f;" text="Proceed Payment" textFill="WHITE">
+      <Button layoutX="325.0" layoutY="658.0" mnemonicParsing="false" onAction="#ProceedPayment" prefHeight="39.0" prefWidth="146.0" style="-fx-background-color: #1e0f5f;" text="Proceed Payment" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
       <TableView layoutX="73.0" layoutY="254.0" opacity="0.9" prefHeight="301.0" prefWidth="372.0">
         <columns>
-          <TableColumn prefWidth="92.0" text="Product ID" />
-          <TableColumn prefWidth="169.0" text="Amount" />
-            <TableColumn prefWidth="104.0" text="Price" />
+          <TableColumn fx:id="productidcol" prefWidth="92.0" text="Product ID" />
+          <TableColumn fx:id="amountcol" prefWidth="169.0" text="Amount" />
+            <TableColumn fx:id="pricecol" prefWidth="104.0" text="Price" />
         </columns>
       </TableView>
       <Label layoutX="70.0" layoutY="213.0" prefHeight="39.0" prefWidth="146.0" text="Order Summery" textFill="#1e0f5f">
@@ -59,12 +59,12 @@
          </font>
       </Label>
       <TextField layoutX="254.0" layoutY="566.0" prefHeight="31.0" prefWidth="124.0" />
-      <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="376.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="376.0" layoutY="217.0" onDragDetected="#RemoveAll" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../Desktop/images.png" />
          </image>
       </ImageView>
-      <Button layoutX="394.0" layoutY="566.0" mnemonicParsing="false" style="-fx-background-color: #1e0f5f;" text="remove" textFill="WHITE">
+      <Button fx:id="removebtn" layoutX="394.0" layoutY="566.0" mnemonicParsing="false" onAction="#RemoveItem" style="-fx-background-color: #1e0f5f;" text="remove" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
