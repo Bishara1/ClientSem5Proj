@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import logic.Delivery;
 import logic.Items;
 
 public class ConfirmedDeliveryController {
