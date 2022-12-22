@@ -35,7 +35,7 @@ public class LoginSubscriberController {
 	@FXML
 	private Button Backbtn;
 	
-
+	@FXML
 	public void loginBtn(ActionEvent event) throws Exception {
 		String username = Usernametxt.getText();
 		String password = Passwordtxt.getText();
@@ -87,7 +87,7 @@ public class LoginSubscriberController {
 	
 	public void ConnectNewClient() { //MUST ADD A DYNAMIC IP GETTER
 		// the server ip is hardcoded
-		ClientUI.chat = new ClientController("10.10.6.161", 5555);  // new client connected
+		ClientUI.chat = new ClientController("localhost", 5555);  // new client connected
 		///ClientUI.chat.accept("login"); // send to server that a client is connected
 	}
 	
