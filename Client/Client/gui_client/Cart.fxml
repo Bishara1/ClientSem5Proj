@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="764.0" prefWidth="517.0" style="-fx-background-color: #a2e4e9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="764.0" prefWidth="517.0" style="-fx-background-color: #a2e4e9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.CartController">
    <children>
       <Button layoutX="367.0" layoutY="211.0" mnemonicParsing="false" opacity="0.0" prefHeight="47.0" prefWidth="54.0" visible="false" />
       <ImageView fitHeight="707.0" fitWidth="480.0" layoutX="33.0" layoutY="48.0" opacity="0.31" pickOnBounds="true" preserveRatio="true">
@@ -28,19 +28,20 @@
             <Font name="System Bold Italic" size="19.0" />
          </font>
       </Label>
-      <Button layoutX="36.0" layoutY="658.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="135.0" style="-fx-background-color: #1e0f5f;" text="Back" textFill="WHITE">
+<<<<<<< HEAD
+      <Button layoutX="36.0" layoutY="658.0" mnemonicParsing="false" onAction="#Back" prefHeight="39.0" prefWidth="135.0" style="-fx-background-color: #1e0f5f;" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Button layoutX="335.0" layoutY="658.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="146.0" style="-fx-background-color: #1e0f5f;" text="Proceed Payment" textFill="WHITE">
+      <Button layoutX="325.0" layoutY="658.0" mnemonicParsing="false" onAction="#ProceedPayment" prefHeight="39.0" prefWidth="146.0" style="-fx-background-color: #1e0f5f;" text="Proceed Payment" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
       <TableView layoutX="73.0" layoutY="254.0" opacity="0.9" prefHeight="301.0" prefWidth="372.0">
         <columns>
-          <TableColumn prefWidth="92.0" text="Product ID" />
-          <TableColumn prefWidth="169.0" text="Amount" />
-            <TableColumn prefWidth="104.0" text="Price" />
+          <TableColumn fx:id="productidcol" prefWidth="92.0" text="Product ID" />
+          <TableColumn fx:id="amountcol" prefWidth="169.0" text="Amount" />
+            <TableColumn fx:id="pricecol" prefWidth="104.0" text="Price" />
         </columns>
       </TableView>
       <Label layoutX="70.0" layoutY="213.0" prefHeight="39.0" prefWidth="146.0" text="Order Summery" textFill="#1e0f5f">
@@ -59,12 +60,13 @@
          </font>
       </Label>
       <TextField layoutX="254.0" layoutY="566.0" prefHeight="31.0" prefWidth="124.0" />
-      <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="376.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="376.0" layoutY="217.0" onDragDetected="#RemoveAll" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../Desktop/images.png" />
          </image>
       </ImageView>
-      <Button layoutX="394.0" layoutY="566.0" mnemonicParsing="false" style="-fx-background-color: #1e0f5f;" text="remove" textFill="WHITE">
+<<<<<<< HEAD
+      <Button fx:id="removebtn" layoutX="394.0" layoutY="566.0" mnemonicParsing="false" onAction="#RemoveItem" style="-fx-background-color: #1e0f5f;" text="remove" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>

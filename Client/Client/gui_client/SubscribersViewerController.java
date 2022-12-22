@@ -61,7 +61,7 @@ public class SubscribersViewerController implements Initializable{
 		Parent root = loader.load();	
 		Scene scene = new Scene(root);
 		//scene.getStylesheets().add(getClass().getResource("/gui/ServerPort.css").toExternalForm());  //css
-		primaryStage.setTitle("Client");
+		primaryStage.setTitle("Subscriber Viewer");
 		primaryStage.setScene(scene);
 		
 		primaryStage.show();	
