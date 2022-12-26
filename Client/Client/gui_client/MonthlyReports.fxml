@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="cmbMachineId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="587.0" style="-fx-background-color: #a2e4e9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.MonthlyReportsController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="587.0" style="-fx-background-color: #a2e4e9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.MonthlyReportsController">
    <children>
       <Label layoutX="144.0" layoutY="61.0" text="Monthly Reports" textFill="#1e0f5f" underline="true">
          <font>
@@ -21,12 +21,12 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="239.0" layoutY="433.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Show Report">
+      <Button fx:id="showReportBtn" layoutX="239.0" layoutY="433.0" mnemonicParsing="false" onAction="#ShowReportBtn" prefHeight="25.0" prefWidth="110.0" text="Show Report">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
       <ComboBox fx:id="cmbLocation" layoutX="239.0" layoutY="233.0" prefHeight="25.0" prefWidth="110.0" promptText="Location" style="-fx-pref-height: 35;" />
-      <ComboBox fx:id="cmbDeviceId" layoutX="219.0" layoutY="299.0" prefWidth="150.0" promptText="Machine Id" style="-fx-pref-height: 35;" />
+      <ComboBox fx:id="cmbMachineId" layoutX="219.0" layoutY="299.0" prefWidth="150.0" promptText="Machine Id" style="-fx-pref-height: 35;" />
    </children>
 </Pane>
