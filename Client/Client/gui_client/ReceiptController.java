@@ -15,13 +15,13 @@ import logic.*;
 public class ReceiptController {
 	
 	@FXML
-	private TableView<Items> receiptTable;
+	private TableView<Item> receiptTable;
 	@FXML
-	private TableColumn<Items,String> productIdCol;
+	private TableColumn<Item,String> productIdCol;
 	@FXML
-	private TableColumn<Items,String> amountCol;
+	private TableColumn<Item,String> amountCol;
 	@FXML
-	private TableColumn<Items,String> priceCol;
+	private TableColumn<Item,String> priceCol;
 
 	@FXML
 	private Button okBtn;

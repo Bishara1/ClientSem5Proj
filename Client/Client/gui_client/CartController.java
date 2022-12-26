@@ -10,7 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 import javafx.scene.control.cell.PropertyValueFactory;
-import logic.Items;
+import logic.Item;
 
 
 public class CartController {
@@ -27,13 +27,13 @@ public class CartController {
 	private TextField removeidtxt;
 	
 	@FXML
-	private TableView<Items> tableSub;
+	private TableView<Item> tableSub;
 	@FXML
-	private TableColumn<Items,String> productidcol;
+	private TableColumn<Item,String> productidcol;
 	@FXML
-	private TableColumn<Items,String> amountcol;
+	private TableColumn<Item,String> amountcol;
 	@FXML
-	private TableColumn<Items,String> pricecol;
+	private TableColumn<Item,String> pricecol;
 	
 	
 	public void LoadAndSetTable() {
