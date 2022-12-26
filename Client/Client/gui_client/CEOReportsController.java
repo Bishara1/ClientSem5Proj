@@ -8,11 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-<<<<<<< HEAD
 import javafx.event.ActionEvent;
 
-=======
->>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
 
 public class CEOReportsController {
 	@FXML
@@ -26,7 +23,6 @@ public class CEOReportsController {
 	@FXML
 	private Button viewdiscountBtn;
 	
-<<<<<<< HEAD
 	
 	public void CreateOrder(ActionEvent event) throws Exception{
 		((Node)event.getSource()).getScene().getWindow().hide();
@@ -43,7 +39,6 @@ public class CEOReportsController {
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/LoginEkrut.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
-		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
 		primaryStage.setTitle("Login EKRUT");
 		primaryStage.setScene(scene);		
 		primaryStage.show();	
@@ -61,7 +56,14 @@ public class CEOReportsController {
 		
 	}
 	
-	public void ViewSubscribers() {
+	public void ViewSubscribers(ActionEvent event) throws Exception  {
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/SubscribersViewer.fxml"));
+		Stage primaryStage = new Stage();
+		Scene scene = new Scene(root);
+		primaryStage.setTitle("EKRUT");
+		primaryStage.setScene(scene);		
+		primaryStage.show();
 	}
 	
 	public void viewDiscount(ActionEvent event) throws Exception {
@@ -69,11 +71,11 @@ public class CEOReportsController {
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/DiscountLocation.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
-		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
 		primaryStage.setTitle("EKRUT");
 		primaryStage.setScene(scene);		
 		primaryStage.show();
-=======
+	}
+	
 	public void MonthlyReportsBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/MonthlyReports.fxml"));
@@ -82,6 +84,5 @@ public class CEOReportsController {
 		primaryStage.setTitle("Monthly Reports");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
->>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
 	}
 }

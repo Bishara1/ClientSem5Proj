@@ -34,7 +34,7 @@ public class LoginEkrutController {
 		((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
 		Stage primaryStage = new Stage();
 		
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/loginsubscriber.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/UserLogin.fxml"));
 		Scene scene = new Scene(root);
 		
 		primaryStage.setTitle("Login Subscriber");

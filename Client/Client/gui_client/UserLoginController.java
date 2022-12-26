@@ -1,7 +1,6 @@
 package gui_client;
 
 
-
 import client.ChatClient;
 
 import client.ClientController;
@@ -22,7 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class LoginSubscriberController {
+public class UserLoginController {
 
 	@FXML
 	private TextField Usernametxt;
@@ -51,7 +50,6 @@ public class LoginSubscriberController {
 			ConnectNewClient();
 		Message msg = new Message(username, Command.Connect); //connects client to server
 		ClientUI.chat.accept(msg);
-		
 		//check if password is correct/ if client exists and then proceed;
 		if(ChatClient.password.equals(password))
 		{
@@ -63,7 +61,7 @@ public class LoginSubscriberController {
 			Scene scene = new Scene(root);
 			//Parent root2 = FXMLLoader.load(getClass().getResource("/gui_client/StartOrder.fxml"));
 			//scene.getStylesheets().add(getClass().getResource("/gui/.css").toExternalForm());
-			primaryStage.setTitle("Subscriber Viewer");
+			primaryStage.setTitle("EKRUT");
 			primaryStage.setScene(scene);
 			
 			primaryStage.show();	
