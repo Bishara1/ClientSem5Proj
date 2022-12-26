@@ -32,7 +32,11 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
+<<<<<<< HEAD
       <Button fx:id="monthlyReportBtn" layoutX="251.0" layoutY="324.0" mnemonicParsing="false" onAction="#MonthltReports" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #1e0f5f;" text="Monthly Report" textFill="WHITE">
+=======
+      <Button fx:id="monthlyReportBtn" layoutX="160.0" layoutY="331.0" mnemonicParsing="false" onAction="#MonthlyReportsBtn" prefHeight="54.0" prefWidth="135.0" style="-fx-background-color: #1e0f5f;" text="Monthly Report" textFill="WHITE">
+>>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>

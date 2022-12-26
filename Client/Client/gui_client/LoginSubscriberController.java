@@ -3,6 +3,7 @@ package gui_client;
 
 
 import client.ChatClient;
+
 import client.ClientController;
 import client.ClientUI;
 import common.Command;
@@ -57,7 +58,7 @@ public class LoginSubscriberController {
 			((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
 			Stage primaryStage = new Stage();
 			
-			Parent root = FXMLLoader.load(getClass().getResource("/gui_client/SubscribersViewer.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/gui_client/CustomerUI.fxml"));
 			
 			Scene scene = new Scene(root);
 			//Parent root2 = FXMLLoader.load(getClass().getResource("/gui_client/StartOrder.fxml"));
