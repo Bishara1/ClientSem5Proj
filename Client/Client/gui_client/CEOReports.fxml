@@ -7,32 +7,43 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0" prefWidth="455.0" style="-fx-background-color: #a2e4e9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.CEOReportsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="796.0" prefWidth="644.0" style="-fx-background-color: #a2e4e9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.CEOReportsController">
    <children>
-      <ImageView fitHeight="681.0" fitWidth="644.0" layoutX="-108.0" layoutY="-10.0" opacity="0.31" pickOnBounds="true">
+      <ImageView fitHeight="805.0" fitWidth="714.0" layoutX="-63.0" layoutY="-8.0" opacity="0.31" pickOnBounds="true">
          <image>
             <Image url="@../../../../../Desktop/quick-reportsa.png" />
          </image>
       </ImageView>
-      <Label layoutX="126.0" layoutY="51.0" prefHeight="54.0" prefWidth="254.0" text="EKRUT" textFill="#1e0f5f">
+      <Label layoutX="238.0" layoutY="41.0" prefHeight="54.0" prefWidth="254.0" text="EKRUT" textFill="#1e0f5f">
          <font>
             <Font name="Cooper Black" size="48.0" />
          </font>
       </Label>
-      <Button fx:id="logOutBtn" layoutX="19.0" layoutY="574.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="107.0" style="-fx-background-color: #1e0f5f;" text="Logout" textFill="WHITE" />
-      <Label layoutX="94.0" layoutY="106.0" prefHeight="54.0" prefWidth="254.0" text="Welcome CEO" textFill="#1e0f5f">
+      <Button fx:id="logOutBtn" layoutX="51.0" layoutY="694.0" mnemonicParsing="false" onAction="#LogOut" prefHeight="47.0" prefWidth="107.0" style="-fx-background-color: #1e0f5f;" text="Logout" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Label layoutX="200.0" layoutY="104.0" prefHeight="54.0" prefWidth="254.0" text="Welcome CEO" textFill="#1e0f5f">
          <font>
             <Font name="Cooper Black" size="36.0" />
          </font>
       </Label>
-      <Button fx:id="createOrderBtn" layoutX="160.0" layoutY="227.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="135.0" style="-fx-background-color: #1e0f5f;" text="Create Order" textFill="WHITE">
+      <Button fx:id="createOrderBtn" layoutX="252.0" layoutY="223.0" mnemonicParsing="false" onAction="#CreateOrder" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #1e0f5f;" text="Create Order" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Button fx:id="monthlyReportBtn" layoutX="160.0" layoutY="331.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="135.0" style="-fx-background-color: #1e0f5f;" text="Monthly Report" textFill="WHITE">
+      <Button fx:id="monthlyReportBtn" layoutX="251.0" layoutY="324.0" mnemonicParsing="false" onAction="#MonthltReports" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #1e0f5f;" text="Monthly Report" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Button fx:id="viewSubscribersBtn" layoutX="160.0" layoutY="438.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="135.0" style="-fx-background-color: #1e0f5f;" text="View Subscribers" textFill="WHITE" />
+      <Button fx:id="viewSubscribersBtn" layoutX="252.0" layoutY="429.0" mnemonicParsing="false" onAction="#ViewSubscribers" prefHeight="55.0" prefWidth="160.0" style="-fx-background-color: #1e0f5f;" text="View Subscribers" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button fx:id="viewdiscountBtn" layoutX="252.0" layoutY="530.0" mnemonicParsing="false" onAction="#viewDiscount" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #1e0f5f;" text="View Discount" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
