@@ -1,5 +1,7 @@
 package gui_client;
 
+
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -22,17 +24,10 @@ public class ekrutOrderController {
 	public void ProceedCartBtn() {
 		
 	}
-	
 	public void BackBtn() {
 		
 	}
-	
     public void AddToCartBtn() {
 		
 	}
-    
-    public void NextItems() {
-		
-	}
-    
 }

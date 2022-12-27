@@ -1,5 +1,7 @@
 package gui_client;
 
+
+
 import client.ChatClient;
 
 import client.ClientController;
@@ -47,39 +49,42 @@ public class LoginSubscriberController {
 		}
 		else {
 			ConnectNewClient();
-			Message msg = new Message(username, Command.Connect); //connects client to server
-			ClientUI.chat.accept(msg);
-			//check if password is correct/ if client exists and then proceed;
-			if(ChatClient.password.equals(password))
+		Message msg = new Message(username, Command.Connect); //connects client to server
+		ClientUI.chat.accept(msg);
+		
+		//check if password is correct/ if client exists and then proceed;
+		if(ChatClient.password.equals(password))
+		{
+			((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
+			Stage primaryStage = new Stage();
+			
+			Parent root = FXMLLoader.load(getClass().getResource("/gui_client/CustomerUI.fxml"));
+			
+			Scene scene = new Scene(root);
+			//Parent root2 = FXMLLoader.load(getClass().getResource("/gui_client/StartOrder.fxml"));
+			//scene.getStylesheets().add(getClass().getResource("/gui/.css").toExternalForm());
+			primaryStage.setTitle("Subscriber Viewer");
+			primaryStage.setScene(scene);
+			
+			primaryStage.show();	
+		}
+		else
+		{
+			if(ChatClient.password.equals(""))
 			{
-				((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
-				Stage primaryStage = new Stage();
-				
-				Parent root = FXMLLoader.load(getClass().getResource("/gui_client/SubscribersViewer.fxml"));
-				
-				Scene scene = new Scene(root);
-				//Parent root2 = FXMLLoader.load(getClass().getResource("/gui_client/StartOrder.fxml"));
-				//scene.getStylesheets().add(getClass().getResource("/gui/.css").toExternalForm());
-				primaryStage.setTitle("Subscriber Viewer");
-				primaryStage.setScene(scene);
-				
-				primaryStage.show();	
+				Alert alert = new Alert(AlertType.ERROR,"Username isn't in db",ButtonType.OK);
+				alert.showAndWait();
 			}
-			else
+			else 
+				if(!ChatClient.password.equals(password))
 			{
-				if(ChatClient.password.equals(""))
-				{
-					Alert alert = new Alert(AlertType.ERROR,"Username isn't in db",ButtonType.OK);
-					alert.showAndWait();
-				}
-				else 
-					if(!ChatClient.password.equals(password))
-				{
-					Alert alert = new Alert(AlertType.ERROR,"Incorrect password",ButtonType.OK);
-					alert.showAndWait();
-				}
+				Alert alert = new Alert(AlertType.ERROR,"Incorrect password",ButtonType.OK);
+				alert.showAndWait();
 			}
 		}
+		}
+		
+			
 	}
 	
 	public void ConnectNewClient() { //MUST ADD A DYNAMIC IP GETTER
