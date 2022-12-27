@@ -6,6 +6,7 @@ package client;
 
 import ocsf.client.*;
 import common.*;
+import logic.Machine;
 import logic.Subscriber;
 
 
@@ -34,6 +35,7 @@ public class ChatClient extends AbstractClient
   ChatIF clientUI; 
   public static boolean awaitResponse = false;
   public static ArrayList<Subscriber> subscribers;
+  //public static ArrayList<Machine> machines;
   public static String password;
 
   

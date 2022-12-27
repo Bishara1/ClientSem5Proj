@@ -80,7 +80,6 @@ public class StockTableController {
 		amountCol.setCellValueFactory(new PropertyValueFactory<>("machine_code"));
 //		itemsCol.setCellValueFactory(new PropertyValueFactory<>("items"));
 //		amountCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
-		
 		machineTable.setItems(obs);
 	}
 	
