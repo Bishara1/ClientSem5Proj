@@ -19,8 +19,6 @@ public class CustomerUIController {
 	@FXML
 	private Button backbtn;
 	
-	
-	
 	public void SubReqBtn() {
 		
 	}
@@ -33,7 +31,7 @@ public class CustomerUIController {
 		Scene scene = new Scene(root);
 		
 		//scene.getStylesheets().add(getClass().getResource("/gui/.css").toExternalForm());
-		primaryStage.setTitle("Subscribers Viewer");
+		primaryStage.setTitle("Ekrut Order");
 		primaryStage.setScene(scene);
 		
 		primaryStage.show();
