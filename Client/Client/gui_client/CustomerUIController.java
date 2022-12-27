@@ -3,7 +3,7 @@ package gui_client;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class TypeUIController {
+public class CustomerUIController {
 	@FXML
 	private Button subreqbtn;
 	@FXML

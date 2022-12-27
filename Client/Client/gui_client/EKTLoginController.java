@@ -18,7 +18,6 @@ public class EKTLoginController {
 	
 	@FXML
 	private TextField idtxt;
-	
 	@FXML
 	private Button backBtn;
 	@FXML
@@ -41,7 +40,7 @@ public class EKTLoginController {
 		}
 		else
 		{
-			// AcademicFrameController methods java file
+			//placeholder for what needs to be done later which is a login via subscriber number
 		}
 	}
 	
