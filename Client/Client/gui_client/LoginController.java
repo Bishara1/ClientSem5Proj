@@ -24,7 +24,7 @@ public class LoginController {
 
 	public void start(Stage primaryStage) throws Exception {
 		
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/LoginEkrut.fxml"));
 				
 		Scene scene = new Scene(root);
 		//scene.getStylesheets().add(getClass().getResource("/gui/ServerPort.css").toExternalForm());  css
