@@ -35,7 +35,7 @@ public class ChatClient extends AbstractClient
   ChatIF clientUI; 
   public static boolean awaitResponse = false;
   public static ArrayList<Subscriber> subscribers;
-  //public static ArrayList<Machine> machines;
+  public static ArrayList<Machine> machines;
   public static String password;
 
   
@@ -69,9 +69,14 @@ public class ChatClient extends AbstractClient
   {	  
 	  Message responseFromServer = (Message) msg;
 	  
-	  switch(responseFromServer.getCommand()) {
+	  switch(responseFromServer.getCommand()) 
+	  {
 	  	  case DatabaseRead:
 	  		  subscribers = (ArrayList<Subscriber>) responseFromServer.getContent();
+	  		  break;
+	  		  
+	  	 case ReadMachines:
+	  		  machines = (ArrayList<Machine>) responseFromServer.getContent();
 	  		  break;
 	  		  
 	  	  case Disconnect:

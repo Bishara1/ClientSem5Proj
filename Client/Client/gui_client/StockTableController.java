@@ -1,9 +1,9 @@
 package gui_client;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.ArrayList;
 
 import client.ChatClient;
+import client.ClientController;
 import client.ClientUI;
 
 import common.Command;
@@ -13,7 +13,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -33,6 +32,7 @@ import logic.Subscriber;
 public class StockTableController {
 
 	Message messageToServer = new Message(null, null);
+	private static String machineCode;
 	
 	@FXML
 	private Button showStockBtn;
@@ -44,17 +44,18 @@ public class StockTableController {
 	@FXML
 	private TextField machineCodetxt;
 	
-	private ObservableList<Machine> obs;
+	private ObservableList<ViewItem> obs;
 	@FXML
-	private TableView<Machine> machineTable;
+	private TableView<ViewItem> machineTable;
 	@FXML
-	private TableColumn<Machine,String> itemsCol;
+	private TableColumn<ViewItem,String> itemsCol;
 	@FXML
-	private TableColumn<Machine,String> amountCol;
+	private TableColumn<ViewItem,String> amountCol;
+	
 	
 	public void ShowStockBtn(ActionEvent event) throws Exception{
 		
-		String machineCode = machineCodetxt.getText();
+		machineCode = machineCodetxt.getText();
 		
 		if(machineCode.equals(""))
 		{
@@ -62,9 +63,8 @@ public class StockTableController {
 			alert.showAndWait();
 		}
 		else {
-			Message msg = new Message(machineCode, Command.ReadMachines); //connects client to server
-			ClientUI.chat.accept(msg);
-			
+			ConnectNewClient();
+			// !	!	!	!	!	!	!	!
 			//Check if machine id exists in DB
 			// if it does exist : load machine
 			LoadMachine();
@@ -72,15 +72,30 @@ public class StockTableController {
 		}
 	}
 	
-	public void LoadMachine() {	//probably very extremly wrong code but wth
-		// GETTERS AND SETTERS ARE MISSING FOR ITEMS AND AMOUNT
-		// ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! 
+	public void ConnectNewClient() {
+		ClientUI.chat = new ClientController("localhost", 5555);  // new client connected
+		///ClientUI.chat.accept("login"); // send to server that a client is connected
+	}
+	
+	public void LoadMachine() {
+				
+		messageToServer.setCommand(Command.ReadMachines);
+		messageToServer.setContent(Integer.parseInt(machineCode));	// machine id
+		ClientUI.chat.accept(messageToServer); 
 		
-		itemsCol.setCellValueFactory(new PropertyValueFactory<>("total_inventory"));
-		amountCol.setCellValueFactory(new PropertyValueFactory<>("machine_code"));
-//		itemsCol.setCellValueFactory(new PropertyValueFactory<>("items"));
-//		amountCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
+		itemsCol.setCellValueFactory(new PropertyValueFactory<>("Name"));
+		amountCol.setCellValueFactory(new PropertyValueFactory<>("Amount"));
+		ArrayList<ViewItem> items = new ArrayList<>();
+		// Glitches here for Id != 1
+		Machine temp = ChatClient.machines.get(Integer.parseInt(machineCode)-1); //must check that 
+		int size = temp.getItems().size();
+		for(int i = 0;i<size;i++)
+		{
+			items.add(new ViewItem(temp.getItems().get(i),temp.getAmount().get(i).toString()));
+		}
+		obs = FXCollections.observableArrayList(items);
 		machineTable.setItems(obs);
+		
 	}
 	
 	
@@ -94,13 +109,22 @@ public class StockTableController {
 		primaryStage.show();		
 	}
 
-//	@Override
-//	public void initialize(URL location, ResourceBundle resources) {
-//		messageToServer.setCommand(Command.DatabaseRead);
-//		messageToServer.setContent(null);
-//		ClientUI.chat.accept(messageToServer);  // read from database
-//		obs = FXCollections.observableArrayList();  // insert database details to obs
-//		LoadMachine(); // load database colummns into table and display them
-//		
-//	}
+	public class ViewItem
+	{
+		private String Name;
+		private String Amount;
+		
+		public String getName() {
+			return Name;
+		}
+		
+		public String getAmount() {
+			return Amount;
+		}
+		
+		public ViewItem(String name,String amount) {
+			this.Name = name;
+			this.Amount = amount;
+		}
+	}
 }
