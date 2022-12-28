@@ -24,31 +24,31 @@
             </ImageView>
          </children>
       </VBox>
-      <Button layoutX="626.0" layoutY="670.0" mnemonicParsing="false" onAction="#ExitBtn" prefHeight="42.0" prefWidth="108.0" style="-fx-background-color: #e42a1b;" text="Exit" textFill="WHITE">
+      <Button fx:id="ektBtn" layoutX="743.0" layoutY="518.0" mnemonicParsing="false" onAction="#EKTBtn" prefHeight="48.0" prefWidth="130.0" stylesheets="@../../../git/CommonSem5Proj/Common/Common/css/buttons.css" text="EKT Login" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="ektBtn" layoutX="774.0" layoutY="518.0" mnemonicParsing="false" onAction="#EKTBtn" prefHeight="48.0" prefWidth="99.0" style="-fx-background-color: #c14302;" stylesheets="@../../../git/CommonSem5Proj/Common/Common/css/buttons.css" text="EKT" textFill="WHITE">
+      <Button layoutX="445.0" layoutY="518.0" mnemonicParsing="false" onAction="#EmailLoginBtn" prefHeight="48.0" prefWidth="130.0" text="Account Login" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="445.0" layoutY="518.0" mnemonicParsing="false" onAction="#EmailLoginBtn" prefHeight="48.0" prefWidth="161.0" style="-fx-background-color: #c14302;" text="Account login" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Button>
-      <Text fill="#c14302" layoutX="417.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" wrappingWidth="344.08056640625">
+      <Text fill="#c14302" layoutX="410.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" wrappingWidth="344.08056640625">
          <font>
             <Font name="Elephant" size="73.0" />
          </font>
       </Text>
-      <Text fill="#c14302" layoutX="486.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" text="to EKRUT" wrappingWidth="437.0000066757202">
+      <Text fill="#c14302" layoutX="479.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="to EKRUT" wrappingWidth="437.0000066757202">
          <font>
             <Font name="Elephant" size="73.0" />
          </font>
       </Text>
+      <Button layoutX="614.0" layoutY="700.0" mnemonicParsing="false" onAction="#ExitBtn" prefHeight="42.0" prefWidth="99.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Exit" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
    <effect>
       <Blend mode="LIGHTEN" />
