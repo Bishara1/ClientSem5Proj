@@ -25,14 +25,14 @@
             </ImageView>
          </children>
       </VBox>
-      <Pane layoutX="370.0" layoutY="179.0" prefHeight="263.0" prefWidth="567.0" style="-fx-background-color: #dfbd7a;">
+      <Pane layoutX="370.0" layoutY="179.0" prefHeight="317.0" prefWidth="567.0" style="-fx-background-color: #dfbd7a;">
          <children>
-            <ImageView fitHeight="117.0" fitWidth="101.0" layoutX="58.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="108.0" fitWidth="88.0" layoutX="58.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@8bff31d1-ff16-4d88-a798-643358d20f56.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="134.0" fitWidth="95.0" layoutX="196.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="117.0" fitWidth="88.0" layoutX="196.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@9285c57e-de1c-496f-a5cc-72c69ffbb827.jpg" />
                </image>
@@ -43,8 +43,8 @@
             <Label fx:id="priceLbl2" alignment="CENTER" layoutX="231.0" layoutY="180.0" text="6 NIS" />
             <Label fx:id="codeLbl3" alignment="CENTER" layoutX="355.0" layoutY="136.0" text="BU7" />
             <Label fx:id="priceLbl3" alignment="CENTER" layoutX="353.0" layoutY="182.0" text="7 NIS" />
-            <Label fx:id="codeLbl4" alignment="CENTER" layoutX="472.0" layoutY="139.0" text="SN6" />
-            <Label fx:id="priceLbl4" alignment="CENTER" layoutX="471.0" layoutY="180.0" text="6 NIS" />
+            <Label fx:id="codeLbl4" alignment="CENTER" layoutX="469.0" layoutY="139.0" text="SN6" />
+            <Label fx:id="priceLbl4" alignment="CENTER" layoutX="466.0" layoutY="180.0" text="6 NIS" />
             <Label layoutX="13.0" layoutY="137.0" prefHeight="21.0" prefWidth="45.0" text="Code" textFill="#c14302" underline="true">
                <font>
                   <Font name="System Bold" size="15.0" />
@@ -53,12 +53,12 @@
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Label>
-            <ImageView fitHeight="105.0" fitWidth="103.0" layoutX="327.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="105.0" fitWidth="103.0" layoutX="327.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@2c377415-9f5a-48d8-a067-2acf1da97a1b.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="105.0" fitWidth="95.0" layoutX="447.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="105.0" fitWidth="95.0" layoutX="444.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@9eae8b9d-85fb-409c-a099-18516466eeb2.jpg" />
                </image>
@@ -78,49 +78,54 @@
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="amountLbl3" alignment="CENTER" layoutX="354.0" layoutY="226.0" prefHeight="21.0" prefWidth="25.0" text="3" underline="true">
+            <Label fx:id="amountLbl3" alignment="CENTER" layoutX="354.0" layoutY="225.0" prefHeight="21.0" prefWidth="25.0" text="3" underline="true">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="amountLbl4" alignment="CENTER" layoutX="476.0" layoutY="226.0" prefHeight="21.0" prefWidth="25.0" text="2" underline="true">
+            <Label fx:id="amountLbl4" alignment="CENTER" layoutX="472.0" layoutY="226.0" prefHeight="21.0" prefWidth="25.0" text="2" underline="true">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </Label>
-            <ImageView fx:id="Arrow" fitHeight="95.0" fitWidth="103.0" layoutX="522.0" layoutY="87.0" onMouseClicked="#NextItems" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="Arrow" fitHeight="50.0" fitWidth="51.0" layoutX="322.0" layoutY="260.0" onMouseClicked="#NextItems" pickOnBounds="true" preserveRatio="true" rotate="90.0">
                <image>
-                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/arrow.png" />
+                  <Image url="@../../../../../Desktop/5bca3dde-5589-45d3-8a75-4fecd7e8915b.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Arrow1" fitHeight="51.0" fitWidth="57.0" layoutX="199.0" layoutY="259.0" onMouseClicked="#NextItems" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+               <image>
+                  <Image url="@../../../../../Desktop/5bca3dde-5589-45d3-8a75-4fecd7e8915b.jpg" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <TextField fx:id="ProductIdlbl" layoutX="464.0" layoutY="467.0" prefHeight="21.0" prefWidth="150.0" />
-      <Label layoutX="376.0" layoutY="475.0" text="Product ID" textFill="#c14302">
+      <TextField fx:id="ProductIdlbl" layoutX="463.0" layoutY="500.0" prefHeight="21.0" prefWidth="150.0" />
+      <Label layoutX="375.0" layoutY="508.0" text="Product ID" textFill="#c14302">
          <font>
-            <Font name="System Bold Italic" size="15.0" />
+            <Font name="System Bold" size="15.0" />
          </font></Label>
-      <Label layoutX="389.0" layoutY="512.0" text="Amount" textFill="#c14302">
+      <Label layoutX="381.0" layoutY="543.0" text="Amount" textFill="#c14302">
          <font>
-            <Font name="System Bold Italic" size="15.0" />
+            <Font name="System Bold" size="15.0" />
          </font></Label>
-      <TextField fx:id="TotalPricelbl" editable="false" layoutX="462.0" layoutY="578.0" prefHeight="31.0" prefWidth="113.0" />
-      <Button fx:id="backBtn" layoutX="399.0" layoutY="672.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="38.0" prefWidth="95.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE" />
-      <Label layoutX="435.0" layoutY="79.0" prefHeight="55.0" prefWidth="446.0" text="Make your Order" textFill="#c14302">
+      <Button fx:id="backBtn" layoutX="403.0" layoutY="691.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="38.0" prefWidth="95.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE" />
+      <Label layoutX="437.0" layoutY="74.0" prefHeight="55.0" prefWidth="446.0" text="Make your Order" textFill="#c14302">
          <font>
             <Font name="Elephant" size="48.0" />
          </font>
       </Label>
-      <Label layoutX="376.0" layoutY="584.0" prefHeight="21.0" prefWidth="88.0" text="Total Price:" textFill="#c14302">
+      <Label layoutX="381.0" layoutY="593.0" prefHeight="21.0" prefWidth="88.0" text="Total Price:" textFill="#c14302">
          <font>
-            <Font name="System Bold Italic" size="15.0" />
+            <Font name="System Bold" size="15.0" />
          </font></Label>
-      <TextField fx:id="amountlbl" layoutX="464.0" layoutY="505.0" prefHeight="31.0" prefWidth="150.0" />
-      <Pane layoutX="682.0" layoutY="483.0" prefHeight="242.0" prefWidth="242.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css">
+      <TextField fx:id="amountlbl" layoutX="463.0" layoutY="538.0" prefHeight="31.0" prefWidth="150.0" />
+      <Pane layoutX="695.0" layoutY="500.0" prefHeight="219.0" prefWidth="242.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css">
          <children>
-            <Button fx:id="AddtoCartBtn" layoutX="-16.0" layoutY="6.0" mnemonicParsing="false" onAction="#AddToCartBtn" prefHeight="38.0" prefWidth="113.0" text="Add to cart" textFill="WHITE" />
+            <Button fx:id="AddtoCartBtn" layoutX="-42.0" layoutY="22.0" mnemonicParsing="false" onAction="#AddToCartBtn" prefHeight="38.0" prefWidth="113.0" text="Add to cart" textFill="WHITE" />
             <Button fx:id="ProcceedToCartBtn" layoutX="33.0" layoutY="190.0" mnemonicParsing="false" onAction="#ProceedCartBtn" prefHeight="38.0" prefWidth="161.0" text="Proceed to Cart" textFill="WHITE" />
          </children>
       </Pane>
+      <TextField fx:id="TotalPricelbl" editable="false" layoutX="469.0" layoutY="584.0" prefHeight="31.0" prefWidth="113.0" />
    </children>
 </AnchorPane>
