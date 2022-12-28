@@ -78,6 +78,11 @@ public class ekrutOrderController implements Initializable{
 		LoadItems(); //deal with only showing 2 
 	}
 	
+	public void PrevItems()
+	{
+		
+	}
+	
 	public void ProceedCartBtn() {
 		
 	}

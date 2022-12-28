@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ekrutOrderController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ekrutOrderController">
    <children>
       <VBox alignment="BASELINE_CENTER" layoutX="-15.0" layoutY="-1.0" prefHeight="770.0" prefWidth="386.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
@@ -20,7 +20,7 @@
          <children>
             <ImageView fitHeight="353.0" fitWidth="365.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Desktop/ekrut.png.png" />
+                  <Image url="@../../../../../Downloads/ekrut-image.jpg" />
                </image>
             </ImageView>
          </children>
@@ -29,17 +29,17 @@
          <children>
             <ImageView fitHeight="108.0" fitWidth="88.0" layoutX="58.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@8bff31d1-ff16-4d88-a798-643358d20f56.jpg" />
+                  <Image url="@../../../../../Downloads/cf7ca1bc-daf1-4f7a-a4fb-129d27d64fb9.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="117.0" fitWidth="88.0" layoutX="196.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@9285c57e-de1c-496f-a5cc-72c69ffbb827.jpg" />
+                  <Image url="@../../../../../Downloads/cf7ca1bc-daf1-4f7a-a4fb-129d27d64fb9.png" />
                </image>
             </ImageView>
             <Label fx:id="codeLbl1" alignment="CENTER" layoutX="109.0" layoutY="136.0" text="BB1" />
             <Label fx:id="priceLbl1" alignment="CENTER" layoutX="103.0" layoutY="181.0" text="5 NIS" />
-            <Label fx:id="codeLbl2" alignment="CENTER" layoutX="233.0" layoutY="136.0" text="MN8" />
+            <Label fx:id="codeLbl2" alignment="CENTER" layoutX="232.0" layoutY="136.0" text="MN8" />
             <Label fx:id="priceLbl2" alignment="CENTER" layoutX="231.0" layoutY="180.0" text="6 NIS" />
             <Label fx:id="codeLbl3" alignment="CENTER" layoutX="355.0" layoutY="136.0" text="BU7" />
             <Label fx:id="priceLbl3" alignment="CENTER" layoutX="353.0" layoutY="182.0" text="7 NIS" />
@@ -55,12 +55,12 @@
                </font></Label>
             <ImageView fitHeight="105.0" fitWidth="103.0" layoutX="327.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@2c377415-9f5a-48d8-a067-2acf1da97a1b.jpg" />
+                  <Image url="@../../../../../Downloads/cf7ca1bc-daf1-4f7a-a4fb-129d27d64fb9.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="105.0" fitWidth="95.0" layoutX="444.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@9eae8b9d-85fb-409c-a099-18516466eeb2.jpg" />
+                  <Image url="@../../../../../Downloads/cf7ca1bc-daf1-4f7a-a4fb-129d27d64fb9.png" />
                </image>
             </ImageView>
             <Label layoutX="12.0" layoutY="218.0" prefHeight="31.0" prefWidth="82.0" text="Available:" textFill="#c14302" underline="true">
@@ -88,14 +88,14 @@
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </Label>
-            <ImageView fx:id="Arrow" fitHeight="50.0" fitWidth="51.0" layoutX="322.0" layoutY="260.0" onMouseClicked="#NextItems" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+            <ImageView fx:id="Arrow" fitHeight="50.0" fitWidth="51.0" layoutX="322.0" layoutY="260.0" onMouseClicked="#NextItems" pickOnBounds="true" preserveRatio="true" rotate="180.0">
                <image>
-                  <Image url="@../../../../../Desktop/5bca3dde-5589-45d3-8a75-4fecd7e8915b.jpg" />
+                  <Image url="@../../../../../Downloads/arrow%20right.jpg" />
                </image>
             </ImageView>
-            <ImageView fx:id="Arrow1" fitHeight="51.0" fitWidth="57.0" layoutX="199.0" layoutY="259.0" onMouseClicked="#NextItems" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+            <ImageView fx:id="Arrow1" fitHeight="51.0" fitWidth="57.0" layoutX="199.0" layoutY="259.0" onMouseClicked="#PrevItems" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Desktop/5bca3dde-5589-45d3-8a75-4fecd7e8915b.jpg" />
+                  <Image url="@../../../../../Downloads/arrow%20right.jpg" />
                </image>
             </ImageView>
          </children>

@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.LoginEkrutController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.UserUIController">
    <children>
       <VBox alignment="BASELINE_CENTER" layoutX="-25.0" layoutY="-11.0" prefHeight="779.0" prefWidth="386.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;" AnchorPane.leftAnchor="-25.0">
          <opaqueInsets>
@@ -30,24 +30,24 @@
             <Font name="Elephant" size="64.0" />
          </font>
       </Text>
-      <Button layoutX="396.0" layoutY="661.0" mnemonicParsing="false" onAction="#ExitBtn" prefHeight="48.0" prefWidth="130.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
+      <Button layoutX="396.0" layoutY="661.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="48.0" prefWidth="130.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
       <Pane layoutX="516.0" layoutY="292.0" prefHeight="281.0" prefWidth="248.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css">
          <children>
-            <Button fx:id="ektBtn4" layoutX="28.0" layoutY="34.0" mnemonicParsing="false" onAction="#EKTBtn" prefHeight="48.0" prefWidth="192.0" stylesheets="@../../../git/CommonSem5Proj/Common/Common/css/buttons.css" text="Create Order" textFill="WHITE">
+            <Button fx:id="ektBtn4" layoutX="28.0" layoutY="34.0" mnemonicParsing="false" onAction="#CreateOrderBtn" prefHeight="48.0" prefWidth="192.0" stylesheets="@../../../git/CommonSem5Proj/Common/Common/css/buttons.css" text="Create Order" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="ektBtn3" layoutX="28.0" layoutY="117.0" mnemonicParsing="false" onAction="#EKTBtn" prefHeight="48.0" prefWidth="192.0" stylesheets="@../../../git/CommonSem5Proj/Common/Common/css/buttons.css" text="Create Remote Order" textFill="WHITE">
+            <Button fx:id="ektBtn3" layoutX="28.0" layoutY="117.0" mnemonicParsing="false" onAction="#CreateRemoteOrderBtn" prefHeight="48.0" prefWidth="192.0" stylesheets="@../../../git/CommonSem5Proj/Common/Common/css/buttons.css" text="Create Remote Order" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="ektBtn2" layoutX="28.0" layoutY="197.0" mnemonicParsing="false" onAction="#EKTBtn" prefHeight="48.0" prefWidth="192.0" stylesheets="@../../../git/CommonSem5Proj/Common/Common/css/buttons.css" text="Subscriber request" textFill="WHITE">
+            <Button fx:id="ektBtn2" layoutX="28.0" layoutY="197.0" mnemonicParsing="false" onAction="#SubReqBtn" prefHeight="48.0" prefWidth="192.0" stylesheets="@../../../git/CommonSem5Proj/Common/Common/css/buttons.css" text="Subscriber request" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
