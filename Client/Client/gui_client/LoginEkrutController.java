@@ -48,6 +48,7 @@ public class LoginEkrutController {
 		Stage primaryStage = new Stage();
 
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/StockTable.fxml"));
+//		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/EKTLogin.fxml"));
 		Scene scene = new Scene(root);
 		
 		primaryStage.setTitle("EKT Login");

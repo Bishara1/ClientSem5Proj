@@ -62,16 +62,15 @@ public class StockTableController {
 			Alert alert = new Alert(AlertType.ERROR,"Must enter machine id !",ButtonType.OK);
 			alert.showAndWait();
 		}
+		// ASK AVI IF MACHINE ID CAN CONTAIN LETTERS
+//		else if(machineCode.)
+//		{
+//			Alert alert = new Alert(AlertType.ERROR,"Must enter machine id !",ButtonType.OK);
+//			alert.showAndWait();
+//		}
 		else {
 			ConnectNewClient();
-			
-			
-			
-			// !	!	!	!	!	!	!	!
-			//Check if machine id exists in DB
-			// if it does exist : load machine
 			LoadMachine();
-			
 		}
 	}
 	
@@ -88,27 +87,18 @@ public class StockTableController {
 		itemsCol.setCellValueFactory(new PropertyValueFactory<>("Name"));
 		amountCol.setCellValueFactory(new PropertyValueFactory<>("Amount"));
 		ArrayList<ViewItem> items = new ArrayList<>();
-<<<<<<< HEAD
 
 		if (ChatClient.machines.contains(null))
 		{	
 			Alert alert = new Alert(AlertType.ERROR,"Machine Id does not exist !",ButtonType.OK);
 			alert.showAndWait();
-=======
-		// Glitches here for Id != 1
-		Machine temp = ChatClient.machines.get(Integer.parseInt(machineCode)-1); //must check that 
-		int size = temp.getItems().size();
-		for(int i = 0;i<size;i++)
-		{
-			items.add(new ViewItem(temp.getItems().get(i),temp.getAmountItems().get(i).toString()));
->>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
 		}
 		else {
 			Machine temp = ChatClient.machines.get(0); 
 			int size = temp.getItems().size();
 			for(int i = 0;i<size;i++)
 			{
-				items.add(new ViewItem(temp.getItems().get(i),temp.getAmount().get(i).toString()));
+				items.add(new ViewItem(temp.getItems().get(i),temp.getAmountItems().get(i).toString()));
 			}
 			obs = FXCollections.observableArrayList(items);
 			machineTable.setItems(obs);
