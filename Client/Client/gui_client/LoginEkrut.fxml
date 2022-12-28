@@ -17,9 +17,9 @@
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="361.0" fitWidth="392.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Desktop/ekrut.png.png" />
+                  <Image url="@../../../../../Desktop/ekrut.png" />
                </image>
             </ImageView>
          </children>
@@ -41,12 +41,12 @@
       </Button>
       <Text fill="#c14302" layoutX="417.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" wrappingWidth="344.08056640625">
          <font>
-            <Font name="Elephant" size="73.0" />
+            <Font name="Cambria Math" size="75.0" />
          </font>
       </Text>
       <Text fill="#c14302" layoutX="486.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" text="to EKRUT" wrappingWidth="437.0000066757202">
          <font>
-            <Font name="Elephant" size="73.0" />
+            <Font name="Cambria Math" size="73.0" />
          </font>
       </Text>
    </children>
