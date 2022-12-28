@@ -6,7 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class CustomerUIController {
@@ -18,31 +21,41 @@ public class CustomerUIController {
 	private Button createremotebtn;
 	@FXML
 	private Button backbtn;
-	
-	
-	
-	public void SubReqBtn() {
 		
+	
+	public void SubReqBtn(ActionEvent event) throws Exception {
+		Alert alert = new Alert(AlertType.ERROR,"Your request has been recieved :)",ButtonType.OK);
+		alert.showAndWait();
 	}
 	
 	public void CreateOrderBtn(ActionEvent event) throws Exception {
-		((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
-		Stage primaryStage = new Stage();
-		
+		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/ekrutOrder.fxml"));
+		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
-		
-		//scene.getStylesheets().add(getClass().getResource("/gui/.css").toExternalForm());
-		primaryStage.setTitle("Subscribers Viewer");
-		primaryStage.setScene(scene);
-		
+		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
+		primaryStage.setTitle("EKRUT");
+		primaryStage.setScene(scene);		
 		primaryStage.show();
 		
 	}
-	public void CreateRemoteBtn() {
-		
+	public void CreateRemoteOrderBtn(ActionEvent event) throws Exception {
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/RemoteLocation.fxml"));
+		Stage primaryStage = new Stage();
+		Scene scene = new Scene(root);
+		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
+		primaryStage.setTitle("EKRUT");
+		primaryStage.setScene(scene);		
+		primaryStage.show();
 	}
-    public void BackBtn() {
-		
+    public void BackBtn(ActionEvent event) throws Exception  {
+    	((Node)event.getSource()).getScene().getWindow().hide();
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/UserLogin.fxml"));
+		Stage primaryStage = new Stage();
+		Scene scene = new Scene(root);
+		primaryStage.setTitle("EKRUT");
+		primaryStage.setScene(scene);		
+		primaryStage.show();	
 	}
 }

@@ -23,14 +23,14 @@
                   <Image url="@9285c57e-de1c-496f-a5cc-72c69ffbb827.jpg" />
                </image>
             </ImageView>
-            <Label layoutX="109.0" layoutY="136.0" style="-fx-background-color: #abe6eb;" text="BB1" />
-            <Label layoutX="103.0" layoutY="181.0" style="-fx-background-color: #abe6eb;" text="5 NIS" />
-            <Label layoutX="233.0" layoutY="136.0" style="-fx-background-color: #abe6eb;" text="MN8" />
-            <Label layoutX="231.0" layoutY="184.0" style="-fx-background-color: #abe6eb;" text="6 NIS" />
-            <Label layoutX="355.0" layoutY="136.0" style="-fx-background-color: #abe6eb;" text="BU7" />
-            <Label layoutX="350.0" layoutY="184.0" style="-fx-background-color: #abe6eb;" text="7 NIS" />
-            <Label layoutX="472.0" layoutY="139.0" style="-fx-background-color: #abe6eb;" text="SN6" />
-            <Label layoutX="468.0" layoutY="184.0" style="-fx-background-color: #abe6eb;" text="6 NIS" />
+            <Label alignment="CENTER" layoutX="109.0" layoutY="136.0" style="-fx-background-color: #abe6eb;" text="BB1" />
+            <Label alignment="CENTER" layoutX="103.0" layoutY="181.0" style="-fx-background-color: #abe6eb;" text="5 NIS" />
+            <Label alignment="CENTER" layoutX="233.0" layoutY="136.0" style="-fx-background-color: #abe6eb;" text="MN8" />
+            <Label alignment="CENTER" layoutX="231.0" layoutY="184.0" style="-fx-background-color: #abe6eb;" text="6 NIS" />
+            <Label alignment="CENTER" layoutX="355.0" layoutY="136.0" style="-fx-background-color: #abe6eb;" text="BU7" />
+            <Label alignment="CENTER" layoutX="350.0" layoutY="184.0" style="-fx-background-color: #abe6eb;" text="7 NIS" />
+            <Label alignment="CENTER" layoutX="472.0" layoutY="139.0" style="-fx-background-color: #abe6eb;" text="SN6" />
+            <Label alignment="CENTER" layoutX="468.0" layoutY="184.0" style="-fx-background-color: #abe6eb;" text="6 NIS" />
             <Label layoutX="13.0" layoutY="137.0" prefHeight="21.0" prefWidth="45.0" style="-fx-background-color: #abe6eb;" text="Code" underline="true">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
@@ -54,29 +54,29 @@
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="103.0" layoutY="223.0" prefHeight="21.0" prefWidth="25.0" style="-fx-background-color: #abe6eb;" text="6" underline="true">
+            <Label alignment="CENTER" layoutX="103.0" layoutY="223.0" prefHeight="21.0" prefWidth="25.0" style="-fx-background-color: #abe6eb;" text="6" underline="true">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="239.0" layoutY="228.0" prefHeight="21.0" prefWidth="25.0" style="-fx-background-color: #abe6eb;" text="5" underline="true">
+            <Label alignment="CENTER" layoutX="239.0" layoutY="228.0" prefHeight="21.0" prefWidth="25.0" style="-fx-background-color: #abe6eb;" text="5" underline="true">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="351.0" layoutY="228.0" prefHeight="21.0" prefWidth="25.0" style="-fx-background-color: #abe6eb;" text="3" underline="true">
+            <Label alignment="CENTER" layoutX="351.0" layoutY="228.0" prefHeight="21.0" prefWidth="25.0" style="-fx-background-color: #abe6eb;" text="3" underline="true">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="475.0" layoutY="228.0" prefHeight="21.0" prefWidth="25.0" style="-fx-background-color: #abe6eb;" text="2" underline="true">
+            <Label alignment="CENTER" layoutX="475.0" layoutY="228.0" prefHeight="21.0" prefWidth="25.0" style="-fx-background-color: #abe6eb;" text="2" underline="true">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <TextField layoutX="131.0" layoutY="400.0" prefHeight="21.0" prefWidth="150.0" />
+      <TextField fx:id="ProductIdlbl" layoutX="131.0" layoutY="400.0" prefHeight="21.0" prefWidth="150.0" />
       <Label layoutX="38.0" layoutY="405.0" text="Product ID" textFill="#1e0f5f">
          <font>
             <Font name="System Bold Italic" size="15.0" />
@@ -85,20 +85,20 @@
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font></Label>
-      <TextField editable="false" layoutX="143.0" layoutY="523.0" prefHeight="31.0" prefWidth="113.0" />
-      <Button layoutX="325.0" layoutY="419.0" mnemonicParsing="false" onAction="#AddToCartBtn" prefHeight="38.0" prefWidth="113.0" style="-fx-background-color: #1e0f5f;" text="Add to cart" textFill="WHITE" />
-      <Button layoutX="63.0" layoutY="595.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="38.0" prefWidth="65.0" style="-fx-background-color: #1e0f5f;" text="Back" textFill="WHITE" />
+      <TextField fx:id="TotalPricelbl" editable="false" layoutX="143.0" layoutY="523.0" prefHeight="31.0" prefWidth="113.0" />
+      <Button fx:id="AddtoCartBtn" layoutX="325.0" layoutY="419.0" mnemonicParsing="false" onAction="#AddToCartBtn" prefHeight="38.0" prefWidth="113.0" style="-fx-background-color: #1e0f5f;" text="Add to cart" textFill="WHITE" />
+      <Button fx:id="backBtn" layoutX="63.0" layoutY="595.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="38.0" prefWidth="65.0" style="-fx-background-color: #1e0f5f;" text="Back" textFill="WHITE" />
       <Label layoutX="143.0" layoutY="69.0" prefHeight="55.0" prefWidth="446.0" text="Make your Order" textFill="#1e0f5f">
          <font>
             <Font name="Cooper Black" size="48.0" />
          </font>
       </Label>
-      <Button layoutX="524.0" layoutY="595.0" mnemonicParsing="false" onAction="#ProceedCartBtn" prefHeight="38.0" prefWidth="131.0" style="-fx-background-color: #1e0f5f;" text="Proceed to Cart" textFill="WHITE" />
+      <Button fx:id="ProcceedToCartBtn" layoutX="524.0" layoutY="595.0" mnemonicParsing="false" onAction="#ProceedCartBtn" prefHeight="38.0" prefWidth="131.0" style="-fx-background-color: #1e0f5f;" text="Proceed to Cart" textFill="WHITE" />
       <Label layoutX="40.0" layoutY="528.0" prefHeight="21.0" prefWidth="88.0" text="Total Price:" textFill="#1e0f5f">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font></Label>
-      <TextField layoutX="131.0" layoutY="438.0" prefHeight="31.0" prefWidth="150.0" />
+      <TextField fx:id="amountlbl" layoutX="131.0" layoutY="438.0" prefHeight="31.0" prefWidth="150.0" />
       <Label layoutX="240.0" layoutY="14.0" prefHeight="55.0" prefWidth="446.0" text="EKRUT" textFill="#1e0f5f">
          <font>
             <Font name="Cooper Black" size="48.0" />

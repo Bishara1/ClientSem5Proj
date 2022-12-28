@@ -1,10 +1,7 @@
 package gui_client;
 
-
-
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import client.ClientUI;
 import common.Command;
 import common.Message;
@@ -13,7 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class ekrutOrderController implements Initializable {
+public class ekrutOrderController implements Initializable{
 
 	@FXML
 	private Button backBtn;
@@ -28,6 +25,11 @@ public class ekrutOrderController implements Initializable {
 	@FXML
 	private TextField TotalPricelbl;
 	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		ClientUI.chat.accept(new Message(1, Command.ReadMachines));
+	}
+	
 	public void ProceedCartBtn() {
 		
 	}
@@ -35,11 +37,6 @@ public class ekrutOrderController implements Initializable {
 		
 	}
     public void AddToCartBtn() {
-		
-	}
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		ClientUI.chat.accept(new Message(1,Command.ReadMachines));
 		
 	}
 }

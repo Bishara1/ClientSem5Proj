@@ -53,7 +53,7 @@ public class EKTLoginController {
 		primaryStage.setTitle("Login EKRUT");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
-	}//
+	}
 	
 
 }
