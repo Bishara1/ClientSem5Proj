@@ -3,6 +3,8 @@ package gui_client;
 import java.awt.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import client.ChatClient;
 import client.ClientUI;
 import common.Command;
 import common.Message;
@@ -49,14 +51,19 @@ public class ekrutOrderController implements Initializable{
 	private TextField amountlbl;
 	@FXML
 	private TextField TotalPricelbl;
+	
 	private int MachineNumber = 1; //placeholder for the actual machine number
 	
+	private int rotation = 0;
 	//ArrayList<Machine> machines are saved in ChatClient
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		ClientUI.chat.accept(new Message(MachineNumber, Command.ReadMachines));
-		codeLbl1.setText(ChatClient.);
+		codeLbl1.setText(ChatClient.machines.get(MachineNumber-1).getItem(rotation));
+		codeLbl2.setText(ChatClient.machines.get(MachineNumber-1).getItem(rotation+1));
+		codeLbl3.setText(ChatClient.machines.get(MachineNumber-1).getItem(rotation+2));
+		codeLbl4.setText(ChatClient.machines.get(MachineNumber-1).getItem(rotation+3));
 		
 	}
 	
