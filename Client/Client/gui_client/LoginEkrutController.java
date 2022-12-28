@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 public class LoginEkrutController {
 	
 	@FXML
-	private Button Accountlogin;
+	private Button accountlogin;
 	@FXML
 	private Button ektBtn;
 	

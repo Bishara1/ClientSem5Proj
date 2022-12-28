@@ -56,7 +56,7 @@ public class UserLoginController {
 			((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
 			Stage primaryStage = new Stage();
 			
-			Parent root = FXMLLoader.load(getClass().getResource("/gui_client/CustomerUI.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
 			
 			Scene scene = new Scene(root);
 			//Parent root2 = FXMLLoader.load(getClass().getResource("/gui_client/StartOrder.fxml"));
