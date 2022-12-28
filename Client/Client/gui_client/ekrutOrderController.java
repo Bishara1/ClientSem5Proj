@@ -1,6 +1,5 @@
 package gui_client;
 
-import java.awt.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -11,6 +10,7 @@ import common.Message;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class ekrutOrderController implements Initializable{
@@ -54,16 +54,14 @@ public class ekrutOrderController implements Initializable{
 	
 	private int MachineNumber = 1; //placeholder for the actual machine number
 	
-	private int rotation = 0;
+	private int rotation;
 	//ArrayList<Machine> machines are saved in ChatClient
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		ClientUI.chat.accept(new Message(MachineNumber, Command.ReadMachines));
-		codeLbl1.setText(ChatClient.machines.get(MachineNumber-1).getItem(rotation));
-		codeLbl2.setText(ChatClient.machines.get(MachineNumber-1).getItem(rotation+1));
-		codeLbl3.setText(ChatClient.machines.get(MachineNumber-1).getItem(rotation+2));
-		codeLbl4.setText(ChatClient.machines.get(MachineNumber-1).getItem(rotation+3));
+		rotation = 0;
+		LoadItems();
 		
 	}
 	
@@ -76,4 +74,20 @@ public class ekrutOrderController implements Initializable{
     public void AddToCartBtn() {
 		
 	}
+    
+    public void LoadItems()
+    {
+    	codeLbl1.setText(ChatClient.machines.get(MachineNumber-1).getItem(rotation));
+		codeLbl2.setText(ChatClient.machines.get(MachineNumber-1).getItem(rotation+1));
+		codeLbl3.setText(ChatClient.machines.get(MachineNumber-1).getItem(rotation+2));
+		codeLbl4.setText(ChatClient.machines.get(MachineNumber-1).getItem(rotation+3));
+//		priceLbl1.setText(ChatClient.machines.get(MachineNumber-1).getPrice(rotation));
+//		priceLbl2.setText(ChatClient.machines.get(MachineNumber-1).getItem(rotation+1));
+//		priceLbl3.setText(ChatClient.machines.get(MachineNumber-1).getItem(rotation+2));
+//		priceLbl4.setText(ChatClient.machines.get(MachineNumber-1).getItem(rotation+3));
+		amountLbl1.setText(String.valueOf(ChatClient.machines.get(MachineNumber-1).getAmount(rotation)));
+		amountLbl2.setText(String.valueOf(ChatClient.machines.get(MachineNumber-1).getAmount(rotation+1)));
+		amountLbl3.setText(String.valueOf(ChatClient.machines.get(MachineNumber-1).getAmount(rotation+2)));
+		amountLbl4.setText(String.valueOf(ChatClient.machines.get(MachineNumber-1).getAmount(rotation+3)));
+    }
 }

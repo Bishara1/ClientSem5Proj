@@ -91,7 +91,7 @@ public class StockTableController {
 		int size = temp.getItems().size();
 		for(int i = 0;i<size;i++)
 		{
-			items.add(new ViewItem(temp.getItems().get(i),temp.getAmount().get(i).toString()));
+			items.add(new ViewItem(temp.getItems().get(i),temp.getAmountItems().get(i).toString()));
 		}
 		obs = FXCollections.observableArrayList(items);
 		machineTable.setItems(obs);
