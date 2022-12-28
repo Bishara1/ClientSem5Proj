@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 import logic.*;
 
 public class ReceiptController {
-	
 	@FXML
 	private TableView<Item> receiptTable;
 	@FXML

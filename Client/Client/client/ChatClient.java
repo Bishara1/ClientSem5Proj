@@ -6,6 +6,7 @@ package client;
 
 import ocsf.client.*;
 import common.*;
+import logic.Machine;
 import logic.Subscriber;
 
 
@@ -34,6 +35,7 @@ public class ChatClient extends AbstractClient
   ChatIF clientUI; 
   public static boolean awaitResponse = false;
   public static ArrayList<Subscriber> subscribers;
+  //public static ArrayList<Machine> machines;
   public static String password;
 
   
@@ -84,18 +86,6 @@ public class ChatClient extends AbstractClient
 		break;
 	  	
 	  }
-//	  ArrayList<Subscriber> message = (ArrayList<Subscriber>)msg;
-//	  String result = message.get(0).getFname();
-//
-//	  if (result.equals("Database")) {
-//		  message.remove(0);
-//		  subscribers = message;
-//	  } 
-//	  
-//	  else if (result.equals("Disconnected")) {
-//		  ClientUI.chat.display("Disconnected");
-//	  }
-	  
 	  awaitResponse = false;
   }
 
@@ -108,11 +98,6 @@ public class ChatClient extends AbstractClient
   {
 	  try
 	  {
-//    	Message msg = (Message) message;
-//    	
-//    	if(msg.equals("login")) 
-//    		msg += " " + this.getHost();
-
 		  openConnection(); //in order to send more than one message
     	  awaitResponse = true; 
     	  sendToServer(message);

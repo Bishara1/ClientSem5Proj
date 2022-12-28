@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 public class LoginEkrutController {
 	
 	@FXML
-	private Button emaillogin;
+	private Button Accountlogin;
 	@FXML
 	private Button ektBtn;
 	
@@ -30,7 +30,7 @@ public class LoginEkrutController {
 		primaryStage.show();		
 	}
 	
-	public void EmailLoginBtn(ActionEvent event) throws Exception { 
+	public void AccountLoginBtn(ActionEvent event) throws Exception { 
 		((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
 		Stage primaryStage = new Stage();
 		
@@ -47,8 +47,7 @@ public class LoginEkrutController {
 		((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
 		Stage primaryStage = new Stage();
 		
-//		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/EKTLogin.fxml"));
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/StockTable.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/EKTLogin.fxml"));
 		Scene scene = new Scene(root);
 		
 		primaryStage.setTitle("EKT Login");
