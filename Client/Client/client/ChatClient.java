@@ -6,6 +6,7 @@ package client;
 
 import ocsf.client.*;
 import common.*;
+import logic.Item;
 import logic.Machine;
 import logic.Subscriber;
 
@@ -36,6 +37,7 @@ public class ChatClient extends AbstractClient
   public static boolean awaitResponse = false;
   public static ArrayList<Subscriber> subscribers;
   public static ArrayList<Machine> machines;
+  public static ArrayList<Item> items;
   public static String password;
 
   
@@ -77,6 +79,10 @@ public class ChatClient extends AbstractClient
 	  		  
 	  	 case ReadMachines:
 	  		  machines = (ArrayList<Machine>) responseFromServer.getContent();
+	  		  break;
+	  	
+	  	 case ReadItems:
+	  		  items = (ArrayList<Item>) responseFromServer.getContent();
 	  		  break;
 	  		  
 	  	  case Disconnect:

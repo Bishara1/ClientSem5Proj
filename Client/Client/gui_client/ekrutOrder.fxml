@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="662.0" prefWidth="698.0" style="-fx-background-color: #a2e4e9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ekrutOrderController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="662.0" prefWidth="698.0" style="-fx-background-color: #a2e4e9;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ekrutOrderController">
    <children>
       <Pane layoutX="40.0" layoutY="124.0" prefHeight="263.0" prefWidth="639.0" style="-fx-background-color: #6ed5dd;">
          <children>
@@ -23,14 +23,14 @@
                   <Image url="@9285c57e-de1c-496f-a5cc-72c69ffbb827.jpg" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" layoutX="109.0" layoutY="136.0" style="-fx-background-color: #abe6eb;" text="BB1" />
-            <Label alignment="CENTER" layoutX="103.0" layoutY="181.0" style="-fx-background-color: #abe6eb;" text="5 NIS" />
-            <Label alignment="CENTER" layoutX="233.0" layoutY="136.0" style="-fx-background-color: #abe6eb;" text="MN8" />
-            <Label alignment="CENTER" layoutX="231.0" layoutY="184.0" style="-fx-background-color: #abe6eb;" text="6 NIS" />
-            <Label alignment="CENTER" layoutX="355.0" layoutY="136.0" style="-fx-background-color: #abe6eb;" text="BU7" />
-            <Label alignment="CENTER" layoutX="350.0" layoutY="184.0" style="-fx-background-color: #abe6eb;" text="7 NIS" />
-            <Label alignment="CENTER" layoutX="472.0" layoutY="139.0" style="-fx-background-color: #abe6eb;" text="SN6" />
-            <Label alignment="CENTER" layoutX="468.0" layoutY="184.0" style="-fx-background-color: #abe6eb;" text="6 NIS" />
+            <Label fx:id="codeLbl1" alignment="CENTER" layoutX="109.0" layoutY="136.0" style="-fx-background-color: #abe6eb;" text="BB1" />
+            <Label fx:id="priceLbl1" alignment="CENTER" layoutX="103.0" layoutY="181.0" style="-fx-background-color: #abe6eb;" text="5 NIS" />
+            <Label fx:id="codeLbl2" alignment="CENTER" layoutX="233.0" layoutY="136.0" style="-fx-background-color: #abe6eb;" text="MN8" />
+            <Label fx:id="priceLbl2" alignment="CENTER" layoutX="231.0" layoutY="184.0" style="-fx-background-color: #abe6eb;" text="6 NIS" />
+            <Label fx:id="codeLbl3" alignment="CENTER" layoutX="355.0" layoutY="136.0" style="-fx-background-color: #abe6eb;" text="BU7" />
+            <Label fx:id="priceLbl3" alignment="CENTER" layoutX="350.0" layoutY="184.0" style="-fx-background-color: #abe6eb;" text="7 NIS" />
+            <Label fx:id="codeLbl4" alignment="CENTER" layoutX="472.0" layoutY="139.0" style="-fx-background-color: #abe6eb;" text="SN6" />
+            <Label fx:id="priceLbl4" alignment="CENTER" layoutX="468.0" layoutY="184.0" style="-fx-background-color: #abe6eb;" text="6 NIS" />
             <Label layoutX="13.0" layoutY="137.0" prefHeight="21.0" prefWidth="45.0" style="-fx-background-color: #abe6eb;" text="Code" underline="true">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
@@ -54,26 +54,31 @@
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="103.0" layoutY="223.0" prefHeight="21.0" prefWidth="25.0" style="-fx-background-color: #abe6eb;" text="6" underline="true">
+            <Label fx:id="amountLbl1" alignment="CENTER" layoutX="103.0" layoutY="223.0" prefHeight="21.0" prefWidth="25.0" style="-fx-background-color: #abe6eb;" text="6" underline="true">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="239.0" layoutY="228.0" prefHeight="21.0" prefWidth="25.0" style="-fx-background-color: #abe6eb;" text="5" underline="true">
+            <Label fx:id="amountLbl2" alignment="CENTER" layoutX="239.0" layoutY="228.0" prefHeight="21.0" prefWidth="25.0" style="-fx-background-color: #abe6eb;" text="5" underline="true">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="351.0" layoutY="228.0" prefHeight="21.0" prefWidth="25.0" style="-fx-background-color: #abe6eb;" text="3" underline="true">
+            <Label fx:id="amountLbl3" alignment="CENTER" layoutX="351.0" layoutY="228.0" prefHeight="21.0" prefWidth="25.0" style="-fx-background-color: #abe6eb;" text="3" underline="true">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="475.0" layoutY="228.0" prefHeight="21.0" prefWidth="25.0" style="-fx-background-color: #abe6eb;" text="2" underline="true">
+            <Label fx:id="amountLbl4" alignment="CENTER" layoutX="475.0" layoutY="228.0" prefHeight="21.0" prefWidth="25.0" style="-fx-background-color: #abe6eb;" text="2" underline="true">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </Label>
+            <ImageView fx:id="Arrow" fitHeight="95.0" fitWidth="103.0" layoutX="522.0" layoutY="87.0" onMouseClicked="#NextItems" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/arrow.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <TextField fx:id="ProductIdlbl" layoutX="131.0" layoutY="400.0" prefHeight="21.0" prefWidth="150.0" />
