@@ -88,6 +88,11 @@
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </Label>
+            <ImageView fx:id="Arrow" fitHeight="95.0" fitWidth="103.0" layoutX="522.0" layoutY="87.0" onMouseClicked="#NextItems" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/arrow.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <TextField fx:id="ProductIdlbl" layoutX="464.0" layoutY="467.0" prefHeight="21.0" prefWidth="150.0" />

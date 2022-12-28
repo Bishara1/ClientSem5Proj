@@ -68,6 +68,16 @@ public class ekrutOrderController implements Initializable{
 		
 	}
 	
+	public void NextItems()
+	{
+		if((rotation+1)*4 >= ChatClient.machines.get(MachineNumber-1).getItems().size())
+			rotation=0;
+		else
+			rotation += 1;
+		System.out.println(rotation + "rotation");
+		LoadItems(); //deal with only showing 2 
+	}
+	
 	public void ProceedCartBtn() {
 		
 	}
@@ -80,18 +90,39 @@ public class ekrutOrderController implements Initializable{
     
     public void LoadItems()
     {
-    	codeLbl1.setText(ChatClient.machines.get(MachineNumber-1).getItem(rotation));
-		codeLbl2.setText(ChatClient.machines.get(MachineNumber-1).getItem(rotation+1));
-		codeLbl3.setText(ChatClient.machines.get(MachineNumber-1).getItem(rotation+2));
-		codeLbl4.setText(ChatClient.machines.get(MachineNumber-1).getItem(rotation+3));
-		priceLbl1.setText(this.getPrice(ChatClient.machines.get(MachineNumber-1).getItem(rotation)) + " NIS");
-		priceLbl2.setText(this.getPrice(ChatClient.machines.get(MachineNumber-1).getItem(rotation+1)) + " NIS");
-		priceLbl3.setText(this.getPrice(ChatClient.machines.get(MachineNumber-1).getItem(rotation+2)) + " NIS");
-		priceLbl4.setText(this.getPrice(ChatClient.machines.get(MachineNumber-1).getItem(rotation+3)) + " NIS");
-		amountLbl1.setText(String.valueOf(ChatClient.machines.get(MachineNumber-1).getAmount(rotation)));
-		amountLbl2.setText(String.valueOf(ChatClient.machines.get(MachineNumber-1).getAmount(rotation+1)));
-		amountLbl3.setText(String.valueOf(ChatClient.machines.get(MachineNumber-1).getAmount(rotation+2)));
-		amountLbl4.setText(String.valueOf(ChatClient.machines.get(MachineNumber-1).getAmount(rotation+3)));
+    	CheckAndLoadItem(rotation*4,codeLbl1,"Item");
+    	CheckAndLoadItem(rotation*4+1,codeLbl2,"Item");
+    	CheckAndLoadItem(rotation*4+2,codeLbl3,"Item");
+    	CheckAndLoadItem(rotation*4+3,codeLbl4,"Item");
+    	CheckAndLoadItem(rotation*4,priceLbl1,"Price");
+    	CheckAndLoadItem(rotation*4+1,priceLbl2,"Price");
+    	CheckAndLoadItem(rotation*4+2,priceLbl3,"Price");
+    	CheckAndLoadItem(rotation*4+3,priceLbl4,"Price");
+    	CheckAndLoadItem(rotation*4,amountLbl1,"Amount");
+    	CheckAndLoadItem(rotation*4+1,amountLbl2,"Amount");
+    	CheckAndLoadItem(rotation*4+2,amountLbl3,"Amount");
+    	CheckAndLoadItem(rotation*4+3,amountLbl4,"Amount");
+    }
+    
+    public void CheckAndLoadItem(int num,Label lbl,String str) //num = rotation*4 + i
+    {
+    	if(num > ChatClient.machines.get(MachineNumber-1).getItems().size()-1)
+    		lbl.setText(" ");
+    	else
+    	{
+    		switch(str) {
+    			case "Item":
+    				lbl.setText(ChatClient.machines.get(MachineNumber-1).getItem(num));
+    				break;
+    			case "Price":
+    				lbl.setText(this.getPrice(ChatClient.machines.get(MachineNumber-1).getItem(num)) + " NIS");
+    				break;
+    			case "Amount":
+    				lbl.setText(String.valueOf(ChatClient.machines.get(MachineNumber-1).getAmount(num)));
+    				break;
+    		}
+    	}
+    	
     }
     
     public int getPrice(String name)
