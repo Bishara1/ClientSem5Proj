@@ -34,7 +34,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="445.0" layoutY="518.0" mnemonicParsing="false" onAction="#EmailLoginBtn" prefHeight="48.0" prefWidth="161.0" style="-fx-background-color: #c14302;" text="Account login" textFill="WHITE">
+      <Button layoutX="445.0" layoutY="518.0" mnemonicParsing="false" onAction="#AccountLoginBtn" prefHeight="48.0" prefWidth="161.0" style="-fx-background-color: #c14302;" text="Account login" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
