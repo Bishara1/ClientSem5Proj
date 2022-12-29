@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ekrutOrderController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ekrutOrderController">
    <children>
       <VBox alignment="BASELINE_CENTER" layoutX="-15.0" layoutY="-1.0" prefHeight="770.0" prefWidth="386.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
@@ -20,7 +20,7 @@
          <children>
             <ImageView fitHeight="353.0" fitWidth="365.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/ekrut-image.jpg" />
+                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
             </ImageView>
          </children>
@@ -53,12 +53,12 @@
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Label>
-            <ImageView fitHeight="105.0" fitWidth="103.0" layoutX="327.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="105.0" fitWidth="103.0" layoutX="327.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../Downloads/cf7ca1bc-daf1-4f7a-a4fb-129d27d64fb9.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="105.0" fitWidth="95.0" layoutX="444.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="105.0" fitWidth="95.0" layoutX="446.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../Downloads/cf7ca1bc-daf1-4f7a-a4fb-129d27d64fb9.png" />
                </image>
@@ -88,14 +88,14 @@
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </Label>
-            <ImageView fx:id="Arrow" fitHeight="50.0" fitWidth="51.0" layoutX="322.0" layoutY="260.0" onMouseClicked="#NextItems" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+            <ImageView fx:id="Arrow" fitHeight="50.0" fitWidth="51.0" layoutX="322.0" layoutY="260.0" onMouseClicked="#NextItems" pickOnBounds="true" preserveRatio="true" rotate="90.0">
                <image>
-                  <Image url="@../../../../../Downloads/arrow%20right.jpg" />
+                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/pgUp.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="Arrow1" fitHeight="51.0" fitWidth="57.0" layoutX="199.0" layoutY="259.0" onMouseClicked="#PrevItems" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="Arrow1" fitHeight="51.0" fitWidth="57.0" layoutX="199.0" layoutY="259.0" onMouseClicked="#PrevItems" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
                <image>
-                  <Image url="@../../../../../Downloads/arrow%20right.jpg" />
+                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/pgUp.png" />
                </image>
             </ImageView>
          </children>
