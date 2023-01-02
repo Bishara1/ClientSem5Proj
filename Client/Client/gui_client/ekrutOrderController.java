@@ -168,7 +168,7 @@ public class ekrutOrderController implements Initializable{
     	CheckAndLoadItem(rotation*4+3,amountLbl4,"Amount");
     }
     
-    public void CheckAndLoadItem(int num,Label lbl,String str) //num = rotation*4 + i
+    public void CheckAndLoadItem(int num,Label lbl,String str) //num = rotation*4 + i 
     {
     	if(num > ChatClient.machines.get(MachineNumber-1).getItems().size()-1)
     		lbl.setText(" ");
