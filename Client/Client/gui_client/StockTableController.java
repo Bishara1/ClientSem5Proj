@@ -92,6 +92,7 @@ public class StockTableController {
 		{	
 			Alert alert = new Alert(AlertType.ERROR,"Machine Id does not exist !",ButtonType.OK);
 			alert.showAndWait();
+			alert.showAndWait();
 		}
 		else {
 			Machine temp = ChatClient.machines.get(Integer.parseInt(machineCode)-1); //must check that 
