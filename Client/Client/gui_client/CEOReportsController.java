@@ -24,13 +24,13 @@ public class CEOReportsController {
 	private Button viewdiscountBtn;
 	
 	
-	public void CreateOrder(ActionEvent event) throws Exception{
+	public void ViewMachines(ActionEvent event) throws Exception{
 		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/ekrutOrder.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/StockTable.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
-		primaryStage.setTitle("EKRUT");
+		primaryStage.setTitle("StockTable");
 		primaryStage.setScene(scene);		
 		primaryStage.show();
 	}
