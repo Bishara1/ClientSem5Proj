@@ -1,6 +1,7 @@
 package gui_client;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import client.ChatClient;
@@ -14,10 +15,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert.AlertType;
 import logic.Item;
 
 public class ekrutOrderController implements Initializable{
@@ -59,6 +63,12 @@ public class ekrutOrderController implements Initializable{
 	private TextField amountlbl;
 	@FXML
 	private TextField TotalPricelbl;
+	@FXML
+	private Label amountBtnLbl; //NEW **************************************
+	
+	private ArrayList<Item> cart;
+	
+	private int amountByBtn = 0; //NEW *************************************
 	
 	private int MachineNumber = 1; //placeholder for the actual machine number
 	
@@ -69,6 +79,7 @@ public class ekrutOrderController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		ClientUI.chat.accept(new Message(MachineNumber, Command.ReadMachines));
 		ClientUI.chat.accept(new Message(0,Command.ReadItems));
+		cart = new ArrayList<>();
 		rotation = 0;
 		LoadItems();
 		
@@ -80,13 +91,39 @@ public class ekrutOrderController implements Initializable{
 			rotation=0;
 		else
 			rotation += 1;
-		System.out.println(rotation + "rotation");
 		LoadItems(); //deal with only showing 2 
 	}
 	
 	public void PrevItems()
 	{
-		
+		if(rotation == 0)
+			rotation = findMax();
+		else
+		{
+			rotation -= 1;
+		}
+		LoadItems();
+	}
+	
+	public void LessItem() //NEW *******************************
+	{
+		if(!ProductIdlbl.getText().equals(""))
+		{
+			if(amountByBtn > 0)
+			{
+				amountByBtn--;
+				amountBtnLbl.setText(String.valueOf(amountByBtn));
+			}
+		}
+	}
+	
+	public void MoreItem() //NEW *******************************
+	{
+		if(!ProductIdlbl.getText().equals(""))
+		{
+			amountByBtn++;
+			amountBtnLbl.setText(String.valueOf(amountByBtn));
+		}
 	}
 	
 	public void ProceedCartBtn() {
@@ -103,7 +140,29 @@ public class ekrutOrderController implements Initializable{
 		primaryStage.show();
 	}
     public void AddToCartBtn() {
-		
+		if(this.ProductIdlbl.getText().equals("") || amountByBtn == 0) //this.amountlbl.getText().equals("") ***********
+		{
+			Alert alert = new Alert(AlertType.ERROR,"Must enter product name and amount!",ButtonType.OK);
+			alert.showAndWait();
+		}
+		else
+		{
+			if(ChatClient.machines.get(MachineNumber-1).existItem(ProductIdlbl.getText()))
+			{
+				
+				amountBtnLbl.setText("0"); //new
+				addItemFromMachineToCart(ProductIdlbl.getText(),String.valueOf(amountByBtn) ); //amountlbl.getText()
+				updateTotalPrice();
+				Alert alert = new Alert(AlertType.CONFIRMATION,"Item has been added to cart!",ButtonType.OK);
+				alert.showAndWait();
+				amountByBtn = 0; //new 
+			} 
+			else
+			{
+				Alert alert = new Alert(AlertType.ERROR,"The item you entered doesn't exist in the machine!",ButtonType.OK);
+				alert.showAndWait();
+			}
+		}
 	}
     
     public void LoadItems()
@@ -122,7 +181,7 @@ public class ekrutOrderController implements Initializable{
     	CheckAndLoadItem(rotation*4+3,amountLbl4,"Amount");
     }
     
-    public void CheckAndLoadItem(int num,Label lbl,String str) //num = rotation*4 + i
+    public void CheckAndLoadItem(int num,Label lbl,String str) //num = rotation*4 + i 
     {
     	if(num > ChatClient.machines.get(MachineNumber-1).getItems().size()-1)
     		lbl.setText(" ");
@@ -152,4 +211,54 @@ public class ekrutOrderController implements Initializable{
     	}
     	return -1; 
     }
+    
+    public int findMax()
+    {
+    	int size = ChatClient.machines.get(MachineNumber-1).getItems().size();
+    	int temp = 0;
+    	while(temp*4+3<size)
+    		temp++;
+    	return temp;
+    }
+    
+    public void addItemFromMachineToCart(String name,String amount)
+    {
+    	if(!ChatClient.machines.get(MachineNumber-1).existItem(name))
+    		return;
+    	else
+    	{
+    		
+    		int size = cart.size();
+    			for(int i = 0;i<size;i++)
+    			{
+    				if(cart.get(i).getProductID().equals(name)) //item already in cart, add new amount to amountCart
+    				{
+    					int newAmount = Integer.parseInt(cart.get(i).getAmount()) + Integer.parseInt(amount);
+    					cart.get(i).setAmount(String.valueOf(newAmount));
+    					System.out.println(cart);
+    					return;
+    				}
+    			
+    			}
+   
+    			cart.add(new Item(name,amount,this.getPrice(name)));
+    		
+    		System.out.println(cart);
+    		
+    		
+    	}
+    }
+    
+    public void updateTotalPrice()
+    {
+    	int sum = 0;
+    	for(Item item : cart)
+    	{
+    		sum += item.getPrice() * Integer.parseInt(item.getAmount());
+    	}
+    	TotalPricelbl.setText(String.valueOf(sum));
+    	return;
+    }
 }
+
+

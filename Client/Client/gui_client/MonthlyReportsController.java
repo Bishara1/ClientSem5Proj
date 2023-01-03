@@ -1,9 +1,13 @@
 package gui_client;
 
 import java.util.ArrayList;
+
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,9 +20,18 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import logic.Machine;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javax.swing.JComboBox;
+
+import client.ChatClient;
+import client.ClientController;
+import client.ClientUI;
+import common.Command;
+import common.Message;
 
 public class MonthlyReportsController implements Initializable{
 	
@@ -38,17 +51,26 @@ public class MonthlyReportsController implements Initializable{
 	@FXML
 	private ComboBox<String> cmbType;
 	
+	Message messageToServer = new Message(null, null);
+	public static String selected;
+	
 	ObservableList<String> yearList;
 	ObservableList<String> MonthList;
 	ObservableList<String> TypeList;
 	ObservableList<String> LocationList;
 	ObservableList<String> MachineIdList;
 	
-
+	@FXML
+	public void Select(ActionEvent event)
+	{
+		selected = cmbLocation.getSelectionModel().getSelectedItem().toString();
+		System.out.println(selected);
+		setMachineIdComboBox();
+	}
+	
 	public void initialize(URL url, ResourceBundle rb) {
 		setYearComboBox();
 		setMonthComboBox();
-		setMachineIdComboBox();
 		setTypeComboBox();
 		setLocationComboBox();
 	}
@@ -65,11 +87,9 @@ public class MonthlyReportsController implements Initializable{
 		year.add("2021");
 		year.add("2022");
 		
-		
 		yearList = FXCollections.observableArrayList(year);
 		cmbYear.getItems().clear();
 		cmbYear.setItems(yearList);
-		
 	}
 	
 		public void setMonthComboBox() {
@@ -107,7 +127,9 @@ public class MonthlyReportsController implements Initializable{
 	public void setLocationComboBox() {
 		ArrayList<String> type = new ArrayList<String>();
 		
-		type.add("Africa");
+		type.add("North");
+		type.add("South");
+		type.add("UAE");
 		
 		LocationList = FXCollections.observableArrayList(type);
 		cmbLocation.getItems().clear();
@@ -116,18 +138,33 @@ public class MonthlyReportsController implements Initializable{
 	
 	public void setMachineIdComboBox() {
 		ArrayList<String> typeMachine = new ArrayList<String>();
+		ConnectNewClient();
+		messageToServer.setCommand(Command.ReadMachines);
+		messageToServer.setContent(0);	
+		ClientUI.chat.accept(messageToServer); 
 		
-		typeMachine.add("123");
-		typeMachine.add("124");
+		for(Machine i : ChatClient.machines)
+		{
+			if(selected.equals(i.getLocation()))
+			{
+				typeMachine.add(String.valueOf(i.getMachine_id()));
+			}
+		}
+		
 		MachineIdList = FXCollections.observableArrayList(typeMachine);
 		cmbMachineId.getItems().clear();
 		cmbMachineId.setItems(MachineIdList);
 	}
 	
+	public void ConnectNewClient() {
+		ClientUI.chat = new ClientController("localhost", 5555);  // new client connected
+		///ClientUI.chat.accept("login"); // send to server that a client is connected
+	}
+	
 	public void ShowReportBtn(ActionEvent event) throws Exception{
 		// Checking if one or more fields are empty
-		if ((cmbYear.getValue() == null)||(cmbMonth.getValue() == null)
-				||(cmbType.getValue() == null) ||(cmbLocation.getValue() == null)
+		if ((cmbYear.getValue() == null )||(cmbMonth.getValue() == null )
+				||(cmbType.getValue() == null ) ||(cmbLocation.getValue() == null )
 					||(cmbMachineId.getValue() == null)) {
 			Alert alert = new Alert(AlertType.ERROR,"One or more feilds is Empty!",ButtonType.OK);
 			alert.showAndWait();
