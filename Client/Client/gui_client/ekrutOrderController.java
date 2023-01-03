@@ -187,7 +187,7 @@ public class ekrutOrderController implements Initializable{
 		{
 			if(ChatClient.machines.get(MachineNumber-1).existItem(ProductIdlbl.getText()))
 			{
-				
+				ProductIdlbl.setText("");
 				amountBtnLbl.setText("0"); //new
 				addItemFromMachineToCart(ProductIdlbl.getText(),String.valueOf(amountByBtn) ); //amountlbl.getText()
 				updateTotalPrice();
