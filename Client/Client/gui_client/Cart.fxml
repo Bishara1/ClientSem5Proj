@@ -48,7 +48,7 @@
       <TextField fx:id="removeidtxt" layoutX="648.0" layoutY="582.0" onAction="#RemoveItem" prefHeight="31.0" prefWidth="135.0" style="-fx-background-radius: 10;" />
       <ImageView fx:id="removeallbtn" fitHeight="31.0" fitWidth="36.0" layoutX="871.0" layoutY="206.0" onDragDetected="#RemoveAll" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Desktop/images.png" />
+            <Image url="@../../../../CommonSem5Proj/Common/Common/images/deleteall.png" />
          </image>
       </ImageView>
       <Button fx:id="removebtn" layoutX="808.0" layoutY="579.0" mnemonicParsing="false" onAction="#RemoveItem" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="remove" textFill="WHITE">
