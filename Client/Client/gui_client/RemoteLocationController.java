@@ -8,12 +8,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 public class RemoteLocationController{
-		@FXML
-		private ComboBox location;
-		@FXML
-		private Button backbtn;
-		@FXML
-		private Button startorderbtn ;
+		
 		
 		@FXML
 		private TextField machineidtxt ;
@@ -21,7 +16,7 @@ public class RemoteLocationController{
 		public void LocationCombo() {
 			
 		}
-		public void BackBtn() {
+		public void BackBtn() { //fix this apparently its null
 			
 		}
 	    public void StartOrderBtn() {

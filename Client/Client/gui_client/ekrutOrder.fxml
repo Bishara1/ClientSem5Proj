@@ -127,5 +127,8 @@
          </children>
       </Pane>
       <TextField fx:id="TotalPricelbl" editable="false" layoutX="469.0" layoutY="584.0" prefHeight="31.0" prefWidth="113.0" />
+      <Button fx:id="btnLess" layoutX="463.0" layoutY="629.0" mnemonicParsing="false" onAction="#LessItem" text="-" />
+      <Button fx:id="btnMore" layoutX="498.0" layoutY="629.0" mnemonicParsing="false" onAction="#MoreItem" text="+" />
+      <Label fx:id="amountBtnLbl" layoutX="534.0" layoutY="633.0" text="0" />
    </children>
 </AnchorPane>

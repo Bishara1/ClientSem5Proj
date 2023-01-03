@@ -56,7 +56,44 @@ public class UserLoginController {
 			((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
 			Stage primaryStage = new Stage();
 			
-			Parent root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
+			Parent root = null;
+			switch(ChatClient.role) {
+			
+			case "ceo":
+				root = FXMLLoader.load(getClass().getResource("/gui_client/StockTable.fxml"));
+				break;
+			
+			case "rgm":
+				root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+				break;
+				
+			case "rgw":
+				root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+				break;
+			
+			case "stm":
+				root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+				break;
+				
+			case "stw":
+				root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+				break;
+				
+			case "dlw":
+				root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+				break;
+				
+			case "inm":
+				root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+				break;
+				
+			case "customer":
+				root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
+				break;
+				
+			default:
+				break;
+			}
 			
 			Scene scene = new Scene(root);
 			//Parent root2 = FXMLLoader.load(getClass().getResource("/gui_client/StartOrder.fxml"));

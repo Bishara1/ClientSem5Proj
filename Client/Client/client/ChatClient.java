@@ -39,6 +39,7 @@ public class ChatClient extends AbstractClient
   public static ArrayList<Machine> machines;
   public static ArrayList<Item> items;
   public static String password;
+  public static String role;
 
   
   //Constructors ****************************************************
@@ -73,7 +74,7 @@ public class ChatClient extends AbstractClient
 	  
 	  switch(responseFromServer.getCommand()) 
 	  {
-	  	  case DatabaseRead:
+	  	  case ReadUsers:
 	  		  subscribers = (ArrayList<Subscriber>) responseFromServer.getContent();
 	  		  break;
 	  		  
@@ -90,7 +91,9 @@ public class ChatClient extends AbstractClient
 	  		  break;
 	  	  
 	  	  case Connect:
-	  		  password = (String)(((Message)msg).getContent());
+	  		  String[] passRole = (String[])(((Message)msg).getContent());
+	  		  password = passRole[0];
+	  		  role = passRole[1];
 	  		  break;
 	  		  
 	  default:
