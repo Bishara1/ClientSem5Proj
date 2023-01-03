@@ -1,39 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="cmbMachineId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="514.0" style="-fx-background-color: #a2e4e9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.MonthlyReportsController">
+<Pane fx:id="cmbMachineId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.MonthlyReportsController">
    <children>
-      <ImageView fitHeight="538.0" fitWidth="1016.0" layoutX="-264.0" layoutY="18.0" opacity="0.25" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../Desktop/quick-reportsa.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="105.0" layoutY="61.0" text="Monthly Reports" textFill="#1e0f5f">
+      <Label layoutX="517.0" layoutY="49.0" text="Monthly Reports" textFill="#c14302">
          <font>
             <Font name="Cooper Black" size="36.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cmbYear" layoutX="81.0" layoutY="185.0" prefHeight="49.0" prefWidth="140.0" promptText="Year" style="-fx-pref-height: 35;" />
-      <ComboBox fx:id="cmbMonth" layoutX="304.0" layoutY="185.0" prefHeight="41.0" prefWidth="140.0" promptText="Month" style="-fx-pref-height: 35;" />
-      <ComboBox fx:id="cmbType" layoutX="174.0" layoutY="398.0" prefHeight="25.0" prefWidth="140.0" promptText="Type" style="-fx-pref-height: 35;" />
-      <Button fx:id="backBtn" layoutX="35.0" layoutY="506.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="35.0" prefWidth="72.0" text="Back">
+      <ComboBox fx:id="cmbYear" layoutX="469.0" layoutY="191.0" prefHeight="49.0" prefWidth="140.0" promptText="Year" style="-fx-pref-height: 35;" />
+      <ComboBox fx:id="cmbMonth" layoutX="703.0" layoutY="191.0" prefHeight="41.0" prefWidth="140.0" promptText="Month" style="-fx-pref-height: 35;" />
+      <ComboBox fx:id="cmbType" layoutX="583.0" layoutY="404.0" prefHeight="25.0" prefWidth="140.0" promptText="Type" style="-fx-pref-height: 35;" />
+      <Button fx:id="backBtn" layoutX="445.0" layoutY="551.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="35.0" prefWidth="72.0" text="Back">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="351.0" layoutY="502.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="132.0" text="Show Report">
+      <Button layoutX="752.0" layoutY="548.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="132.0" text="Show Report">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <ComboBox fx:id="cmbLocation" layoutX="174.0" layoutY="261.0" prefHeight="41.0" prefWidth="140.0" promptText="Location" style="-fx-pref-height: 35;" />
-      <ComboBox fx:id="cmbDeviceId" layoutX="176.0" layoutY="330.0" prefWidth="132.0" promptText="Machine Id" style="-fx-pref-height: 35;" />
+      <ComboBox fx:id="cmbLocation" layoutX="579.0" layoutY="282.0" prefHeight="41.0" prefWidth="140.0" promptText="Location" style="-fx-pref-height: 35;" />
+      <ComboBox fx:id="cmbDeviceId" layoutX="583.0" layoutY="343.0" prefWidth="132.0" promptText="Machine Id" style="-fx-pref-height: 35;" />
+      <VBox alignment="BASELINE_CENTER" layoutX="-20.0" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <children>
+            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Desktop/ekrut.png.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
    </children>
 </Pane>

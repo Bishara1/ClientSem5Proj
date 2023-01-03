@@ -17,7 +17,7 @@
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="361.0" fitWidth="392.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
@@ -35,15 +35,21 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
+      <Button layoutX="445.0" layoutY="518.0" mnemonicParsing="false" onAction="#AccountLoginBtn" prefHeight="48.0" prefWidth="161.0" style="-fx-background-color: #c14302;" text="Account login" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+
       <Text fill="#c14302" layoutX="410.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" wrappingWidth="344.08056640625">
 
          <font>
-            <Font name="Elephant" size="73.0" />
+            <Font name="Cambria Math" size="75.0" />
          </font>
       </Text>
       <Text fill="#c14302" layoutX="479.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="to EKRUT" wrappingWidth="437.0000066757202">
          <font>
-            <Font name="Elephant" size="73.0" />
+            <Font name="Cambria Math" size="73.0" />
          </font>
       </Text>
       <Button layoutX="614.0" layoutY="700.0" mnemonicParsing="false" onAction="#ExitBtn" prefHeight="42.0" prefWidth="99.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Exit" textFill="WHITE">

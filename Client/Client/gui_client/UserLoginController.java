@@ -60,7 +60,7 @@ public class UserLoginController {
 			switch(ChatClient.role) {
 			
 			case "ceo":
-				root = FXMLLoader.load(getClass().getResource("/gui_client/StockTable.fxml"));
+				root = FXMLLoader.load(getClass().getResource("/gui_client/CEOReports.fxml"));
 				break;
 			
 			case "rgm":

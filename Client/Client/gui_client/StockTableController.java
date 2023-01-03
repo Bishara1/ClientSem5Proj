@@ -88,11 +88,9 @@ public class StockTableController {
 		amountCol.setCellValueFactory(new PropertyValueFactory<>("Amount"));
 		ArrayList<ViewItem> items = new ArrayList<>();
 
-
 		if (ChatClient.machines.contains(null))
 		{	
 			Alert alert = new Alert(AlertType.ERROR,"Machine Id does not exist !",ButtonType.OK);
-
 			alert.showAndWait();
 			alert.showAndWait();
 		}
