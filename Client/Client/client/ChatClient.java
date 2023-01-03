@@ -76,6 +76,7 @@ public class ChatClient extends AbstractClient
 	  {
 	  	  case ReadUsers:
 	  		  subscribers = (ArrayList<Subscriber>) responseFromServer.getContent();
+	  		  System.out.println(subscribers);
 	  		  break;
 	  		  
 	  	 case ReadMachines:
