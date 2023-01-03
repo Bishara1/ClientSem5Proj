@@ -22,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 import logic.Item;
 
 public class ekrutOrderController implements Initializable{
@@ -130,6 +131,7 @@ public class ekrutOrderController implements Initializable{
 		
 	}
 	public void BackBtn(ActionEvent event) throws Exception {
+<<<<<<< HEAD
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
 		Stage primaryStage = new Stage();
@@ -138,6 +140,54 @@ public class ekrutOrderController implements Initializable{
 		primaryStage.setTitle("User UI");
 		primaryStage.setScene(scene);		
 		primaryStage.show();
+=======
+		
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Parent root = null;
+		switch(ChatClient.role) {
+		
+		case "ceo":
+			root = FXMLLoader.load(getClass().getResource("/gui_client/CEOReports.fxml"));
+			break;
+		
+		case "rgm":
+			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			break;
+			
+		case "rgw":
+			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			break;
+		
+		case "stm":
+			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			break;
+			
+		case "stw":
+			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			break;
+			
+		case "dlw":
+			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			break;
+			
+		case "inm":
+			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			break;
+			
+		case "customer":
+			root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
+			break;
+			
+		default:
+			break;
+		}
+		Stage primaryStage = new Stage();
+		Scene scene = new Scene(root);
+		primaryStage.setTitle("Update Stock");
+		primaryStage.setScene(scene);		
+		primaryStage.show();	
+		
+>>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
 	}
     public void AddToCartBtn() {
 		if(this.ProductIdlbl.getText().equals("") || amountByBtn == 0) //this.amountlbl.getText().equals("") ***********
@@ -149,7 +199,7 @@ public class ekrutOrderController implements Initializable{
 		{
 			if(ChatClient.machines.get(MachineNumber-1).existItem(ProductIdlbl.getText()))
 			{
-				
+				ProductIdlbl.setText("");
 				amountBtnLbl.setText("0"); //new
 				addItemFromMachineToCart(ProductIdlbl.getText(),String.valueOf(amountByBtn) ); //amountlbl.getText()
 				updateTotalPrice();

@@ -74,8 +74,9 @@ public class ChatClient extends AbstractClient
 	  
 	  switch(responseFromServer.getCommand()) 
 	  {
-	  	  case DatabaseRead:
+	  	  case ReadUsers:
 	  		  subscribers = (ArrayList<Subscriber>) responseFromServer.getContent();
+	  		  System.out.println(subscribers);
 	  		  break;
 	  		  
 	  	 case ReadMachines:

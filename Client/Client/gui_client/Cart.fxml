@@ -23,7 +23,7 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <TableView layoutX="424.0" layoutY="248.0" opacity="0.9" prefHeight="306.0" prefWidth="486.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/table.css">
+      <TableView fx:id="tableSub" layoutX="424.0" layoutY="248.0" onSort="#LoadAndSetTable" opacity="0.9" prefHeight="306.0" prefWidth="486.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/table.css">
         <columns>
           <TableColumn fx:id="productidcol" prefWidth="114.0" text="Product ID" />
           <TableColumn fx:id="amountcol" prefWidth="197.0" text="Amount" />
@@ -45,17 +45,21 @@
             <Font name="Elephant" size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="648.0" layoutY="582.0" prefHeight="31.0" prefWidth="135.0" style="-fx-background-radius: 10;" />
-      <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="871.0" layoutY="206.0" onDragDetected="#RemoveAll" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="removeidtxt" layoutX="648.0" layoutY="582.0" onAction="#RemoveItem" prefHeight="31.0" prefWidth="135.0" style="-fx-background-radius: 10;" />
+      <ImageView fx:id="removeallbtn" fitHeight="31.0" fitWidth="36.0" layoutX="871.0" layoutY="206.0" onDragDetected="#RemoveAll" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Desktop/images.png" />
+            <Image url="@../../../../CommonSem5Proj/Common/Common/images/deleteall.png" />
          </image>
       </ImageView>
       <Button fx:id="removebtn" layoutX="808.0" layoutY="579.0" mnemonicParsing="false" onAction="#RemoveItem" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="remove" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
+<<<<<<< HEAD
       <VBox alignment="BASELINE_CENTER" layoutX="-45.0" layoutY="-10.0" prefHeight="771.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+=======
+      <VBox alignment="BASELINE_CENTER" layoutX="-42.0" layoutY="-10.0" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+>>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -72,6 +76,11 @@
             <Font name="Elephant" size="18.0" />
          </font>
       </Label>
-      <TextField editable="false" layoutX="549.0" layoutY="621.0" prefHeight="31.0" prefWidth="110.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="totalpricetxt" editable="false" layoutX="549.0" layoutY="621.0" onAction="#TotalProce" prefHeight="31.0" prefWidth="110.0" style="-fx-background-radius: 10;" />
+      <ImageView fitHeight="55.0" fitWidth="69.0" layoutX="505.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../CommonSem5Proj/Common/Common/images/cart.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

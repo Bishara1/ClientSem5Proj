@@ -13,7 +13,7 @@ import javafx.event.ActionEvent;
 
 public class CEOReportsController {
 	@FXML
-	private Button createOrderBtn;
+	private Button viewMachinesBtn;
 	@FXML
 	private Button monthlyReportBtn;
 	@FXML
@@ -24,13 +24,17 @@ public class CEOReportsController {
 	private Button viewdiscountBtn;
 	
 	
-	public void CreateOrder(ActionEvent event) throws Exception{
+	public void ViewMachines(ActionEvent event) throws Exception{
 		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/ekrutOrder.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/StockTable.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
+<<<<<<< HEAD
 		primaryStage.setTitle("EKRUT ORDER");
+=======
+		primaryStage.setTitle("StockTable");
+>>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
 		primaryStage.setScene(scene);		
 		primaryStage.show();
 	}

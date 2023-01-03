@@ -13,6 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.EKTLoginController">
    <children>
+<<<<<<< HEAD
       <VBox alignment="BASELINE_CENTER" layoutX="-25.0" layoutY="-11.0" prefHeight="767.0" prefWidth="386.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;" AnchorPane.leftAnchor="-25.0">
          <opaqueInsets>
             <Insets />
@@ -41,15 +42,55 @@
             <Image url="@../../../../CommonSem5Proj/Common/Common/images/usr.png" />
          </image></ImageView>
       <Button fx:id="backBtn" layoutX="404.0" layoutY="627.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="48.0" prefWidth="130.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Back" textFill="WHITE">
+=======
+      <Label layoutX="546.0" layoutY="99.0" prefHeight="119.0" prefWidth="258.0" text="EKRUT" textFill="#c14302">
+         <font>
+            <Font name="Cooper Black" size="64.0" />
+         </font>
+      </Label>
+      <Label layoutX="492.0" layoutY="356.0" prefHeight="31.0" prefWidth="140.0" text="Subscriber Num" textFill="#c14302">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="469.0" layoutY="236.0" prefHeight="31.0" prefWidth="342.0" text="Count the memories NOT the calories" textFill="#c14302">
+         <font>
+            <Font name="System Bold Italic" size="19.0" />
+         </font>
+      </Label>
+      <TextField fx:id="idtxt" layoutX="659.0" layoutY="356.0" />
+      <Button layoutX="531.0" layoutY="526.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="39.0" prefWidth="94.0" text="Back" textFill="WHITE">
+>>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
          <font>
             <Font name="System Bold" size="15.0" />
+<<<<<<< HEAD
          </font>
       </Button>
       <Button fx:id="loginBtn" layoutX="781.0" layoutY="627.0" mnemonicParsing="false" onAction="#login" prefHeight="48.0" prefWidth="130.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Login" textFill="WHITE">
+=======
+         </font></Button>
+      <Button layoutX="717.0" layoutY="526.0" mnemonicParsing="false" onAction="#login" prefHeight="39.0" prefWidth="94.0" text="Login" textFill="WHITE">
+>>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
          <font>
             <Font name="System Bold" size="15.0" />
+<<<<<<< HEAD
          </font>
       </Button>
+=======
+         </font></Button>
+      <VBox alignment="BASELINE_CENTER" layoutY="-1.0" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <children>
+            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Desktop/ekrut.png.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+>>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
    </children>
    <effect>
       <Blend mode="LIGHTEN" />

@@ -9,19 +9,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="894.0" prefWidth="1265.0" style="-fx-background-color: #e2effd;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.SubscribersViewerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="894.0" prefWidth="1295.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.SubscribersViewerController">
    <children>
-      <Label layoutX="467.0" layoutY="36.0" prefHeight="54.0" prefWidth="332.0" text="Subscribers Viewer" textFill="#4246a1">
+      <Label layoutX="467.0" layoutY="36.0" prefHeight="54.0" prefWidth="332.0" text="Subscribers Viewer" textFill="#c14302">
          <font>
             <Font name="System Bold Italic" size="36.0" />
          </font>
       </Label>
-      <Button defaultButton="true" layoutX="63.0" layoutY="815.0" mnemonicParsing="false" onAction="#UpdatBtn" prefHeight="38.0" prefWidth="126.0" style="-fx-background-color: #5961a6;" text="Update Details" textFill="WHITE">
+      <Button defaultButton="true" layoutX="63.0" layoutY="815.0" mnemonicParsing="false" onAction="#UpdatBtn" prefHeight="38.0" prefWidth="126.0" text="Update Details" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button defaultButton="true" layoutX="1077.0" layoutY="815.0" mnemonicParsing="false" onAction="#ExitBtn" prefHeight="38.0" prefWidth="126.0" style="-fx-background-color: #5961a6;" text="Close" textFill="WHITE">
+      <Button defaultButton="true" layoutX="1077.0" layoutY="815.0" mnemonicParsing="false" onAction="#ExitBtn" prefHeight="38.0" prefWidth="126.0" text="Close" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -37,25 +37,25 @@
             <TableColumn fx:id="subnumcol" prefWidth="192.0" text="Subscriber Number" />
         </columns>
       </TableView>
-      <Label layoutX="63.0" layoutY="677.0" text="Subscriber ID:" textFill="#4246a1">
+      <Label layoutX="63.0" layoutY="677.0" text="Subscriber ID:" textFill="#c14302">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <TextField fx:id="SubscriberIDtxt" layoutX="296.0" layoutY="677.0" prefHeight="25.0" prefWidth="173.0" promptText="Subscriber ID" />
-      <Label layoutX="63.0" layoutY="723.0" text="New credit card number" textFill="#4246a1">
+      <Label layoutX="63.0" layoutY="723.0" text="New credit card number" textFill="#c14302">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <TextField fx:id="SubscriberCreditNumtxt" layoutX="296.0" layoutY="723.0" prefHeight="25.0" prefWidth="173.0" promptText="New credit card" />
-      <Label layoutX="63.0" layoutY="768.0" text="New subscriber number" textFill="#4246a1">
+      <Label layoutX="63.0" layoutY="768.0" text="New subscriber number" textFill="#c14302">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <TextField fx:id="SubscriberSubNumtxt" layoutX="296.0" layoutY="768.0" prefHeight="25.0" prefWidth="173.0" promptText="New subscriber number" />
-      <Text fill="#4246a1" fontSmoothingType="LCD" layoutX="63.0" layoutY="588.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To modify details of a certain subscriber:&#10;Enter the desired subscriber ID&#10;Enter their new credit card number&#10;Enter their new subscriber number" wrappingWidth="355.0000005662441">
+      <Text fill="#c14302" fontSmoothingType="LCD" layoutX="63.0" layoutY="588.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To modify details of a certain subscriber:&#10;Enter the desired subscriber ID&#10;Enter their new credit card number&#10;Enter their new subscriber number" wrappingWidth="355.0000005662441">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
