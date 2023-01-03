@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -7,36 +8,44 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0" prefWidth="455.0" style="-fx-background-color: #a2e4e9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ReceiptController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ReceiptController">
    <children>
-      <ImageView fitHeight="661.0" fitWidth="455.0" layoutX="25.0" opacity="0.39" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@PurchasePic.jpeg" />
-         </image>
-      </ImageView>
-      <Label layoutX="99.0" layoutY="9.0" prefHeight="119.0" prefWidth="258.0" text="Receipt" textFill="#1e0f5f">
+      <Label layoutX="573.0" prefHeight="119.0" prefWidth="258.0" text="Receipt" textFill="#c14302">
          <font>
             <Font name="Cooper Black" size="60.0" />
          </font>
       </Label>
-      <Label layoutX="61.0" layoutY="97.0" prefHeight="31.0" prefWidth="342.0" text="Count the memories NOT the calories" textFill="#1e0f5f">
+      <Label layoutX="505.0" layoutY="104.0" prefHeight="31.0" prefWidth="342.0" text="Count the memories NOT the calories" textFill="#c14302">
          <font>
             <Font name="System Bold Italic" size="19.0" />
          </font>
       </Label>
-      <Button fx:id="okBtn" layoutX="181.0" layoutY="595.0" mnemonicParsing="false" onAction="#OKBtn" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: #1e0f5f;" text="OK" textFill="WHITE">
+      <Button fx:id="okBtn" layoutX="655.0" layoutY="634.0" mnemonicParsing="false" onAction="#OKBtn" prefHeight="39.0" prefWidth="94.0" text="OK" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <TableView fx:id="receiptTable" layoutX="42.0" layoutY="128.0" opacity="0.9" prefHeight="461.0" prefWidth="372.0">
+      <TableView fx:id="receiptTable" layoutX="498.0" layoutY="154.0" opacity="0.9" prefHeight="461.0" prefWidth="372.0">
          <columns>
             <TableColumn fx:id="productIdCol" prefWidth="92.0" text="Product ID" />
             <TableColumn fx:id="amountCol" prefWidth="169.0" text="Amount" />
             <TableColumn fx:id="priceCol" prefWidth="104.0" text="Price" />
          </columns>
       </TableView>
+      <VBox alignment="BASELINE_CENTER" layoutX="-21.0" layoutY="-3.0" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <children>
+            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Desktop/ekrut.png.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

@@ -1,32 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0" prefWidth="455.0" style="-fx-background-color: #a2e4e9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ShipmentMethodController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ShipmentMethodController">
    <children>
-      <ImageView fitHeight="652.0" fitWidth="477.0" layoutX="27.0" layoutY="5.0" opacity="0.39" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@PurchasePic.jpeg" />
-         </image>
-      </ImageView>
-      <Button fx:id="backBtn" layoutX="62.0" layoutY="553.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: #1e0f5f;" text="Back" textFill="WHITE">
+      <Button fx:id="backBtn" layoutX="598.0" layoutY="595.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="39.0" prefWidth="94.0" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="immediatePickupBtn" layoutX="116.0" layoutY="228.0" mnemonicParsing="false" onAction="#ImmediatePickupBtn" prefHeight="60.0" prefWidth="224.0" style="-fx-background-color: #1e0f5f;" text="Immediate pickup" textFill="WHITE">
+      <Button fx:id="immediatePickupBtn" layoutX="533.0" layoutY="273.0" mnemonicParsing="false" onAction="#ImmediatePickupBtn" prefHeight="60.0" prefWidth="224.0" text="Immediate pickup" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="116.0" layoutY="343.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="224.0" style="-fx-background-color: #1e0f5f;" text="Delivery" textFill="WHITE">
+      <Button layoutX="533.0" layoutY="406.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="224.0" text="Delivery" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
+      <VBox alignment="BASELINE_CENTER" layoutX="-25.0" layoutY="10.0" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <children>
+            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Desktop/ekrut.png.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
