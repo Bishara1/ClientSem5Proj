@@ -29,13 +29,12 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="445.0" layoutY="518.0" mnemonicParsing="false" onAction="#AccountLoginBtn" prefHeight="48.0" prefWidth="161.0" style="-fx-background-color: #c14302;" text="Account login" textFill="WHITE">
+
+      <Button layoutX="445.0" layoutY="518.0" mnemonicParsing="false" onAction="#AccountLoginBtn" prefHeight="48.0" prefWidth="130.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Account Login" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-    
-
       <Text fill="#c14302" layoutX="410.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" wrappingWidth="344.08056640625">
 
          <font>

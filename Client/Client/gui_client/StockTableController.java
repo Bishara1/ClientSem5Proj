@@ -62,16 +62,15 @@ public class StockTableController {
 			Alert alert = new Alert(AlertType.ERROR,"Must enter machine id !",ButtonType.OK);
 			alert.showAndWait();
 		}
+		// ASK AVI IF MACHINE ID CAN CONTAIN LETTERS
+//		else if(machineCode.)
+//		{
+//			Alert alert = new Alert(AlertType.ERROR,"Must enter machine id !",ButtonType.OK);
+//			alert.showAndWait();
+//		}
 		else {
 			ConnectNewClient();
-			
-			
-			
-			// !	!	!	!	!	!	!	!
-			//Check if machine id exists in DB
-			// if it does exist : load machine
 			LoadMachine();
-			
 		}
 	}
 	
@@ -93,6 +92,8 @@ public class StockTableController {
 		if (ChatClient.machines.contains(null))
 		{	
 			Alert alert = new Alert(AlertType.ERROR,"Machine Id does not exist !",ButtonType.OK);
+
+			alert.showAndWait();
 			alert.showAndWait();
 		}
 		else {
