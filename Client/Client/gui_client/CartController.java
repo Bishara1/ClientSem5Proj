@@ -22,7 +22,8 @@ public class CartController {
 	private Button backbtn;
 	@FXML
 	private TextField removeidtxt;
-	
+	@FXML
+	private TextField totalpricetxt;
 	@FXML
 	private TableView<Item> tableSub;
 	@FXML
@@ -47,6 +48,8 @@ public class CartController {
 	}
 
     public void RemoveAll() {
+    }
+    public void TotalProce() {
     }
 	}
 
