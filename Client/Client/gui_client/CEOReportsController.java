@@ -30,7 +30,7 @@ public class CEOReportsController {
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
-		primaryStage.setTitle("EKRUT");
+		primaryStage.setTitle("EKRUT ORDER");
 		primaryStage.setScene(scene);		
 		primaryStage.show();
 	}

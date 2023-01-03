@@ -7,11 +7,17 @@ import client.ChatClient;
 import client.ClientUI;
 import common.Command;
 import common.Message;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import logic.Item;
 
 public class ekrutOrderController implements Initializable{
@@ -86,8 +92,15 @@ public class ekrutOrderController implements Initializable{
 	public void ProceedCartBtn() {
 		
 	}
-	public void BackBtn() {
-		
+	public void BackBtn(ActionEvent event) throws Exception {
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
+		Stage primaryStage = new Stage();
+		Scene scene = new Scene(root);
+		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
+		primaryStage.setTitle("User UI");
+		primaryStage.setScene(scene);		
+		primaryStage.show();
 	}
     public void AddToCartBtn() {
 		

@@ -9,33 +9,33 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="445.0" prefWidth="441.0" style="-fx-background-color: #e2effd;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="445.0" prefWidth="441.0" style="-fx-background-color: #e3c68c; -fx-border-color: #c14302;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.LoginController">
    <children>
-      <Label graphicTextGap="7.0" layoutX="113.0" layoutY="43.0" text="EKRUT Login" textFill="#4246a1">
+      <Label graphicTextGap="7.0" layoutX="106.0" layoutY="44.0" text="EKRUT Login" textFill="#c14302">
          <font>
-            <Font name="System Bold Italic" size="36.0" />
+            <Font name="System Bold Italic" size="38.0" />
          </font>
          <effect>
             <Blend />
          </effect>
       </Label>
       <ButtonBar layoutX="189.0" layoutY="335.0" />
-      <Button layoutX="178.0" layoutY="261.0" mnemonicParsing="false" onAction="#LoginBtn" prefHeight="45.0" prefWidth="86.0" style="-fx-background-color: #5d74a2;" text="Login" textFill="WHITE">
+      <Label layoutX="96.0" layoutY="181.0" prefHeight="30.0" prefWidth="77.0" text="Host IP:" textFill="#c14302">
          <font>
-            <Font name="System Bold" size="21.0" />
-         </font>
-      </Button>
-      <Button layoutX="178.0" layoutY="363.0" mnemonicParsing="false" onAction="#ExitBtn" prefHeight="45.0" prefWidth="86.0" style="-fx-background-color: #5d74a2;" text="Exit" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="21.0" />
-         </font>
-      </Button>
-      <Label layoutX="113.0" layoutY="181.0" prefHeight="23.0" prefWidth="60.0" text="Host IP:" textFill="#4246a1">
-         <font>
-            <Font name="System Bold Italic" size="15.0" />
+            <Font name="System Bold Italic" size="20.0" />
          </font>
       </Label>
       <TextField fx:id="hostIptxt" layoutX="187.0" layoutY="180.0" prefHeight="25.0" prefWidth="143.0" />
+      <Button layoutX="162.0" layoutY="263.0" mnemonicParsing="false" onAction="#LoginBtn" prefHeight="45.0" prefWidth="120.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Login" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="162.0" layoutY="363.0" mnemonicParsing="false" onAction="#ExitBtn" prefHeight="45.0" prefWidth="120.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Exit" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
    <effect>
       <ColorAdjust />

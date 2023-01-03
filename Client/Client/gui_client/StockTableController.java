@@ -87,19 +87,19 @@ public class StockTableController {
 		itemsCol.setCellValueFactory(new PropertyValueFactory<>("Name"));
 		amountCol.setCellValueFactory(new PropertyValueFactory<>("Amount"));
 		ArrayList<ViewItem> items = new ArrayList<>();
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
+//<<<<<<< HEAD
+//=======
+//
+//>>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
 
 		if (ChatClient.machines.contains(null))
 		{	
 			Alert alert = new Alert(AlertType.ERROR,"Machine Id does not exist !",ButtonType.OK);
-<<<<<<< HEAD
+//<<<<<<< HEAD
+//			alert.showAndWait();
+//=======
 			alert.showAndWait();
-=======
-			alert.showAndWait();
->>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
+//>>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
 		}
 		else {
 			Machine temp = ChatClient.machines.get(Integer.parseInt(machineCode)-1); //must check that 
