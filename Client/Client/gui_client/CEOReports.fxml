@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="796.0" prefWidth="644.0" style="-fx-background-color: #a2e4e9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.CEOReportsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="796.0" prefWidth="644.0" style="-fx-background-color: #a2e4e9;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.CEOReportsController">
    <children>
       <ImageView fitHeight="805.0" fitWidth="714.0" layoutX="-63.0" layoutY="-8.0" opacity="0.31" pickOnBounds="true">
          <image>
@@ -28,7 +28,7 @@
             <Font name="Cooper Black" size="36.0" />
          </font>
       </Label>
-      <Button fx:id="createOrderBtn" layoutX="252.0" layoutY="223.0" mnemonicParsing="false" onAction="#CreateOrder" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #1e0f5f;" text="Create Order" textFill="WHITE">
+      <Button fx:id="viewMachinesBtn" layoutX="252.0" layoutY="223.0" mnemonicParsing="false" onAction="#ViewMachines" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #1e0f5f;" text="View Machine" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
