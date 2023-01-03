@@ -13,7 +13,7 @@ import javafx.event.ActionEvent;
 
 public class CEOReportsController {
 	@FXML
-	private Button createOrderBtn;
+	private Button viewMachinesBtn;
 	@FXML
 	private Button monthlyReportBtn;
 	@FXML

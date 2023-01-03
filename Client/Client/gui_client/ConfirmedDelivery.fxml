@@ -48,6 +48,11 @@
                   <Image url="@../../../../../Desktop/ekrut.png.png" />
                </image>
             </ImageView>
+            <ImageView fitHeight="229.0" fitWidth="273.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/delivery.png" />
+               </image>
+            </ImageView>
          </children>
       </VBox>
    </children>
