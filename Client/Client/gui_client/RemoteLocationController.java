@@ -106,15 +106,17 @@ public class RemoteLocationController implements Initializable {
 	}
 	
     public void StartOrderBtn(ActionEvent event) throws Exception {
+    	System.out.println(cmbMachine.getValue());
+    	ChatClient.machineToLoad = Integer.parseInt(cmbMachine.getSelectionModel().getSelectedItem().toString());
     	((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/ekrutOrder.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
-		ekrutOrderController EkrutOrderController = new ekrutOrderController();
-		EkrutOrderController.FindMachineNumber(Integer.parseInt(cmbMachine.getSelectionModel().getSelectedItem().toString()));
 		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
 		primaryStage.setTitle("EKRUT");
 		primaryStage.setScene(scene);		
 		primaryStage.show();
+		
+		//Integer.parseInt(cmbMachine.getSelectionModel().getSelectedItem().toString()
 	}
 }

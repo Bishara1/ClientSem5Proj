@@ -82,7 +82,7 @@ public class ekrutOrderController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		ClientUI.chat.accept(new Message(MachineNumber, Command.ReadMachines));
+		ClientUI.chat.accept(new Message(0, Command.ReadMachines));
 		ClientUI.chat.accept(new Message(0,Command.ReadItems));
 		if(ChatClient.cart.equals(null))
 			cart = new ArrayList<Item>();
@@ -93,7 +93,12 @@ public class ekrutOrderController implements Initializable{
 			previousCart = true;
 		}
 		rotation = 0;
-		//MachineNumber = FindMachineId(id);
+		if(ChatClient.machineToLoad != -1)
+			FindMachineNumber(ChatClient.machineToLoad);
+		else
+			//MachineNumber = FindMachineId(id);
+		//System.out.println(MachineNumber);
+		//System.out.println(ChatClient.machineToLoad);
 		LoadItems();
 		
 	}
@@ -170,7 +175,7 @@ public class ekrutOrderController implements Initializable{
 	
 	public void NextItems()
 	{
-		if((rotation+1)*4 >= ChatClient.machines.get(MachineNumber-1).getItems().size())
+		if((rotation+1)*4 >= ChatClient.machines.get(MachineNumber).getItems().size())
 			rotation=0;
 		else
 			rotation += 1;
@@ -217,7 +222,7 @@ public class ekrutOrderController implements Initializable{
 		}
 		else
 		{
-			if(ChatClient.machines.get(MachineNumber-1).existItem(ProductIdlbl.getText()))
+			if(ChatClient.machines.get(MachineNumber).existItem(ProductIdlbl.getText()))
 			{
 					
 				addItemFromMachineToCart(ProductIdlbl.getText(),String.valueOf(amountByBtn) ); //amountlbl.getText()
@@ -254,19 +259,19 @@ public class ekrutOrderController implements Initializable{
     
     public void CheckAndLoadItem(int num,Label lbl,String str) //num = rotation*4 + i 
     {
-    	if(num > ChatClient.machines.get(MachineNumber-1).getItems().size()-1)
+    	if(num > ChatClient.machines.get(MachineNumber).getItems().size()-1)
     		lbl.setText(" ");
     	else
     	{
     		switch(str) {
     			case "Item":
-    				lbl.setText(ChatClient.machines.get(MachineNumber-1).getItem(num));
+    				lbl.setText(ChatClient.machines.get(MachineNumber).getItem(num));
     				break;
     			case "Price":
-    				lbl.setText(this.getPrice(ChatClient.machines.get(MachineNumber-1).getItem(num)) + " NIS");
+    				lbl.setText(this.getPrice(ChatClient.machines.get(MachineNumber).getItem(num)) + " NIS");
     				break;
     			case "Amount":
-    				lbl.setText(String.valueOf(ChatClient.machines.get(MachineNumber-1).getAmount(num)));
+    				lbl.setText(String.valueOf(ChatClient.machines.get(MachineNumber).getAmount(num)));
     				break;
     		}
     	}
@@ -285,7 +290,7 @@ public class ekrutOrderController implements Initializable{
     
     public int findMax()
     {
-    	int size = ChatClient.machines.get(MachineNumber-1).getItems().size();
+    	int size = ChatClient.machines.get(MachineNumber).getItems().size();
     	int temp = 0;
     	while(temp*4+3<size)
     		temp++;
@@ -294,7 +299,7 @@ public class ekrutOrderController implements Initializable{
     
     public void addItemFromMachineToCart(String name,String amount)
     {
-    	if(!ChatClient.machines.get(MachineNumber-1).existItem(name))
+    	if(!ChatClient.machines.get(MachineNumber).existItem(name))
     		return;
     	else
     	{
@@ -328,15 +333,16 @@ public class ekrutOrderController implements Initializable{
     	return;
     }
     
-    public int FindMachineNumber(int id)
+    public void FindMachineNumber(int id)
     {
+    	System.out.println(ChatClient.machines + " Machines Array");
+    	System.out.println(ChatClient.machines.size() + " Size");
     	int size = ChatClient.machines.size();
 		for(int i = 0;i<size;i++)
 		{
 			if(ChatClient.machines.get(i).getMachine_id() == id)
-				return i;
+				MachineNumber = i;
 		}
-		return -1;
     }
 }
 
