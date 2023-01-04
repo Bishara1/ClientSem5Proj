@@ -20,12 +20,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import logic.Item;
+import logic.Machine;
 
 public class ekrutOrderController implements Initializable{
-
+	
 
 	@FXML
 	private Label codeLbl1;
@@ -67,22 +69,93 @@ public class ekrutOrderController implements Initializable{
 	private Label amountBtnLbl; //NEW **************************************
 	
 	private ArrayList<Item> cart;
+	private boolean previousCart = false;
 	
 	private int amountByBtn = 0; //NEW *************************************
 	
-	private int MachineNumber = 1; //placeholder for the actual machine number
+	private int MachineNumber = -1; //placeholder for the actual machine number
 	
 	private int rotation;
 	//ArrayList<Machine> machines are saved in ChatClient
+	
+	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		ClientUI.chat.accept(new Message(MachineNumber, Command.ReadMachines));
 		ClientUI.chat.accept(new Message(0,Command.ReadItems));
-		cart = new ArrayList<>();
+		if(ChatClient.cart.equals(null))
+			cart = new ArrayList<Item>();
+		else {
+			cart = new ArrayList<Item>();
+			cart = ChatClient.cart;
+			updateTotalPrice();
+			previousCart = true;
+		}
 		rotation = 0;
+//		MachineNumber = FindMachineId(id);
+		// LEEN CHANGED : I SET THE LINE ABOVE AS COMMENT TO NOT LOSE MY SHIT BECAUSE I WANT TO FKN PUSH MY CHANGES
 		LoadItems();
 		
+	}
+	
+	public void ProceedCartBtn(ActionEvent event) throws Exception {
+		ChatClient.cart = cart;
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/Cart.fxml"));
+		Stage primaryStage = new Stage();
+		Scene scene = new Scene(root);
+		primaryStage.setTitle("Cart");
+		primaryStage.setScene(scene);		
+		primaryStage.show();	
+	}
+	public void BackBtn(ActionEvent event) throws Exception {
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Parent root = null;
+		switch(ChatClient.role) {
+		
+		case "ceo":
+			root = FXMLLoader.load(getClass().getResource("/gui_client/CEOReports.fxml"));
+			break;
+		
+		case "rgm":
+			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			break;
+			
+		case "rgw":
+			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			break;
+		
+		case "stm":
+			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			break;
+			
+		case "stw":
+			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			break;
+			
+		case "dlw":
+			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			break;
+			
+		case "inm":
+			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			break;
+			
+		case "customer":
+			root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
+			break;
+			
+		default:
+			break;
+		}
+		Stage primaryStage = new Stage();
+		Scene scene = new Scene(root);
+		primaryStage.setTitle("EKRUT");
+		primaryStage.setScene(scene);		
+		primaryStage.show();	
+		
+//>>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
 	}
 	
 	public void NextItems()
@@ -126,57 +199,6 @@ public class ekrutOrderController implements Initializable{
 		}
 	}
 	
-	public void ProceedCartBtn() {
-		
-	}
-	public void BackBtn(ActionEvent event) throws Exception {
-		
-		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = null;
-		switch(ChatClient.role) {
-		
-		case "ceo":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/CEOReports.fxml"));
-			break;
-		
-		case "rgm":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
-			break;
-			
-		case "rgw":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
-			break;
-		
-		case "stm":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
-			break;
-			
-		case "stw":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
-			break;
-			
-		case "dlw":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
-			break;
-			
-		case "inm":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
-			break;
-			
-		case "customer":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
-			break;
-			
-		default:
-			break;
-		}
-		Stage primaryStage = new Stage();
-		Scene scene = new Scene(root);
-		primaryStage.setTitle("Update Stock");
-		primaryStage.setScene(scene);		
-		primaryStage.show();	
-		
-	}
     public void AddToCartBtn() {
 		if(this.ProductIdlbl.getText().equals("") || amountByBtn == 0) //this.amountlbl.getText().equals("") ***********
 		{
@@ -187,13 +209,14 @@ public class ekrutOrderController implements Initializable{
 		{
 			if(ChatClient.machines.get(MachineNumber-1).existItem(ProductIdlbl.getText()))
 			{
-				ProductIdlbl.setText("");
-				amountBtnLbl.setText("0"); //new
+					
 				addItemFromMachineToCart(ProductIdlbl.getText(),String.valueOf(amountByBtn) ); //amountlbl.getText()
 				updateTotalPrice();
 				Alert alert = new Alert(AlertType.CONFIRMATION,"Item has been added to cart!",ButtonType.OK);
 				alert.showAndWait();
 				amountByBtn = 0; //new 
+				ProductIdlbl.setText("");
+				amountBtnLbl.setText("0");
 			} 
 			else
 			{
@@ -273,15 +296,12 @@ public class ekrutOrderController implements Initializable{
     				{
     					int newAmount = Integer.parseInt(cart.get(i).getAmount()) + Integer.parseInt(amount);
     					cart.get(i).setAmount(String.valueOf(newAmount));
-    					System.out.println(cart);
     					return;
     				}
     			
     			}
-   
     			cart.add(new Item(name,amount,this.getPrice(name)));
     		
-    		System.out.println(cart);
     		
     		
     	}
@@ -296,6 +316,17 @@ public class ekrutOrderController implements Initializable{
     	}
     	TotalPricelbl.setText(String.valueOf(sum));
     	return;
+    }
+    
+    public int FindMachineNumber(int id)
+    {
+    	int size = ChatClient.machines.size();
+		for(int i = 0;i<size;i++)
+		{
+			if(ChatClient.machines.get(i).getMachine_id() == id)
+				return i;
+		}
+		return -1;
     }
 }
 

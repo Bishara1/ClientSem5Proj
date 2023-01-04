@@ -47,7 +47,7 @@ public class UserLoginController {
 			alert.showAndWait();
 		}
 		else {
-			ConnectNewClient();
+		ConnectNewClient();
 		Message msg = new Message(username, Command.Connect); //connects client to server
 		ClientUI.chat.accept(msg);
 		//check if password is correct/ if client exists and then proceed;
@@ -55,7 +55,6 @@ public class UserLoginController {
 		{
 			((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
 			Stage primaryStage = new Stage();
-			
 			Parent root = null;
 			switch(ChatClient.role) {
 			
@@ -64,7 +63,7 @@ public class UserLoginController {
 				break;
 			
 			case "rgm":
-				root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+				root = FXMLLoader.load(getClass().getResource("/gui_client/RegionalManager.fxml"));
 				break;
 				
 			case "rgw":
@@ -91,6 +90,9 @@ public class UserLoginController {
 				root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
 				break;
 				
+			case "csw":
+				root = FXMLLoader.load(getClass().getResource("/gui_client/CustomerServiceWorker.fxml"));
+				break;
 			default:
 				break;
 			}

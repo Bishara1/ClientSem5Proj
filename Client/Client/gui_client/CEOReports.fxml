@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.CEOReportsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.CEOReportsController">
    <children>
       <Button fx:id="logOutBtn" layoutX="426.0" layoutY="675.0" mnemonicParsing="false" onAction="#LogOut" prefHeight="47.0" prefWidth="107.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Logout" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Label layoutX="399.0" layoutY="73.0" prefHeight="99.0" prefWidth="502.0" text="Welcome CEO" textFill="#c14302">
+      <Label fx:id="titleLbl" layoutX="399.0" layoutY="73.0" prefHeight="99.0" prefWidth="502.0" text="Welcome CEO" textFill="#c14302">
          <font>
             <Font name="Elephant" size="41.0" />
          </font>
@@ -25,9 +25,9 @@
             <Font name="System Bold" size="15.0" />
          </font></Button>
 
-      <Button fx:id="monthlyReportBtn" layoutX="600.0" layoutY="337.0" mnemonicParsing="false" onAction="#MonthltReports" prefHeight="54.0" prefWidth="160.0" text="Monthly Report" textFill="WHITE">
+      <Button fx:id="monthlyReportBtn" layoutX="600.0" layoutY="337.0" mnemonicParsing="false" onAction="#MonthlyReports" prefHeight="54.0" prefWidth="160.0" text="Monthly Report" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="System Bold" size="15.0" />                                                         
          </font></Button>
       <Button fx:id="viewSubscribersBtn" layoutX="600.0" layoutY="451.0" mnemonicParsing="false" onAction="#ViewSubscribers" prefHeight="55.0" prefWidth="160.0" text="View Subscribers" textFill="WHITE">
          <font>
@@ -38,14 +38,14 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <VBox alignment="BASELINE_CENTER" layoutX="-33.0" layoutY="-10.0" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <VBox alignment="BASELINE_CENTER" layoutX="-33.0" layoutY="-10.0" prefHeight="768.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
             <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Desktop/ekrut.png.png" />
+                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="193.0" fitWidth="189.0" pickOnBounds="true" preserveRatio="true">

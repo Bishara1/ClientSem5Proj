@@ -13,7 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.UserLoginController">
    <children>
-      <VBox alignment="BASELINE_CENTER" layoutX="-25.0" layoutY="-11.0" prefHeight="779.0" prefWidth="386.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;" AnchorPane.leftAnchor="-25.0">
+      <VBox alignment="BASELINE_CENTER" layoutX="-25.0" layoutY="-11.0" prefHeight="772.0" prefWidth="389.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;" AnchorPane.leftAnchor="-25.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -42,7 +42,7 @@
       </Button>
       <TextField fx:id="Usernametxt" layoutX="575.0" layoutY="369.0" prefHeight="42.0" prefWidth="276.0" />
       <TextField fx:id="Passwordtxt" layoutX="575.0" layoutY="433.0" prefHeight="42.0" prefWidth="276.0" />
-      <Text fill="#c14302" layoutX="408.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName" wrappingWidth="166.00001300871372">
+      <Text fill="#c14302" layoutX="408.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="166.00001300871372">
          <font>
             <Font name="Elephant" size="29.0" />
          </font>

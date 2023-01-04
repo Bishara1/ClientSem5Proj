@@ -13,19 +13,19 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ekrutOrderController">
    <children>
-      <VBox alignment="BASELINE_CENTER" layoutX="-15.0" layoutY="-1.0" prefHeight="770.0" prefWidth="386.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <VBox alignment="BASELINE_CENTER" layoutX="-15.0" layoutY="-1.0" prefHeight="763.0" prefWidth="389.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="353.0" fitWidth="365.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
             </ImageView>
          </children>
       </VBox>
-      <Pane layoutX="370.0" layoutY="179.0" prefHeight="317.0" prefWidth="567.0" style="-fx-background-color: #dfbd7a;">
+      <Pane layoutX="370.0" layoutY="179.0" prefHeight="336.0" prefWidth="567.0" style="-fx-background-color: #dfbd7a;">
          <children>
             <ImageView fitHeight="108.0" fitWidth="88.0" layoutX="58.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -37,7 +37,7 @@
                   <Image url="@../../../../../Downloads/cf7ca1bc-daf1-4f7a-a4fb-129d27d64fb9.png" />
                </image>
             </ImageView>
-            <Label fx:id="codeLbl1" alignment="CENTER" layoutX="109.0" layoutY="136.0" prefWidth="30.0" text="BB1" />
+            <Label fx:id="codeLbl1" alignment="CENTER" layoutX="109.0" layoutY="136.0" text="BB1" />
             <Label fx:id="priceLbl1" alignment="CENTER" layoutX="94.0" layoutY="180.0" prefWidth="60.0" text="5 NIS" />
             <Label fx:id="codeLbl2" alignment="CENTER" layoutX="232.0" layoutY="136.0" text="MN8" />
             <Label fx:id="priceLbl2" alignment="CENTER" layoutX="217.0" layoutY="180.0" prefWidth="60.0" text="6 NIS" />
@@ -99,14 +99,24 @@
                   <Image url="@../../../../CommonSem5Proj/Common/Common/images/pgUp.png" />
                </image>
             </ImageView>
+            <Label layoutX="319.0" layoutY="310.0" prefHeight="21.0" prefWidth="60.0" text="Next Page" textFill="#c14302" underline="true">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="187.0" layoutY="310.0" prefHeight="21.0" prefWidth="81.0" text="Previous Page" textFill="#c14302" underline="true">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
-      <TextField fx:id="ProductIdlbl" layoutX="463.0" layoutY="500.0" prefHeight="21.0" prefWidth="150.0" />
-      <Label layoutX="375.0" layoutY="508.0" text="Product ID" textFill="#c14302">
+      <TextField fx:id="ProductIdlbl" layoutX="467.0" layoutY="518.0" prefHeight="21.0" prefWidth="150.0" />
+      <Label layoutX="379.0" layoutY="526.0" text="Product ID" textFill="#c14302">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
-      <Label layoutX="381.0" layoutY="543.0" text="Amount" textFill="#c14302">
+      <Label layoutX="385.0" layoutY="561.0" text="Amount" textFill="#c14302">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
@@ -116,20 +126,20 @@
             <Font name="Elephant" size="48.0" />
          </font>
       </Label>
-      <Label layoutX="381.0" layoutY="593.0" prefHeight="21.0" prefWidth="88.0" text="Total Price:" textFill="#c14302">
+      <Label layoutX="385.0" layoutY="611.0" prefHeight="21.0" prefWidth="88.0" text="Total Price:" textFill="#c14302">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
-      <Pane layoutX="695.0" layoutY="500.0" prefHeight="219.0" prefWidth="242.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css">
+      <Pane layoutX="695.0" layoutY="521.0" prefHeight="198.0" prefWidth="242.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css">
          <children>
-            <Button fx:id="AddtoCartBtn" layoutX="-42.0" layoutY="22.0" mnemonicParsing="false" onAction="#AddToCartBtn" prefHeight="38.0" prefWidth="113.0" text="Add to cart" textFill="WHITE" />
-            <Button fx:id="ProcceedToCartBtn" layoutX="33.0" layoutY="190.0" mnemonicParsing="false" onAction="#ProceedCartBtn" prefHeight="38.0" prefWidth="161.0" text="Proceed to Cart" textFill="WHITE" />
+            <Button fx:id="AddtoCartBtn" layoutX="-42.0" layoutY="41.0" mnemonicParsing="false" onAction="#AddToCartBtn" prefHeight="38.0" prefWidth="113.0" text="Add to cart" textFill="WHITE" />
+            <Button fx:id="ProcceedToCartBtn" layoutX="33.0" layoutY="179.0" mnemonicParsing="false" onAction="#ProceedCartBtn" prefHeight="38.0" prefWidth="161.0" text="Proceed to Cart" textFill="WHITE" />
          </children>
       </Pane>
-      <TextField fx:id="TotalPricelbl" editable="false" layoutX="469.0" layoutY="584.0" prefHeight="31.0" prefWidth="113.0" />
-      <Button fx:id="btnLess" layoutX="469.0" layoutY="541.0" mnemonicParsing="false" onAction="#LessItem" text="  -  " />
-      <Button fx:id="btnMore" layoutX="522.0" layoutY="541.0" mnemonicParsing="false" onAction="#MoreItem" text="  +  " />
-      <Label fx:id="amountBtnLbl" layoutX="576.0" layoutY="541.0" text="0">
+      <TextField fx:id="TotalPricelbl" editable="false" layoutX="473.0" layoutY="602.0" prefHeight="31.0" prefWidth="113.0" />
+      <Button fx:id="btnLess" layoutX="473.0" layoutY="559.0" mnemonicParsing="false" onAction="#LessItem" text="  -  " />
+      <Button fx:id="btnMore" layoutX="526.0" layoutY="559.0" mnemonicParsing="false" onAction="#MoreItem" text="  +  " />
+      <Label fx:id="amountBtnLbl" layoutX="580.0" layoutY="559.0" text="0">
          <font>
             <Font size="18.0" />
          </font></Label>
