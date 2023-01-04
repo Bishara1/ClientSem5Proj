@@ -93,7 +93,7 @@ public class ekrutOrderController implements Initializable{
 			previousCart = true;
 		}
 		rotation = 0;
-		MachineNumber = FindMachineId(id);
+		//MachineNumber = FindMachineId(id);
 		LoadItems();
 		
 	}
