@@ -53,10 +53,8 @@ public class UserLoginController {
 		//check if password is correct/ if client exists and then proceed;
 		if(ChatClient.password.equals(password))
 		{
-			System.out.println("if entered");
 			((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
 			Stage primaryStage = new Stage();
-			System.out.println("hide");
 			Parent root = null;
 			switch(ChatClient.role) {
 			
@@ -92,6 +90,9 @@ public class UserLoginController {
 				root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
 				break;
 				
+			case "csw":
+				root = FXMLLoader.load(getClass().getResource("/gui_client/CustomerServiceWorker.fxml"));
+				break;
 			default:
 				break;
 			}
