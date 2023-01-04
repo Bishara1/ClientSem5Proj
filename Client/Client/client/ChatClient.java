@@ -40,6 +40,7 @@ public class ChatClient extends AbstractClient
   public static ArrayList<Item> items;
   public static String password;
   public static String role;
+  public static String Fname;
 
   
   //Constructors ****************************************************
@@ -92,9 +93,11 @@ public class ChatClient extends AbstractClient
 	  		  break;
 	  	  
 	  	  case Connect:
-	  		  String[] passRole = (String[])(((Message)msg).getContent());
-	  		  password = passRole[0];
-	  		  role = passRole[1];
+	  		  String[] passRoleFname = (String[])(((Message)msg).getContent());
+	  		  password = passRoleFname[0];
+	  		  role = passRoleFname[1];
+	  		  Fname = passRoleFname[2];
+	  		  
 	  		  break;
 	  		  
 	  default:

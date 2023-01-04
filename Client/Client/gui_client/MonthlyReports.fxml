@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="cmbMachineId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.MonthlyReportsController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.MonthlyReportsController">
    <children>
       <Label layoutX="517.0" layoutY="49.0" text="Monthly Reports" textFill="#c14302">
          <font>
@@ -19,7 +19,7 @@
       </Label>
       <ComboBox fx:id="cmbYear" layoutX="469.0" layoutY="191.0" prefHeight="49.0" prefWidth="140.0" promptText="Year" style="-fx-pref-height: 35;" />
       <ComboBox fx:id="cmbMonth" layoutX="703.0" layoutY="191.0" prefHeight="41.0" prefWidth="140.0" promptText="Month" style="-fx-pref-height: 35;" />
-      <ComboBox fx:id="cmbType" layoutX="583.0" layoutY="404.0" prefHeight="25.0" prefWidth="140.0" promptText="Type" style="-fx-pref-height: 35;" />
+      <ComboBox fx:id="cmbType" layoutX="583.0" layoutY="404.0" prefHeight="25.0" prefWidth="132.0" promptText="Type" style="-fx-pref-height: 35;" />
       <Button fx:id="backBtn" layoutX="445.0" layoutY="551.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="35.0" prefWidth="72.0" text="Back">
          <font>
             <Font size="14.0" />
@@ -30,8 +30,8 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <ComboBox fx:id="cmbLocation" layoutX="579.0" layoutY="282.0" prefHeight="41.0" prefWidth="140.0" promptText="Location" style="-fx-pref-height: 35;" />
-      <ComboBox fx:id="cmbDeviceId" layoutX="583.0" layoutY="343.0" prefWidth="132.0" promptText="Machine Id" style="-fx-pref-height: 35;" />
+      <ComboBox fx:id="cmbLocation" layoutX="583.0" layoutY="282.0" prefHeight="41.0" prefWidth="132.0" promptText="Location" style="-fx-pref-height: 35;" />
+      <ComboBox fx:id="cmbMachineId" layoutX="583.0" layoutY="343.0" prefWidth="132.0" promptText="Machine Id" style="-fx-pref-height: 35;" />
       <VBox alignment="BASELINE_CENTER" layoutX="-20.0" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
@@ -39,7 +39,7 @@
          <children>
             <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Desktop/ekrut.png.png" />
+                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
             </ImageView>
          </children>
