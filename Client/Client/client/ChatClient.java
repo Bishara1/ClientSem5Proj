@@ -45,6 +45,7 @@ public class ChatClient extends AbstractClient
   public static String password;
   public static String role;
   public static String Fname;
+  public static int machineToLoad = -1;
   
 
   
