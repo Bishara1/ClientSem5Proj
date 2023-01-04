@@ -13,27 +13,22 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.DiscountLocationController">
    <children>
-      <Label alignment="CENTER" layoutX="522.0" layoutY="51.0" prefHeight="54.0" prefWidth="254.0" text="EKRUT" textFill="#c14302">
+      <Label alignment="CENTER" layoutX="450.0" layoutY="123.0" prefHeight="61.0" prefWidth="409.0" text="Choose location for Discount" textFill="#c14302">
          <font>
-            <Font name="Cooper Black" size="48.0" />
+            <Font name="Elephant" size="26.0" />
          </font>
       </Label>
-      <Button fx:id="backbtn" layoutX="550.0" layoutY="455.0" mnemonicParsing="false" onAction="#BackBtn" text="Back" textFill="WHITE">
+      <Button fx:id="backbtn" layoutX="450.0" layoutY="637.0" mnemonicParsing="false" onAction="#BackBtn" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Label layoutX="469.0" layoutY="121.0" prefHeight="31.0" prefWidth="342.0" text="Count the memories NOT the calories" textFill="#c14302">
-         <font>
-            <Font name="System Bold Italic" size="19.0" />
-         </font>
-      </Label>
-      <Text fill="#c14302" layoutX="533.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location:" wrappingWidth="86.99999582767487">
+      <Text fill="#c14302" layoutX="511.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location:" wrappingWidth="86.99999582767487">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <ComboBox fx:id="chooselocationbtn" layoutX="666.0" layoutY="251.0" onAction="#LoadLocation" prefHeight="31.0" prefWidth="163.0" promptText="Choose location" />
-      <Button fx:id="confirmbtn" layoutX="760.0" layoutY="455.0" mnemonicParsing="false" onAction="#ConfirmBtn" prefHeight="31.0" prefWidth="87.0" text="Confirm" textFill="WHITE">
+      <ComboBox fx:id="chooselocationbtn" layoutX="620.0" layoutY="250.0" onAction="#LoadLocation" prefHeight="31.0" prefWidth="163.0" promptText="Choose location" />
+      <Button fx:id="confirmbtn" layoutX="801.0" layoutY="637.0" mnemonicParsing="false" onAction="#ConfirmBtn" prefHeight="31.0" prefWidth="87.0" text="Confirm" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>

@@ -8,7 +8,6 @@ import javafx.scene.control.TextField;
 
 public class RemoteCodeController {
 
-
 	@FXML
 	private Button backbtn;
 	@FXML

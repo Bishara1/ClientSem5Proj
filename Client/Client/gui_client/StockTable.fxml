@@ -14,17 +14,17 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.StockTableController">
    <children>
-      <Button fx:id="backBtn" layoutX="433.0" layoutY="641.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="39.0" prefWidth="94.0" text="Back" textFill="WHITE">
+      <Button fx:id="backBtn" layoutX="445.0" layoutY="661.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="39.0" prefWidth="94.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="showStockBtn" layoutX="505.0" layoutY="143.0" mnemonicParsing="false" onAction="#ShowStockBtn" prefHeight="39.0" prefWidth="122.0" text="Show stock" textFill="WHITE">
+      <Button fx:id="showStockBtn" layoutX="466.0" layoutY="139.0" mnemonicParsing="false" onAction="#ShowStockBtn" prefHeight="39.0" prefWidth="122.0" text="Show stock" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="updateBtn" layoutX="768.0" layoutY="641.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="94.0" text="Update" textFill="WHITE">
+      <Button fx:id="updateBtn" layoutX="787.0" layoutY="661.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="94.0" text="Update" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -34,14 +34,14 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="machineCodetxt" layoutX="641.0" layoutY="86.0" promptText="machine code" />
-      <TableView fx:id="machineTable" layoutX="492.0" layoutY="205.0" prefHeight="346.0" prefWidth="298.0">
+      <TextField fx:id="machineCodetxt" layoutX="620.0" layoutY="86.0" promptText="machine code" />
+      <TableView fx:id="machineTable" layoutX="483.0" layoutY="203.0" prefHeight="396.0" prefWidth="379.0">
         <columns>
-          <TableColumn fx:id="itemsCol" prefWidth="144.0" text="Items" />
-          <TableColumn fx:id="amountCol" minWidth="0.0" prefWidth="153.0" text="Amount" />
+          <TableColumn fx:id="itemsCol" prefWidth="193.0" text="Items" />
+          <TableColumn fx:id="amountCol" minWidth="0.0" prefWidth="185.0" text="Amount" />
         </columns>
       </TableView>
-      <VBox alignment="BASELINE_CENTER" layoutX="-35.0" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <VBox alignment="BASELINE_CENTER" layoutX="-16.0" layoutY="-10.0" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>

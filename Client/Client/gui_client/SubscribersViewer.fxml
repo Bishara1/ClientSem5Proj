@@ -16,12 +16,12 @@
             <Font name="System Bold Italic" size="36.0" />
          </font>
       </Label>
-      <Button defaultButton="true" layoutX="63.0" layoutY="815.0" mnemonicParsing="false" onAction="#UpdatBtn" prefHeight="38.0" prefWidth="126.0" text="Update Details" textFill="WHITE">
+      <Button defaultButton="true" layoutX="545.0" layoutY="718.0" mnemonicParsing="false" onAction="#UpdatBtn" prefHeight="38.0" prefWidth="139.0" text="Update Details" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button defaultButton="true" layoutX="1077.0" layoutY="815.0" mnemonicParsing="false" onAction="#ExitBtn" prefHeight="38.0" prefWidth="126.0" text="Close" textFill="WHITE">
+      <Button defaultButton="true" layoutX="59.0" layoutY="821.0" mnemonicParsing="false" onAction="#ExitBtn" prefHeight="38.0" prefWidth="126.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Close" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

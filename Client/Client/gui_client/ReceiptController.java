@@ -24,6 +24,9 @@ public class ReceiptController {
 
 	@FXML
 	private Button okBtn;
+	@FXML
+	private Button backBtn;
+	
 	
 	public void OKBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
@@ -31,6 +34,16 @@ public class ReceiptController {
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 		primaryStage.setTitle("Login");
+		primaryStage.setScene(scene);		
+		primaryStage.show();		
+	}
+	
+	public void BackBtn(ActionEvent event) throws Exception {
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/Purchase.fxml"));
+		Stage primaryStage = new Stage();
+		Scene scene = new Scene(root);
+		primaryStage.setTitle("Cart");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
 	}

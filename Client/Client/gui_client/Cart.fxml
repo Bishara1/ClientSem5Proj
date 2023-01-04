@@ -15,11 +15,11 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.CartController">
    <children>
       <Button layoutX="367.0" layoutY="211.0" mnemonicParsing="false" opacity="0.0" prefHeight="47.0" prefWidth="54.0" visible="false" />
-      <Button layoutX="429.0" layoutY="688.0" mnemonicParsing="false" onAction="#Back" prefHeight="39.0" prefWidth="135.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
+      <Button fx:id="backbtn" layoutX="429.0" layoutY="688.0" mnemonicParsing="false" onAction="#Back" prefHeight="39.0" prefWidth="135.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Button layoutX="758.0" layoutY="688.0" mnemonicParsing="false" onAction="#ProceedPayment" prefHeight="39.0" prefWidth="159.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Proceed Payment" textFill="WHITE">
+      <Button fx:id="paymentbtn" layoutX="758.0" layoutY="688.0" mnemonicParsing="false" onAction="#ProceedPayment" prefHeight="39.0" prefWidth="159.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Proceed Payment" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>

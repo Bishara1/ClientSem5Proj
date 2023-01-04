@@ -97,7 +97,7 @@ public class SubscribersViewerController implements Initializable{
 	
 	public void RefreshTable() {
 		messageToServer.setCommand(Command.ReadUsers);
-		messageToServer.setContent(null);
+		messageToServer.setContent(0);
 		ClientUI.chat.accept(messageToServer);  // read from database
 		obs = FXCollections.observableArrayList(ChatClient.subscribers);  // insert database details to obs
 		LoadAndSetTable(); // load database colummns into table and display them
