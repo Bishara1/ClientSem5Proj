@@ -47,15 +47,16 @@ public class UserLoginController {
 			alert.showAndWait();
 		}
 		else {
-			ConnectNewClient();
+		ConnectNewClient();
 		Message msg = new Message(username, Command.Connect); //connects client to server
 		ClientUI.chat.accept(msg);
 		//check if password is correct/ if client exists and then proceed;
 		if(ChatClient.password.equals(password))
 		{
+			System.out.println("if entered");
 			((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
 			Stage primaryStage = new Stage();
-			
+			System.out.println("hide");
 			Parent root = null;
 			switch(ChatClient.role) {
 			

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ekrutOrderController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ekrutOrderController">
    <children>
       <VBox alignment="BASELINE_CENTER" layoutX="-15.0" layoutY="-1.0" prefHeight="763.0" prefWidth="389.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
@@ -37,7 +37,7 @@
                   <Image url="@../../../../../Downloads/cf7ca1bc-daf1-4f7a-a4fb-129d27d64fb9.png" />
                </image>
             </ImageView>
-            <Label fx:id="codeLbl1" alignment="CENTER" layoutX="109.0" layoutY="136.0" prefWidth="30.0" text="BB1" />
+            <Label fx:id="codeLbl1" alignment="CENTER" layoutX="109.0" layoutY="136.0" text="BB1" />
             <Label fx:id="priceLbl1" alignment="CENTER" layoutX="94.0" layoutY="180.0" prefWidth="60.0" text="5 NIS" />
             <Label fx:id="codeLbl2" alignment="CENTER" layoutX="232.0" layoutY="136.0" text="MN8" />
             <Label fx:id="priceLbl2" alignment="CENTER" layoutX="217.0" layoutY="180.0" prefWidth="60.0" text="6 NIS" />

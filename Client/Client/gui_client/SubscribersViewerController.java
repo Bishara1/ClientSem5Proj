@@ -4,9 +4,11 @@ import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
@@ -97,17 +99,19 @@ public class SubscribersViewerController implements Initializable{
 	
 	public void RefreshTable() {
 		messageToServer.setCommand(Command.ReadUsers);
-		messageToServer.setContent(null);
+		messageToServer.setContent(0);
 		ClientUI.chat.accept(messageToServer);  // read from database
 		obs = FXCollections.observableArrayList(ChatClient.subscribers);  // insert database details to obs
 		LoadAndSetTable(); // load database colummns into table and display them
 	}
 	
-	public void ExitBtn() {
-		messageToServer.setCommand(Command.Disconnect);
-		messageToServer.setContent(null);
-		ClientUI.chat.accept(messageToServer);
-		System.out.println("exiting login screen");
-		System.exit(0);	
+	public void ExitBtn(ActionEvent event) throws Exception {
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/CEOReports.fxml"));
+		Stage primaryStage = new Stage();
+		Scene scene = new Scene(root);
+		primaryStage.setTitle("CEO Reports");
+		primaryStage.setScene(scene);		
+		primaryStage.show();		
 	}
 }

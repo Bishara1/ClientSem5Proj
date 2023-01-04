@@ -33,7 +33,7 @@ import client.ClientUI;
 import common.Command;
 import common.Message;
 
-public class MonthlyReportsController implements Initializable{
+public class MonthlyReportsController implements Initializable {
 	
 	@FXML
 	private Button showReportBtn;
@@ -63,7 +63,6 @@ public class MonthlyReportsController implements Initializable{
 	@FXML
 	public void Select(ActionEvent event)
 	{
-		
 		selected = cmbLocation.getSelectionModel().getSelectedItem().toString();
 		System.out.println(selected);
 		setMachineIdComboBox();
