@@ -39,26 +39,18 @@ public class CEOReportsController implements Initializable {
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
-		primaryStage.setTitle("StockTable");
+		primaryStage.setTitle("Stock Table");
 		primaryStage.setScene(scene);		
 		primaryStage.show();
 	}
-	public void LogOut(ActionEvent event) throws Exception {
-		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/LoginEkrut.fxml"));
-		Stage primaryStage = new Stage();
-		Scene scene = new Scene(root);
-		primaryStage.setTitle("Login EKRUT");
-		primaryStage.setScene(scene);		
-		primaryStage.show();	
-	}
 	
+
 	public void ViewSubscribers(ActionEvent event) throws Exception  {
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/SubscribersViewer.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
-		primaryStage.setTitle("EKRUT");
+		primaryStage.setTitle("Subscriber Viewer");
 		primaryStage.setScene(scene);		
 		primaryStage.show();
 	}
@@ -68,7 +60,7 @@ public class CEOReportsController implements Initializable {
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/DiscountLocation.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
-		primaryStage.setTitle("EKRUT");
+		primaryStage.setTitle("Discount Location");
 		primaryStage.setScene(scene);		
 		primaryStage.show();
 	}
@@ -82,9 +74,21 @@ public class CEOReportsController implements Initializable {
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
 	}
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.titleLbl.setText("Welcome CEO " + ChatClient.Fname);
-		
+	}
+
+	
+	public void LogOut(ActionEvent event) throws Exception {
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/LoginEkrut.fxml"));
+		Stage primaryStage = new Stage();
+		Scene scene = new Scene(root);
+		primaryStage.setTitle("Login EKRUT");
+		primaryStage.setScene(scene);		
+		primaryStage.show();	
+
 	}
 }

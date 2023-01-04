@@ -35,7 +35,6 @@ public class LoginController {
 	}
 	
 	public void ExitBtn() {
-		System.out.println("exiting login screen");
 		System.exit(0);	
 	}
 	
@@ -51,7 +50,7 @@ public class LoginController {
 		Scene scene = new Scene(root);
 		
 		//scene.getStylesheets().add(getClass().getResource("/gui/.css").toExternalForm());
-		primaryStage.setTitle("Subscribers Viewer");
+		primaryStage.setTitle("Login EKRUT");
 		primaryStage.setScene(scene);
 		
 		primaryStage.show();	

@@ -37,7 +37,7 @@ public class LoginEkrutController {
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/UserLogin.fxml"));
 		Scene scene = new Scene(root);
 		
-		primaryStage.setTitle("Login Subscriber");
+		primaryStage.setTitle("User Login");
 		primaryStage.setScene(scene);
 		
 		primaryStage.show();	
@@ -47,8 +47,8 @@ public class LoginEkrutController {
 		((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
 		Stage primaryStage = new Stage();
 
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/StockTable.fxml"));
-//		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/EKTLogin.fxml"));
+//		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/MonthlyReports.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/EKTLogin.fxml"));
 		Scene scene = new Scene(root);
 		
 		primaryStage.setTitle("EKT Login");
