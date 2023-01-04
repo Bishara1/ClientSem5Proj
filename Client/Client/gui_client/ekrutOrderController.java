@@ -69,14 +69,14 @@ public class ekrutOrderController implements Initializable{
 	private Label amountBtnLbl; //NEW **************************************
 	
 	private ArrayList<Item> cart;
-	private boolean previousCart = false;
 	
 	private int amountByBtn = 0; //NEW *************************************
 	
-	private int MachineNumber = -1; //placeholder for the actual machine number
+	private int MachineNumber = -1; 
 	
 	private int rotation;
-	//ArrayList<Machine> machines are saved in ChatClient
+	
+	private int threshold = 0;
 	
 	
 	
@@ -90,7 +90,6 @@ public class ekrutOrderController implements Initializable{
 			cart = new ArrayList<Item>();
 			cart = ChatClient.cart;
 			updateTotalPrice();
-			previousCart = true;
 		}
 		rotation = 0;
 		if(ChatClient.machineToLoad != -1)
@@ -203,6 +202,11 @@ public class ekrutOrderController implements Initializable{
 		if(this.ProductIdlbl.getText().equals("") || amountByBtn == 0) //this.amountlbl.getText().equals("") ***********
 		{
 			Alert alert = new Alert(AlertType.ERROR,"Must enter product name and amount!",ButtonType.OK);
+			alert.showAndWait();
+		}
+		if(amountByBtn > ChatClient.machines.get(MachineNumber).getAmount(getItemIndex(this.ProductIdlbl.getText())) ||  ChatClient.machines.get(MachineNumber).getAmount(getItemIndex(this.ProductIdlbl.getText())) - amountByBtn < threshold )
+		{
+			Alert alert = new Alert(AlertType.ERROR,"Enter a valid amount!",ButtonType.OK);
 			alert.showAndWait();
 		}
 		else
@@ -320,14 +324,23 @@ public class ekrutOrderController implements Initializable{
     
     public void FindMachineNumber(int id)
     {
-    	System.out.println(ChatClient.machines + " Machines Array");
-    	System.out.println(ChatClient.machines.size() + " Size");
     	int size = ChatClient.machines.size();
 		for(int i = 0;i<size;i++)
 		{
 			if(ChatClient.machines.get(i).getMachine_id() == id)
 				MachineNumber = i;
 		}
+    }
+    
+    public int getItemIndex(String name)
+    {
+    	int size = ChatClient.machines.get(MachineNumber).getItems().size();
+    	for(int i =0;i<size;i++)
+    	{
+    		if(ChatClient.machines.get(MachineNumber).getItems().get(i).equals(name))
+    			return i;
+    	}
+    	return -1;
     }
 }
 
