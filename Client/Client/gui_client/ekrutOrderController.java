@@ -67,7 +67,8 @@ public class ekrutOrderController implements Initializable{
 	@FXML
 	private Label amountBtnLbl; //NEW **************************************
 	
-	private static ArrayList<Item> cart;
+	private ArrayList<Item> cart;
+	private boolean previousCart = false;
 	
 	private int amountByBtn = 0; //NEW *************************************
 	
@@ -76,22 +77,25 @@ public class ekrutOrderController implements Initializable{
 	private int rotation;
 	//ArrayList<Machine> machines are saved in ChatClient
 	
-	public static ArrayList<Item >getCart()
-	{
-		return cart;
-	}
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		ClientUI.chat.accept(new Message(MachineNumber, Command.ReadMachines));
 		ClientUI.chat.accept(new Message(0,Command.ReadItems));
-		cart = new ArrayList<Item>();
+		if(ChatClient.cart.equals(null))
+			cart = new ArrayList<Item>();
+		else {
+			cart = new ArrayList<Item>();
+			cart = ChatClient.cart;
+			updateTotalPrice();
+			previousCart = true;
+		}
 		rotation = 0;
 		LoadItems();
 		
 	}
 	
 	public void ProceedCartBtn(ActionEvent event) throws Exception {
+		ChatClient.cart = cart;
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/Cart.fxml"));
 		Stage primaryStage = new Stage();
@@ -212,7 +216,6 @@ public class ekrutOrderController implements Initializable{
 			if(ChatClient.machines.get(MachineNumber-1).existItem(ProductIdlbl.getText()))
 			{
 					
-				System.out.println(String.valueOf(amountByBtn));
 				addItemFromMachineToCart(ProductIdlbl.getText(),String.valueOf(amountByBtn) ); //amountlbl.getText()
 				updateTotalPrice();
 				Alert alert = new Alert(AlertType.CONFIRMATION,"Item has been added to cart!",ButtonType.OK);
@@ -299,7 +302,6 @@ public class ekrutOrderController implements Initializable{
     				{
     					int newAmount = Integer.parseInt(cart.get(i).getAmount()) + Integer.parseInt(amount);
     					cart.get(i).setAmount(String.valueOf(newAmount));
-    					System.out.println(cart); // remove this later
     					return;
     				}
     			

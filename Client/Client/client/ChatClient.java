@@ -38,6 +38,8 @@ public class ChatClient extends AbstractClient
   public static ArrayList<Subscriber> subscribers;
   public static ArrayList<Machine> machines;
   public static ArrayList<Item> items;
+  private boolean FirstCart = false;
+  public static ArrayList<Item> cart;
   public static String password;
   public static String role;
   public static String Fname;
@@ -85,6 +87,10 @@ public class ChatClient extends AbstractClient
 	  		  break;
 	  	
 	  	 case ReadItems:
+	  		  if(FirstCart == false) {
+	  			  cart = new ArrayList<Item>();
+	  			  FirstCart = true;
+	  		  }
 	  		  items = (ArrayList<Item>) responseFromServer.getContent();
 	  		  break;
 	  		  
