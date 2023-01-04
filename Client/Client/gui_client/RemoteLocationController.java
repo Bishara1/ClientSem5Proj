@@ -20,6 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import logic.Location;
 import logic.Machine;
 import javafx.stage.Stage;
 
@@ -27,6 +28,7 @@ public class RemoteLocationController implements Initializable {
 	private String selected;
 	private Message messageToServer = new Message(null, null);
 	private ObservableList<String> MachineIdList;
+	private ObservableList<String> LocationList;
 	
 	@FXML
 	private ComboBox<String> cmbLocation;
@@ -37,19 +39,45 @@ public class RemoteLocationController implements Initializable {
 	@FXML
 	private Button startorderbtn;
 	
-	@FXML
-	public void Select(ActionEvent event) {
-		selected = cmbLocation.getSelectionModel().getSelectedItem().toString();
-		setMachineIdComboBox();
-	}
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		setLocationComboBox();
+//		GetLocations();
+		SetLocationComboBox();
 		
 	}
 	
-	public void setMachineIdComboBox() {
+//	public void GetLocations() {
+//		ClientUI.chat.accept(new Message(0, Command.ReadLocations));
+//		ArrayList<String> locationsAsStrings = new ArrayList<>();
+//		
+//		for (Location location : ChatClient.locations) 
+//			locationsAsStrings.add(location.getLocation());
+//		
+//		LocationList = FXCollections.observableArrayList(locationsAsStrings);
+//	}
+	
+	public void SetLocationComboBox() {
+//		cmbLocation.getItems().clear();
+//		cmbLocation.setItems(LocationList);
+		ArrayList<String> type = new ArrayList<String>();
+		
+		type.add("North");
+		type.add("South");
+		type.add("UAE");
+		
+		LocationList = FXCollections.observableArrayList(type);
+		cmbLocation.getItems().clear();
+		cmbLocation.setItems(LocationList);
+	}
+	
+	@FXML
+	public void Select(ActionEvent event) {
+		selected = cmbLocation.getSelectionModel().getSelectedItem().toString();
+		SetMachineIdComboBox();
+	}
+	
+	
+	public void SetMachineIdComboBox() {
 		ArrayList<String> typeMachine = new ArrayList<String>();
 		messageToServer.setCommand(Command.ReadMachines);
 		messageToServer.setContent(0);	
@@ -65,12 +93,7 @@ public class RemoteLocationController implements Initializable {
 		cmbMachine.getItems().clear();
 		cmbMachine.setItems(MachineIdList);
 	}
-	
-	public void setLocationComboBox() {
-		ArrayList<String> Locations = new ArrayList<String>(Arrays.asList("North", "South", "UAE"));
-		
-	}
-	
+
 	public void BackBtn(ActionEvent event) throws Exception  { //fix this apparently its null
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
@@ -81,7 +104,17 @@ public class RemoteLocationController implements Initializable {
 		primaryStage.setScene(scene);		
 		primaryStage.show();
 	}
-    public void StartOrderBtn() {
-		
+	
+    public void StartOrderBtn(ActionEvent event) throws Exception {
+    	((Node)event.getSource()).getScene().getWindow().hide();
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
+		Stage primaryStage = new Stage();
+		Scene scene = new Scene(root);
+		ekrutOrderController EkrutOrderController = new ekrutOrderController();
+		EkrutOrderController.FindMachineNumber(Integer.parseInt(cmbMachine.getSelectionModel().getSelectedItem().toString()));
+		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
+		primaryStage.setTitle("EKRUT");
+		primaryStage.setScene(scene);		
+		primaryStage.show();
 	}
 }
