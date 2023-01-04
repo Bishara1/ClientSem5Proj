@@ -30,11 +30,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-<<<<<<< HEAD
-      <ComboBox fx:id="cmbLocation" layoutX="583.0" layoutY="282.0" prefHeight="41.0" prefWidth="132.0" promptText="Location" style="-fx-pref-height: 35;" />
-=======
       <ComboBox fx:id="cmbLocation" layoutX="583.0" layoutY="282.0" onAction="#Select" prefHeight="41.0" prefWidth="132.0" promptText="Location" style="-fx-pref-height: 35;" />
->>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
       <ComboBox fx:id="cmbMachineId" layoutX="583.0" layoutY="343.0" prefWidth="132.0" promptText="Machine Id" style="-fx-pref-height: 35;" />
       <VBox alignment="BASELINE_CENTER" layoutX="-20.0" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>

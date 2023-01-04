@@ -63,7 +63,6 @@ public class MonthlyReportsController implements Initializable{
 	@FXML
 	public void Select(ActionEvent event)
 	{
-		
 		selected = cmbLocation.getSelectionModel().getSelectedItem().toString();
 		System.out.println(selected);
 		setMachineIdComboBox();
