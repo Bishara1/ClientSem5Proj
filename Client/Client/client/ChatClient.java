@@ -36,7 +36,7 @@ public class ChatClient extends AbstractClient
    */
   ChatIF clientUI; 
   public static boolean awaitResponse = false;
-  public static ArrayList<Subscriber> subscribers;
+  public static ArrayList<Subscriber> subscribers;//+users
   public static ArrayList<Machine> machines;
   public static ArrayList<Item> items;
   private boolean FirstCart = false;

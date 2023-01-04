@@ -95,10 +95,6 @@ public class ekrutOrderController implements Initializable{
 		rotation = 0;
 		if(ChatClient.machineToLoad != -1)
 			FindMachineNumber(ChatClient.machineToLoad);
-		else
-			//MachineNumber = FindMachineId(id);
-		//System.out.println(MachineNumber);
-		//System.out.println(ChatClient.machineToLoad);
 		LoadItems();
 		
 	}
@@ -114,17 +110,6 @@ public class ekrutOrderController implements Initializable{
 		primaryStage.show();	
 	}
 	public void BackBtn(ActionEvent event) throws Exception {
-//<<<<<<< HEAD
-//		((Node)event.getSource()).getScene().getWindow().hide();
-//		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
-//		Stage primaryStage = new Stage();
-//		Scene scene = new Scene(root);
-//		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
-//		primaryStage.setTitle("User UI");
-//		primaryStage.setScene(scene);		
-//		primaryStage.show();
-//=======
-//		
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = null;
 		switch(ChatClient.role) {
