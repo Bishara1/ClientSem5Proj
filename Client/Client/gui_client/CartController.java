@@ -1,5 +1,7 @@
 package gui_client;
 
+import java.util.ArrayList;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -33,8 +35,11 @@ public class CartController {
 	@FXML
 	private TableColumn<Item,String> pricecol;
 	
+	private ArrayList<Item> cart;
+	
 	
 	public void LoadAndSetTable() {
+		cart = new ArrayList<Item>();
 		productidcol.setCellValueFactory(new PropertyValueFactory<>("productID"));
 		amountcol.setCellValueFactory(new PropertyValueFactory<>("amount"));
 		pricecol.setCellValueFactory(new PropertyValueFactory<>("price"));	
@@ -49,7 +54,7 @@ public class CartController {
 
     public void RemoveAll() {
     }
-    public void TotalProce() {
+    public void TotalPrice() {
     }
 	}
 

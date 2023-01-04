@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 import logic.Item;
 
 public class ekrutOrderController implements Initializable{
-
+	
 
 	@FXML
 	private Label codeLbl1;
@@ -66,7 +66,7 @@ public class ekrutOrderController implements Initializable{
 	@FXML
 	private Label amountBtnLbl; //NEW **************************************
 	
-	private ArrayList<Item> cart;
+	private static ArrayList<Item> cart;
 	
 	private int amountByBtn = 0; //NEW *************************************
 	
@@ -75,59 +75,29 @@ public class ekrutOrderController implements Initializable{
 	private int rotation;
 	//ArrayList<Machine> machines are saved in ChatClient
 	
+	public static ArrayList<Item >getCart()
+	{
+		return cart;
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		ClientUI.chat.accept(new Message(MachineNumber, Command.ReadMachines));
 		ClientUI.chat.accept(new Message(0,Command.ReadItems));
-		cart = new ArrayList<>();
+		cart = new ArrayList<Item>();
 		rotation = 0;
 		LoadItems();
 		
 	}
 	
-	public void NextItems()
-	{
-		if((rotation+1)*4 >= ChatClient.machines.get(MachineNumber-1).getItems().size())
-			rotation=0;
-		else
-			rotation += 1;
-		LoadItems(); //deal with only showing 2 
-	}
-	
-	public void PrevItems()
-	{
-		if(rotation == 0)
-			rotation = findMax();
-		else
-		{
-			rotation -= 1;
-		}
-		LoadItems();
-	}
-	
-	public void LessItem() //NEW *******************************
-	{
-		if(!ProductIdlbl.getText().equals(""))
-		{
-			if(amountByBtn > 0)
-			{
-				amountByBtn--;
-				amountBtnLbl.setText(String.valueOf(amountByBtn));
-			}
-		}
-	}
-	
-	public void MoreItem() //NEW *******************************
-	{
-		if(!ProductIdlbl.getText().equals(""))
-		{
-			amountByBtn++;
-			amountBtnLbl.setText(String.valueOf(amountByBtn));
-		}
-	}
-	
-	public void ProceedCartBtn() {
-		
+	public void ProceedCartBtn(ActionEvent event) throws Exception {
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/Cart.fxml"));
+		Stage primaryStage = new Stage();
+		Scene scene = new Scene(root);
+		primaryStage.setTitle("Cart");
+		primaryStage.setScene(scene);		
+		primaryStage.show();	
 	}
 	public void BackBtn(ActionEvent event) throws Exception {
 		
@@ -172,11 +142,53 @@ public class ekrutOrderController implements Initializable{
 		}
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
-		primaryStage.setTitle("Update Stock");
+		primaryStage.setTitle("EKRUT");
 		primaryStage.setScene(scene);		
 		primaryStage.show();	
 		
 	}
+	
+	public void NextItems()
+	{
+		if((rotation+1)*4 >= ChatClient.machines.get(MachineNumber-1).getItems().size())
+			rotation=0;
+		else
+			rotation += 1;
+		LoadItems(); //deal with only showing 2 
+	}
+	
+	public void PrevItems()
+	{
+		if(rotation == 0)
+			rotation = findMax();
+		else
+		{
+			rotation -= 1;
+		}
+		LoadItems();
+	}
+	
+	public void LessItem() //NEW *******************************
+	{
+		if(!ProductIdlbl.getText().equals(""))
+		{
+			if(amountByBtn > 0)
+			{
+				amountByBtn--;
+				amountBtnLbl.setText(String.valueOf(amountByBtn));
+			}
+		}
+	}
+	
+	public void MoreItem() //NEW *******************************
+	{
+		if(!ProductIdlbl.getText().equals(""))
+		{
+			amountByBtn++;
+			amountBtnLbl.setText(String.valueOf(amountByBtn));
+		}
+	}
+	
     public void AddToCartBtn() {
 		if(this.ProductIdlbl.getText().equals("") || amountByBtn == 0) //this.amountlbl.getText().equals("") ***********
 		{
@@ -187,13 +199,15 @@ public class ekrutOrderController implements Initializable{
 		{
 			if(ChatClient.machines.get(MachineNumber-1).existItem(ProductIdlbl.getText()))
 			{
-				ProductIdlbl.setText("");
-				amountBtnLbl.setText("0"); //new
+					
+				System.out.println(String.valueOf(amountByBtn));
 				addItemFromMachineToCart(ProductIdlbl.getText(),String.valueOf(amountByBtn) ); //amountlbl.getText()
 				updateTotalPrice();
 				Alert alert = new Alert(AlertType.CONFIRMATION,"Item has been added to cart!",ButtonType.OK);
 				alert.showAndWait();
 				amountByBtn = 0; //new 
+				ProductIdlbl.setText("");
+				amountBtnLbl.setText("0");
 			} 
 			else
 			{
@@ -273,15 +287,13 @@ public class ekrutOrderController implements Initializable{
     				{
     					int newAmount = Integer.parseInt(cart.get(i).getAmount()) + Integer.parseInt(amount);
     					cart.get(i).setAmount(String.valueOf(newAmount));
-    					System.out.println(cart);
+    					System.out.println(cart); // remove this later
     					return;
     				}
     			
     			}
-   
     			cart.add(new Item(name,amount,this.getPrice(name)));
     		
-    		System.out.println(cart);
     		
     		
     	}
