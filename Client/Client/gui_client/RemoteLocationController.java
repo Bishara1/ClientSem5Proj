@@ -56,7 +56,7 @@ public class RemoteLocationController implements Initializable {
 //		LocationList = FXCollections.observableArrayList(locationsAsStrings);
 //	}
 	
-	public void SetLocationComboBox() {
+	public void SetLocationComboBox() { 
 //		cmbLocation.getItems().clear();
 //		cmbLocation.setItems(LocationList);
 		ArrayList<String> type = new ArrayList<String>();
