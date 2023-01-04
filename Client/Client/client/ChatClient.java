@@ -7,6 +7,7 @@ package client;
 import ocsf.client.*;
 import common.*;
 import logic.Item;
+import logic.Location;
 import logic.Machine;
 import logic.Subscriber;
 
@@ -38,9 +39,11 @@ public class ChatClient extends AbstractClient
   public static ArrayList<Subscriber> subscribers;
   public static ArrayList<Machine> machines;
   public static ArrayList<Item> items;
+  public static ArrayList<Location> locations;
   public static String password;
   public static String role;
   public static String Fname;
+  
 
   
   //Constructors ****************************************************
@@ -100,8 +103,13 @@ public class ChatClient extends AbstractClient
 	  		  
 	  		  break;
 	  		  
+	  	case ReadLocations:
+	  		locations = (ArrayList<Location>) (responseFromServer.getContent());
+	  		break; 
+	  		
 	  default:
-		break;
+		  System.out.println("ChatClient got response but didn't deal with it");
+		  break;
 	  	
 	  }
 	  awaitResponse = false;
