@@ -11,13 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<<<<<<< HEAD
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.UserLoginController">
-=======
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.UserLoginController">
->>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
    <children>
-      <VBox alignment="BASELINE_CENTER" layoutX="-25.0" layoutY="-11.0" prefHeight="773.0" prefWidth="389.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;" AnchorPane.leftAnchor="-25.0">
+      <VBox alignment="BASELINE_CENTER" layoutX="-25.0" layoutY="-11.0" prefHeight="779.0" prefWidth="386.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;" AnchorPane.leftAnchor="-25.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -29,11 +25,21 @@
             </ImageView>
          </children>
       </VBox>
+      <Button fx:id="Loginbtn" layoutX="786.0" layoutY="627.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="48.0" prefWidth="130.0" stylesheets="@../../../git/ClientSem5Proj/git/CommonSem5Proj/Common/Common/css/buttons.css" text=" Login" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
       <Text fill="#c14302" layoutX="473.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login" wrappingWidth="378.9999802261591">
          <font>
             <Font name="Elephant" size="64.0" />
          </font>
       </Text>
+      <Button fx:id="Backbtn" layoutX="404.0" layoutY="627.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="48.0" prefWidth="130.0" stylesheets="@../../../git/CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
       <TextField fx:id="Usernametxt" layoutX="575.0" layoutY="369.0" prefHeight="42.0" prefWidth="276.0" />
       <TextField fx:id="Passwordtxt" layoutX="575.0" layoutY="433.0" prefHeight="42.0" prefWidth="276.0" />
       <Text fill="#c14302" layoutX="408.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName" wrappingWidth="166.00001300871372">
@@ -46,21 +52,11 @@
             <Font name="Elephant" size="29.0" />
          </font>
       </Text>
-      <ImageView fitHeight="56.0" fitWidth="58.0" layoutX="407.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="48.0" fitWidth="59.0" layoutX="400.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../CommonSem5Proj/Common/Common/images/usr.png" />
+            <Image url="@../../../../../Desktop/user.png" />
          </image>
       </ImageView>
-      <Button fx:id="Backbtn" layoutX="404.0" layoutY="627.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="48.0" prefWidth="130.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Back" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Button>
-      <Button fx:id="Loginbtn" layoutX="781.0" layoutY="627.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="48.0" prefWidth="130.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Login" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Button>
    </children>
    <effect>
       <Blend mode="LIGHTEN" />

@@ -48,12 +48,6 @@ public class UserLoginController {
 		}
 		else {
 			ConnectNewClient();
-<<<<<<< HEAD
-			Message msg = new Message(username, Command.Connect); //connects client to server
-			ClientUI.chat.accept(msg);
-			//check if password is correct/ if client exists and then proceed;
-			if(ChatClient.password.equals(password))
-=======
 		Message msg = new Message(username, Command.Connect); //connects client to server
 		ClientUI.chat.accept(msg);
 		//check if password is correct/ if client exists and then proceed;
@@ -112,35 +106,17 @@ public class UserLoginController {
 		else
 		{
 			if(ChatClient.password.equals(""))
->>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
 			{
-				((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
-				Stage primaryStage = new Stage();
-				
-				Parent root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
-//				Parent root = FXMLLoader.load(getClass().getResource("/gui_client/MonthlyReports.fxml"));
-				Scene scene = new Scene(root);
-				//Parent root2 = FXMLLoader.load(getClass().getResource("/gui_client/StartOrder.fxml"));
-				//scene.getStylesheets().add(getClass().getResource("/gui/.css").toExternalForm());
-				primaryStage.setTitle("User UI");
-				primaryStage.setScene(scene);
-				
-				primaryStage.show();	
+				Alert alert = new Alert(AlertType.ERROR,"Username isn't in db",ButtonType.OK);
+				alert.showAndWait();
 			}
-			else
+			else 
+				if(!ChatClient.password.equals(password))
 			{
-				if(ChatClient.password.equals(""))
-				{
-					Alert alert = new Alert(AlertType.ERROR,"Username isn't in db",ButtonType.OK);
-					alert.showAndWait();
-				}
-				else 
-					if(!ChatClient.password.equals(password))
-				{
-					Alert alert = new Alert(AlertType.ERROR,"Incorrect password",ButtonType.OK);
-					alert.showAndWait();
-				}
+				Alert alert = new Alert(AlertType.ERROR,"Incorrect password",ButtonType.OK);
+				alert.showAndWait();
 			}
+		}
 		}
 		
 			

@@ -55,18 +55,14 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-<<<<<<< HEAD
-      <VBox alignment="BASELINE_CENTER" layoutX="-45.0" layoutY="-10.0" prefHeight="771.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
-=======
       <VBox alignment="BASELINE_CENTER" layoutX="-42.0" layoutY="-10.0" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
->>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
             <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
+                  <Image url="@../../../../../Desktop/ekrut.png.png" />
                </image>
             </ImageView>
          </children>

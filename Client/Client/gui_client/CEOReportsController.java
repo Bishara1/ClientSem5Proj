@@ -30,11 +30,7 @@ public class CEOReportsController {
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
-<<<<<<< HEAD
-		primaryStage.setTitle("EKRUT ORDER");
-=======
-		primaryStage.setTitle("StockTable");
->>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
+		primaryStage.setTitle("Stock Table");
 		primaryStage.setScene(scene);		
 		primaryStage.show();
 	}
@@ -60,7 +56,7 @@ public class CEOReportsController {
 		primaryStage.show();
 	}
 	
-	public void MonthlyReportsBtn(ActionEvent event) throws Exception {
+	public void MonthlyReports(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/MonthlyReports.fxml"));
 		Stage primaryStage = new Stage();

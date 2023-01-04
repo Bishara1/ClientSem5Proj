@@ -63,6 +63,7 @@ public class MonthlyReportsController implements Initializable{
 	@FXML
 	public void Select(ActionEvent event)
 	{
+		
 		selected = cmbLocation.getSelectionModel().getSelectedItem().toString();
 		System.out.println(selected);
 		setMachineIdComboBox();
@@ -145,6 +146,7 @@ public class MonthlyReportsController implements Initializable{
 		
 		for(Machine i : ChatClient.machines)
 		{
+			
 			if(selected.equals(i.getLocation()))
 			{
 				typeMachine.add(String.valueOf(i.getMachine_id()));

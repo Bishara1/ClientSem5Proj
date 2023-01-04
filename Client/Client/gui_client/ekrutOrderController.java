@@ -131,17 +131,17 @@ public class ekrutOrderController implements Initializable{
 		
 	}
 	public void BackBtn(ActionEvent event) throws Exception {
-<<<<<<< HEAD
-		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
-		Stage primaryStage = new Stage();
-		Scene scene = new Scene(root);
-		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
-		primaryStage.setTitle("User UI");
-		primaryStage.setScene(scene);		
-		primaryStage.show();
-=======
-		
+//<<<<<<< HEAD
+//		((Node)event.getSource()).getScene().getWindow().hide();
+//		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
+//		Stage primaryStage = new Stage();
+//		Scene scene = new Scene(root);
+//		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
+//		primaryStage.setTitle("User UI");
+//		primaryStage.setScene(scene);		
+//		primaryStage.show();
+//=======
+//		
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = null;
 		switch(ChatClient.role) {
@@ -187,7 +187,7 @@ public class ekrutOrderController implements Initializable{
 		primaryStage.setScene(scene);		
 		primaryStage.show();	
 		
->>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
+//>>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
 	}
     public void AddToCartBtn() {
 		if(this.ProductIdlbl.getText().equals("") || amountByBtn == 0) //this.amountlbl.getText().equals("") ***********

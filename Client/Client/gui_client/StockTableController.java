@@ -85,11 +85,7 @@ public class StockTableController {
 		messageToServer.setContent(Integer.parseInt(machineCode));	// machine id
 		ClientUI.chat.accept(messageToServer); 
 		itemsCol.setCellValueFactory(new PropertyValueFactory<>("Name"));
-<<<<<<< HEAD
 		amountCol.setCellValueFactory(new PropertyValueFactory<>("Amount"));
-=======
-		amountCol.setCellValueFactory(new PropertyValueFactory<>("Amount"));
->>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
 		ArrayList<ViewItem> items = new ArrayList<>();
 
 		if (ChatClient.machines.contains(null))
