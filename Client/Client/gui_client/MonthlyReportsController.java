@@ -33,7 +33,7 @@ import client.ClientUI;
 import common.Command;
 import common.Message;
 
-public class MonthlyReportsController implements Initializable{
+public class MonthlyReportsController implements Initializable {
 	
 	@FXML
 	private Button showReportBtn;
@@ -52,7 +52,7 @@ public class MonthlyReportsController implements Initializable{
 	private ComboBox<String> cmbType;
 	
 	Message messageToServer = new Message(null, null);
-	public static String selected;
+	private String selected;
 	
 	ObservableList<String> yearList;
 	ObservableList<String> MonthList;
@@ -63,7 +63,6 @@ public class MonthlyReportsController implements Initializable{
 	@FXML
 	public void Select(ActionEvent event)
 	{
-		
 		selected = cmbLocation.getSelectionModel().getSelectedItem().toString();
 		System.out.println(selected);
 		setMachineIdComboBox();
@@ -139,7 +138,7 @@ public class MonthlyReportsController implements Initializable{
 	
 	public void setMachineIdComboBox() {
 		ArrayList<String> typeMachine = new ArrayList<String>();
-		ConnectNewClient();
+//		ConnectNewClient();
 		messageToServer.setCommand(Command.ReadMachines);
 		messageToServer.setContent(0);	
 		ClientUI.chat.accept(messageToServer); 
@@ -158,10 +157,10 @@ public class MonthlyReportsController implements Initializable{
 		cmbMachineId.setItems(MachineIdList);
 	}
 	
-	public void ConnectNewClient() {
-		ClientUI.chat = new ClientController("localhost", 5555);  // new client connected
-		///ClientUI.chat.accept("login"); // send to server that a client is connected
-	}
+//	public void ConnectNewClient() {
+//		ClientUI.chat = new ClientController("localhost", 5555);  // new client connected
+//		///ClientUI.chat.accept("login"); // send to server that a client is connected
+//	}
 	
 	public void ShowReportBtn(ActionEvent event) throws Exception{
 		// Checking if one or more fields are empty
