@@ -86,6 +86,28 @@ public class CartController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		LoadAndSetTable();
+		updateTotalPrice();
 	}
+	
+	 public void updateTotalPrice()
+	 {
+	    	int sum = 0;
+	    	for(Item item : cart)
+	    	{
+	    		sum += item.getPrice() * Integer.parseInt(item.getAmount());
+	    	}
+	    	totalpricetxt.setText(String.valueOf(sum));
+	    	return;
+	 }
+	 
+	 public int getPrice(String name)
+	 {
+	    	for(Item item : ChatClient.items)
+	    	{
+	    		if(item.getProductID().equals(name))
+	    			return item.getPrice();
+	    	}
+	    	return -1; 
+	 }
 }
 

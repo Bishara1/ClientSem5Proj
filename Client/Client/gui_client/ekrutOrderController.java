@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import logic.Item;
+import logic.Machine;
 
 public class ekrutOrderController implements Initializable{
 	
@@ -72,10 +73,12 @@ public class ekrutOrderController implements Initializable{
 	
 	private int amountByBtn = 0; //NEW *************************************
 	
-	private int MachineNumber = 1; //placeholder for the actual machine number
+	private int MachineNumber = -1; //placeholder for the actual machine number
 	
 	private int rotation;
 	//ArrayList<Machine> machines are saved in ChatClient
+	
+	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -90,6 +93,7 @@ public class ekrutOrderController implements Initializable{
 			previousCart = true;
 		}
 		rotation = 0;
+		MachineNumber = FindMachineId(id);
 		LoadItems();
 		
 	}
@@ -322,6 +326,17 @@ public class ekrutOrderController implements Initializable{
     	}
     	TotalPricelbl.setText(String.valueOf(sum));
     	return;
+    }
+    
+    public int FindMachineNumber(int id)
+    {
+    	int size = ChatClient.machines.size();
+		for(int i = 0;i<size;i++)
+		{
+			if(ChatClient.machines.get(i).getMachine_id() == id)
+				return i;
+		}
+		return -1;
     }
 }
 
