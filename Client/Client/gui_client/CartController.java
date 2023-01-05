@@ -14,7 +14,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -27,6 +30,45 @@ import logic.Subscriber;
 
 public class CartController implements Initializable{
 
+	public class ItemTable{
+		private String label;
+		private Integer amount;
+		private Integer priceAll;
+		
+		public ItemTable(String label, Integer amount, Integer price) {
+			super();
+			this.label = label;
+			this.amount = amount;
+			int NewPrice = amount * price;
+			this.priceAll = NewPrice;
+		}
+
+		public String getLabel() {
+			return label;
+		}
+
+		public void setLabel(String label) {
+			this.label = label;
+		}
+
+		public Integer getAmount() {
+			return amount;
+		}
+
+		public void setAmount(Integer amount) {
+			this.amount = amount;
+		}
+
+		public Integer getPriceAll() {
+			return priceAll;
+		}
+
+		public void setPriceAll(Integer priceAll) {
+			this.priceAll = priceAll;
+		}
+		
+	}
+	
 	@FXML
 	private Button removebtn;
 	@FXML
@@ -40,32 +82,50 @@ public class CartController implements Initializable{
 	@FXML
 	private TextField totalpricetxt;
 	@FXML
-	private TableView<Item> table;
+	private TableView<ItemTable> table;
 	@FXML
-	private TableColumn<Item,String> productidcol;
+	private TableColumn<ItemTable,String> productidcol;
 	@FXML
-	private TableColumn<Item,String> amountcol;
+	private TableColumn<ItemTable,String> amountcol;
 	@FXML
-	private TableColumn<Item,String> pricecol;
+	private TableColumn<ItemTable,String> pricecol;
 
 	private ArrayList<Item> cart;
 	
-	private ObservableList<Item> obs;
+	private ArrayList<ItemTable> tableCart = new ArrayList<ItemTable>();
+	
+	private ObservableList<ItemTable> obs;
 	
 	public void LoadAndSetTable() {
 		cart = ChatClient.cart;
-		System.out.println(cart);
-		productidcol.setCellValueFactory(new PropertyValueFactory<>("productID"));
-		amountcol.setCellValueFactory(new PropertyValueFactory<>("amount"));
-		pricecol.setCellValueFactory(new PropertyValueFactory<>("price"));	
-		obs = FXCollections.observableArrayList(cart);  // insert database details to obs
-		System.out.println(obs);
+		productidcol.setCellValueFactory(new PropertyValueFactory<>("Label"));
+		amountcol.setCellValueFactory(new PropertyValueFactory<>("Amount"));
+		pricecol.setCellValueFactory(new PropertyValueFactory<>("PriceAll"));	
+		createItemTableCart();
+		obs = FXCollections.observableArrayList(tableCart);  // insert database details to obs
 		table.setItems(obs);  // load database colummns into table and display them
 	}
-	public void ProceedPayment() {
+	
+	public void ProceedPayment(ActionEvent event) throws Exception {
+		
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Parent root = null;
+		if(ChatClient.isSubscriber == true)
+		{
+			root = FXMLLoader.load(getClass().getResource("/gui_client/Receipt.fxml"));
+		}
+		else
+		{
+			root = FXMLLoader.load(getClass().getResource("/gui_client/Purchase.fxml"));
+		}
+		Stage primaryStage = new Stage();
+		Scene scene = new Scene(root);
+		primaryStage.setTitle("EKRUT");
+		primaryStage.setScene(scene);		
+		primaryStage.show();
 	}
 	public void Back(ActionEvent event) throws Exception {
-		//ChatClient.cart = this.cart;
+		ChatClient.cart = this.cart;
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/ekrutOrder.fxml"));
 		Stage primaryStage = new Stage();
@@ -76,9 +136,36 @@ public class CartController implements Initializable{
 	}
 	
 	public void RemoveItem() {
+		
+		try {
+			ItemTable remove = table.getSelectionModel().getSelectedItem();
+			int index = getItemIndex(remove.getLabel());
+			if(index != -1) {
+				cart.remove(index);
+				tableCart.remove(index);
+			}
+			updateTotalPrice();
+			LoadAndSetTable();
+			Alert alert = new Alert(AlertType.CONFIRMATION,"Item removed successfully!",ButtonType.OK);
+			alert.showAndWait();
+				
+		}catch(NullPointerException e) {
+			
+			Alert alert = new Alert(AlertType.ERROR,"Select an item to remove!",ButtonType.OK);
+			alert.showAndWait();
+		}
 	}
 
     public void RemoveAll() {
+    	
+    	cart.removeAll(cart);
+    	tableCart.removeAll(tableCart);
+    	updateTotalPrice();
+    	LoadAndSetTable();
+    	Alert alert = new Alert(AlertType.CONFIRMATION,"Remove all items!",ButtonType.OK);
+		alert.showAndWait(); //**************************************************************** 
+		//add an alert that asks the customer if hes sure he wants to remove all items
+    	
     }
     public void TotalPrice() {
     }
@@ -108,6 +195,25 @@ public class CartController implements Initializable{
 	    			return item.getPrice();
 	    	}
 	    	return -1; 
+	 }
+	 
+	 public int getItemIndex(String name)
+	 {
+		 int size = cart.size();
+		 for(int i =0;i<size;i++)
+		 {
+			 if(cart.get(i).getProductID().equals(name))
+				 return i;
+		 }
+		 return -1;
+	 }
+	 
+	 public void createItemTableCart()
+	 {
+		 for(Item item : cart)
+		 {
+			 tableCart.add(new ItemTable(item.getProductID(),Integer.parseInt(item.getAmount()),item.getPrice()));
+		 }
 	 }
 }
 

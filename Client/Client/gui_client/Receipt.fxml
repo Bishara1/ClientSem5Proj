@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ReceiptController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ReceiptController">
    <children>
       <Label layoutX="573.0" prefHeight="119.0" prefWidth="258.0" text="Receipt" textFill="#c14302">
          <font>
@@ -23,7 +24,7 @@
             <Font name="System Bold Italic" size="19.0" />
          </font>
       </Label>
-      <Button fx:id="okBtn" layoutX="655.0" layoutY="634.0" mnemonicParsing="false" onAction="#OKBtn" prefHeight="39.0" prefWidth="94.0" text="OK" textFill="WHITE">
+      <Button fx:id="okBtn" layoutX="655.0" layoutY="628.0" mnemonicParsing="false" onAction="#OKBtn" prefHeight="39.0" prefWidth="94.0" text="OK" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -42,10 +43,18 @@
          <children>
             <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Desktop/ekrut.png.png" />
+                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
             </ImageView>
          </children>
+         <stylesheets>
+            <URL value="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" />
+            <URL value="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" />
+         </stylesheets>
       </VBox>
    </children>
+   <stylesheets>
+      <URL value="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" />
+      <URL value="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" />
+   </stylesheets>
 </AnchorPane>
