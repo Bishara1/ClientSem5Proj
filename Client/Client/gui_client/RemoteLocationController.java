@@ -18,8 +18,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Alert.AlertType;
 import logic.Location;
 import logic.Machine;
 import javafx.stage.Stage;
@@ -106,14 +109,25 @@ public class RemoteLocationController implements Initializable {
 	}
 	
     public void StartOrderBtn(ActionEvent event) throws Exception {
+    	try {
+    	ChatClient.locationName = cmbLocation.getSelectionModel().getSelectedItem().toString();
+    	ChatClient.supplyMethod = "Self pickup";
+    	ChatClient.machineToLoad = Integer.parseInt(cmbMachine.getSelectionModel().getSelectedItem().toString());
     	((Node)event.getSource()).getScene().getWindow().hide();
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui_client/ekrutOrder.fxml"));
-    	Parent root = loader.load();
-    	ekrutOrderController EkrutOrderController = loader.getController();
-    	EkrutOrderController.FindMachineNumber(Integer.parseInt(cmbMachine.getSelectionModel().getSelectedItem().toString()));
-    	Stage stage = new Stage();
-    	stage.setTitle("Order");
-    	stage.setScene(new Scene(root));
-    	stage.show();
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/ekrutOrder.fxml"));
+		Stage primaryStage = new Stage();
+		Scene scene = new Scene(root);
+		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
+		primaryStage.setTitle("EKRUT");
+		primaryStage.setScene(scene);		
+		primaryStage.show();
+    	}catch (Exception e)
+    	{
+    		Alert alert = new Alert(AlertType.ERROR,"Please select a location and a machine",ButtonType.OK);
+			alert.showAndWait();
+    	}
+    	
+		
+		//Integer.parseInt(cmbMachine.getSelectionModel().getSelectedItem().toString()
 	}
 }
