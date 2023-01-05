@@ -213,8 +213,9 @@ public class MonthlyReportsController implements Initializable {
 		// find the requested order
 		if (ChatClient.orderReport.get(0)!=null)
 		{
-			for (int j = 0; j < ChatClient.orderReport.size(); j++) {	
-				if (ChatClient.orderReport.get(j).getMachine_id().equals(machineId.toString()) &&
+
+			for (int j = 0; j < ChatClient.orderReport.size(); j++)
+		{	if (ChatClient.orderReport.get(j).getMachine_id().equals(machineId.toString()) &&
 				ChatClient.orderReport.get(j).getYear().equals(year.toString()) &&
 					ChatClient.orderReport.get(j).getMonth().equals(month.toString())) {
 						requestedReport = ChatClient.orderReport.get(j).getData();
@@ -232,14 +233,15 @@ public class MonthlyReportsController implements Initializable {
 			primaryStage.setScene(scene);		
 			primaryStage.show();	
 		}
-		
-		else {
+
+		else
+			{
 				Alert alert = new Alert(AlertType.ERROR,"No order reports in the requested timeline",ButtonType.OK);
 				alert.showAndWait();
 			}
 		}
-		
-		else {
+		else
+		{
 			Alert alert = new Alert(AlertType.ERROR,"No reports available!",ButtonType.OK);
 			alert.showAndWait();
 		}
