@@ -43,16 +43,16 @@ public class ReportsCEOController implements Initializable{
 	}
 	
 	public void setPieChart() {
-		String s = null;
+		String s = mpc.requestedReport;
 
-		for (int j = 0; j < ChatClient.orderReport.size(); j++)
-		{	if (ChatClient.orderReport.get(j).getYear().equals(mpc.year.toString()) &&
-					ChatClient.orderReport.get(j).getMonth().equals(mpc.month.toString()) &&
-						ChatClient.orderReport.get(j).getMachine_id().equals(mpc.machineId.toString()))
-							{
-								s = ChatClient.orderReport.get(j).getData();
-							}
-		}
+//		for (int j = 0; j < ChatClient.orderReport.size(); j++)
+//		{	if (ChatClient.orderReport.get(j).getYear().equals(mpc.year.toString()) &&
+//					ChatClient.orderReport.get(j).getMonth().equals(mpc.month.toString()) &&
+//						ChatClient.orderReport.get(j).getMachine_id().equals(mpc.machineId.toString()))
+//							{
+//								s = ChatClient.orderReport.get(j).getData();
+//							}
+//		}
 			ArrayList<PieChart.Data> data = new ArrayList<>();
 			String[] d = s.split("\\.");
 			String[] splitFinal = null;
@@ -74,8 +74,6 @@ public class ReportsCEOController implements Initializable{
 		primaryStage.setTitle("Monthly Reports");
 		primaryStage.setScene(scene);		
 		primaryStage.show();	
-		
-//		pieChart = null;
 	}
 
 

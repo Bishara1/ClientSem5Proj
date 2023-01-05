@@ -59,6 +59,7 @@ public class MonthlyReportsController implements Initializable {
 	public static String month;
 	public static String machineId;
 	public String reportType;
+	public static String requestedReport;
 	
 	ObservableList<String> yearList;
 	ObservableList<String> MonthList;
@@ -236,7 +237,7 @@ public class MonthlyReportsController implements Initializable {
 				ChatClient.orderReport.get(j).getYear().equals(year.toString()) &&
 					ChatClient.orderReport.get(j).getMonth().equals(month.toString()))
 							{
-//						s = ChatClient.orderReport.get(j).getData();
+			requestedReport = ChatClient.orderReport.get(j).getData();
 						flag = true;
 						break;
 								}
