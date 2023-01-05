@@ -9,6 +9,7 @@ import common.*;
 import logic.Item;
 import logic.Location;
 import logic.Machine;
+import logic.Order;
 import logic.OrdersReports;
 import logic.Subscriber;
 
@@ -46,6 +47,7 @@ public class ChatClient extends AbstractClient
   public static ArrayList<Item> cart;
   public static int ID;
   public static ArrayList<Location> locations;
+  public static ArrayList<Order> orders;
   public static String password;
   public static String role;
   public static String Fname;
