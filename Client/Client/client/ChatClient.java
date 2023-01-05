@@ -9,6 +9,7 @@ import common.*;
 import logic.Item;
 import logic.Location;
 import logic.Machine;
+import logic.Order;
 import logic.Subscriber;
 
 
@@ -39,12 +40,13 @@ public class ChatClient extends AbstractClient
   public static ArrayList<Subscriber> subscribers;//+users
   public static ArrayList<Machine> machines;
   public static ArrayList<Item> items;
-  private boolean FirstCart = false;
+  public static ArrayList<Order> orders;  
   public static ArrayList<Item> cart;
   public static ArrayList<Location> locations;
   public static String password;
   public static String role;
   public static String Fname;
+  private boolean FirstCart = false;
   
 
   
@@ -106,12 +108,14 @@ public class ChatClient extends AbstractClient
 	  		  password = passRoleFname[0];
 	  		  role = passRoleFname[1];
 	  		  Fname = passRoleFname[2];
-	  		  
 	  		  break;
 	  		  
 	  	case ReadLocations:
 	  		locations = (ArrayList<Location>) (responseFromServer.getContent());
 	  		break; 
+	  		
+	  	case ReadOrders:
+	  		orders = (ArrayList<Order>)(responseFromServer.getContent());
 	  		
 	  default:
 		  System.out.println("ChatClient got response but didn't deal with it");

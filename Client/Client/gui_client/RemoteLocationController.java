@@ -107,14 +107,13 @@ public class RemoteLocationController implements Initializable {
 	
     public void StartOrderBtn(ActionEvent event) throws Exception {
     	((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
-		Stage primaryStage = new Stage();
-		Scene scene = new Scene(root);
-		ekrutOrderController EkrutOrderController = new ekrutOrderController();
-		EkrutOrderController.FindMachineNumber(Integer.parseInt(cmbMachine.getSelectionModel().getSelectedItem().toString()));
-		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
-		primaryStage.setTitle("EKRUT");
-		primaryStage.setScene(scene);		
-		primaryStage.show();
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui_client/ekrutOrder.fxml"));
+    	Parent root = loader.load();
+    	ekrutOrderController EkrutOrderController = loader.getController();
+    	EkrutOrderController.FindMachineNumber(Integer.parseInt(cmbMachine.getSelectionModel().getSelectedItem().toString()));
+    	Stage stage = new Stage();
+    	stage.setTitle("Order");
+    	stage.setScene(new Scene(root));
+    	stage.show();
 	}
 }

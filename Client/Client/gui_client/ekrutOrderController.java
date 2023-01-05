@@ -93,8 +93,7 @@ public class ekrutOrderController implements Initializable{
 			previousCart = true;
 		}
 		rotation = 0;
-//		MachineNumber = FindMachineId(id);
-		// LEEN CHANGED : I SET THE LINE ABOVE AS COMMENT TO NOT LOSE MY SHIT BECAUSE I WANT TO FKN PUSH MY CHANGES
+//		MachineNumber = FindMachineId();
 		LoadItems();
 		
 	}
@@ -110,6 +109,17 @@ public class ekrutOrderController implements Initializable{
 		primaryStage.show();	
 	}
 	public void BackBtn(ActionEvent event) throws Exception {
+//<<<<<<< HEAD
+//		((Node)event.getSource()).getScene().getWindow().hide();
+//		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
+//		Stage primaryStage = new Stage();
+//		Scene scene = new Scene(root);
+//		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
+//		primaryStage.setTitle("User UI");
+//		primaryStage.setScene(scene);		
+//		primaryStage.show();
+//=======
+//		
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = null;
 		switch(ChatClient.role) {
