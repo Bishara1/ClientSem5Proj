@@ -91,6 +91,7 @@ public class ekrutOrderController implements Initializable{
 			cart = ChatClient.cart;
 			updateTotalPrice();
 		}
+		
 		rotation = 0;
 		if(ChatClient.machineToLoad != -1)
 		{
