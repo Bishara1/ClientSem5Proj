@@ -224,15 +224,15 @@ public class MonthlyReportsController implements Initializable {
 	
 	public void OrderReportSearch(ActionEvent event) throws Exception {
 	
+		
 		ReportmessageToServer.setCommand(Command.ReadOrdersReports);
 		ReportmessageToServer.setContent(0);	
 		ClientUI.chat.accept(ReportmessageToServer);
-		
-//		String s = null;
 		boolean flag = false;
-
 		// find the requested order
-		for (int j = 0; j < ChatClient.orderReport.size(); j++)
+		if (ChatClient.orderReport.get(0)!=null)
+		{
+			for (int j = 0; j < ChatClient.orderReport.size(); j++)
 		{	if (ChatClient.orderReport.get(j).getMachine_id().equals(machineId.toString()) &&
 				ChatClient.orderReport.get(j).getYear().equals(year.toString()) &&
 					ChatClient.orderReport.get(j).getMonth().equals(month.toString()))
@@ -252,8 +252,14 @@ public class MonthlyReportsController implements Initializable {
 			primaryStage.show();	
 		}
 		else
+			{
+				Alert alert = new Alert(AlertType.ERROR,"No order reports in the requested timeline",ButtonType.OK);
+				alert.showAndWait();
+			}
+		}
+		else
 		{
-			Alert alert = new Alert(AlertType.ERROR,"No order reports in the requested timeline",ButtonType.OK);
+			Alert alert = new Alert(AlertType.ERROR,"No reports available!",ButtonType.OK);
 			alert.showAndWait();
 		}
 	}
