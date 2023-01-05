@@ -41,12 +41,15 @@ public class ChatClient extends AbstractClient
   public static ArrayList<Item> items;
   private boolean FirstCart = false;
   public static ArrayList<Item> cart;
+  public static int ID;
   public static ArrayList<Location> locations;
   public static String password;
   public static String role;
   public static String Fname;
   public static boolean isSubscriber = false;
   public static int machineToLoad = -1;
+  public static String locationName = "North"; //?????
+  public static String supplyMethod = "Overseas"; //?????
   
 
   

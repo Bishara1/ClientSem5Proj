@@ -67,12 +67,8 @@ public class CartController implements Initializable{
 			this.priceAll = priceAll;
 		}
 		
-		
-		
-		
-		
-	
 	}
+	
 	@FXML
 	private Button removebtn;
 	@FXML

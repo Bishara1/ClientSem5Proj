@@ -93,8 +93,10 @@ public class ekrutOrderController implements Initializable{
 		}
 		rotation = 0;
 		if(ChatClient.machineToLoad != -1)
+		{
 			FindMachineNumber(ChatClient.machineToLoad);
-		LoadItems();
+			LoadItems();
+		}
 		
 	}
 	
