@@ -49,7 +49,7 @@ public class ChatClient extends AbstractClient
   public static boolean isSubscriber = false;
   public static int machineToLoad = -1;
   public static String locationName = "North"; //?????
-  public static String supplyMethod = "Overseas"; //?????
+  public static String supplyMethod = "Immediate pickup"; //?????
   
 
   

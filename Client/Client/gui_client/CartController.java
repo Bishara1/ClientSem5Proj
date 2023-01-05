@@ -92,7 +92,7 @@ public class CartController implements Initializable{
 
 	private ArrayList<Item> cart;
 	
-	private ArrayList<ItemTable> tableCart = new ArrayList<ItemTable>();
+	private ArrayList<ItemTable> tableCart;
 	
 	private ObservableList<ItemTable> obs;
 	
@@ -142,7 +142,6 @@ public class CartController implements Initializable{
 			int index = getItemIndex(remove.getLabel());
 			if(index != -1) {
 				cart.remove(index);
-				tableCart.remove(index);
 			}
 			updateTotalPrice();
 			LoadAndSetTable();
@@ -159,7 +158,6 @@ public class CartController implements Initializable{
     public void RemoveAll() {
     	
     	cart.removeAll(cart);
-    	tableCart.removeAll(tableCart);
     	updateTotalPrice();
     	LoadAndSetTable();
     	Alert alert = new Alert(AlertType.CONFIRMATION,"Remove all items!",ButtonType.OK);
@@ -210,6 +208,7 @@ public class CartController implements Initializable{
 	 
 	 public void createItemTableCart()
 	 {
+		 tableCart = new ArrayList<ItemTable>();
 		 for(Item item : cart)
 		 {
 			 tableCart.add(new ItemTable(item.getProductID(),Integer.parseInt(item.getAmount()),item.getPrice()));

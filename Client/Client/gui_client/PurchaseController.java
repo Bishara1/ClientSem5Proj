@@ -1,20 +1,26 @@
 package gui_client;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import client.ChatClient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import logic.Item;
 
-public class PurchaseController {
+public class PurchaseController implements Initializable{
 
 	@FXML
 	private TextField creditCardtxt;
@@ -25,6 +31,8 @@ public class PurchaseController {
 	private Button backBtn;
 	@FXML
 	private Button purchaseBtn;
+	@FXML
+	private TextField priceLbl;
 	
 	
 	
@@ -55,6 +63,33 @@ public class PurchaseController {
 			primaryStage.setScene(scene);		
 			primaryStage.show();
 		}
+	}
+
+	 public void updateTotalPrice()
+	 {
+	    	int sum = 0;
+	    	for(Item item : ChatClient.cart)
+	    	{
+	    		sum += item.getPrice() * Integer.parseInt(item.getAmount());
+	    	}
+	    	priceLbl.setText(String.valueOf(sum));
+	    	return;
+	 }
+	 
+	 public int getPrice(String name)
+	 {
+	    	for(Item item : ChatClient.items)
+	    	{
+	    		if(item.getProductID().equals(name))
+	    			return item.getPrice();
+	    	}
+	    	return -1; 
+	 }
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		updateTotalPrice();
+		
 	}
 	
 }
