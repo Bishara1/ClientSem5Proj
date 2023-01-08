@@ -23,7 +23,7 @@
             <TableColumn fx:id="deliveryIdcol" prefWidth="117.0" text="Delivery ID" />
          </columns>
       </TableView>
-      <Button layoutX="392.0" layoutY="681.0" mnemonicParsing="false" onAction="#Back" prefHeight="39.0" prefWidth="135.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
+      <Button fx:id="backBtn" layoutX="392.0" layoutY="681.0" mnemonicParsing="false" onAction="#Back" prefHeight="39.0" prefWidth="135.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -33,7 +33,7 @@
             <Font name="Elephant" size="47.0" />
          </font>
       </Label>
-      <Button layoutX="774.0" layoutY="683.0" mnemonicParsing="false" onAction="#Confirm" prefHeight="39.0" prefWidth="135.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Confirm" textFill="WHITE">
+      <Button fx:id="confirmBtn" layoutX="774.0" layoutY="683.0" mnemonicParsing="false" onAction="#Confirm" prefHeight="39.0" prefWidth="135.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Confirm" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

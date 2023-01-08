@@ -12,27 +12,17 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.EKTLoginController">
    <children>
-      <Label layoutX="546.0" layoutY="99.0" prefHeight="119.0" prefWidth="258.0" text="EKRUT" textFill="#c14302">
-         <font>
-            <Font name="Cooper Black" size="64.0" />
-         </font>
-      </Label>
       <Label layoutX="492.0" layoutY="356.0" prefHeight="31.0" prefWidth="140.0" text="Subscriber Num" textFill="#c14302">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="469.0" layoutY="236.0" prefHeight="31.0" prefWidth="342.0" text="Count the memories NOT the calories" textFill="#c14302">
-         <font>
-            <Font name="System Bold Italic" size="19.0" />
-         </font>
-      </Label>
       <TextField fx:id="idtxt" layoutX="659.0" layoutY="356.0" />
-      <Button layoutX="531.0" layoutY="526.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="39.0" prefWidth="94.0" text="Back" textFill="WHITE">
+      <Button fx:id="backBtn" layoutX="531.0" layoutY="526.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="39.0" prefWidth="94.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Button layoutX="717.0" layoutY="526.0" mnemonicParsing="false" onAction="#login" prefHeight="39.0" prefWidth="94.0" text="Login" textFill="WHITE">
+      <Button fx:id="loginBtn" layoutX="717.0" layoutY="526.0" mnemonicParsing="false" onAction="#login" prefHeight="39.0" prefWidth="94.0" text="Login" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
@@ -48,5 +38,10 @@
             </ImageView>
          </children>
       </VBox>
+      <Label layoutX="454.0" layoutY="197.0" prefHeight="39.0" prefWidth="556.0" text="Please insert your subscriber number" textFill="#c14302">
+         <font>
+            <Font name="Elephant" size="23.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
