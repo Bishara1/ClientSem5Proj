@@ -6,14 +6,8 @@ package client;
 
 import ocsf.client.*;
 import common.*;
-import logic.Item;
-import logic.Location;
-import logic.Machine;
-import logic.Order;
-import logic.OrdersReports;
-import logic.Subscriber;
 
-
+import logic.*;
 import java.io.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -42,12 +36,12 @@ public class ChatClient extends AbstractClient
   public static ArrayList<Subscriber> subscribers;//+users
   public static ArrayList<Machine> machines;
   public static ArrayList<Item> items;
+  public static ArrayList<Order> orders;  
   public static ArrayList<OrdersReports> orderReport;
   private boolean FirstCart = false;
   public static ArrayList<Item> cart;
   public static int ID;
   public static ArrayList<Location> locations;
-  public static ArrayList<Order> orders;
   public static String password;
   public static String role;
   public static String Fname;
@@ -117,12 +111,15 @@ public class ChatClient extends AbstractClient
 	  		  password = passRoleFname[0];
 	  		  role = passRoleFname[1];
 	  		  Fname = passRoleFname[2];
-	  		  
 	  		  break;
 	  		  
 	  	case ReadLocations:
 	  		locations = (ArrayList<Location>) (responseFromServer.getContent());
 	  		break; 
+	  		
+	  	case ReadOrders:
+	  		orders = (ArrayList<Order>)(responseFromServer.getContent());
+	  		break;
 	  		
 	  	case ReadOrdersReports:
 	  		orderReport = (ArrayList<OrdersReports>) (responseFromServer.getContent());
