@@ -10,22 +10,22 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ShipmentMethodController">
    <children>
-      <Button fx:id="backBtn" layoutX="598.0" layoutY="595.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="39.0" prefWidth="94.0" text="Back" textFill="WHITE">
+      <Button fx:id="backBtn" layoutX="439.0" layoutY="660.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="39.0" prefWidth="94.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="immediatePickupBtn" layoutX="533.0" layoutY="273.0" mnemonicParsing="false" onAction="#ImmediatePickupBtn" prefHeight="60.0" prefWidth="224.0" text="Immediate pickup" textFill="WHITE">
+      <Button fx:id="immediatePickupBtn" layoutX="533.0" layoutY="261.0" mnemonicParsing="false" onAction="#ImmediatePickupBtn" prefHeight="60.0" prefWidth="224.0" text="Immediate pickup" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="533.0" layoutY="406.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="224.0" text="Delivery" textFill="WHITE">
+      <Button fx:id="deliveryBtn" layoutX="536.0" layoutY="406.0" mnemonicParsing="false" onAction="#DeliveryBtn" prefHeight="52.0" prefWidth="218.0" text="Delivery" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <VBox alignment="BASELINE_CENTER" layoutX="-25.0" layoutY="10.0" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <VBox alignment="BASELINE_CENTER" layoutX="-25.0" layoutY="-10.0" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>

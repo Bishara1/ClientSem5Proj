@@ -12,31 +12,27 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.RemoteCodeController">
    <children>
-      <Label alignment="CENTER" layoutX="540.0" layoutY="30.0" prefHeight="54.0" prefWidth="254.0" text="EKRUT" textFill="#c14302">
+      <Label alignment="CENTER" layoutX="440.0" layoutY="103.0" prefHeight="68.0" prefWidth="379.0" text="Please insert your recived code" textFill="#c14302">
          <font>
-            <Font name="System Bold" size="48.0" />
+            <Font name="Elephant" size="23.0" />
          </font>
       </Label>
-      <Button layoutX="496.0" layoutY="505.0" mnemonicParsing="false" onAction="#BackBtn" text="Back" textFill="WHITE">
+      <Button layoutX="453.0" layoutY="580.0" mnemonicParsing="false" onAction="#BackBtn" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Label layoutX="496.0" layoutY="132.0" prefHeight="31.0" prefWidth="342.0" text="Count the memories NOT the calories" textFill="#c14302">
-         <font>
-            <Font name="System Bold Italic" size="19.0" />
-         </font>
-      </Label>
-      <Button layoutX="714.0" layoutY="505.0" mnemonicParsing="false" onAction="#ProceedSummary" prefHeight="37.0" prefWidth="159.0" text="Order Summary" textFill="WHITE">
+      <Button layoutX="744.0" layoutY="580.0" mnemonicParsing="false" onAction="#ProceedSummary" prefHeight="37.0" prefWidth="159.0" text="Order Summary" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Label layoutX="562.0" layoutY="239.0" prefHeight="21.0" prefWidth="178.0" text="Code:" textFill="#c14302">
+      <Label layoutX="512.0" layoutY="284.0" prefHeight="21.0" prefWidth="178.0" text="Code:" textFill="#c14302">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="Codetxt" layoutX="651.0" layoutY="237.0" />
-      <VBox alignment="BASELINE_CENTER" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <Label text="Label" />
+      <TextField fx:id="Codetxt" layoutX="573.0" layoutY="282.0" />
+      <VBox alignment="BASELINE_CENTER" layoutX="-9.0" layoutY="-10.0" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -48,5 +44,10 @@
             </ImageView>
          </children>
       </VBox>
+      <Label alignment="CENTER" layoutX="467.0" layoutY="164.0" prefHeight="52.0" prefWidth="325.0" text=" for pickup your order " textFill="#c14302">
+         <font>
+            <Font name="Elephant" size="23.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

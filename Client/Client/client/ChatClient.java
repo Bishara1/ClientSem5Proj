@@ -14,6 +14,7 @@ import logic.Location;
 import logic.Machine;
 import logic.OrdersReports;
 import logic.Subscriber;
+import logic.*;
 import java.io.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ public class ChatClient extends AbstractClient
   public static ArrayList<Subscriber> subscribers;//+users
   public static ArrayList<Machine> machines;
   public static ArrayList<Item> items;
+  public static ArrayList<Order> orders;  
   public static ArrayList<OrdersReports> orderReport;
   public static ArrayList<Location> locations;
   public static ArrayList<Item> cart;
@@ -119,12 +121,15 @@ public class ChatClient extends AbstractClient
 	  		  password = passRoleFname[0];
 	  		  role = passRoleFname[1];
 	  		  Fname = passRoleFname[2];
-	  		  
 	  		  break;
 	  		  
 	  	case ReadLocations:
 	  		locations = (ArrayList<Location>) (responseFromServer.getContent());
 	  		break; 
+	  		
+	  	case ReadOrders:
+	  		orders = (ArrayList<Order>)(responseFromServer.getContent());
+	  		break;
 	  		
 	  	case ReadOrdersReports:
 	  		orderReport = (ArrayList<OrdersReports>) (responseFromServer.getContent());

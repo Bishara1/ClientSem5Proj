@@ -1,6 +1,7 @@
 package gui_client;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
@@ -117,6 +118,7 @@ public class MonthlyReportsController implements Initializable {
 		year.add("2020");
 		year.add("2021");
 		year.add("2022");
+		year.add("2023");
 		
 		yearList = FXCollections.observableArrayList(year);
 		cmbYear.getItems().clear();
@@ -124,20 +126,7 @@ public class MonthlyReportsController implements Initializable {
 	}
 	
 		public void setMonthComboBox() {
-		ArrayList<String> month = new ArrayList<String>();
-		
-		month.add("1");
-		month.add("2");
-		month.add("3");
-		month.add("4");
-		month.add("5");
-		month.add("6");
-		month.add("7");
-		month.add("8");
-		month.add("9");
-		month.add("10");
-		month.add("11");
-		month.add("12");
+		ArrayList<String> month = new ArrayList<String>(Arrays.asList("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"));
 	
 		MonthList = FXCollections.observableArrayList(month);
 		cmbMonth.getItems().clear();
@@ -188,12 +177,7 @@ public class MonthlyReportsController implements Initializable {
 		cmbMachineId.getItems().clear();
 		cmbMachineId.setItems(MachineIdList);
 	}
-	
-//	public void ConnectNewClient() {
-//		ClientUI.chat = new ClientController("localhost", 5555);  // new client connected
-//		///ClientUI.chat.accept("login"); // send to server that a client is connected
-//	}
-	
+
 	public void ShowReportBtn(ActionEvent event) throws Exception{
 		// Checking if one or more fields are empty
 		if ((cmbYear.getValue() == null )||(cmbMonth.getValue() == null )
@@ -220,7 +204,6 @@ public class MonthlyReportsController implements Initializable {
 				break;
 			}
 		}
-
 	}
 	
 	public void OrderReportSearch(ActionEvent event) throws Exception {
@@ -243,21 +226,21 @@ public class MonthlyReportsController implements Initializable {
 		ReportmessageToServer.setCommand(Command.ReadOrdersReports);
 		ReportmessageToServer.setContent(0);	
 		ClientUI.chat.accept(ReportmessageToServer);
-		
-//		String s = null;
 		boolean flag = false;
-
 		// find the requested order
-		for (int j = 0; j < ChatClient.orderReport.size(); j++)
+		if (ChatClient.orderReport.get(0)!=null)
+		{
+
+			for (int j = 0; j < ChatClient.orderReport.size(); j++)
 		{	if (ChatClient.orderReport.get(j).getMachine_id().equals(machineId.toString()) &&
 				ChatClient.orderReport.get(j).getYear().equals(year.toString()) &&
-					ChatClient.orderReport.get(j).getMonth().equals(month.toString()))
-							{
-			requestedReport = ChatClient.orderReport.get(j).getData();
+					ChatClient.orderReport.get(j).getMonth().equals(month.toString())) {
+						requestedReport = ChatClient.orderReport.get(j).getData();
 						flag = true;
 						break;
-								}
+				}
 		}
+			
 		if (flag) {
 			((Node)event.getSource()).getScene().getWindow().hide();
 			Parent root = FXMLLoader.load(getClass().getResource("/gui_client/ReportsCEO.fxml"));
@@ -267,9 +250,16 @@ public class MonthlyReportsController implements Initializable {
 			primaryStage.setScene(scene);		
 			primaryStage.show();	
 		}
+
+		else
+			{
+				Alert alert = new Alert(AlertType.ERROR,"No order reports in the requested timeline",ButtonType.OK);
+				alert.showAndWait();
+			}
+		}
 		else
 		{
-			Alert alert = new Alert(AlertType.ERROR,"No order reports in the requested timeline",ButtonType.OK);
+			Alert alert = new Alert(AlertType.ERROR,"No reports available!",ButtonType.OK);
 			alert.showAndWait();
 		}
 
@@ -284,6 +274,4 @@ public class MonthlyReportsController implements Initializable {
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
 	}
-	
-
 }
