@@ -41,11 +41,21 @@ public class PurchaseController implements Initializable{
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/Cart.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		primaryStage.setTitle("Cart");
 		primaryStage.setTitle("EKRUT");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
 	}
 	
+	public void PurchaseBtn(ActionEvent event) throws Exception {
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/Receipt.fxml"));
+		Stage primaryStage = new Stage();
+		Scene scene = new Scene(root);
+		primaryStage.setTitle("Receipt");
+		primaryStage.setScene(scene);		
+		primaryStage.show();	
+}
 	public void Purchase(ActionEvent event) throws Exception {
 		if(creditCardtxt.getText().isEmpty() || idtxt.getText().isEmpty())
 		{

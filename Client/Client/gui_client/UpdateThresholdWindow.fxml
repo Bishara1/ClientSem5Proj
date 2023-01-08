@@ -24,7 +24,7 @@
       </Label>
       <TextField fx:id="thresholdValue" layoutX="603.0" layoutY="363.0" />
       <TextField fx:id="machineCode" layoutX="603.0" layoutY="302.0" />
-      <Button fx:id="backBtn" layoutX="453.0" layoutY="590.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="39.0" prefWidth="94.0" text="Back" textFill="WHITE">
+      <Button fx:id="backBtn" layoutX="453.0" layoutY="590.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="39.0" prefWidth="94.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

@@ -63,7 +63,7 @@ public class UserLoginController {
 				break;
 			
 			case "rgm":
-				root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+				root = FXMLLoader.load(getClass().getResource("/gui_client/RegionalManager.fxml"));
 				break;
 				
 			case "rgw":

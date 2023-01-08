@@ -54,7 +54,7 @@
       </Text>
       <ImageView fitHeight="48.0" fitWidth="59.0" layoutX="400.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Desktop/user.png" />
+            <Image url="@../../../../CommonSem5Proj/Common/Common/images/user.png" />
          </image>
       </ImageView>
    </children>

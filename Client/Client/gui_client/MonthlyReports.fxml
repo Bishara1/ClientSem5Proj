@@ -12,7 +12,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.MonthlyReportsController">
    <children>
-      <Label layoutX="517.0" layoutY="49.0" text="Monthly Reports" textFill="#c14302">
+      <Label layoutX="509.0" layoutY="97.0" text="Monthly Reports" textFill="#c14302">
          <font>
             <Font name="Cooper Black" size="36.0" />
          </font>
@@ -40,6 +40,11 @@
             <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="235.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/report.png" />
                </image>
             </ImageView>
          </children>
