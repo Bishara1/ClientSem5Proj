@@ -3,19 +3,15 @@ package gui_client;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -27,10 +23,8 @@ import logic.Machine;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javax.swing.JComboBox;
 
 import client.ChatClient;
-import client.ClientController;
 import client.ClientUI;
 import common.Command;
 import common.Message;
@@ -56,10 +50,10 @@ public class MonthlyReportsController implements Initializable {
 	Message messageToServer = new Message(null, null);
 	Message ReportmessageToServer = new Message(null, null);
 	private String location;
+	public String reportType;
 	public static String year;
 	public static String month;
 	public static String machineId;
-	public String reportType;
 	public static String requestedReport;
 	
 	ObservableList<String> yearList;
@@ -69,33 +63,28 @@ public class MonthlyReportsController implements Initializable {
 	ObservableList<String> MachineIdList;
 	
 	@FXML
-	public void Select(ActionEvent event)
-	{
+	public void Select(ActionEvent event) {
 		location = cmbLocation.getSelectionModel().getSelectedItem().toString();
 		setMachineIdComboBox();
 	}
 	
 	@FXML
-	public void SelectYear(ActionEvent event)
-	{
+	public void SelectYear(ActionEvent event) {
 		year = cmbYear.getSelectionModel().getSelectedItem().toString();
 	}
 	
 	@FXML
-	public void SelectMonth(ActionEvent event)
-	{
+	public void SelectMonth(ActionEvent event) {
 		month = cmbMonth.getSelectionModel().getSelectedItem().toString();
 	}
 	
 	@FXML
-	public void SelectMachineId(ActionEvent event)
-	{
+	public void SelectMachineId(ActionEvent event) {
 		machineId = cmbMachineId.getSelectionModel().getSelectedItem().toString();
 	}
 	
 	@FXML
-	public void SelectReportType(ActionEvent event)
-	{
+	public void SelectReportType(ActionEvent event) {
 		reportType = cmbType.getSelectionModel().getSelectedItem().toString();
 	}
 	
@@ -133,11 +122,7 @@ public class MonthlyReportsController implements Initializable {
 	}
 	
 	public void setTypeComboBox() {
-		ArrayList<String> type = new ArrayList<String>();
-		
-		type.add("Inventory");
-		type.add("Orders");
-		type.add("Users");
+		ArrayList<String> type = new ArrayList<String>(Arrays.asList("Inventory", "Orders", "Users"));
 		
 		TypeList = FXCollections.observableArrayList(type);
 		cmbType.getItems().clear();
@@ -145,12 +130,8 @@ public class MonthlyReportsController implements Initializable {
 	}
 	
 	public void setLocationComboBox() {
-		ArrayList<String> type = new ArrayList<String>();
-		
-		type.add("North");
-		type.add("South");
-		type.add("UAE");
-		
+		ArrayList<String> type = new ArrayList<String>(Arrays.asList("North", "South", "UAE"));
+				
 		LocationList = FXCollections.observableArrayList(type);
 		cmbLocation.getItems().clear();
 		cmbLocation.setItems(LocationList);
@@ -211,35 +192,34 @@ public class MonthlyReportsController implements Initializable {
 		ClientUI.chat.accept(ReportmessageToServer);
 		boolean flag = false;
 		// find the requested order
-		if (ChatClient.orderReport.get(0)!=null)
-		{
-
-			for (int j = 0; j < ChatClient.orderReport.size(); j++)
-		{	if (ChatClient.orderReport.get(j).getMachine_id().equals(machineId.toString()) &&
-				ChatClient.orderReport.get(j).getYear().equals(year.toString()) &&
-					ChatClient.orderReport.get(j).getMonth().equals(month.toString())) {
-						requestedReport = ChatClient.orderReport.get(j).getData();
-						flag = true;
-						break;
+		if (ChatClient.orderReport.get(0)!=null) {
+			for (int j = 0; j < ChatClient.orderReport.size(); j++)	{	
+				if (ChatClient.orderReport.get(j).getMachine_id().equals(machineId.toString()) &&
+						ChatClient.orderReport.get(j).getYear().equals(year.toString()) &&
+							ChatClient.orderReport.get(j).getMonth().equals(month.toString())) {
+					
+					requestedReport = ChatClient.orderReport.get(j).getData();
+					flag = true;
+					break;
 				}
-		}
-			
-		if (flag) {
-			((Node)event.getSource()).getScene().getWindow().hide();
-			Parent root = FXMLLoader.load(getClass().getResource("/gui_client/ReportsCEO.fxml"));
-			Stage primaryStage = new Stage();
-			Scene scene = new Scene(root);
-			primaryStage.setTitle("Pie Chart (ReportsCEO)");
-			primaryStage.setScene(scene);		
-			primaryStage.show();	
-		}
-
-		else
-			{
-				Alert alert = new Alert(AlertType.ERROR,"No order reports in the requested timeline",ButtonType.OK);
-				alert.showAndWait();
+			}
+				
+			if (flag) {
+				((Node)event.getSource()).getScene().getWindow().hide();
+				Parent root = FXMLLoader.load(getClass().getResource("/gui_client/ReportsCEO.fxml"));
+				Stage primaryStage = new Stage();
+				Scene scene = new Scene(root);
+				primaryStage.setTitle("Pie Chart (ReportsCEO)");
+				primaryStage.setScene(scene);		
+				primaryStage.show();	
+			}
+	
+			else {
+					Alert alert = new Alert(AlertType.ERROR,"No order reports in the requested timeline",ButtonType.OK);
+					alert.showAndWait();
 			}
 		}
+		
 		else
 		{
 			Alert alert = new Alert(AlertType.ERROR,"No reports available!",ButtonType.OK);
