@@ -22,6 +22,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
@@ -47,10 +48,13 @@ public class ViewOrdersDeliveryOperatorController implements Initializable {
 	private TableColumn<Order,String> statusCol;
 	@FXML
 	private Button backBtn;
+	@FXML
+	private Label titlelbl;
 	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+	this.titlelbl.setText("Welcome " + ChatClient.Fname);
 		GetRemoteOrders();
 		DisplayOrders();
 		

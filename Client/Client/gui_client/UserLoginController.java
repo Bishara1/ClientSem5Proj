@@ -83,7 +83,7 @@ public class UserLoginController {
 				break;
 				
 			case "dlo":
-				root = FXMLLoader.load(getClass().getResource("/gui_client/ViewDelivery.fxml"));
+				root = FXMLLoader.load(getClass().getResource("/gui_client/ViewOrdersDeliveryOperator.fxml"));
 				break;
 				
 			case "inm":
@@ -94,7 +94,7 @@ public class UserLoginController {
 				root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
 				break;
 				
-			case "csw":
+			case "csw": //costumer servise worker
 				root = FXMLLoader.load(getClass().getResource("/gui_client/CustomerServiceWorker.fxml"));
 				break;
 			default:

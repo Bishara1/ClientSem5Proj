@@ -1,19 +1,24 @@
 package gui_client;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import client.ChatClient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
-public class UserUIController {
+public class UserUIController implements Initializable {
 	@FXML
 	private Button subreqbtn;
 	@FXML
@@ -22,7 +27,8 @@ public class UserUIController {
 	private Button createremotebtn;
 	@FXML
 	private Button backbtn;
-		
+	@FXML
+	private Label titletxt;
 	
 	public void SubReqBtn(ActionEvent event) throws Exception {
 		Alert alert = new Alert(AlertType.ERROR,"Your request has been recieved :)",ButtonType.OK);
@@ -46,7 +52,6 @@ public class UserUIController {
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/RemoteLocation.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
-		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
 		primaryStage.setTitle("EKRUT");
 		primaryStage.setScene(scene);		
 		primaryStage.show();
@@ -60,4 +65,9 @@ public class UserUIController {
 		primaryStage.setScene(scene);		
 		primaryStage.show();	
 	}
+    @Override
+	public void initialize(URL location, ResourceBundle resources) {
+		this.titletxt.setText("Welcome " + ChatClient.Fname);
+	}
+
 }
