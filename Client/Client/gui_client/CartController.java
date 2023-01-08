@@ -108,6 +108,7 @@ public class CartController implements Initializable{
 	
 	public void ProceedPayment(ActionEvent event) throws Exception {
 		
+		
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = null;
 		if(ChatClient.isSubscriber == true)

@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 import logic.Machine;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import javax.swing.JComboBox;
@@ -224,6 +225,21 @@ public class MonthlyReportsController implements Initializable {
 	
 	public void OrderReportSearch(ActionEvent event) throws Exception {
 	
+		String.valueOf(LocalDate.now().getMonthValue());
+		String.valueOf(LocalDate.now().getYear());
+		
+		//get combobox value
+		//check if month and year comboboxes values are the current month and year
+		//if they are the same, recreate this months report
+		//else try to find them in database, if they already exist get them
+		//if they dont exist, make them
+		
+	
+	// FindRequestedorderReport(event);
+	}
+	
+	public void FindRequestedOrderReport(ActionEvent event) throws Exception{
+		
 		ReportmessageToServer.setCommand(Command.ReadOrdersReports);
 		ReportmessageToServer.setContent(0);	
 		ClientUI.chat.accept(ReportmessageToServer);
@@ -256,6 +272,7 @@ public class MonthlyReportsController implements Initializable {
 			Alert alert = new Alert(AlertType.ERROR,"No order reports in the requested timeline",ButtonType.OK);
 			alert.showAndWait();
 		}
+
 	}
 	
 	public void BackBtn(ActionEvent event) throws Exception {

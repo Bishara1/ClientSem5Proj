@@ -1,6 +1,8 @@
 package gui_client;
 
 
+import java.io.IOException;
+
 import client.ChatClient;
 
 import client.ClientController;
@@ -140,4 +142,5 @@ public class UserLoginController {
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
 	}
+	
 }

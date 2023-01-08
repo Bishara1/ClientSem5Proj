@@ -13,7 +13,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
-public class UserUIController {
+public class UserUIController{
 	@FXML
 	private Button subreqbtn;
 	@FXML
@@ -27,6 +27,7 @@ public class UserUIController {
 	public void SubReqBtn(ActionEvent event) throws Exception {
 		Alert alert = new Alert(AlertType.ERROR,"Your request has been recieved :)",ButtonType.OK);
 		alert.showAndWait();
+		//Add insert to database that a customer wants to become a subscriber
 	}
 	
 	public void CreateOrderBtn(ActionEvent event) throws Exception {

@@ -175,12 +175,13 @@ public class ekrutOrderController implements Initializable{
 			rotation = findMax();
 		else
 		{
-			rotation -= 1;
+			if(ChatClient.machines.get(MachineNumber).getItems().size() > 4)
+				rotation -= 1;
 		}
 		LoadItems();
 	}
 	
-	public void LessItem() //NEW *******************************
+	public void LessItem1() //NEW *******************************
 	{
 		if(!ProductIdlbl.getText().equals(""))
 		{
@@ -192,12 +193,84 @@ public class ekrutOrderController implements Initializable{
 		}
 	}
 	
-	public void MoreItem() //NEW *******************************
+	public void MoreItem1() //NEW *******************************
 	{
 		if(!ProductIdlbl.getText().equals(""))
 		{
 			amountByBtn++;
 			amountBtnLbl.setText(String.valueOf(amountByBtn));
+		}
+	}
+	
+	public void LessItem2() //NEW *******************************
+	{
+		if(!ProductIdlbl.getText().equals(""))
+		{
+			if(amountByBtn > 0)
+			{
+				amountByBtn--;
+				amountBtnLbl.setText(String.valueOf(amountByBtn));
+			}
+		}
+	}
+	
+	public void MoreItem2() //NEW *******************************
+	{
+		if(!ProductIdlbl.getText().equals(""))
+		{
+			if(amountByBtn > 0)
+			{
+				amountByBtn--;
+				amountBtnLbl.setText(String.valueOf(amountByBtn));
+			}
+		}
+	}
+	
+	public void LessItem3() //NEW *******************************
+	{
+		if(!ProductIdlbl.getText().equals(""))
+		{
+			if(amountByBtn > 0)
+			{
+				amountByBtn--;
+				amountBtnLbl.setText(String.valueOf(amountByBtn));
+			}
+		}
+	}
+	
+	public void MoreItem3() //NEW *******************************
+	{
+		if(!ProductIdlbl.getText().equals(""))
+		{
+			if(amountByBtn > 0)
+			{
+				amountByBtn--;
+				amountBtnLbl.setText(String.valueOf(amountByBtn));
+			}
+		}
+	}
+	
+	public void LessItem4() //NEW *******************************
+	{
+		if(!ProductIdlbl.getText().equals(""))
+		{
+			if(amountByBtn > 0)
+			{
+				amountByBtn--;
+				amountBtnLbl.setText(String.valueOf(amountByBtn));
+			}
+		}
+	}
+	
+	public void MoreItem4() //NEW *******************************
+	{
+		if(!ProductIdlbl.getText().equals(""))
+		{
+			if(amountByBtn > 0)
+			{
+				amountByBtn--;
+				amountBtnLbl.setText(String.valueOf(amountByBtn));
+			}
 		}
 	}
 	
