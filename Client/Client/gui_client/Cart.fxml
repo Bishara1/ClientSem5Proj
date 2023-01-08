@@ -40,12 +40,6 @@
             <Font name="Elephant" size="65.0" />
          </font>
       </Label>
-      <Label layoutX="430.0" layoutY="578.0" prefHeight="39.0" prefWidth="218.0" text="Remove By product ID" textFill="#c14302">
-         <font>
-            <Font name="Elephant" size="18.0" />
-         </font>
-      </Label>
-      <TextField fx:id="removeidtxt" layoutX="648.0" layoutY="582.0" onAction="#RemoveItem" prefHeight="31.0" prefWidth="135.0" style="-fx-background-radius: 10;" />
       <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="871.0" layoutY="206.0" onMouseClicked="#RemoveAll" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../CommonSem5Proj/Common/Common/images/deleteall.png" />
