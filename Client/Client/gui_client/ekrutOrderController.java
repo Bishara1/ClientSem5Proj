@@ -109,7 +109,6 @@ public class ekrutOrderController implements Initializable{
 		primaryStage.show();	
 	}
 	public void BackBtn(ActionEvent event) throws Exception {
-//<<<<<<< HEAD
 //		((Node)event.getSource()).getScene().getWindow().hide();
 //		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
 //		Stage primaryStage = new Stage();
@@ -118,7 +117,6 @@ public class ekrutOrderController implements Initializable{
 //		primaryStage.setTitle("User UI");
 //		primaryStage.setScene(scene);		
 //		primaryStage.show();
-//=======
 //		
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = null;
