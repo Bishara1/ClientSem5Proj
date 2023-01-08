@@ -22,15 +22,15 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <PieChart fx:id="pieChart" layoutX="43.0" layoutY="99.0" />
-      <VBox alignment="BASELINE_CENTER" layoutX="-25.0" layoutY="10.0" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <PieChart fx:id="pieChart" layoutX="408.0" layoutY="94.0" />
+      <VBox alignment="BASELINE_CENTER" layoutX="-26.0" layoutY="-7.0" prefHeight="773.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
             <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Desktop/ekrut.png.png" />
+                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
             </ImageView>
          </children>

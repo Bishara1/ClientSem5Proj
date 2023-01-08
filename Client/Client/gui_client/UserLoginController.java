@@ -82,6 +82,10 @@ public class UserLoginController {
 				root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
 				break;
 				
+			case "dlo":
+				root = FXMLLoader.load(getClass().getResource("/gui_client/ViewDelivery.fxml"));
+				break;
+				
 			case "inm":
 				root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
 				break;

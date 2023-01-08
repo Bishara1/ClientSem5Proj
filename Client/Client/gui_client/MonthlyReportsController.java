@@ -1,6 +1,7 @@
 package gui_client;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
@@ -14,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -52,7 +54,13 @@ public class MonthlyReportsController implements Initializable {
 	private ComboBox<String> cmbType;
 	
 	Message messageToServer = new Message(null, null);
-	private String selected;
+	Message ReportmessageToServer = new Message(null, null);
+	private String location;
+	public static String year;
+	public static String month;
+	public static String machineId;
+	public String reportType;
+	public static String requestedReport;
 	
 	ObservableList<String> yearList;
 	ObservableList<String> MonthList;
@@ -63,9 +71,32 @@ public class MonthlyReportsController implements Initializable {
 	@FXML
 	public void Select(ActionEvent event)
 	{
-		selected = cmbLocation.getSelectionModel().getSelectedItem().toString();
-		System.out.println(selected);
+		location = cmbLocation.getSelectionModel().getSelectedItem().toString();
 		setMachineIdComboBox();
+	}
+	
+	@FXML
+	public void SelectYear(ActionEvent event)
+	{
+		year = cmbYear.getSelectionModel().getSelectedItem().toString();
+	}
+	
+	@FXML
+	public void SelectMonth(ActionEvent event)
+	{
+		month = cmbMonth.getSelectionModel().getSelectedItem().toString();
+	}
+	
+	@FXML
+	public void SelectMachineId(ActionEvent event)
+	{
+		machineId = cmbMachineId.getSelectionModel().getSelectedItem().toString();
+	}
+	
+	@FXML
+	public void SelectReportType(ActionEvent event)
+	{
+		reportType = cmbType.getSelectionModel().getSelectedItem().toString();
 	}
 	
 	public void initialize(URL url, ResourceBundle rb) {
@@ -86,6 +117,7 @@ public class MonthlyReportsController implements Initializable {
 		year.add("2020");
 		year.add("2021");
 		year.add("2022");
+		year.add("2023");
 		
 		yearList = FXCollections.observableArrayList(year);
 		cmbYear.getItems().clear();
@@ -93,20 +125,7 @@ public class MonthlyReportsController implements Initializable {
 	}
 	
 		public void setMonthComboBox() {
-		ArrayList<String> month = new ArrayList<String>();
-		
-		month.add("1");
-		month.add("2");
-		month.add("3");
-		month.add("4");
-		month.add("5");
-		month.add("6");
-		month.add("7");
-		month.add("8");
-		month.add("9");
-		month.add("10");
-		month.add("11");
-		month.add("12");
+		ArrayList<String> month = new ArrayList<String>(Arrays.asList("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"));
 	
 		MonthList = FXCollections.observableArrayList(month);
 		cmbMonth.getItems().clear();
@@ -118,6 +137,7 @@ public class MonthlyReportsController implements Initializable {
 		
 		type.add("Inventory");
 		type.add("Orders");
+		type.add("Users");
 		
 		TypeList = FXCollections.observableArrayList(type);
 		cmbType.getItems().clear();
@@ -137,6 +157,7 @@ public class MonthlyReportsController implements Initializable {
 	}
 	
 	public void setMachineIdComboBox() {
+		
 		ArrayList<String> typeMachine = new ArrayList<String>();
 //		ConnectNewClient();
 		messageToServer.setCommand(Command.ReadMachines);
@@ -145,8 +166,7 @@ public class MonthlyReportsController implements Initializable {
 		
 		for(Machine i : ChatClient.machines)
 		{
-			
-			if(selected.equals(i.getLocation()))
+			if(location.equals(i.getLocation()))
 			{
 				typeMachine.add(String.valueOf(i.getMachine_id()));
 			}
@@ -156,12 +176,7 @@ public class MonthlyReportsController implements Initializable {
 		cmbMachineId.getItems().clear();
 		cmbMachineId.setItems(MachineIdList);
 	}
-	
-//	public void ConnectNewClient() {
-//		ClientUI.chat = new ClientController("localhost", 5555);  // new client connected
-//		///ClientUI.chat.accept("login"); // send to server that a client is connected
-//	}
-	
+
 	public void ShowReportBtn(ActionEvent event) throws Exception{
 		// Checking if one or more fields are empty
 		if ((cmbYear.getValue() == null )||(cmbMonth.getValue() == null )
@@ -171,10 +186,65 @@ public class MonthlyReportsController implements Initializable {
 			alert.showAndWait();
 			}
 		else {
-			Alert alert = new Alert(AlertType.ERROR,"NOT COMPLETE",ButtonType.OK);
-			alert.showAndWait();
+			
+			switch (reportType) {
+			case "Orders":
+				OrderReportSearch(event);
+				break;
+			case "Inventory":
+				System.out.println("Inventory");
+				break;
+			case "Users":
+				System.out.println("Users");
+				break;
+
+			default:
+				System.out.println("need to fkn complete");
+				break;
+			}
+		}
+	}
+	
+	public void OrderReportSearch(ActionEvent event) throws Exception {
+		ReportmessageToServer.setCommand(Command.ReadOrdersReports);
+		ReportmessageToServer.setContent(0);	
+		ClientUI.chat.accept(ReportmessageToServer);
+		boolean flag = false;
+		// find the requested order
+		if (ChatClient.orderReport.get(0)!=null)
+		{
+
+			for (int j = 0; j < ChatClient.orderReport.size(); j++)
+		{	if (ChatClient.orderReport.get(j).getMachine_id().equals(machineId.toString()) &&
+				ChatClient.orderReport.get(j).getYear().equals(year.toString()) &&
+					ChatClient.orderReport.get(j).getMonth().equals(month.toString())) {
+						requestedReport = ChatClient.orderReport.get(j).getData();
+						flag = true;
+						break;
+				}
+		}
+			
+		if (flag) {
+			((Node)event.getSource()).getScene().getWindow().hide();
+			Parent root = FXMLLoader.load(getClass().getResource("/gui_client/ReportsCEO.fxml"));
+			Stage primaryStage = new Stage();
+			Scene scene = new Scene(root);
+			primaryStage.setTitle("Pie Chart (ReportsCEO)");
+			primaryStage.setScene(scene);		
+			primaryStage.show();	
 		}
 
+		else
+			{
+				Alert alert = new Alert(AlertType.ERROR,"No order reports in the requested timeline",ButtonType.OK);
+				alert.showAndWait();
+			}
+		}
+		else
+		{
+			Alert alert = new Alert(AlertType.ERROR,"No reports available!",ButtonType.OK);
+			alert.showAndWait();
+		}
 	}
 	
 	public void BackBtn(ActionEvent event) throws Exception {
@@ -186,6 +256,4 @@ public class MonthlyReportsController implements Initializable {
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
 	}
-	
-
 }

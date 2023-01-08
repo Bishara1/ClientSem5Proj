@@ -1,5 +1,6 @@
 package gui_client;
 
+import client.ChatClient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +31,7 @@ public class UserUIController {
 	
 	public void CreateOrderBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
+		ChatClient.machineToLoad = 1;
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/ekrutOrder.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);

@@ -2,6 +2,7 @@ package gui_client;
 
 import java.util.ArrayList;
 
+import client.ChatClient;
 import client.ClientUI;
 import common.Command;
 import common.Message;
@@ -17,6 +18,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import logic.Subscriber;
 
 public class CustomerServiceWorkerController {
 
@@ -45,17 +47,35 @@ public class CustomerServiceWorkerController {
 	private Button logoutBtn;
 
 	Message messageToServer = new Message(null, null);
-	
+	Message ReadUsersMessage = new Message(null, null);
+
 	public void Add(ActionEvent event) throws Exception
 	{
+		boolean flag = true;
 		String newUser = FirstNametxt.getText() + " " + LastNametxt.getText() + " " + Idtxt.getText() + " " 
 				+ PhoneNumbertxt.getText() + " " + Emailtxt.getText() + " " + CreditCardtxt.getText() + " -1 " + 
 				Usernametxt.getText() + " " + Passwordtxt.getText() + " " + Roletxt.getText();
-		messageToServer.setCommand(Command.InsertUser);
-		messageToServer.setContent(newUser);
-		ClientUI.chat.accept(messageToServer);
-		Alert alert = new Alert(AlertType.CONFIRMATION,"Successfully added",ButtonType.OK);
-		alert.showAndWait();
+		ReadUsersMessage.setCommand(Command.ReadUsers);
+		ReadUsersMessage.setContent(0);
+		ClientUI.chat.accept(ReadUsersMessage);
+		
+		for(Subscriber s : ChatClient.subscribers)
+		{
+			if ((s.getId()== Integer.parseInt(Idtxt.getText()) || s.getUserName().equals(Usernametxt.getText()) ||
+					s.getPhoneNum().equals(PhoneNumbertxt.getText())))
+			{
+				Alert alert = new Alert(AlertType.ERROR,"User already exists!",ButtonType.OK);
+				alert.showAndWait();
+				flag = false;
+			}
+		}
+		if (flag)
+		{
+			messageToServer.setCommand(Command.InsertUser);
+			messageToServer.setContent(newUser);
+			ClientUI.chat.accept(messageToServer);
+			Alert alert = new Alert(AlertType.CONFIRMATION,"User successfully added",ButtonType.OK);
+			alert.showAndWait();}
 	}
 
 	public void Logout(ActionEvent event) throws Exception {
