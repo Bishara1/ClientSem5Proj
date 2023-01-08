@@ -35,7 +35,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <TableView fx:id="OrdersTable" layoutX="415.0" layoutY="225.0" prefHeight="317.0" prefWidth="524.0">
+      <TableView fx:id="OrdersTable" layoutX="415.0" layoutY="225.0" prefHeight="317.0" prefWidth="524.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/table.css">
         <columns>
           <TableColumn fx:id="orderNumberCol" prefWidth="80.33331298828125" text="Order #" />
           <TableColumn fx:id="customerIDCol" prefWidth="97.0" text="Customer ID" />
