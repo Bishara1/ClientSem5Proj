@@ -11,40 +11,45 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="950.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ViewOrdersDeliveryOperatorController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="916.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ViewOrdersDeliveryOperatorController">
    <children>
-      <Label fx:id="titlelbl" contentDisplay="TOP" layoutX="415.0" layoutY="59.0" prefHeight="116.0" prefWidth="497.0" text="Welcome" textFill="#c14302">
+      <Label fx:id="titlelbl" alignment="CENTER" contentDisplay="TOP" layoutX="433.0" layoutY="47.0" prefHeight="91.0" prefWidth="459.0" text="EKRUT" textFill="#c14302">
          <font>
-            <Font name="Elephant" size="62.0" />
+            <Font name="Constantia" size="62.0" />
          </font>
       </Label>
-      <VBox alignment="BASELINE_CENTER" layoutY="-5.0" prefHeight="776.0" prefWidth="362.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <VBox alignment="BASELINE_CENTER" layoutY="-5.0" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="553.0" fitWidth="371.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
+                  <Image url="@../../Desktop/ekrut.png.png" />
                </image>
             </ImageView>
          </children>
       </VBox>
-      <Button fx:id="backBtn" layoutX="415.0" layoutY="664.0" mnemonicParsing="false" onAction="#backButton" prefHeight="44.0" prefWidth="98.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
+      <Button fx:id="backBtn" layoutX="440.0" layoutY="659.0" mnemonicParsing="false" onAction="#backButton" prefHeight="44.0" prefWidth="98.0" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <TableView fx:id="OrdersTable" layoutX="395.0" layoutY="225.0" prefHeight="317.0" prefWidth="524.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/table.css">
+      <TableView fx:id="OrdersTable" editable="true" layoutX="416.0" layoutY="155.0" prefHeight="358.0" prefWidth="493.0">
         <columns>
-          <TableColumn fx:id="orderNumberCol" prefWidth="64.0" text="Order #" />
-          <TableColumn fx:id="customerIDCol" prefWidth="120.0" text="Customer ID" />
-            <TableColumn fx:id="totalPriceCol" prefWidth="101.0" text="Total Price" />
-            <TableColumn fx:id="locationCol" prefWidth="129.0" text="Location" />
-            <TableColumn fx:id="statusCol" onEditCommit="#ChangeStatus" prefWidth="109.0" text="Status" />
+          <TableColumn fx:id="orderNumberCol" prefWidth="65.0" text="Order #" />
+          <TableColumn fx:id="customerIDCol" prefWidth="116.0" text="Customer ID" />
+            <TableColumn fx:id="totalPriceCol" prefWidth="109.0" text="Total Price" />
+            <TableColumn fx:id="locationCol" prefWidth="90.0" text="Location" />
+            <TableColumn fx:id="statusCol" onEditCommit="#ChangeStatus" prefWidth="112.0" text="Status" />
         </columns>
       </TableView>
-      <Button layoutX="766.0" layoutY="659.0" mnemonicParsing="false" onAction="#UpdateOrders" prefHeight="44.0" prefWidth="98.0" text="Update" textFill="WHITE">
+      <Button layoutX="737.0" layoutY="659.0" mnemonicParsing="false" onAction="#UpdateOrders" prefHeight="44.0" prefWidth="165.0" text="Update" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="737.0" layoutY="598.0" mnemonicParsing="false" onAction="#ImportOrders" prefHeight="44.0" prefWidth="165.0" text="Reset Changes" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

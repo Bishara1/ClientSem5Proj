@@ -336,17 +336,17 @@ public class MonthlyReportsController implements Initializable {
 		ClientUI.chat.accept(ReportmessageToServer);
 		boolean flag = false;
 		// find the requested order
-<<<<<<< HEAD
-		if (ChatClient.orderReport.get(0)!=null) {
-			for (int j = 0; j < ChatClient.orderReport.size(); j++)	{	
-				if (ChatClient.orderReport.get(j).getMachine_id().equals(machineId.toString()) &&
-						ChatClient.orderReport.get(j).getYear().equals(year.toString()) &&
-							ChatClient.orderReport.get(j).getMonth().equals(month.toString())) {
-					
-					requestedReport = ChatClient.orderReport.get(j).getData();
-					flag = true;
-					break;
-=======
+//<<<<<<< HEAD
+//		if (ChatClient.orderReport.get(0)!=null) {
+//			for (int j = 0; j < ChatClient.orderReport.size(); j++)	{	
+//				if (ChatClient.orderReport.get(j).getMachine_id().equals(machineId.toString()) &&
+//						ChatClient.orderReport.get(j).getYear().equals(year.toString()) &&
+//							ChatClient.orderReport.get(j).getMonth().equals(month.toString())) {
+//					
+//					requestedReport = ChatClient.orderReport.get(j).getData();
+//					flag = true;
+//					break;
+//=======
 		if (ChatClient.orderReport.get(0)!=null)
 		{
 
@@ -357,25 +357,25 @@ public class MonthlyReportsController implements Initializable {
 						requestedReport = ChatClient.orderReport.get(j).getData();
 						flag = true;
 						break;
->>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
+//>>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
 				}
-<<<<<<< HEAD
-			}
-				
-			if (flag) {
-				((Node)event.getSource()).getScene().getWindow().hide();
-				Parent root = FXMLLoader.load(getClass().getResource("/gui_client/ReportsCEO.fxml"));
-				Stage primaryStage = new Stage();
-				Scene scene = new Scene(root);
-				primaryStage.setTitle("Pie Chart (ReportsCEO)");
-				primaryStage.setScene(scene);		
-				primaryStage.show();	
-			}
-	
-			else {
-					Alert alert = new Alert(AlertType.ERROR,"No order reports in the requested timeline",ButtonType.OK);
-					alert.showAndWait();
-=======
+//<<<<<<< HEAD
+//			}
+//				
+//			if (flag) {
+//				((Node)event.getSource()).getScene().getWindow().hide();
+//				Parent root = FXMLLoader.load(getClass().getResource("/gui_client/ReportsCEO.fxml"));
+//				Stage primaryStage = new Stage();
+//				Scene scene = new Scene(root);
+//				primaryStage.setTitle("Pie Chart (ReportsCEO)");
+//				primaryStage.setScene(scene);		
+//				primaryStage.show();	
+//			}
+//	
+//			else {
+//					Alert alert = new Alert(AlertType.ERROR,"No order reports in the requested timeline",ButtonType.OK);
+//					alert.showAndWait();
+//=======
 		}
 			
 		if (flag) {
@@ -423,12 +423,12 @@ public class MonthlyReportsController implements Initializable {
 					Alert alert = new Alert(AlertType.ERROR,"No order reports in the requested timeline",ButtonType.OK);
 					alert.showAndWait();}
 				}
->>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
+//>>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
 			}
-<<<<<<< HEAD
-		}
-=======
->>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
+//<<<<<<< HEAD
+//		}
+//=======
+//>>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
 		
 		else
 		{
