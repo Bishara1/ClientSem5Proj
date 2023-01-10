@@ -20,16 +20,16 @@
             <Font name="Elephant" size="41.0" />
          </font>
       </Label>
-      <Button fx:id="viewMachinesBtn" layoutX="600.0" layoutY="225.0" mnemonicParsing="false" onAction="#ViewMachines" prefHeight="54.0" prefWidth="160.0" text="View Machine" textFill="WHITE">
+      <Button fx:id="viewMachinesBtn" layoutX="600.0" layoutY="341.0" mnemonicParsing="false" onAction="#ViewMachines" prefHeight="54.0" prefWidth="160.0" text="View Machine" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
 
-      <Button fx:id="monthlyReportBtn" layoutX="600.0" layoutY="337.0" mnemonicParsing="false" onAction="#MonthlyReports" prefHeight="54.0" prefWidth="160.0" text="Monthly Report" textFill="WHITE">
+      <Button layoutX="600.0" layoutY="417.0" mnemonicParsing="false" onAction="#ViewReports" prefHeight="54.0" prefWidth="160.0" text="View Reports" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />                                                         
          </font></Button>
-      <Button fx:id="viewSubscribersBtn" layoutX="600.0" layoutY="451.0" mnemonicParsing="false" onAction="#ViewSubscribers" prefHeight="55.0" prefWidth="160.0" text="View Subscribers" textFill="WHITE">
+      <Button fx:id="viewSubscribersBtn" layoutX="600.0" layoutY="497.0" mnemonicParsing="false" onAction="#ViewSubscribers" prefHeight="55.0" prefWidth="160.0" text="View Subscribers" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
