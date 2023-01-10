@@ -40,6 +40,7 @@ public class PurchaseController implements Initializable{
 		nextWindow(event, "/gui_client/Cart.fxml", "Cart");	
 	}
 	
+
 	public void PurchaseBtn(ActionEvent event) throws Exception {
 		nextWindow(event, "/gui_client/Receipt.fxml", "Receipt");
 	}

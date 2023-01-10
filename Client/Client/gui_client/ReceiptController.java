@@ -81,6 +81,8 @@ public class ReceiptController implements Initializable{
 	private ArrayList<ItemTable> tableCart = new ArrayList<ItemTable>();
 
 	private ObservableList<ItemTable> obs;
+	
+	private int MachineNumber = -1;
 
 	@FXML
 	private Button okBtn;
@@ -92,12 +94,30 @@ public class ReceiptController implements Initializable{
 		productIdCol.setCellValueFactory(new PropertyValueFactory<>("Label"));
 		amountCol.setCellValueFactory(new PropertyValueFactory<>("Amount"));
 		priceCol.setCellValueFactory(new PropertyValueFactory<>("PriceAll"));	
+		FindMachineNumber(ChatClient.machineToLoad);
 		createItemTableCart();
 		obs = FXCollections.observableArrayList(tableCart);  // insert database details to obs
 		receiptTable.setItems(obs);  // load database colummns into table and display them
 	}
 	
 	public void OKBtn(ActionEvent event) throws Exception {
+		//check if theres an item that went under the specified threshold and send a request to deal with it -> stock manager
+		int size = ChatClient.machines.get(MachineNumber).getAmountItems().size();
+		ArrayList<Integer> itemAmount = ChatClient.machines.get(MachineNumber).getAmountItems();
+		String itemsToFill = "";
+		for(int i =0;i<size;i++)
+		{
+			if(itemAmount.get(i) == 0)
+			{
+				itemsToFill += ChatClient.machines.get(MachineNumber).getItem(i);
+				if(i != size-1)
+					itemsToFill += ",";
+			}
+		}
+		if(!itemsToFill.isEmpty()) //send request to fill machine by threshold
+		{
+			//send machine_id and itemsToFill to stockrequest?
+		}
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Alert alert = new Alert(AlertType.CONFIRMATION,"Order added!",ButtonType.OK);
 		alert.showAndWait();
@@ -118,6 +138,8 @@ public class ReceiptController implements Initializable{
 		data.add(String.valueOf(price));
 		data.add(ChatClient.supplyMethod);
 		data.add(String.valueOf(ChatClient.machineToLoad));
+		String newStock = CreateNewStock(ChatClient.available);
+		data.add(newStock);
 		Message msg = new Message(data,Command.InsertOrder);
 		ClientUI.chat.accept(msg);
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/LoginEkrut.fxml"));
@@ -151,4 +173,29 @@ public class ReceiptController implements Initializable{
 			 tableCart.add(new ItemTable(item.getProductID(),Integer.parseInt(item.getAmount()),item.getPrice()));
 		 }
 	 }
+	
+	public String CreateNewStock(ArrayList<Integer> arr)
+	{
+		int i;
+		int size = arr.size();
+		String newStock = "";
+		for(i=0;i<size;i++)
+		{
+			newStock += String.valueOf(arr.get(i));
+			if(i != size-1)
+				newStock += ",";
+		}
+		return newStock;
+	}
+
+	 public void FindMachineNumber(int id)
+	  {
+	    	int size = ChatClient.machines.size();
+			for(int i = 0;i<size;i++)
+			{
+				if(ChatClient.machines.get(i).getMachine_id() == id)
+					MachineNumber = i;
+			}
+	  }
+	    
 }

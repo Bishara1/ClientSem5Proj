@@ -33,6 +33,7 @@ public class UserUIController implements Initializable {
 	public void SubReqBtn(ActionEvent event) throws Exception {
 		Alert alert = new Alert(AlertType.ERROR,"Your request has been recieved :)",ButtonType.OK);
 		alert.showAndWait();
+		//Add insert to database that a customer wants to become a subscriber
 	}
 	
 	public void CreateOrderBtn(ActionEvent event) throws Exception {
@@ -49,7 +50,7 @@ public class UserUIController implements Initializable {
 	}
 	public void CreateRemoteOrderBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/RemoteLocation.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/ShipmentMethod.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 		primaryStage.setTitle("EKRUT");

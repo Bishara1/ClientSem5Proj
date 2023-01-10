@@ -205,6 +205,8 @@ public class MonthlyReportsController implements Initializable {
 		}
 	}
 	
+	
+		
 	public OrdersReports findCurrentReport() {
 		// reads data base
 		ReportmessageToServer.setCommand(Command.ReadOrdersReports);
@@ -353,6 +355,7 @@ public class MonthlyReportsController implements Initializable {
 			Alert alert = new Alert(AlertType.ERROR,"No reports available!",ButtonType.OK);
 			alert.showAndWait();
 		}
+
 	}
 	
 	public void BackBtn(ActionEvent event) throws Exception {

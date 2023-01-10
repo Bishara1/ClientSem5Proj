@@ -111,7 +111,6 @@ public class RemoteLocationController implements Initializable {
     public void StartOrderBtn(ActionEvent event) throws Exception {
     	try {
     	ChatClient.locationName = cmbLocation.getSelectionModel().getSelectedItem().toString();
-    	ChatClient.supplyMethod = "Self pickup";
     	ChatClient.machineToLoad = Integer.parseInt(cmbMachine.getSelectionModel().getSelectedItem().toString());
     	((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/ekrutOrder.fxml"));
