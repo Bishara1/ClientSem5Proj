@@ -46,6 +46,7 @@ public class ChatClient extends AbstractClient
   public static ArrayList<OrdersReports> orderReport;
   public static ArrayList<Location> locations;
   public static ArrayList<Item> cart;
+  public static ArrayList<Integer> available;
   public static String password;
   public static String role;
   public static String Fname;
@@ -53,6 +54,7 @@ public class ChatClient extends AbstractClient
   public static String supplyMethod = "Immediate pickup"; //?????
   public static boolean awaitResponse = false;
   public static boolean isSubscriber = false;
+  public static boolean FirstSubscriberOrder = false;
   private boolean FirstCart = false;
   public static int ID;
   public static int machineToLoad = -1;
@@ -76,7 +78,7 @@ public class ChatClient extends AbstractClient
     super(host, port); //Call the superclass constructor
     this.clientUI = clientUI;
     openConnection();
-    //timer.start(); //SAFWAN CREATE A NEW THREAD EVERYTIME YOU WANT TO RESTART THE TIMER OR JUST OVERRIDE THE CURRENT THREAD, THANKS IN ADVANCE.
+   // timer.start(); //SAFWAN CREATE A NEW THREAD EVERYTIME YOU WANT TO RESTART THE TIMER OR JUST OVERRIDE THE CURRENT THREAD, THANKS IN ADVANCE.
   }
 
   
@@ -117,10 +119,18 @@ public class ChatClient extends AbstractClient
 	  		  break;
 	  	  
 	  	  case Connect:
-	  		  String[] passRoleFname = (String[])(((Message)msg).getContent());
-	  		  password = passRoleFname[0];
-	  		  role = passRoleFname[1];
-	  		  Fname = passRoleFname[2];
+	  		  String[] passRoleFnameSubNumFirstCart = (String[])(((Message)msg).getContent());
+	  		  password = passRoleFnameSubNumFirstCart[0];
+	  		  role = passRoleFnameSubNumFirstCart[1];
+	  		  Fname = passRoleFnameSubNumFirstCart[2];
+	  		  if(Integer.parseInt(passRoleFnameSubNumFirstCart[3]) != -1)
+	  			  isSubscriber = true;
+	  		  else
+	  			  isSubscriber = false;
+	  		  if(Integer.parseInt(passRoleFnameSubNumFirstCart[4]) == 1)
+	  			  FirstCart = true;
+	  		  else
+	  			  FirstCart = false;
 	  		  break;
 	  		  
 	  	case ReadLocations:

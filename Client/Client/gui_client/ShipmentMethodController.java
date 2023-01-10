@@ -1,5 +1,6 @@
 package gui_client;
 
+import client.ChatClient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,8 +21,9 @@ public class ShipmentMethodController {
 	
 	
 	public void ImmediatePickupBtn(ActionEvent event) throws Exception {
+		ChatClient.supplyMethod = "Self pickup";
 		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/Receipt.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/RemoteLocation.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 		primaryStage.setTitle("Receipt");
@@ -29,6 +31,7 @@ public class ShipmentMethodController {
 		primaryStage.show();		
 	}
 	public void DeliveryBtn(ActionEvent event) throws Exception {
+		ChatClient.supplyMethod = "Delivery";
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/ShipmentAddress.fxml"));
 		Stage primaryStage = new Stage();

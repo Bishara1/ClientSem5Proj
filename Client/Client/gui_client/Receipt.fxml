@@ -19,16 +19,12 @@
             <Font name="Cooper Black" size="60.0" />
          </font>
       </Label>
-<<<<<<< HEAD
-      <Button fx:id="okBtn" layoutX="782.0" layoutY="666.0" mnemonicParsing="false" onAction="#OKBtn" prefHeight="39.0" prefWidth="94.0" text="OK" textFill="WHITE">
-=======
       <Label layoutX="505.0" layoutY="104.0" prefHeight="31.0" prefWidth="342.0" text="Count the memories NOT the calories" textFill="#c14302">
          <font>
             <Font name="System Bold Italic" size="19.0" />
          </font>
       </Label>
       <Button fx:id="okBtn" layoutX="655.0" layoutY="628.0" mnemonicParsing="false" onAction="#OKBtn" prefHeight="39.0" prefWidth="94.0" text="OK" textFill="WHITE">
->>>>>>> branch 'master' of https://github.com/Bishara1/ClientSem5Proj
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
