@@ -26,9 +26,6 @@ public class RegionalManagerController implements Initializable {
     @FXML
     private Label welcomelbl;
 	
-	
-	
-	
 	public void LogoutBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/LoginEkrut.fxml"));
@@ -39,13 +36,9 @@ public class RegionalManagerController implements Initializable {
 		primaryStage.show();		
 	}
 
-
-
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		welcomelbl.setText("Weclome "+ChatClient.Fname);
-		
+		welcomelbl.setText("Weclome " + ChatClient.Fname);
 	}
 	
 }
