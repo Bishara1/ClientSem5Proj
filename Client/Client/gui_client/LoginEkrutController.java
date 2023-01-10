@@ -47,8 +47,7 @@ public class LoginEkrutController {
 		((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
 		Stage primaryStage = new Stage();
 
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/RemoteLocation.fxml"));
-//		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/EKTLogin.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/EKTLogin.fxml"));
 		Scene scene = new Scene(root);
 		
 		primaryStage.setTitle("EKT Login");
