@@ -2,7 +2,6 @@ package gui_client;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import client.ChatClient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,7 +13,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
 
 
 public class CEOReportsController implements Initializable {
@@ -26,69 +24,46 @@ public class CEOReportsController implements Initializable {
 	@FXML
 	private Button monthlyReportBtn;
 	@FXML
+	private Button inventoryReportBtn;
+	@FXML
 	private Button viewSubscribersBtn;
 	@FXML
 	private Button logOutBtn;
 	@FXML
 	private Button viewdiscountBtn;
 	
-	
-	public void ViewMachines(ActionEvent event) throws Exception{
-		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/StockTable.fxml"));
-		Stage primaryStage = new Stage();
-		Scene scene = new Scene(root);
-		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
-		primaryStage.setTitle("Stock Table");
-		primaryStage.setScene(scene);		
-		primaryStage.show();
-	}
-	
-
-	public void ViewSubscribers(ActionEvent event) throws Exception  {
-		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/SubscribersViewer.fxml"));
-		Stage primaryStage = new Stage();
-		Scene scene = new Scene(root);
-		primaryStage.setTitle("Subscriber Viewer");
-		primaryStage.setScene(scene);		
-		primaryStage.show();
-	}
-	
-	public void viewDiscount(ActionEvent event) throws Exception {
-		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/DiscountLocation.fxml"));
-		Stage primaryStage = new Stage();
-		Scene scene = new Scene(root);
-		primaryStage.setTitle("Discount Location");
-		primaryStage.setScene(scene);		
-		primaryStage.show();
-	}
-	
-	public void MonthlyReports(ActionEvent event) throws Exception {
-		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/MonthlyReports.fxml"));
-		Stage primaryStage = new Stage();
-		Scene scene = new Scene(root);
-		primaryStage.setTitle("Monthly Reports");
-		primaryStage.setScene(scene);		
-		primaryStage.show();		
-	}
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.titleLbl.setText("Welcome CEO " + ChatClient.Fname);
 	}
-
 	
+	public void ViewMachines(ActionEvent event) throws Exception{
+		nextWindow(event,"/gui_client/StockTable.fxml","Stock Table");
+	}
+
+	public void ViewSubscribers(ActionEvent event) throws Exception  {
+		nextWindow(event,"/gui_client/SubscribersViewer.fxml","Subscriber Viewer");
+	}
+	
+	public void viewDiscount(ActionEvent event) throws Exception {
+		nextWindow(event,"/gui_client/DiscountLocation.fxml","Discount Location");
+	}
+	
+	public void ViewReports(ActionEvent event) throws Exception {
+		nextWindow(event,"/gui_client/ChooseReportType.fxml","Choose Report Type");
+	}
+
 	public void LogOut(ActionEvent event) throws Exception {
+		nextWindow(event,"/gui_client/LoginEkrut.fxml","Login Ekrut");
+	}
+	
+	private void nextWindow(ActionEvent event, String window_location, String title) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/LoginEkrut.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource(window_location));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
-		primaryStage.setTitle("Login EKRUT");
+		primaryStage.setTitle(title);
 		primaryStage.setScene(scene);		
 		primaryStage.show();	
-
 	}
 }

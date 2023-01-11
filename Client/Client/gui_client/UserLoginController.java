@@ -1,6 +1,8 @@
 package gui_client;
 
 
+import java.io.IOException;
+
 import client.ChatClient;
 
 import client.ClientController;
@@ -79,11 +81,11 @@ public class UserLoginController {
 				break;
 				
 			case "dlw":
-				root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+				root = FXMLLoader.load(getClass().getResource("/gui_client/ViewDelivery.fxml"));
 				break;
 				
 			case "dlo":
-				root = FXMLLoader.load(getClass().getResource("/gui_client/ViewOrdersDeliveryOperator.fxml"));
+				root = FXMLLoader.load(getClass().getResource("/gui_client/ViewDelivery.fxml"));
 				break;
 				
 			case "inm":
@@ -144,4 +146,5 @@ public class UserLoginController {
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
 	}
+	
 }

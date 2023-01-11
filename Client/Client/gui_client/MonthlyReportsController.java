@@ -3,19 +3,15 @@ package gui_client;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -31,10 +27,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-import javax.swing.JComboBox;
 
 import client.ChatClient;
-import client.ClientController;
 import client.ClientUI;
 import common.Command;
 import common.Message;
@@ -54,17 +48,14 @@ public class MonthlyReportsController implements Initializable {
 	private ComboBox<String> cmbLocation;
 	@FXML
 	private ComboBox<String> cmbMachineId;
-	@FXML
-	private ComboBox<String> cmbType;
 	
+	Message ReportmessageToServer = new Message(null, null);
 	Message messageToServer = new Message(null, null);
 	Message orderToServer = new Message(null, null);
-	Message ReportmessageToServer = new Message(null, null);
 	private String location;
 	public static String year;
 	public static String month;
 	public static String machineId;
-	public String reportType;
 	public static String requestedReport;
 	public static String requestedReport1;
 	
@@ -72,61 +63,40 @@ public class MonthlyReportsController implements Initializable {
 
 	ObservableList<String> yearList;
 	ObservableList<String> MonthList;
-	ObservableList<String> TypeList;
 	ObservableList<String> LocationList;
 	ObservableList<String> MachineIdList;
 	
 	@FXML
-	public void Select(ActionEvent event)
-	{
+	public void Select(ActionEvent event) {
 		location = cmbLocation.getSelectionModel().getSelectedItem().toString();
 		setMachineIdComboBox();
 	}
 	
 	@FXML
-	public void SelectYear(ActionEvent event)
-	{
+	public void SelectYear(ActionEvent event) {
 		year = cmbYear.getSelectionModel().getSelectedItem().toString();
 	}
 	
 	@FXML
-	public void SelectMonth(ActionEvent event)
-	{
+	public void SelectMonth(ActionEvent event) {
 		month = cmbMonth.getSelectionModel().getSelectedItem().toString();
 	}
 	
 	@FXML
-	public void SelectMachineId(ActionEvent event)
-	{
+	public void SelectMachineId(ActionEvent event) {
 		machineId = cmbMachineId.getSelectionModel().getSelectedItem().toString();
 	}
 	
-	@FXML
-	public void SelectReportType(ActionEvent event)
-	{
-		reportType = cmbType.getSelectionModel().getSelectedItem().toString();
-	}
 	
 	public void initialize(URL url, ResourceBundle rb) {
 		setYearComboBox();
 		setMonthComboBox();
-		setTypeComboBox();
 		setLocationComboBox();
 	}
 	
     public void setYearComboBox() {	
-	ArrayList<String> year = new ArrayList<String>();
-		
-		year.add("2015");
-		year.add("2016");
-		year.add("2017");
-		year.add("2018");
-		year.add("2019");
-		year.add("2020");
-		year.add("2021");
-		year.add("2022");
-		year.add("2023");
-		
+    	ArrayList<String> year = new ArrayList<String>(Arrays.asList("2016","2017","2018","2019","2020","2021","2022","2023"));
+    	
 		yearList = FXCollections.observableArrayList(year);
 		cmbYear.getItems().clear();
 		cmbYear.setItems(yearList);
@@ -140,32 +110,15 @@ public class MonthlyReportsController implements Initializable {
 		cmbMonth.setItems(MonthList);
 	}
 	
-	public void setTypeComboBox() {
-		ArrayList<String> type = new ArrayList<String>();
-		
-		type.add("Inventory");
-		type.add("Orders");
-		type.add("Users");
-		
-		TypeList = FXCollections.observableArrayList(type);
-		cmbType.getItems().clear();
-		cmbType.setItems(TypeList);
-	}
-	
 	public void setLocationComboBox() {
-		ArrayList<String> type = new ArrayList<String>();
-		
-		type.add("North");
-		type.add("South");
-		type.add("UAE");
-		
+		ArrayList<String> type = new ArrayList<String>(Arrays.asList("North", "South", "UAE"));
+				
 		LocationList = FXCollections.observableArrayList(type);
 		cmbLocation.getItems().clear();
 		cmbLocation.setItems(LocationList);
 	}
 	
 	public void setMachineIdComboBox() {
-		
 		ArrayList<String> typeMachine = new ArrayList<String>();
 		messageToServer.setCommand(Command.ReadMachines);
 		messageToServer.setContent(0);	
@@ -187,28 +140,14 @@ public class MonthlyReportsController implements Initializable {
 	public void ShowReportBtn(ActionEvent event) throws Exception{
 		// Checking if one or more fields are empty
 		if ((cmbYear.getValue() == null )||(cmbMonth.getValue() == null )
-				||(cmbType.getValue() == null ) ||(cmbLocation.getValue() == null )
-					||(cmbMachineId.getValue() == null)) {
+				||(cmbLocation.getValue() == null )	||(cmbMachineId.getValue() == null))
+		{
 			Alert alert = new Alert(AlertType.ERROR,"One or more feilds is Empty!",ButtonType.OK);
 			alert.showAndWait();
-			}
-		else {
-			
-			switch (reportType) {
-			case "Orders":
-				OrderReportSearch(event);
-				break;
-			case "Inventory":
-				System.out.println("Inventory");
-				break;
-			case "Users":
-				System.out.println("Users");
-				break;
-
-			default:
-				System.out.println("need to fkn complete");
-				break;
-			}
+		}
+		else
+		{
+			OrderReportSearch(event);
 		}
 	}
 	
@@ -266,6 +205,8 @@ public class MonthlyReportsController implements Initializable {
 		}
 	}
 	
+	
+		
 	public OrdersReports findCurrentReport() {
 		// reads data base
 		ReportmessageToServer.setCommand(Command.ReadOrdersReports);
@@ -297,7 +238,6 @@ public class MonthlyReportsController implements Initializable {
 	}
 	
 	// adds items o new report
-	// if 
 	public void checkInReport(String data) {
 		String[] nameAmount = data.split(",");
 		String[] old = null;
@@ -369,13 +309,8 @@ public class MonthlyReportsController implements Initializable {
 		}
 			
 		if (flag) {
-			((Node)event.getSource()).getScene().getWindow().hide();
-			Parent root = FXMLLoader.load(getClass().getResource("/gui_client/ReportsCEO.fxml"));
-			Stage primaryStage = new Stage();
-			Scene scene = new Scene(root);
-			primaryStage.setTitle("Pie Chart (ReportsCEO)");
-			primaryStage.setScene(scene);		
-			primaryStage.show();	
+			
+			nextWindow(event,"/gui_client/ReportsCEO.fxml","Pie Chart (ReportsCEO)");
 		}
 
 		else
@@ -420,15 +355,20 @@ public class MonthlyReportsController implements Initializable {
 			Alert alert = new Alert(AlertType.ERROR,"No reports available!",ButtonType.OK);
 			alert.showAndWait();
 		}
+
 	}
 	
 	public void BackBtn(ActionEvent event) throws Exception {
+		nextWindow(event,"/gui_client/ChooseReportType.fxml","Choose Report Type");
+	}
+	
+	private void nextWindow(ActionEvent event, String window_location, String title) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/CEOReports.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource(window_location));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
-		primaryStage.setTitle("CEO Reports");
+		primaryStage.setTitle(title);
 		primaryStage.setScene(scene);		
-		primaryStage.show();		
+		primaryStage.show();	
 	}
 }
