@@ -11,10 +11,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="960.0" style="-fx-background-color: #e3c68c;;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ConfirmedDeliveryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="960.0" style="-fx-background-color: #e3c68c; -fx-background-color: #fffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ConfirmedDeliveryController">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-      <TableView fx:id="tableDelivery" layoutX="360.0" layoutY="188.0" opacity="0.9" prefHeight="376.0" prefWidth="586.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/table.css">
+      <TableView fx:id="tableDelivery" layoutX="336.0" layoutY="187.0" opacity="0.9" prefHeight="380.0" prefWidth="590.0" style="-fx-border-color: #7c6435; -fx-border-width: 3;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/table.css">
          <columns>
             <TableColumn fx:id="orderIdcol" prefWidth="98.0" text="Order ID" />
             <TableColumn fx:id="shippingDatecol" prefWidth="153.0" text="Shipping date" />
@@ -23,27 +23,27 @@
             <TableColumn fx:id="deliveryIdcol" prefWidth="117.0" text="Delivery ID" />
          </columns>
       </TableView>
-      <Button fx:id="backBtn" layoutX="392.0" layoutY="681.0" mnemonicParsing="false" onAction="#Back" prefHeight="39.0" prefWidth="135.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
+      <Button fx:id="backBtn" layoutX="369.0" layoutY="680.0" mnemonicParsing="false" onAction="#Back" prefHeight="39.0" prefWidth="135.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Label layoutX="392.0" layoutY="75.0" prefHeight="62.0" prefWidth="513.0" text="Confirmed Deliveries" textFill="#c14302">
+      <Label layoutX="382.0" layoutY="75.0" prefHeight="62.0" prefWidth="513.0" text="Confirmed Deliveries" textFill="#7c6435">
          <font>
             <Font name="Elephant" size="47.0" />
          </font>
       </Label>
-      <Button fx:id="confirmBtn" layoutX="774.0" layoutY="683.0" mnemonicParsing="false" onAction="#Confirm" prefHeight="39.0" prefWidth="135.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Confirm" textFill="WHITE">
+      <Button fx:id="confirmBtn" layoutX="774.0" layoutY="682.0" mnemonicParsing="false" onAction="#Confirm" prefHeight="39.0" prefWidth="135.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Confirm" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <VBox alignment="BASELINE_CENTER" layoutX="-41.0" layoutY="-10.0" prefHeight="779.0" prefWidth="386.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <VBox alignment="BASELINE_CENTER" layoutY="-10.0" prefHeight="779.0" prefWidth="304.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="353.0" fitWidth="365.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="271.0" fitWidth="315.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../Desktop/ekrut.png.png" />
                </image>
