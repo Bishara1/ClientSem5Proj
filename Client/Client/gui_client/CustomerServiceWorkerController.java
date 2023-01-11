@@ -1,7 +1,5 @@
 package gui_client;
 
-import java.util.ArrayList;
-
 import client.ChatClient;
 import client.ClientUI;
 import common.Command;

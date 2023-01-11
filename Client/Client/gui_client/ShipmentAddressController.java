@@ -3,6 +3,7 @@ package gui_client;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import client.ChatClient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +23,7 @@ public class ShipmentAddressController implements Initializable{
 	@FXML
 	private TextField countrytxt;
 	@FXML
-	private TextField cityytxt;
+	private TextField citytxt;
 	@FXML
 	private TextField streettxt;
 	@FXML
@@ -31,8 +32,13 @@ public class ShipmentAddressController implements Initializable{
 	private Button sendreqBtn;
 	
 	public void SendYourRequest(ActionEvent event) throws Exception{
-		Alert alert = new Alert(AlertType.CONFIRMATION,"Your address has been sent to our delivery man:)",ButtonType.OK);
-		alert.showAndWait();
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/RemoteLocation.fxml"));
+		Stage primaryStage = new Stage();
+		Scene scene = new Scene(root);
+		primaryStage.setTitle("Login EKRUT");
+		primaryStage.setScene(scene);		
+		primaryStage.show();	
 	}
 	public void BackBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();

@@ -24,6 +24,7 @@ public class LoginController {
 
 	public void start(Stage primaryStage) throws Exception {
 		
+		//ChatClient.primaryStage = primaryStage;
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
 				
 		Scene scene = new Scene(root);

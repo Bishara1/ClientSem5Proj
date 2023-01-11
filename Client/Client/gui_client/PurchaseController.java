@@ -1,6 +1,7 @@
 package gui_client;
 
 import java.net.URL;
+
 import java.util.ResourceBundle;
 
 import client.ChatClient;
@@ -14,7 +15,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
@@ -37,25 +37,14 @@ public class PurchaseController implements Initializable{
 	
 	
 	public void BackBtn(ActionEvent event) throws Exception {
-		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/Cart.fxml"));
-		Stage primaryStage = new Stage();
-		Scene scene = new Scene(root);
-		primaryStage.setTitle("Cart");
-		primaryStage.setTitle("EKRUT");
-		primaryStage.setScene(scene);		
-		primaryStage.show();		
+		nextWindow(event, "/gui_client/Cart.fxml", "Cart");	
 	}
 	
+
 	public void PurchaseBtn(ActionEvent event) throws Exception {
-		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/Receipt.fxml"));
-		Stage primaryStage = new Stage();
-		Scene scene = new Scene(root);
-		primaryStage.setTitle("Receipt");
-		primaryStage.setScene(scene);		
-		primaryStage.show();	
-}
+		nextWindow(event, "/gui_client/Receipt.fxml", "Receipt");
+	}
+	
 	public void Purchase(ActionEvent event) throws Exception {
 		if(creditCardtxt.getText().isEmpty() || idtxt.getText().isEmpty())
 		{
@@ -64,14 +53,7 @@ public class PurchaseController implements Initializable{
 		}
 		else
 		{
-			((Node)event.getSource()).getScene().getWindow().hide();
-			ChatClient.ID = Integer.parseInt(this.idtxt.getText());
-			Parent root = FXMLLoader.load(getClass().getResource("/gui_client/Receipt.fxml"));
-			Stage primaryStage = new Stage();
-			Scene scene = new Scene(root);
-			primaryStage.setTitle("EKRUT");
-			primaryStage.setScene(scene);		
-			primaryStage.show();
+			nextWindow(event, "/gui_client/Receipt.fxml", "Receipt");
 		}
 	}
 
@@ -100,6 +82,16 @@ public class PurchaseController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		updateTotalPrice();
 		
+	}
+	
+	private void nextWindow(ActionEvent event, String window_location, String title) throws Exception {
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Parent root = FXMLLoader.load(getClass().getResource(window_location));
+		Stage primaryStage = new Stage();
+		Scene scene = new Scene(root);
+		primaryStage.setTitle(title);
+		primaryStage.setScene(scene);		
+		primaryStage.show();	
 	}
 	
 }

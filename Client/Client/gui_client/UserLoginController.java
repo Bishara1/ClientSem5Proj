@@ -1,6 +1,8 @@
 package gui_client;
 
 
+import java.io.IOException;
+
 import client.ChatClient;
 
 import client.ClientController;
@@ -79,7 +81,7 @@ public class UserLoginController {
 				break;
 				
 			case "dlw":
-				root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+				root = FXMLLoader.load(getClass().getResource("/gui_client/ViewDelivery.fxml"));
 				break;
 				
 			case "dlo":
@@ -94,7 +96,7 @@ public class UserLoginController {
 				root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
 				break;
 				
-			case "csw":
+			case "csw": //costumer servise worker
 				root = FXMLLoader.load(getClass().getResource("/gui_client/CustomerServiceWorker.fxml"));
 				break;
 			default:
@@ -144,4 +146,5 @@ public class UserLoginController {
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
 	}
+	
 }

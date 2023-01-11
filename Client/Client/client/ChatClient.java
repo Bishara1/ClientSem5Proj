@@ -1,11 +1,19 @@
-// This file contains material supporting section 3.7 of the textbook:
 // "Object Oriented Software Engineering" and is issued under the open-source
+// This file contains material supporting section 3.7 of the textbook:
 // license found at www.lloseng.com 
 
 package client;
 
 import ocsf.client.*;
 import common.*;
+import gui_client.UserLoginController;
+import javafx.event.ActionEvent;
+import javafx.stage.Stage;
+import logic.Item;
+import logic.Location;
+import logic.Machine;
+import logic.OrdersReports;
+import logic.Subscriber;
 import logic.*;
 import java.io.*;
 import java.lang.reflect.Array;
@@ -31,23 +39,27 @@ public class ChatClient extends AbstractClient
    * the display method in the client.
    */
   ChatIF clientUI; 
-  public static boolean awaitResponse = false;
   public static ArrayList<Subscriber> subscribers;//+users
   public static ArrayList<Machine> machines;
   public static ArrayList<Item> items;
   public static ArrayList<Order> orders;  
   public static ArrayList<OrdersReports> orderReport;
-  private boolean FirstCart = false;
-  public static ArrayList<Item> cart;
-  public static int ID;
   public static ArrayList<Location> locations;
+  public static ArrayList<Item> cart;
+  public static ArrayList<Integer> available;
   public static String password;
   public static String role;
   public static String Fname;
-  public static boolean isSubscriber = false;
-  public static int machineToLoad = -1;
   public static String locationName = "North"; //?????
   public static String supplyMethod = "Immediate pickup"; //?????
+  public static boolean awaitResponse = false;
+  public static boolean isSubscriber = false;
+  public static boolean FirstSubscriberOrder = false;
+  private boolean FirstCart = false;
+  public static int ID;
+  public static int machineToLoad = -1;
+  public static Thread timer = new Thread(new Timespent());
+  //public static Stage primaryStage; //-> fixes the issue of windows popping up AND solves the timing thread
   
 
   
@@ -66,6 +78,7 @@ public class ChatClient extends AbstractClient
     super(host, port); //Call the superclass constructor
     this.clientUI = clientUI;
     openConnection();
+   // timer.start(); //SAFWAN CREATE A NEW THREAD EVERYTIME YOU WANT TO RESTART THE TIMER OR JUST OVERRIDE THE CURRENT THREAD, THANKS IN ADVANCE.
   }
 
   
@@ -106,10 +119,18 @@ public class ChatClient extends AbstractClient
 	  		  break;
 	  	  
 	  	  case Connect:
-	  		  String[] passRoleFname = (String[])(((Message)msg).getContent());
-	  		  password = passRoleFname[0];
-	  		  role = passRoleFname[1];
-	  		  Fname = passRoleFname[2];
+	  		  String[] passRoleFnameSubNumFirstCart = (String[])(((Message)msg).getContent());
+	  		  password = passRoleFnameSubNumFirstCart[0];
+	  		  role = passRoleFnameSubNumFirstCart[1];
+	  		  Fname = passRoleFnameSubNumFirstCart[2];
+	  		  if(Integer.parseInt(passRoleFnameSubNumFirstCart[3]) != -1)
+	  			  isSubscriber = true;
+	  		  else
+	  			  isSubscriber = false;
+	  		  if(Integer.parseInt(passRoleFnameSubNumFirstCart[4]) == 1)
+	  			  FirstCart = true;
+	  		  else
+	  			  FirstCart = false;
 	  		  break;
 	  		  
 	  	case ReadLocations:
@@ -160,6 +181,10 @@ public class ChatClient extends AbstractClient
       }
     }
   
+  public void Logout() throws Exception
+  { 
+	  
+  }
   
   
   /**
@@ -172,5 +197,6 @@ public class ChatClient extends AbstractClient
     catch(IOException e) {}
     System.exit(0);
   }
+  
 }
 //End of ChatClient class
