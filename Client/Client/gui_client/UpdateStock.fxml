@@ -7,30 +7,32 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.UpdateStockController">
    <children>
-      <Button fx:id="logOutBtn" layoutX="606.0" layoutY="570.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="94.0" text="Logout" textFill="WHITE">
+      <Button fx:id="logOutBtn" layoutX="606.0" layoutY="570.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="94.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Logout" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="updateBtn" layoutX="568.0" layoutY="362.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="169.0" text="Update Stock" textFill="WHITE">
+      <Button fx:id="updateBtn" layoutX="568.0" layoutY="362.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="169.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Update Stock" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </Button>
-      <VBox alignment="BASELINE_CENTER" layoutX="-35.0" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <VBox alignment="BASELINE_CENTER" prefHeight="756.0" prefWidth="282.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="283.0" fitWidth="300.0">
                <image>
-                  <Image url="@../../../../../Desktop/ekrut.png.png" />
+                  <Image url="@../../../../../Desktop/WhatsApp%20Image%202023-01-11%20at%2010.09.23%20(2).jpeg" />
                </image>
             </ImageView>
          </children>
       </VBox>
+      <Text layoutX="424.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please update your stock" wrappingWidth="205.6708984375" />
    </children>
 </AnchorPane>

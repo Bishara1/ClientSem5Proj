@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="916.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ViewDeliveryController">
    <children>
-      <Label contentDisplay="TOP" layoutX="530.0" layoutY="51.0" prefHeight="91.0" prefWidth="265.0" text="EKRUT" textFill="#c14302">
+      <Label contentDisplay="TOP" layoutX="530.0" layoutY="51.0" prefHeight="91.0" prefWidth="265.0" text="EKRUT" textFill="#7c6435">
          <font>
             <Font name="Constantia" size="62.0" />
          </font>
@@ -21,19 +21,19 @@
             <Font name="System Bold" size="23.0" />
          </font>
       </Button>
-      <VBox alignment="BASELINE_CENTER" layoutY="-5.0" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <VBox alignment="BASELINE_CENTER" layoutY="-5.0" prefHeight="779.0" prefWidth="304.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="300.0" fitWidth="300.0">
                <image>
-                  <Image url="@../../../../../Desktop/ekrut.png.png" />
+                  <Image url="@../../../../../Desktop/WhatsApp%20Image%202023-01-11%20at%2010.09.23%20(2).jpeg" />
                </image>
             </ImageView>
          </children>
       </VBox>
-      <Button fx:id="logoutBtn" layoutX="468.0" layoutY="656.0" mnemonicParsing="false" onAction="#LogoutBtn" prefHeight="36.0" prefWidth="93.0" text="LogOut" textFill="WHITE">
+      <Button fx:id="logoutBtn" layoutX="365.0" layoutY="641.0" mnemonicParsing="false" onAction="#LogoutBtn" prefHeight="36.0" prefWidth="93.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="LogOut" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

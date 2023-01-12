@@ -13,19 +13,19 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.UserUIController">
    <children>
-      <VBox alignment="BASELINE_CENTER" layoutX="-25.0" layoutY="-11.0" prefHeight="775.0" prefWidth="389.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;" AnchorPane.leftAnchor="-25.0">
+      <VBox alignment="BASELINE_CENTER" layoutX="-25.0" layoutY="-11.0" prefHeight="779.0" prefWidth="304.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;" AnchorPane.leftAnchor="-25.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
             </ImageView>
          </children>
       </VBox>
-      <Label fx:id="titletxt" layoutX="389.0" layoutY="169.0" prefHeight="71.0" prefWidth="519.0" text="Welcome" textFill="#c14302">
+      <Label fx:id="titletxt" layoutX="350.0" layoutY="173.0" prefHeight="71.0" prefWidth="519.0" text="Welcome" textFill="#7c6435">
          <font>
             <Font name="Elephant" size="56.0" />
          </font>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
@@ -13,12 +14,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.UserLoginController">
    <children>
-      <VBox alignment="BASELINE_CENTER" layoutX="-25.0" layoutY="-11.0" prefHeight="772.0" prefWidth="389.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;" AnchorPane.leftAnchor="-25.0">
+      <VBox alignment="BASELINE_CENTER" layoutX="-25.0" layoutY="-11.0" prefHeight="779.0" prefWidth="304.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;" AnchorPane.leftAnchor="-25.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
@@ -30,24 +31,29 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Text fill="#c14302" layoutX="473.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login" wrappingWidth="378.9999802261591">
+      <Text fill="#7c6435" layoutX="473.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login" wrappingWidth="378.9999802261591">
          <font>
             <Font name="Elephant" size="64.0" />
          </font>
       </Text>
-      <Button fx:id="Backbtn" layoutX="404.0" layoutY="627.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="48.0" prefWidth="130.0" stylesheets="@../../../git/CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
+      <Button fx:id="Backbtn" layoutX="321.0" layoutY="627.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="48.0" prefWidth="130.0" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
+         <stylesheets>
+            <URL value="@../../../git/CommonSem5Proj/Common/Common/css/exit-buttons.css" />
+            <URL value="@comboboxDesign.css" />
+            <URL value="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" />
+         </stylesheets>
       </Button>
       <TextField fx:id="Usernametxt" layoutX="575.0" layoutY="369.0" prefHeight="42.0" prefWidth="276.0" />
       <TextField fx:id="Passwordtxt" layoutX="575.0" layoutY="433.0" prefHeight="42.0" prefWidth="276.0" />
-      <Text fill="#c14302" layoutX="408.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="166.00001300871372">
+      <Text fill="#7c6435" layoutX="408.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="166.00001300871372">
          <font>
             <Font name="Elephant" size="29.0" />
          </font>
       </Text>
-      <Text fill="#c14302" layoutX="408.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="166.00001300871372">
+      <Text fill="#7c6435" layoutX="408.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="166.00001300871372">
          <font>
             <Font name="Elephant" size="29.0" />
          </font>

@@ -11,32 +11,32 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.CreateDiscountController">
    <children>
-      <Button fx:id="creatediscountbtn" layoutX="563.0" layoutY="351.0" mnemonicParsing="false" onAction="#CreateDiscountBtn" prefHeight="54.0" prefWidth="154.0" text="Create Discount" textFill="WHITE">
+      <Button fx:id="creatediscountbtn" layoutX="509.0" layoutY="331.0" mnemonicParsing="false" onAction="#CreateDiscountBtn" prefHeight="54.0" prefWidth="154.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Create Discount" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Button fx:id="logoutkbtn" layoutX="422.0" layoutY="662.0" mnemonicParsing="false" onAction="#LogoutBtn" prefHeight="45.0" prefWidth="95.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="LogOut" textFill="WHITE">
+      <Button fx:id="logoutkbtn" layoutX="351.0" layoutY="665.0" mnemonicParsing="false" onAction="#LogoutBtn" prefHeight="45.0" prefWidth="95.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="LogOut" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <VBox alignment="BASELINE_CENTER" layoutX="-34.0" layoutY="-10.0" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <VBox alignment="BASELINE_CENTER" layoutX="-1.0" layoutY="-2.0" prefHeight="756.0" prefWidth="271.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="237.0" fitWidth="267.0">
                <image>
-                  <Image url="@../../../../../Desktop/ekrut.png.png" />
+                  <Image url="@../../../../../Downloads/WhatsApp%20Image%202023-01-11%20at%2010.09.23%20(2).jpeg" />
                </image>
             </ImageView>
          </children>
       </VBox>
-      <Text fill="#c14302" layoutX="394.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome " wrappingWidth="245.6708984375">
+      <Text fill="#7c6435" layoutX="476.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome " wrappingWidth="245.6708984375">
          <font>
             <Font name="Elephant" size="53.0" />
          </font>
       </Text>
-      <Text fill="#c14302" layoutX="451.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create your selected discount" wrappingWidth="408.9999807178974">
+      <Text fill="#7c6435" layoutX="407.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create your selected discount" wrappingWidth="408.9999807178974">
          <font>
             <Font name="Elephant" size="27.0" />
          </font>
