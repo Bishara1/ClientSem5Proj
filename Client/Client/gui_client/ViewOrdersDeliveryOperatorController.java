@@ -3,6 +3,7 @@ package gui_client;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.ResourceBundle;
@@ -176,16 +177,13 @@ public class ViewOrdersDeliveryOperatorController implements Initializable {
 	}
 	
 	private String addDaysToDate(String date) {
-		String dateAfter;
-		SimpleDateFormat dateBefore = new SimpleDateFormat("YYYY-MM-DD");
-		Calendar cal = Calendar.getInstance();
-	    try{  
-	           cal.setTime(dateBefore.parse(date));  
-	    } catch(ParseException e) { e.printStackTrace(); }  
-	             
-	    cal.add(Calendar.DAY_OF_MONTH, 14);  
-	    dateAfter = dateBefore.format(cal.getTime());
-	    return dateAfter;
+		String[] dateComponents = date.split("-");
+		int year = Integer.parseInt(dateComponents[0]);
+		int month = Integer.parseInt(dateComponents[1]);
+		int day = Integer.parseInt(dateComponents[2]);
+		
+		LocalDate newDate = LocalDate.of(year, month, day).plusDays(14);
+		return newDate.toString();
 	}
 
 	private void RaiseAlertConfirmation(String message) {
