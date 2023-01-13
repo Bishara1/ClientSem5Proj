@@ -1,7 +1,10 @@
 package gui_client;
 
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 import client.ChatClient;
@@ -27,65 +30,68 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
-import logic.Order;
+import logic.Delivery;
 
 public class ViewOrdersDeliveryOperatorController implements Initializable {
-	private ObservableList<Order> allOrders;
+	private ObservableList<Delivery> allDeliveries;
+	private ArrayList<Delivery> changedDeliveries = new ArrayList<>();
 	@FXML
-	private TableView<Order> OrdersTable;
+	private TableView<Delivery> DeliveriesTable;
 	@FXML
-	private TableColumn<Order,String> orderNumberCol;
+	private TableColumn<Delivery,String> orderNumberCol;
 	@FXML
-	private TableColumn<Order,String> customerIDCol;
+	private TableColumn<Delivery,String> customerIDCol;
 	@FXML
-	private TableColumn<Order,String> totalPriceCol;	
+	private TableColumn<Delivery,String> totalPriceCol;	
 	@FXML
-	private TableColumn<Order,String> locationCol;
+	private TableColumn<Delivery,String> locationCol;
 	@FXML
-	private TableColumn<Order,String> statusCol;
+	private TableColumn<Delivery,String> statusCol;
 	@FXML
-	private Button backBtn;
+	private Button logOutBtn;
 	@FXML
 	private Label titlelbl;
-	private ArrayList<Order> changedOrders = new ArrayList<Order>();;
 	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.titlelbl.setText("Welcome " + ChatClient.Fname);
-		ImportOrders();
+		ImportDeliveries();
 		
 		//allow status column to be editable
 		statusCol.setCellFactory(TextFieldTableCell.forTableColumn());
 	}
 	
-	public void ImportOrders() {
-		changedOrders.clear();
-		GetRemoteOrders();
-		DisplayOrders();
+	public void ImportDeliveries() {
+		changedDeliveries.clear();
+		GetRemoteDeliveries();
+		DisplayDeliveries();
+		DeliveriesTable.refresh();
 	}
 	
-	private void GetRemoteOrders() {
-		ClientUI.chat.accept(new Message(0, Command.ReadOrders));
-		allOrders = FXCollections.observableArrayList(ChatClient.orders);
+	private void GetRemoteDeliveries() {
+		ClientUI.chat.accept(new Message(0, Command.ReadDeliveries));
+		System.out.println(ChatClient.deliveries);
+		allDeliveries = FXCollections.observableArrayList(ChatClient.deliveries);
 	}
 	
-	public void DisplayOrders() {
-		orderNumberCol.setCellValueFactory(new PropertyValueFactory<>("order_num"));
+	public void DisplayDeliveries() {
+		orderNumberCol.setCellValueFactory(new PropertyValueFactory<>("order_id"));
 		customerIDCol.setCellValueFactory(new PropertyValueFactory<>("customer_id"));
-		totalPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+		totalPriceCol.setCellValueFactory(new PropertyValueFactory<>("total_price"));
 		locationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
-		statusCol.setCellValueFactory(new PropertyValueFactory<>("order_status"));
+		statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
 		
-		OrdersTable.setItems(allOrders);
+		DeliveriesTable.setItems(allDeliveries);
 	}
 	
-	public void backButton(ActionEvent event) throws Exception {
+	public void logOutButton(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
 		Stage primaryStage = new Stage();
 		
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/ViewDelivery.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/LoginEkrut.fxml"));
 		Scene scene = new Scene(root);
+		//disconnect
 		
 		String title = (ChatClient.role.equals("dlw")) ? "Deliverer" : "Delivery Operator";
 		primaryStage.setTitle(title);
@@ -95,66 +101,95 @@ public class ViewOrdersDeliveryOperatorController implements Initializable {
 	}
 	
 	@FXML
-	public void ChangeStatus(TableColumn.CellEditEvent<Order, String> productStringCellEditEvent) {
-		Order selectedOrder = OrdersTable.getSelectionModel().getSelectedItem();
-		int index = OrdersTable.getSelectionModel().getSelectedIndex();
+	public void ChangeStatus(TableColumn.CellEditEvent<Delivery, String> productStringCellEditEvent) {
+		Delivery selectedDelivery = DeliveriesTable.getSelectionModel().getSelectedItem();
+		int index = DeliveriesTable.getSelectionModel().getSelectedIndex();
+		String oldVal = productStringCellEditEvent.getOldValue();
+		String newVal= productStringCellEditEvent.getNewValue();
 		
 		if (ChatClient.role.equals("dlo")) {
-			if (!productStringCellEditEvent.getOldValue().equals("Pending"))
-				RaiseAlertConfirmation("Can only modify pending orders!");
+			if (!oldVal.equals("Pending") && !oldVal.equals("Delivered"))
+				RaiseAlertConfirmation("Can only modify delivered or pending deliveries!");
 			
+			else if (newVal.equals("Delivering") || newVal.equals("delivering")) {
+				if (oldVal.equals("Pending"))
+					addToChangedList(selectedDelivery, index, "Delivering");
+			}
 			
-			else if (productStringCellEditEvent.getNewValue().equals("Delivering") ||
-					productStringCellEditEvent.getNewValue().equals("delivering")) {
-				
-				selectedOrder.setOrder_status("Delivering");
-				allOrders.set(index, selectedOrder);
-				
-				if (!changedOrders.contains(selectedOrder))
-					changedOrders.add(selectedOrder);
+			else if (newVal.equals("Completed") || newVal.equals("completed")) {
+				if (oldVal.equals("Delivered")) 
+					addToChangedList(selectedDelivery, index, "Completed");
 			}
 			
 			else 
-				RaiseAlertConfirmation("Invalid Status! Modified status should be \"Delivering\".");
-			
+				RaiseAlertConfirmation("Invalid Status! Modified status should be \"Delivering\" or \"Completed\".");
 		}
 		
-		else if (ChatClient.role.equals("dlw")) {
-			if (!productStringCellEditEvent.getOldValue().equals("Delivering"))
-				RaiseAlertConfirmation("Can only modify orders in transit!");
+		else if (ChatClient.role.equals("dlw")) {			
+			if (!oldVal.equals("Delivering"))
+				RaiseAlertConfirmation("Can only modify deliveries in transit!");
 			
-			
-			else if (productStringCellEditEvent.getNewValue().equals("Delivered") ||
-					productStringCellEditEvent.getNewValue().equals("delivered")) {
+			else if (newVal.equals("Delivered") || newVal.equals("delivered"))
+				addToChangedList(selectedDelivery, index, "Delivered");
 				
-				selectedOrder.setOrder_status("delivered");
-				allOrders.set(index, selectedOrder);
-				
-				if (!changedOrders.contains(selectedOrder))
-					changedOrders.add(selectedOrder);
-			}
-			
 			else 
 				RaiseAlertConfirmation("Invalid Status! Modified status should be \"Delivered\".");
 		}
 		
-		OrdersTable.refresh();
+		DeliveriesTable.refresh();
 	}
 	
-	public void UpdateOrders() {
-		ClientUI.chat.accept(new Message(changedOrders, Command.UpdateOrders));
+	private void addToChangedList(Delivery selectedDelivery, int index, String status) {
+		selectedDelivery.setStatus(status);
+		allDeliveries.set(index, selectedDelivery);
+		
+		if (!changedDeliveries.contains(selectedDelivery))
+			changedDeliveries.add(selectedDelivery);
 	}
 	
+	public void UpdateDeliveries() {
+		String  estimatedDelivery;
+		int size = changedDeliveries.size();
+		String[] dataForUpdate = new String[size+1];
+		
+		dataForUpdate[0] = "delivery";
+		for (int i = 1; i < dataForUpdate.length; i++) {
+			if (ChatClient.role.equals("dlo") && changedDeliveries.get(i-1).getStatus().equals("Delivering")) {
+				estimatedDelivery = addDaysToDate(changedDeliveries.get(i-1).getShipping_date().toString());
+			}
+			
+			else {
+				estimatedDelivery = changedDeliveries.get(i-1).getShipping_date().toString();
+			}
+			
+			dataForUpdate[i] = changedDeliveries.get(i-1).getOrder_id() + " " + changedDeliveries.get(i-1).getStatus() + " " + estimatedDelivery;
+			System.out.println(dataForUpdate[i]);
+		}
+		ClientUI.chat.accept(new Message(dataForUpdate, Command.UpdateDeliveries));
+		
+		dataForUpdate[0] = "orders";
+		for (int i = 1; i < dataForUpdate.length; i++) {
+			dataForUpdate[i] = changedDeliveries.get(i-1).getOrder_id() + " " + changedDeliveries.get(i-1).getStatus();
+			System.out.println(dataForUpdate[i]);
+		}
+		ClientUI.chat.accept(new Message(dataForUpdate, Command.UpdateOrders));
+	}
+	
+	private String addDaysToDate(String date) {
+		String dateAfter;
+		SimpleDateFormat dateBefore = new SimpleDateFormat("YYYY-MM-DD");
+		Calendar cal = Calendar.getInstance();
+	    try{  
+	           cal.setTime(dateBefore.parse(date));  
+	    } catch(ParseException e) { e.printStackTrace(); }  
+	             
+	    cal.add(Calendar.DAY_OF_MONTH, 14);  
+	    dateAfter = dateBefore.format(cal.getTime());
+	    return dateAfter;
+	}
+
 	private void RaiseAlertConfirmation(String message) {
-		Alert alert = new Alert(AlertType.CONFIRMATION, message,ButtonType.OK);
+		Alert alert = new Alert(AlertType.CONFIRMATION, message, ButtonType.OK);
 		alert.showAndWait();
-	}
-	
-//	private ArrayList<Order> ConvertToArrayList() {
-//		List<Order> updatedOrdersList = allOrders.stream().collect(Collectors.toList());
-//		ArrayList<Order> updatedOrders = new ArrayList<>(updatedOrdersList);
-//		
-//		System.out.println(updatedOrders.get(0));
-//		return updatedOrders;
-//	}
+	}	
 }

@@ -47,6 +47,8 @@ public class ChatClient extends AbstractClient
   public static ArrayList<Location> locations;
   public static ArrayList<Item> cart;
   public static ArrayList<Integer> available;
+  public static ArrayList<Delivery> deliveries;
+  public static ArrayList<StockRequest> stockRequests;
   public static String password;
   public static String role;
   public static String Fname;
@@ -144,6 +146,15 @@ public class ChatClient extends AbstractClient
 	  	case ReadOrdersReports:
 	  		orderReport = (ArrayList<OrdersReports>) (responseFromServer.getContent());
 	  		break;
+	  		
+	  	case ReadDeliveries:
+	  		deliveries = (ArrayList<Delivery>) (responseFromServer.getContent());
+	  		break;
+	  		
+	  	case ReadStockRequests:
+	  		stockRequests = (ArrayList<StockRequest>) (responseFromServer.getContent());
+	  		break;
+	  		
 	  		
 	  default:
 		  System.out.println("ChatClient got response but didn't deal with it");
