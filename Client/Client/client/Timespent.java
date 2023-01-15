@@ -1,22 +1,13 @@
 package client;
 
-import java.awt.Window;
 import java.io.IOException;
-import java.util.List;
 
-import gui_client.UserLoginController;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.scene.control.Alert.AlertType;
 
 public class Timespent extends Application implements Runnable{
 
@@ -38,7 +29,7 @@ public class Timespent extends Application implements Runnable{
 				Thread.sleep(1000);
 				time++;
 			}
-		Platform.runLater(new Runnable() {
+			Platform.runLater(new Runnable() {
 		    @Override
 		    public void run() {
 		    	
