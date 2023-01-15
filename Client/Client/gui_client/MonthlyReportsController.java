@@ -2,7 +2,6 @@ package gui_client;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,13 +20,9 @@ import javafx.stage.Stage;
 import logic.Machine;
 import logic.Order;
 import logic.OrdersReports;
-
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-
-
 import client.ChatClient;
 import client.ClientUI;
 import common.Command;
@@ -49,59 +44,81 @@ public class MonthlyReportsController implements Initializable {
 	@FXML
 	private ComboBox<String> cmbMachineId;
 	
+	private int flag = 0;
+	
 	Message ReportmessageToServer = new Message(null, null);
 	Message messageToServer = new Message(null, null);
 	Message orderToServer = new Message(null, null);
-	private String location;
+	
+	private static String location;
 	public static String year;
 	public static String month;
-	public static String machineId;
 	public static String requestedReport;
-	public static String requestedReport1;
 	
 	private ArrayList<String> newItems = new ArrayList<>();
 
 	ObservableList<String> yearList;
 	ObservableList<String> MonthList;
 	ObservableList<String> LocationList;
-	ObservableList<String> MachineIdList;
 	
+	
+	/* Functionality : get the selected option in "location" combo box
+	 * Input : event
+	 * Result : save combo box selected value to location
+	 * */
 	@FXML
 	public void Select(ActionEvent event) {
 		location = cmbLocation.getSelectionModel().getSelectedItem().toString();
-		setMachineIdComboBox();
 	}
 	
+	/* Functionality : get the selected option in "year" combo box
+	 * Input : event
+	 * Result : save combo box selected value to year
+	 * */
 	@FXML
 	public void SelectYear(ActionEvent event) {
 		year = cmbYear.getSelectionModel().getSelectedItem().toString();
 	}
 	
+	/* Functionality : get the selected option in "month" combo box
+	 * Input : event
+	 * Result : save combo box selected value to month
+	 * */
 	@FXML
 	public void SelectMonth(ActionEvent event) {
 		month = cmbMonth.getSelectionModel().getSelectedItem().toString();
 	}
 	
-	@FXML
-	public void SelectMachineId(ActionEvent event) {
-		machineId = cmbMachineId.getSelectionModel().getSelectedItem().toString();
-	}
-	
-	
+	/* Functionality : call functions to initialize all combo boxes and read machines from data base
+	 * Input : URL url , ResourceBundle rb
+	 * Result : start combo box values and read machines from data base
+	 * */
 	public void initialize(URL url, ResourceBundle rb) {
 		setYearComboBox();
 		setMonthComboBox();
 		setLocationComboBox();
+		// read machines now
+		messageToServer.setCommand(Command.ReadMachines);
+		messageToServer.setContent(0);	
+		ClientUI.chat.accept(messageToServer); 
 	}
 	
+	/* Functionality : sets year combo box
+	 * Input : yearList , cmbYear
+	 * Result : start combo box values
+	 * */
     public void setYearComboBox() {	
-    	ArrayList<String> year = new ArrayList<String>(Arrays.asList("2016","2017","2018","2019","2020","2021","2022","2023"));
+    	ArrayList<String> year = new ArrayList<String>(Arrays.asList("2015","2016","2017","2018","2019","2020","2021","2022","2023"));
     	
 		yearList = FXCollections.observableArrayList(year);
 		cmbYear.getItems().clear();
 		cmbYear.setItems(yearList);
 	}
 	
+    /* Functionality : sets month combo box
+	 * Input : monthList , cmbMonth
+	 * Result : start combo box values
+	 * */
 	public void setMonthComboBox() {
 		ArrayList<String> month = new ArrayList<String>(Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"));
 	
@@ -110,6 +127,10 @@ public class MonthlyReportsController implements Initializable {
 		cmbMonth.setItems(MonthList);
 	}
 	
+	/* Functionality : sets location combo box
+	 * Input : locationList , cmbLocation
+	 * Result : start combo box values
+	 * */
 	public void setLocationComboBox() {
 		ArrayList<String> type = new ArrayList<String>(Arrays.asList("North", "South", "UAE"));
 				
@@ -118,29 +139,14 @@ public class MonthlyReportsController implements Initializable {
 		cmbLocation.setItems(LocationList);
 	}
 	
-	public void setMachineIdComboBox() {
-		ArrayList<String> typeMachine = new ArrayList<String>();
-		messageToServer.setCommand(Command.ReadMachines);
-		messageToServer.setContent(0);	
-		ClientUI.chat.accept(messageToServer); 
-		
-		for(Machine i : ChatClient.machines)
-		{
-			if(location.equals(i.getLocation()))
-			{
-				typeMachine.add(String.valueOf(i.getMachine_id()));
-			}
-		}
-		
-		MachineIdList = FXCollections.observableArrayList(typeMachine);
-		cmbMachineId.getItems().clear();
-		cmbMachineId.setItems(MachineIdList);
-	}
-
+	
+	/* Functionality : checks selected values of all combo boxes , calls function to find requested report
+	 * Input : cmbYear , cmbMonth , cmbLocation , event
+	 * Result : alert when combo box is empty, else call for function OrderReportSearch
+	 * */
 	public void ShowReportBtn(ActionEvent event) throws Exception{
 		// Checking if one or more fields are empty
-		if ((cmbYear.getValue() == null )||(cmbMonth.getValue() == null )
-				||(cmbLocation.getValue() == null )	||(cmbMachineId.getValue() == null))
+		if ((cmbYear.getValue() == null) || (cmbMonth.getValue() == null) || (cmbLocation.getValue() == null))
 		{
 			Alert alert = new Alert(AlertType.ERROR,"One or more feilds is Empty!",ButtonType.OK);
 			alert.showAndWait();
@@ -151,6 +157,10 @@ public class MonthlyReportsController implements Initializable {
 		}
 	}
 	
+	/* Functionality : checks the current date of today , then searches or builds the requested report
+	 * Input : event
+	 * Result : builds the report , or alerts that no data was found
+	 * */
 	public void OrderReportSearch(ActionEvent event) throws Exception
 	{
 		boolean currentDate = checkCurrentDate();
@@ -159,14 +169,16 @@ public class MonthlyReportsController implements Initializable {
 		// else find the bloody report in data base, if you find it show it, else make it damn it
 	
 		Message msgToUpdate = new Message(null, null);
-		if (currentDate) {
+		if (currentDate) 
+		{
 			currentReport = findCurrentReport();
 			createNewOrderReport();
-			
-			// there is no such report in db (meaning requested year, month and machine id)
-			if(currentReport == null)
+			if (flag==0) {System.out.println("no orders in the selected location");}
+			// there is no such report in data base (meaning requested year, month and machine id)
+			else if(currentReport == null)
 			{	// create new report
-				ArrayList<String> report = new ArrayList<String>(Arrays.asList("",machineId,location,fromArrayToString(newItems),month,year));
+				// call a bloody function to get all machines id to put them inn a bloody string
+				ArrayList<String> report = new ArrayList<String>(Arrays.asList("",location,fromArrayToString(newItems),month,year));
 				ReportmessageToServer.setCommand(Command.InsertOrderReport);
 				ReportmessageToServer.setContent(report);
 				ClientUI.chat.accept(ReportmessageToServer);
@@ -187,6 +199,41 @@ public class MonthlyReportsController implements Initializable {
 			 }
 	}
 	
+	// function that checks if the combo boxes values are today's date
+		public boolean checkCurrentDate() {	// MONTHVALUE IS PROBLEMATIC HERE ! IS IT 01 OR 1?!?!?!
+			if ((year.equals(String.valueOf(LocalDate.now().getYear()))))
+				if ((month.equals(String.valueOf(LocalDate.now().getMonthValue()))))
+					return true;
+			return false;
+		}	//return true if we still are in the requested date
+		
+	
+		
+	public OrdersReports findCurrentReport() {
+		// reads data base
+		ReportmessageToServer.setCommand(Command.ReadOrdersReports);
+		ReportmessageToServer.setContent(0);	
+		ClientUI.chat.accept(ReportmessageToServer);
+		try {
+			if(ChatClient.orderReport.get(0)==(null)) return null;
+			
+			for (OrdersReports orderReport : ChatClient.orderReport)
+			{
+				// if combo box selected values exist in the orders report
+				if (orderReport.getLocation().equals(location.toString()) &&
+						orderReport.getYear().equals(year.toString()) &&
+							orderReport.getMonth().equals(month.toString())) 
+				{
+				return orderReport;
+				}
+			}
+		}catch(Exception e) {
+			Alert alert = new Alert(AlertType.ERROR,"Couldn't find report",ButtonType.OK);
+			alert.showAndWait();
+		}
+		return null;
+	}
+		
 	public void createNewOrderReport() {
 		
 		orderToServer.setCommand(Command.ReadOrders);
@@ -196,37 +243,17 @@ public class MonthlyReportsController implements Initializable {
 		for(Order o : ChatClient.orders)
 		{
 			dateSplit = o.getOrder_created().toString().split("-");
-			if(dateSplit[0].equals(year) && Integer.parseInt(dateSplit[1])==(Integer.parseInt(month)) && (Integer.parseInt(machineId))==(o.getMachine_id()))
+			if(dateSplit[0].equals(year) && Integer.parseInt(dateSplit[1])==(Integer.parseInt(month)) && location.equals(o.getLocation()))
 			{
 				// call another function 
 				// to add data
 				scanOrder(o.getItems_in_order());
+				flag++;
 			}
 		}
 	}
 	
 	
-		
-	public OrdersReports findCurrentReport() {
-		// reads data base
-		ReportmessageToServer.setCommand(Command.ReadOrdersReports);
-		ReportmessageToServer.setContent(0);	
-		ClientUI.chat.accept(ReportmessageToServer);
-		
-		if(ChatClient.orderReport.get(0)==(null)) return null;
-		
-		for (OrdersReports orderReport : ChatClient.orderReport)
-		{
-			// if combo box selected values exist in the orders report
-			if (orderReport.getMachine_id().equals(machineId.toString()) &&
-					orderReport.getYear().equals(year.toString()) &&
-						orderReport.getMonth().equals(month.toString())) 
-			{
-			return orderReport;
-			}
-		}
-		return null;
-	}
 	
 	public void scanOrder(String data) {
 		String[] temp = data.split("\\.");
@@ -277,16 +304,10 @@ public class MonthlyReportsController implements Initializable {
 			str += arr.get(i);
 			str += ".";
 		}
+		
 		return str;
 	}
 	
-	// function that checks if the combo boxes values are today's date
-	public boolean checkCurrentDate() {	// MONTHVALUE IS PROBLEMATIC HERE ! IS IT 01 OR 1?!?!?!
-		if ((year.equals(String.valueOf(LocalDate.now().getYear()))))
-			if ((month.equals(String.valueOf(LocalDate.now().getMonthValue()))))
-				return true;
-		return false;
-	}	//return true if we still are in the requested date
 	
 	public void FindRequestedOrderReport(ActionEvent event) throws Exception{
 		
@@ -295,22 +316,24 @@ public class MonthlyReportsController implements Initializable {
 		ClientUI.chat.accept(ReportmessageToServer);
 		boolean flag = false;
 		// find the requested order
-		if (ChatClient.orderReport.get(0)!=null)
-		{
-
-			for (int j = 0; j < ChatClient.orderReport.size(); j++)
-		{	if (ChatClient.orderReport.get(j).getMachine_id().equals(machineId.toString()) &&
-				ChatClient.orderReport.get(j).getYear().equals(year.toString()) &&
-					ChatClient.orderReport.get(j).getMonth().equals(month.toString())) {
-						requestedReport = ChatClient.orderReport.get(j).getData();
-						flag = true;
-						break;
-				}
-		}
+		try {
+			if (ChatClient.orderReport.get(0)!=null)
+			{
+	
+				for (int j = 0; j < ChatClient.orderReport.size(); j++)
+			{	if (ChatClient.orderReport.get(j).getLocation().equals(location.toString()) &&
+					ChatClient.orderReport.get(j).getYear().equals(year.toString()) &&
+						ChatClient.orderReport.get(j).getMonth().equals(month.toString())) {
+				
+							requestedReport = ChatClient.orderReport.get(j).getData();
+							flag = true;
+							break;
+					}
+			}
+				
 			
 		if (flag) {
-			
-			nextWindow(event,"/gui_client/ReportsCEO.fxml","Pie Chart (ReportsCEO)");
+			nextWindow(event,"/gui_client_windows/ReportsCEO.fxml","Pie Chart (ReportsCEO)");
 		}
 
 		else
@@ -325,7 +348,7 @@ public class MonthlyReportsController implements Initializable {
 				{
 					dateSplit = order.getOrder_created().toString().split("-");
 					// if combo box selected values exist in the orders report
-					if ( order.getMachine_id() == Integer.parseInt(machineId)
+					if ( order.getLocation().equals(location)
 							&& dateSplit[0].equals(year)
 							&& Integer.parseInt(dateSplit[1]) == Integer.parseInt(month))
 					{
@@ -337,7 +360,9 @@ public class MonthlyReportsController implements Initializable {
 				}
 				if (alertFlag)
 				{
-					ArrayList<String> NewReport = new ArrayList<String>(Arrays.asList("",machineId,location,things,month,year));
+					scanOrder(things);
+					
+					ArrayList<String> NewReport = new ArrayList<String>(Arrays.asList("",location,fromArrayToString(newItems),month,year));
 					orderToServer.setCommand(Command.InsertOrderReport);
 					orderToServer.setContent(NewReport);
 					ClientUI.chat.accept(orderToServer);
@@ -346,21 +371,28 @@ public class MonthlyReportsController implements Initializable {
 				if (!alertFlag)
 				{
 					Alert alert = new Alert(AlertType.ERROR,"No order reports in the requested timeline",ButtonType.OK);
-					alert.showAndWait();}
+					alert.showAndWait();
+					}
 				}
 			}
+			else
+			{
+				Alert alert = new Alert(AlertType.ERROR,"No reports available!",ButtonType.OK);
+				alert.showAndWait();
+			}
+	}catch(Exception e) {
+		Alert alert = new Alert(AlertType.ERROR,"Couldn't find report",ButtonType.OK);
+		alert.showAndWait();
 		
-		else
-		{
-			Alert alert = new Alert(AlertType.ERROR,"No reports available!",ButtonType.OK);
-			alert.showAndWait();
-		}
 
+	}
 	}
 	
 	public void BackBtn(ActionEvent event) throws Exception {
-		nextWindow(event,"/gui_client/ChooseReportType.fxml","Choose Report Type");
+		nextWindow(event,"/gui_client_windows/ChooseReportType.fxml","Choose Report Type");
 	}
+	
+	
 	
 	private void nextWindow(ActionEvent event, String window_location, String title) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();

@@ -38,23 +38,23 @@ public class CEOReportsController implements Initializable {
 	}
 	
 	public void ViewMachines(ActionEvent event) throws Exception{
-		nextWindow(event,"/gui_client/StockTable.fxml","Stock Table");
+		nextWindow(event,"/gui_client_windows/StockTable.fxml","Stock Table");
 	}
 
 	public void ViewSubscribers(ActionEvent event) throws Exception  {
-		nextWindow(event,"/gui_client/SubscribersViewer.fxml","Subscriber Viewer");
+		nextWindow(event,"/gui_client_windows/SubscribersViewer.fxml","Subscriber Viewer");
 	}
 	
 	public void viewDiscount(ActionEvent event) throws Exception {
-		nextWindow(event,"/gui_client/DiscountLocation.fxml","Discount Location");
+		nextWindow(event,"/gui_client_windows/DiscountLocation.fxml","Discount Location");
 	}
 	
 	public void ViewReports(ActionEvent event) throws Exception {
-		nextWindow(event,"/gui_client/ChooseReportType.fxml","Choose Report Type");
+		nextWindow(event,"/gui_client_windows/ChooseReportType.fxml","Choose Report Type");
 	}
 
 	public void LogOut(ActionEvent event) throws Exception {
-		nextWindow(event,"/gui_client/LoginEkrut.fxml","Login Ekrut");
+		nextWindow(event,"/gui_client_windows/LoginEkrut.fxml","Login Ekrut");
 	}
 	
 	private void nextWindow(ActionEvent event, String window_location, String title) throws Exception {

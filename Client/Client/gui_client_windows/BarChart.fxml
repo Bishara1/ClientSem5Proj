@@ -17,10 +17,13 @@
       </Button>
       <BarChart fx:id="barChart" layoutX="60.0" layoutY="66.0" prefHeight="642.0" prefWidth="1125.0" title="Users Report">
          <xAxis>
-            <CategoryAxis label="Users" />
+            <CategoryAxis label="Orders" />
          </xAxis>
          <yAxis>
-            <NumberAxis label="Orders" side="LEFT" upperBound="50.0" />
+            <NumberAxis label="Users amount" side="LEFT" tickLabelGap="5.0" upperBound="15.0">
+               <tickLabelFont>
+                  <Font size="14.0" />
+               </tickLabelFont></NumberAxis>
          </yAxis>
       </BarChart>
    </children>

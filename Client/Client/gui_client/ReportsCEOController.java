@@ -52,7 +52,7 @@ public class ReportsCEOController implements Initializable{
 	
 	public void BackBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/MonthlyReports.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/MonthlyReports.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 		primaryStage.setTitle("Monthly Reports");

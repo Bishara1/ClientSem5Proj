@@ -99,7 +99,7 @@ public class RemoteLocationController implements Initializable {
 
 	public void BackBtn(ActionEvent event) throws Exception  { //fix this apparently its null
 		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/UserUI.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
@@ -113,7 +113,7 @@ public class RemoteLocationController implements Initializable {
     	ChatClient.locationName = cmbLocation.getSelectionModel().getSelectedItem().toString();
     	ChatClient.machineToLoad = Integer.parseInt(cmbMachine.getSelectionModel().getSelectedItem().toString());
     	((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/ekrutOrder.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/ekrutOrder.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());

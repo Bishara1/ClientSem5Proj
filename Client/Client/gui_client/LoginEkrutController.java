@@ -19,44 +19,33 @@ public class LoginEkrutController {
 	private Button ektBtn;
 	
 	public void start(Stage primaryStage) throws Exception {
-		
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/LoginEkrut.fxml"));
-		
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/LoginEkrut.fxml"));
 		Scene scene = new Scene(root);
-		//scene.getStylesheets().add(getClass().getResource("/gui/ServerPort.css").toExternalForm());  css
 		primaryStage.setTitle("Login Ekrut");
 		primaryStage.setScene(scene);
-		
 		primaryStage.show();		
 	}
 	
 	public void AccountLoginBtn(ActionEvent event) throws Exception { 
-		((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
-		Stage primaryStage = new Stage();
-		
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/UserLogin.fxml"));
-		Scene scene = new Scene(root);
-		
-		primaryStage.setTitle("User Login");
-		primaryStage.setScene(scene);
-		
-		primaryStage.show();	
+		nextWindow(event, "/gui_client_windows/UserLogin.fxml", "User Login");
 	}
 	
 	public void EKTBtn(ActionEvent event) throws Exception{
-		((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
-		Stage primaryStage = new Stage();
-
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/EKTLogin.fxml"));
-		Scene scene = new Scene(root);
-		
-		primaryStage.setTitle("EKT Login");
-		primaryStage.setScene(scene);
-		
-		primaryStage.show();
+		nextWindow(event, "/gui_client_windows/EKTLogin.fxml", "EKT Login");
 	}
 	
-	public void ExitBtn() {
-		System.exit(0);
+	public void BackBtn(ActionEvent event) throws Exception {
+		nextWindow(event, "/gui_client_windows/OLOKPage.fxml", "OL OK Page");
 	}
+	
+	private void nextWindow(ActionEvent event, String window_location, String title) throws Exception {
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Parent root = FXMLLoader.load(getClass().getResource(window_location));
+		Stage primaryStage = new Stage();
+		Scene scene = new Scene(root);
+		primaryStage.setTitle(title);
+		primaryStage.setScene(scene);		
+		primaryStage.show();	
+	}
+	
 }

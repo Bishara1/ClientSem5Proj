@@ -24,6 +24,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import logic.InventoryReports;
 import logic.Machine;
 
 public class InventoryReportController implements Initializable{
@@ -31,7 +32,11 @@ public class InventoryReportController implements Initializable{
 	Message messageToServer = new Message(null,null);
 	private static String location;
 	private  static String machineId;
-	public static String str = "";
+	private static String month;
+	private  static String year;
+	
+	public static InventoryReports requestedInventoryReport = new InventoryReports();
+	public static boolean existFlag = false;
 	
 	@FXML
 	private Button showReportBtn;
@@ -41,32 +46,65 @@ public class InventoryReportController implements Initializable{
 	private ComboBox<String> cmbLocation;
 	@FXML
 	private ComboBox<String> cmbMachineId;
+	@FXML
+	private ComboBox<String> cmbYear;
+	@FXML
+	private ComboBox<String> cmbMonth;
 	
 	ObservableList<String> MachineIdList;
 	ObservableList<String> LocationList;
+	ObservableList<String> YearList;
+	ObservableList<String> MonthList;
 	
 	@FXML
 	public void Select(ActionEvent event) {
 		location = cmbLocation.getSelectionModel().getSelectedItem().toString();
 		setMachineIdComboBox();
 	}
+	
 	@FXML
 	public void SelectMachineId(ActionEvent event) {
 	    machineId = cmbMachineId.getSelectionModel().getSelectedItem().toString();
 	}
+	
+	@FXML
+	public void SelectMonth(ActionEvent event) {
+		month = cmbMonth.getSelectionModel().getSelectedItem().toString();
+	}
+	
+	@FXML
+	public void SelectYear(ActionEvent event) {
+		year = cmbYear.getSelectionModel().getSelectedItem().toString();
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		ArrayList<String> type = new ArrayList<String>(Arrays.asList("North", "South", "UAE"));
 		
-		LocationList = FXCollections.observableArrayList(type);
+		setAllComboBoxes();
+		
+	}
+	
+	public void setAllComboBoxes() {
+		ArrayList<String> locationStr = new ArrayList<String>(Arrays.asList("North", "South", "UAE"));
+		LocationList = FXCollections.observableArrayList(locationStr);
 		cmbLocation.getItems().clear();
 		cmbLocation.setItems(LocationList);
+
+		ArrayList<String> yearStr = new ArrayList<String>(Arrays.asList("2022","2023"));
+		YearList = FXCollections.observableArrayList(yearStr);
+		cmbYear.getItems().clear();
+		cmbYear.setItems(YearList);
 		
+		ArrayList<String> monthStr = new ArrayList<String>(Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"));
+		MonthList = FXCollections.observableArrayList(monthStr);
+		cmbMonth.getItems().clear();
+		cmbMonth.setItems(MonthList);
 	}
 	
 	public void setMachineIdComboBox() {
 		
 		ArrayList<String> typeMachine = new ArrayList<String>();
+		
 		messageToServer.setCommand(Command.ReadMachines);
 		messageToServer.setContent(0);	
 		ClientUI.chat.accept(messageToServer); 
@@ -86,52 +124,40 @@ public class InventoryReportController implements Initializable{
 	
 
 	public  void ShowReport(ActionEvent event)throws Exception{
-		boolean flag = false;
 		
-		int total = 0;
-		String[] item = null;
-		String[] amount = null;
-		
-		if ((cmbLocation.getValue() == null )||(cmbMachineId.getValue() == null )) {
-			Alert alert = new Alert(AlertType.ERROR,"One or more feilds is Empty!",ButtonType.OK);
+		if ((cmbLocation.getValue() == null )||(cmbMachineId.getValue() == null ) || (cmbYear.getValue() == null ) || (cmbYear.getValue() == null )) {
+			Alert alert = new Alert(AlertType.ERROR,"One or more fields is empty!",ButtonType.OK);
 			alert.showAndWait();
 			}
-		else
+		
+		else	
 			{
-				for(Machine m : ChatClient.machines)
+			//read inventory report from data base
+			messageToServer.setCommand(Command.ReadInventoryReports);
+			messageToServer.setContent(0);	
+			ClientUI.chat.accept(messageToServer); 
+			// now find the report -> no u
 			
-			{
-				if(location.equals(m.getLocation()) && Integer.parseInt(machineId)==(m.getMachine_id()))
+			for (InventoryReports ir : ChatClient.InventoryReport)
+				if ((ir.getLocation().equals(location))&&(ir.getMonth().equals(month))&&ir.getYear().equals(year))
 				{
-					item = m.getAllItems().split(",");
-					amount = m.getAmount_per_item().split(",");
-					for (int i = 0 ; i < item.length ; i++) {
-						str += item[i] + "," + amount[i] + ".";
-					}
-					total=m.getTotal_inventory();	
-					flag = true;
-					break;
+					requestedInventoryReport = ir;
+					existFlag = true;
 				}
+			if(existFlag == true) {
+				nextWindow(event,"/gui_client_windows/InventoryData.fxml","Inventory Data");
+			}
+			else
+			{
+				Alert alert = new Alert(AlertType.ERROR,"Couldn't find report",ButtonType.OK);
+				alert.showAndWait();
+			}
 			}
 			
-			if (flag)
-			{
-				ArrayList<String> NewReport = new ArrayList<String>(Arrays.asList(machineId,str,String.valueOf(total),location));
-				messageToServer.setCommand(Command.InsertInventoryReport);
-				messageToServer.setContent(NewReport);
-				ClientUI.chat.accept(messageToServer);
-				
-				nextWindow(event,"/gui_client/InventoryData.fxml","Inventory Data");
-			}
-			else {
-				Alert alert = new Alert(AlertType.ERROR,"No report found",ButtonType.OK);
-				alert.showAndWait();
-				}
-			}
 	}
 
 	public void BackBtn(ActionEvent event) throws Exception {
-		nextWindow(event,"/gui_client/ChooseReportType.fxml","Choose Report Type");
+		nextWindow(event,"/gui_client_windows/ChooseReportType.fxml","Choose Report Type");
 	}
 	
 	private void nextWindow(ActionEvent event, String window_location, String title) throws Exception {

@@ -2,6 +2,7 @@ package gui_client;
 
 import java.util.ArrayList;
 
+
 import client.ChatClient;
 import client.ClientController;
 import client.ClientUI;
@@ -25,9 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import logic.Item;
 import logic.Machine;
-import logic.Subscriber;
 
 public class StockTableController {
 
@@ -69,15 +68,15 @@ public class StockTableController {
 //			alert.showAndWait();
 //		}
 		else {
-			ConnectNewClient();
+//			ConnectNewClient();
 			LoadMachine();
 		}
 	}
 	
-	public void ConnectNewClient() {
-		ClientUI.chat = new ClientController("localhost", 5555);  // new client connected
-		///ClientUI.chat.accept("login"); // send to server that a client is connected
-	}
+//	public void ConnectNewClient() {
+//		ClientUI.chat = new ClientController("localhost", 5555);  // new client connected
+//		///ClientUI.chat.accept("login"); // send to server that a client is connected
+//	}
 	
 	public void LoadMachine() {
 				
@@ -112,35 +111,35 @@ public class StockTableController {
 		switch(ChatClient.role) {
 		
 		case "ceo":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/CEOReports.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/CEOReports.fxml"));
 			break;
 		
 		case "rgm":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
 			break;
 			
 		case "rgw":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
 			break;
 		
 		case "stm":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
 			break;
 			
 		case "stw":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
 			break;
 			
 		case "dlw":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
 			break;
 			
 		case "inm":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
 			break;
 			
 		case "customer":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
 			break;
 			
 		default:

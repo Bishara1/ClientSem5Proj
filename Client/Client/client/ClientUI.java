@@ -9,7 +9,7 @@ public class ClientUI extends Application {
 	public static ClientController chat; //only one instance
 
 	public static void main( String args[] ) throws Exception { 
-		launch(args);
+		launch(args);  
     }
 	
 	@Override

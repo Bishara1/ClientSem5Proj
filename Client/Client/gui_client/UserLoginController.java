@@ -2,6 +2,7 @@ package gui_client;
 
 
 import java.io.IOException;
+import java.util.Optional;
 
 import client.ChatClient;
 
@@ -38,6 +39,8 @@ public class UserLoginController {
 	@FXML
 	private Button Backbtn;
 	
+	public OLOKPageController p;
+	
 	@FXML
 	public void loginBtn(ActionEvent event) throws Exception {
 		String username = Usernametxt.getText();
@@ -49,84 +52,90 @@ public class UserLoginController {
 			alert.showAndWait();
 		}
 		else {
-			ConnectNewClient();
-			Message msg = new Message(username, Command.Connect); //connects client to server
-			ClientUI.chat.accept(msg);
-			//check if password is correct/ if client exists and then proceed;
-			if(ChatClient.password.equals(password))
+		ConnectNewClient();
+		Message msg = new Message(username, Command.Connect); //connects client to server
+		ClientUI.chat.accept(msg);
+		//check if password is correct/ if client exists and then proceed;
+		if(ChatClient.password.equals(password))
+		{
+			((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
+			Stage primaryStage = new Stage();
+			Parent root = null;
+			if(p.type.equals("OK"))
 			{
-				((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
-				Stage primaryStage = new Stage();
-				Parent root = null;
+				root = FXMLLoader.load(getClass().getResource("/gui_client_windows/UserUI.fxml"));
+			}
+			else {
 				switch(ChatClient.role) {
 				
 				case "ceo":
-					root = FXMLLoader.load(getClass().getResource("/gui_client/CEOReports.fxml"));
+					root = FXMLLoader.load(getClass().getResource("/gui_client_windows/CEOReports.fxml"));
 					break;
 				
-				case "rgm":
-					root = FXMLLoader.load(getClass().getResource("/gui_client/RegionalManager.fxml"));
+				case "rgn":
+					ChatClient.locationName = "North";
+					root = FXMLLoader.load(getClass().getResource("/gui_client_windows/RegionalManager.fxml"));
 					break;
 					
 				case "rgw":
-					root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+					root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
 					break;
 				
 				case "stm":
-					root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+					root = FXMLLoader.load(getClass().getResource("/gui_client_windows/ViewOrdersDeliveryOperator.fxml"));
 					break;
 					
-				case "sto":
-					root = FXMLLoader.load(getClass().getResource("/gui_client/UpdateStock.fxml"));
+				case "stw":
+					root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
 					break;
 					
 				case "dlw":
-					root = FXMLLoader.load(getClass().getResource("/gui_client/ViewOrdersDeliveryOperator.fxml"));
+					root = FXMLLoader.load(getClass().getResource("/gui_client_windows/ViewDelivery.fxml"));
 					break;
 					
 				case "dlo":
-					root = FXMLLoader.load(getClass().getResource("/gui_client/ViewOrdersDeliveryOperator.fxml"));
+					root = FXMLLoader.load(getClass().getResource("/gui_client_windows/ViewDelivery.fxml"));
 					break;
 					
 				case "inm":
-					root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+					root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
 					break;
 					
 				case "customer":
-					root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
+					root = FXMLLoader.load(getClass().getResource("/gui_client_windows/UserUI.fxml"));
 					break;
 					
-				case "csw": //costumer service worker
-					root = FXMLLoader.load(getClass().getResource("/gui_client/CustomerServiceWorker.fxml"));
+				case "csw": //costumer servise worker
+					root = FXMLLoader.load(getClass().getResource("/gui_client_windows/CustomerServiceWorker.fxml"));
 					break;
 				default:
 					break;
 				}
-				
-				Scene scene = new Scene(root);
-				//Parent root2 = FXMLLoader.load(getClass().getResource("/gui_client/StartOrder.fxml"));
-				//scene.getStylesheets().add(getClass().getResource("/gui/.css").toExternalForm());
-				primaryStage.setTitle("EKRUT");
-				primaryStage.setScene(scene);
-				
-				primaryStage.show();	
 			}
-			else
+			
+			Scene scene = new Scene(root);
+			//Parent root2 = FXMLLoader.load(getClass().getResource("/gui_client_windows/StartOrder.fxml"));
+			//scene.getStylesheets().add(getClass().getResource("/gui/.css").toExternalForm());
+			primaryStage.setTitle(ChatClient.Fname + " Page");
+			primaryStage.setScene(scene);
+			
+			primaryStage.show();	
+		}
+		else
+		{
+			if(ChatClient.password.equals(""))
 			{
-				if(ChatClient.password.equals(""))
-				{
-					Alert alert = new Alert(AlertType.ERROR,"Username isn't in db",ButtonType.OK);
-					alert.showAndWait();
-				}
-				else 
-					if(!ChatClient.password.equals(password))
-				{
-					Alert alert = new Alert(AlertType.ERROR,"Incorrect password",ButtonType.OK);
-					alert.showAndWait();
-				}
+				Alert alert = new Alert(AlertType.ERROR,"Incorrect login info",ButtonType.OK);
+				alert.showAndWait();
+			}
+			else 
+				if(!ChatClient.password.equals(password))
+			{
+				Alert alert = new Alert(AlertType.ERROR,"Incorrect login info",ButtonType.OK);
+				alert.showAndWait();
 			}
 		}
-		
+		}
 			
 	}
 	
@@ -138,7 +147,7 @@ public class UserLoginController {
 	
 	public void backBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/LoginEkrut.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/LoginEkrut.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 	//	scene.getStylesheets().add(getClass().getResource("/gui/LoginEkrut.css").toExternalForm());

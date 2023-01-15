@@ -59,7 +59,7 @@ public class SubscribersViewerController implements Initializable{
 	
 	public void start(Stage primaryStage) throws Exception { 
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui_client/SubscribersViewer.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui_client_windows/SubscribersViewer.fxml"));
 		Parent root = loader.load();	
 		Scene scene = new Scene(root);
 		//scene.getStylesheets().add(getClass().getResource("/gui/ServerPort.css").toExternalForm());  //css
@@ -107,7 +107,7 @@ public class SubscribersViewerController implements Initializable{
 	
 	public void ExitBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/CEOReports.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/CEOReports.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 		primaryStage.setTitle("CEO Reports");

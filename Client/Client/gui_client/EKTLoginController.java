@@ -26,6 +26,8 @@ public class EKTLoginController implements Initializable {
 	
 	public static String u;
 	
+	public OLOKPageController p;
+	
 	@FXML
 	private ComboBox<String> cmbUser;
 	
@@ -59,27 +61,34 @@ public class EKTLoginController implements Initializable {
 	
 	public void login(ActionEvent event) throws Exception
 	{
-		Message msg = new Message(u, Command.EKTConnect);
+		Message msg = new Message(u,Command.EKTConnect);
 		ConnectNewClient();
 		ClientUI.chat.accept(msg);
 
-		switch (ChatClient.role) 
+		if(p.type.equals("OK"))
 		{
-		case "customer":
-			nextWindow(event,"/gui_client/UserUI.fxml","USER UI");
-		    break;
-
-		case "ceo":
-			nextWindow(event,"/gui_client/CEOReports.fxml","CEO Reports");
-		    break;
-		    
-		case "mkm" :
-			nextWindow(event,"/gui_client/DiscountLocation.fxml","Discount Location");
-			break;
-			
-		default:
-			System.out.println("default entered");
-			break;
+			nextWindow(event, "/gui_client_windows/UserUI.fxml", "USER UI");
+		}
+		else
+		{
+			switch (ChatClient.role) 
+			{
+			case "customer":
+				nextWindow(event,"/gui_client_windows/UserUI.fxml","USER UI");
+			    break;
+	
+			case "ceo":
+				nextWindow(event,"/gui_client_windows/CEOReports.fxml","CEO Reports");
+			    break;
+			    
+			case "mkm" :
+				nextWindow(event,"/gui_client_windows/DiscountLocation.fxml","Discount Location");
+				break;
+				
+			default:
+				System.out.println("default entered");
+				break;
+			}
 		}
 		
 	}
@@ -90,7 +99,7 @@ public class EKTLoginController implements Initializable {
 	}
 	
 	public void BackBtn(ActionEvent event) throws Exception {
-		nextWindow(event,"/gui_client/LoginEkrut.fxml","Login EKRUT");
+		nextWindow(event,"/gui_client_windows/LoginEkrut.fxml","Login EKRUT");
 	}
 	
 	private void nextWindow(ActionEvent event, String window_location, String title) throws Exception {

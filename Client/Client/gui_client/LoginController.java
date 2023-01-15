@@ -23,15 +23,10 @@ public class LoginController {
 	private TextField hostIptxt;
 
 	public void start(Stage primaryStage) throws Exception {
-		
-		//ChatClient.primaryStage = primaryStage;
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
-				
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
 		Scene scene = new Scene(root);
-		//scene.getStylesheets().add(getClass().getResource("/gui/ServerPort.css").toExternalForm());  css
-		primaryStage.setTitle("Client");
+		primaryStage.setTitle("Login Page");
 		primaryStage.setScene(scene);
-		
 		primaryStage.show();		
 	}
 	
@@ -47,11 +42,10 @@ public class LoginController {
 		((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
 		Stage primaryStage = new Stage();
 		
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/LoginEkrut.fxml"));
+//		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/LoginEkrut.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/OLOKPage.fxml"));
 		Scene scene = new Scene(root);
-		
-		//scene.getStylesheets().add(getClass().getResource("/gui/.css").toExternalForm());
-		primaryStage.setTitle("Login EKRUT");
+		primaryStage.setTitle("OL OK Page");
 		primaryStage.setScene(scene);
 		
 		primaryStage.show();	

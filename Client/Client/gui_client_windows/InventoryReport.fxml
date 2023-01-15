@@ -41,5 +41,7 @@
             </ImageView>
          </children>
       </VBox>
+      <ComboBox fx:id="cmbYear" layoutX="451.0" layoutY="218.0" onAction="#SelectYear" prefHeight="35.0" prefWidth="149.0" promptText="Year" />
+      <ComboBox fx:id="cmbMonth" layoutX="690.0" layoutY="218.0" onAction="#SelectMonth" prefHeight="35.0" prefWidth="149.0" promptText="Month" />
    </children>
 </Pane>

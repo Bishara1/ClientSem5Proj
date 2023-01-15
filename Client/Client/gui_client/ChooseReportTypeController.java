@@ -21,19 +21,19 @@ public class ChooseReportTypeController {
 	private Button userReportBtn;
 	
 	public void BackBtn(ActionEvent event) throws Exception {
-		nextWindow(event,"/gui_client/CEOReports.fxml","CEO Reports");
+		nextWindow(event,"/gui_client_windows/CEOReports.fxml","CEO Reports");
 	}
 
 	public void MonthlyReportsBtn(ActionEvent event) throws Exception {
-		nextWindow(event,"/gui_client/MonthlyReports.fxml","Monthly Reports");
+		nextWindow(event,"/gui_client_windows/MonthlyReports.fxml","Monthly Reports");
 	}
 	
 	public void InventoryReportsBtn(ActionEvent event) throws Exception {
-		nextWindow(event,"/gui_client/InventoryReport.fxml","Inventory Report");
+		nextWindow(event,"/gui_client_windows/InventoryReport.fxml","Inventory Report");
 	}
 	
 	public void UsersReportsBtn(ActionEvent event) throws Exception {
-		nextWindow(event,"/gui_client/BarChart.fxml","Monthly Reports");
+		nextWindow(event,"/gui_client_windows/BarChart.fxml","Monthly Reports");
 	}
 
 	private void nextWindow(ActionEvent event, String window_location, String title) throws Exception {

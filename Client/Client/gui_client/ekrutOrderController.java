@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 import client.ChatClient;
 import client.ClientUI;
+import client.Timespent;
 import common.Command;
 import common.Message;
 import javafx.event.ActionEvent;
@@ -106,7 +107,9 @@ public class ekrutOrderController implements Initializable{
 	
 	private ArrayList<Integer> amount;
 	
-	private ArrayList<Integer> available;
+	private ArrayList<Integer> available; 
+	
+	private ArrayList<String> generatedItems;
 	
 	private int MachineNumber = -1; 
 	
@@ -120,10 +123,13 @@ public class ekrutOrderController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		ClientUI.chat.accept(new Message(0, Command.ReadMachines));
 		ClientUI.chat.accept(new Message(0,Command.ReadItems));
+		ChatClient.timer = new Thread(new Timespent());
+		ChatClient.timer.start();
 		if(ChatClient.machineToLoad != -1)
 		{
 			FindMachineNumber(ChatClient.machineToLoad);
 		}
+		GenerateMachineItems();
 		if(ChatClient.FirstSubscriberOrder)
 			this.sale = 80;
 		else
@@ -134,7 +140,7 @@ public class ekrutOrderController implements Initializable{
 			amount = new ArrayList<Integer>();
 			available = new ArrayList<Integer>();
 			int price;
-			for(String i : ChatClient.machines.get(MachineNumber).getItems())
+			for(String i : generatedItems)
 			{
 				cart.add(new Item(i,"0",getPrice(i)));
 				int index = getItemIndex(i);
@@ -147,7 +153,7 @@ public class ekrutOrderController implements Initializable{
 			amount = new ArrayList<Integer>();
 			available = new ArrayList<Integer>();
 			int cartAmount;
-			for(String i : ChatClient.machines.get(MachineNumber).getItems())
+			for(String i : generatedItems)
 			{
 				int indexItem = getItemIndex(i);
 				int indexCart = getItemIndexCart(i);
@@ -168,18 +174,13 @@ public class ekrutOrderController implements Initializable{
 			updateTotalPrice();
 		}		
 		rotation = 0;
-		System.out.println(ChatClient.FirstSubscriberOrder);
-		System.out.println("Sale : " + sale);
-		System.out.println("Available : " + available); //PRINTING
-		System.out.println("Amount : " + amount); //PRINTING
-		System.out.println("Local Cart : " + this.cart);
-		System.out.println("Static Items : " + ChatClient.items);
 		LoadItems();
 		
 	}
 	
 	public void ProceedCartBtn(ActionEvent event) throws Exception {
 		//deal with threshold, send a message -> change the value of a static field in chatClient
+		ChatClient.timer.stop();
 		ChatClient.available = available;
 		ArrayList<Item> removeThese = new ArrayList<Item>();
 		for(Item item : cart)
@@ -188,51 +189,74 @@ public class ekrutOrderController implements Initializable{
 				removeThese.add(item);
 		}
 		cart.removeAll(removeThese);
-		ChatClient.cart = cart;
-		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/Cart.fxml"));
-		Stage primaryStage = new Stage();
-		Scene scene = new Scene(root);
-		primaryStage.setTitle("Cart");
-		primaryStage.setScene(scene);		
-		primaryStage.show();	
+		if(cart.isEmpty())
+		{
+			Alert alert = new Alert(AlertType.ERROR,"Must add at least 1 item to cart!",ButtonType.OK);
+			alert.showAndWait();
+			ChatClient.timer = new Thread(new Timespent());
+			ChatClient.timer.start();
+			cart = new ArrayList<Item>();
+			amount = new ArrayList<Integer>();
+			available = new ArrayList<Integer>();
+			int price;
+			for(String i : generatedItems)
+			{
+				cart.add(new Item(i,"0",getPrice(i)));
+				int index = getItemIndex(i);
+				available.add(ChatClient.machines.get(MachineNumber).getAmount(index));
+				amount.add(0);
+			}
+		}
+		else
+		{
+			ChatClient.availableItems = generatedItems;
+			ChatClient.cart = cart;
+			((Node)event.getSource()).getScene().getWindow().hide();
+			Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Cart.fxml"));
+			Stage primaryStage = new Stage();
+			Scene scene = new Scene(root);
+			primaryStage.setTitle("Cart");
+			primaryStage.setScene(scene);		
+			primaryStage.show();
+		}
 	}
 	public void BackBtn(ActionEvent event) throws Exception {
 		
+		ChatClient.timer.stop();
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = null;
 		switch(ChatClient.role) {
 		
 		case "ceo":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/CEOReports.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/CEOReports.fxml"));
 			break;
 		
 		case "rgm":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
 			break;
 			
 		case "rgw":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
 			break;
 		
 		case "stm":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
 			break;
 			
 		case "stw":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
 			break;
 			
 		case "dlw":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
 			break;
 			
 		case "inm":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
 			break;
 			
 		case "customer":
-			root = FXMLLoader.load(getClass().getResource("/gui_client/UserUI.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/UserUI.fxml"));
 			break;
 			
 		default:
@@ -248,11 +272,14 @@ public class ekrutOrderController implements Initializable{
 	
 	public void NextItems()
 	{
-		if((rotation+1)*4 >= ChatClient.machines.get(MachineNumber).getItems().size())
+		if((rotation+1)*4 >= generatedItems.size())
 			rotation=0;
 		else
 			rotation += 1;
 		LoadItems(); //deal with only showing 2 
+		ChatClient.timer.stop();
+		ChatClient.timer = new Thread(new Timespent());
+		ChatClient.timer.start();
 	
 	}
 	
@@ -262,10 +289,14 @@ public class ekrutOrderController implements Initializable{
 			rotation = findMax();
 		else
 		{
-			if(ChatClient.machines.get(MachineNumber).getItems().size() > 4)
+			if(generatedItems.size() > 4)
 				rotation -= 1;
 		}
 		LoadItems();
+		ChatClient.timer.stop();
+		ChatClient.timer = new Thread(new Timespent());
+		ChatClient.timer.start();
+	
 	}
 	
 	public void LessItem1() //NEW *******************************
@@ -277,12 +308,14 @@ public class ekrutOrderController implements Initializable{
 			int newAvailable = available.get(rotation*4) + 1;
 			available.set(rotation*4,newAvailable);
 			amountCart1.setText(String.valueOf(amount.get(rotation*4)));
-			System.out.println("Available : " + available); //PRINTING
-			System.out.println("Amount : " + amount); //PRINTING
 			Item addedToCart = new Item(cart.get(rotation*4).getProductID(),String.valueOf(newAmount),(cart.get(rotation*4).getPrice()));
 			cart.set(rotation*4,addedToCart);
 			updateTotalPrice();
 			LoadItems();
+			ChatClient.timer.stop();
+			ChatClient.timer = new Thread(new Timespent());
+			ChatClient.timer.start();
+		
 		}
 		
 	}
@@ -296,12 +329,14 @@ public class ekrutOrderController implements Initializable{
 			int newAvailable = available.get(rotation*4) - 1;
 			available.set(rotation*4,newAvailable);
 			amountCart1.setText(String.valueOf(amount.get(rotation*4)));
-			System.out.println("Available : " + available); //PRINTING
-			System.out.println("Amount : " + amount); //PRINTING
 			Item addedToCart = new Item(cart.get(rotation*4).getProductID(),String.valueOf(newAmount),(cart.get(rotation*4).getPrice()));
 			cart.set(rotation*4,addedToCart);
 			updateTotalPrice();
 			LoadItems();
+			ChatClient.timer.stop();
+			ChatClient.timer = new Thread(new Timespent());
+			ChatClient.timer.start();
+		
 		}
 	}
 	
@@ -318,6 +353,10 @@ public class ekrutOrderController implements Initializable{
 			cart.set(rotation*4+1,addedToCart);
 			updateTotalPrice();
 			LoadItems();
+			ChatClient.timer.stop();
+			ChatClient.timer = new Thread(new Timespent());
+			ChatClient.timer.start();
+		
 		}
 	}
 	
@@ -334,6 +373,10 @@ public class ekrutOrderController implements Initializable{
 			cart.set(rotation*4+1,addedToCart);
 			updateTotalPrice();
 			LoadItems();
+			ChatClient.timer.stop();
+			ChatClient.timer = new Thread(new Timespent());
+			ChatClient.timer.start();
+		
 		}
 	}
 	
@@ -350,6 +393,10 @@ public class ekrutOrderController implements Initializable{
 			cart.set(rotation*4+2,addedToCart);
 			updateTotalPrice();
 			LoadItems();
+			ChatClient.timer.stop();
+			ChatClient.timer = new Thread(new Timespent());
+			ChatClient.timer.start();
+		
 		}
 	}
 	
@@ -366,7 +413,12 @@ public class ekrutOrderController implements Initializable{
 			cart.set(rotation*4+2,addedToCart);
 			updateTotalPrice();
 			LoadItems();
+			ChatClient.timer.stop();
+			ChatClient.timer = new Thread(new Timespent());
+			ChatClient.timer.start();
+		
 		}
+		
 	}
 	
 	public void LessItem4() //NEW *******************************
@@ -382,6 +434,10 @@ public class ekrutOrderController implements Initializable{
 			cart.set(rotation*4+3,addedToCart);
 			updateTotalPrice();
 			LoadItems();
+			ChatClient.timer.stop();
+			ChatClient.timer = new Thread(new Timespent());
+			ChatClient.timer.start();
+		
 		}
 	}
 	
@@ -398,6 +454,10 @@ public class ekrutOrderController implements Initializable{
 			cart.set(rotation*4+3,addedToCart);
 			updateTotalPrice();
 			LoadItems();
+			ChatClient.timer.stop();
+			ChatClient.timer = new Thread(new Timespent());
+			ChatClient.timer.start();
+		
 		}
 	}
     
@@ -423,7 +483,7 @@ public class ekrutOrderController implements Initializable{
     
     public void CheckAndLoadItem(int num,Label lbl,String str,int index) //num = rotation*4 + i 
     {
-    	if(num > ChatClient.machines.get(MachineNumber).getItems().size()-1)
+    	if(num > generatedItems.size()-1)
     	{
     		lbl.visibleProperty().set(false);
     		switch(index) {
@@ -479,10 +539,10 @@ public class ekrutOrderController implements Initializable{
     		}
     		switch(str) {
     			case "Item":
-    				lbl.setText(ChatClient.machines.get(MachineNumber).getItem(num));
+    				lbl.setText(generatedItems.get(num));
     				break;
     			case "Price":
-    				lbl.setText(this.getPrice(ChatClient.machines.get(MachineNumber).getItem(num)) + " NIS");
+    				lbl.setText(this.getPrice(generatedItems.get(num)) + " NIS");
     				break;
     			case "Available":
     				lbl.setText(String.valueOf(available.get(num))); //set the amount from available
@@ -507,7 +567,7 @@ public class ekrutOrderController implements Initializable{
     
     public int findMax()
     {
-    	int size = ChatClient.machines.get(MachineNumber).getItems().size();
+    	int size = generatedItems.size();
     	int temp = 0;
     	if(size == 4)
     		return temp;
@@ -586,13 +646,17 @@ public class ekrutOrderController implements Initializable{
     
     public int updateSale() 
     {
-    	ClientUI.chat.accept(new Message(0,Command.ReadLocations));
-    	for(Location location : ChatClient.locations)
-    	{
-    		if(location.getLocation().equals(ChatClient.locationName))
-    				return 100 - location.getSale_value();
+    	if(ChatClient.isSubscriber == true) {
+	    	ClientUI.chat.accept(new Message(0,Command.ReadLocations));
+	    	for(Location location : ChatClient.locations)
+	    	{
+	    		if(location.getLocation().equals(ChatClient.locationName))
+	    				return 100 - location.getSale_value();
+	    	}
+	    	return 100;
     	}
-    	return 100;
+    	else
+    		return 100;
     }
     
     public int calculatePrice(int normalPrice)
@@ -603,6 +667,18 @@ public class ekrutOrderController implements Initializable{
     	double newPrice = normalPriceDouble * sale;
     	int newPriceInt = (int)(newPrice);
     	return newPriceInt;
+    }
+    
+    public void GenerateMachineItems()
+    {
+    	generatedItems = new ArrayList<String>();
+    	for(String name : ChatClient.machines.get(MachineNumber).getItems())
+    	{
+    		int index = getItemIndex(name);
+    		if(ChatClient.machines.get(MachineNumber).getAmount(index) != 0)
+    			generatedItems.add(name);
+    	}
+    	return;
     }
 }
 

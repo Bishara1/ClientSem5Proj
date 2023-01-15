@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ReceiptController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ReceiptController">
    <children>
       <Label layoutX="555.0" layoutY="14.0" prefHeight="119.0" prefWidth="258.0" text="Receipt" textFill="#c14302">
          <font>
@@ -24,7 +24,7 @@
             <Font name="System Bold Italic" size="19.0" />
          </font>
       </Label>
-      <Button fx:id="okBtn" layoutX="628.0" layoutY="628.0" mnemonicParsing="false" onAction="#OKBtn" prefHeight="39.0" prefWidth="94.0" text="OK" textFill="WHITE">
+      <Button fx:id="okBtn" layoutX="766.0" layoutY="632.0" mnemonicParsing="false" onAction="#OKBtn" prefHeight="39.0" prefWidth="94.0" text="OK" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -52,11 +52,11 @@
             <URL value="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" />
          </stylesheets>
       </VBox>
-      <Button fx:id="backBtn" layoutX="461.0" layoutY="666.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="39.0" prefWidth="94.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
+      <Label fx:id="ordercodelbl" layoutX="484.0" layoutY="637.0" text="Order code :" textFill="#c14302">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="Cooper Black" size="24.0" />
          </font>
-      </Button>
+      </Label>
    </children>
    <stylesheets>
       <URL value="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" />

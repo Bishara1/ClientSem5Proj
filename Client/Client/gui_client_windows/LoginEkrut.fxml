@@ -44,7 +44,7 @@
             <Font name="Cambria Math" size="73.0" />
          </font>
       </Text>
-      <Button layoutX="609.0" layoutY="670.0" mnemonicParsing="false" onAction="#ExitBtn" prefHeight="42.0" prefWidth="99.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Exit" textFill="WHITE">
+      <Button layoutX="609.0" layoutY="670.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="42.0" prefWidth="99.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
       <font>
             <Font name="System Bold" size="15.0" />
          </font>

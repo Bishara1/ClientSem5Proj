@@ -42,25 +42,32 @@ public class ChatClient extends AbstractClient
   public static ArrayList<Subscriber> subscribers;//+users
   public static ArrayList<Machine> machines;
   public static ArrayList<Item> items;
-  public static ArrayList<Order> orders;  
+  public static ArrayList<Order> orders;
+  public static ArrayList<Delivery> deliveries;
   public static ArrayList<OrdersReports> orderReport;
+  public static ArrayList<InventoryReports> InventoryReport;
   public static ArrayList<Location> locations;
   public static ArrayList<Item> cart;
-  public static ArrayList<Integer> available;
-  public static ArrayList<Delivery> deliveries;
+  public static ArrayList<String> availableItems; 
+  public static ArrayList<Integer> available; 
+  public static ArrayList<Request> userRequest;
   public static ArrayList<StockRequest> stockRequests;
   public static String password;
   public static String role;
   public static String Fname;
   public static String locationName = "North"; //?????
   public static String supplyMethod = "Immediate pickup"; //?????
+  public static String deliveryLocation = "";
+  public static String address = "";
+  public static String creditcard = "";
   public static boolean awaitResponse = false;
   public static boolean isSubscriber = false;
   public static boolean FirstSubscriberOrder = false;
   private boolean FirstCart = false;
+  public static int orderId = -1;
   public static int ID;
   public static int machineToLoad = -1;
-  public static Thread timer = new Thread(new Timespent());
+  public static Thread timer;
   //public static Stage primaryStage; //-> fixes the issue of windows popping up AND solves the timing thread
   
 
@@ -80,7 +87,7 @@ public class ChatClient extends AbstractClient
     super(host, port); //Call the superclass constructor
     this.clientUI = clientUI;
     openConnection();
-   // timer.start(); //SAFWAN CREATE A NEW THREAD EVERYTIME YOU WANT TO RESTART THE TIMER OR JUST OVERRIDE THE CURRENT THREAD, THANKS IN ADVANCE.
+    
   }
 
   
@@ -92,8 +99,7 @@ public class ChatClient extends AbstractClient
    * @param msg The message from the server.
    */
   @SuppressWarnings("unchecked")
-  public void handleMessageFromServer(Object msg) 
-  {	  
+  public void handleMessageFromServer(Object msg) {	  
 	  Message responseFromServer = (Message) msg;
 	  
 	  switch(responseFromServer.getCommand()) 
@@ -101,7 +107,6 @@ public class ChatClient extends AbstractClient
 	 
 	  	  case ReadUsers:
 	  		  subscribers = (ArrayList<Subscriber>) responseFromServer.getContent();
-	  		  System.out.println(subscribers);
 	  		  break;
 	  		  
 	  	 case ReadMachines:
@@ -125,14 +130,15 @@ public class ChatClient extends AbstractClient
 	  		  password = passRoleFnameSubNumFirstCart[0];
 	  		  role = passRoleFnameSubNumFirstCart[1];
 	  		  Fname = passRoleFnameSubNumFirstCart[2];
+	  		  ID =Integer.parseInt(passRoleFnameSubNumFirstCart[5]);
 	  		  if(Integer.parseInt(passRoleFnameSubNumFirstCart[3]) != -1)
 	  			  isSubscriber = true;
 	  		  else
 	  			  isSubscriber = false;
 	  		  if(Integer.parseInt(passRoleFnameSubNumFirstCart[4]) == 1)
-	  			  FirstCart = true;
+	  			  FirstSubscriberOrder = true;
 	  		  else
-	  			  FirstCart = false;
+	  			  FirstSubscriberOrder = false;
 	  		  break;
 	  		  
 	  	case ReadLocations:
@@ -147,14 +153,25 @@ public class ChatClient extends AbstractClient
 	  		orderReport = (ArrayList<OrdersReports>) (responseFromServer.getContent());
 	  		break;
 	  		
-	  	case ReadDeliveries:
-	  		deliveries = (ArrayList<Delivery>) (responseFromServer.getContent());
+	  	case ReadInventoryReports:
+	  		InventoryReport = (ArrayList<InventoryReports>) (responseFromServer.getContent());
 	  		break;
 	  		
 	  	case ReadStockRequests:
 	  		stockRequests = (ArrayList<StockRequest>) (responseFromServer.getContent());
 	  		break;
 	  		
+	  	case ReadRequests:
+	  		userRequest= (ArrayList<Request>) (responseFromServer.getContent());
+	  		break;
+	  		
+	  	case ReadUserVisa:
+	  		creditcard = (String)responseFromServer.getContent();
+	  		break;
+	  		
+	  	case InsertOrder:
+	  		orderId = (int)responseFromServer.getContent();
+	  		break;
 	  		
 	  default:
 		  System.out.println("ChatClient got response but didn't deal with it");
@@ -176,7 +193,6 @@ public class ChatClient extends AbstractClient
 		  openConnection(); //in order to send more than one message
     	  awaitResponse = true; 
     	  sendToServer(message);
-    	
     	  while (awaitResponse) {
 			  try {
 				  Thread.sleep(100);

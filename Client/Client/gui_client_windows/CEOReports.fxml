@@ -15,7 +15,7 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Label fx:id="titleLbl" layoutX="399.0" layoutY="73.0" prefHeight="99.0" prefWidth="502.0" text="Welcome CEO" textFill="#c14302">
+      <Label fx:id="titleLbl" layoutX="412.0" layoutY="83.0" prefHeight="121.0" prefWidth="489.0" text="Welcome " textFill="#c14302">
          <font>
             <Font name="Elephant" size="41.0" />
          </font>
@@ -55,5 +55,10 @@
             </ImageView>
          </children>
       </VBox>
+      <Label layoutX="387.0" layoutY="-10.0" prefHeight="93.0" prefWidth="213.0" text="CEO page" textFill="#c14302" underline="true">
+         <font>
+            <Font name="Elephant" size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
