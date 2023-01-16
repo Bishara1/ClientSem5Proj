@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javax.smartcardio.CommandAPDU;
+
 import client.ChatClient;
 import client.ClientUI;
 import common.Command;
@@ -102,12 +104,13 @@ public class UpdateStockController implements Initializable{
 	 */
 	public void LogoutBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/LoginEkrut.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/LoginEkrut.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 		primaryStage.setTitle("Login Ekrut");
 		primaryStage.setScene(scene);		
 		primaryStage.show();
+		ClientUI.chat.accept(new Message(ChatClient.ID, Command.Disconnect));
 	}
 	
 	
