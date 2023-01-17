@@ -10,44 +10,44 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="960.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.RemoteLocationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.RemoteLocationController">
    <children>
-      <Button fx:id="backbtn" layoutX="436.0" layoutY="614.0" mnemonicParsing="false" onAction="#BackBtn" prefWidth="120.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
+      <Button fx:id="backbtn" layoutX="440.0" layoutY="632.0" mnemonicParsing="false" onAction="#BackBtn" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="startorderbtn" layoutX="732.0" layoutY="614.0" mnemonicParsing="false" onAction="#StartOrderBtn" prefWidth="120.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Start Order" textFill="WHITE">
+      <Button fx:id="startorderbtn" layoutX="766.0" layoutY="632.0" mnemonicParsing="false" onAction="#StartOrderBtn" text="Start Order" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <ComboBox fx:id="cmbLocation" layoutX="642.0" layoutY="243.0" onAction="#Select" prefHeight="25.0" prefWidth="125.0" promptText="location" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/comboboxDesign.css" />
-      <Label layoutX="457.0" layoutY="70.0" prefHeight="117.0" prefWidth="335.0" text="Remote order" textFill="#7c6435">
+      <ComboBox fx:id="cmbLocation" layoutX="676.0" layoutY="225.0" onAction="#Select" prefHeight="25.0" prefWidth="125.0" promptText="location" />
+      <Label layoutX="572.0" layoutY="51.0" prefHeight="117.0" prefWidth="166.0" text="EKRUT" textFill="#c14302">
          <font>
-            <Font name="Elephant" size="47.0" />
+            <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Label layoutX="478.0" layoutY="346.0" text="Choose Machine" textFill="#7c6435">
+      <Label layoutX="446.0" layoutY="320.0" text="Choose Machine" textFill="#c14302">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font size="27.0" />
          </font></Label>
-      <VBox alignment="BASELINE_CENTER" layoutX="-16.0" layoutY="-10.0" prefHeight="767.0" prefWidth="314.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <VBox alignment="BASELINE_CENTER" layoutX="-12.0" prefHeight="762.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
             </ImageView>
          </children>
       </VBox>
-      <Label layoutX="478.0" layoutY="244.0" text="Choose Loaction" textFill="#7c6435">
+      <Label layoutX="446.0" layoutY="218.0" text="Choose Loaction" textFill="#c14302">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font size="27.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cmbMachine" layoutX="642.0" layoutY="345.0" prefHeight="25.0" prefWidth="125.0" promptText="Machine" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/comboboxDesign.css" />
+      <ComboBox fx:id="cmbMachine" layoutX="676.0" layoutY="327.0" prefHeight="25.0" prefWidth="125.0" promptText="Machine" />
    </children>
 </AnchorPane>

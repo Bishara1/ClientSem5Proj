@@ -12,46 +12,36 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.EKTLoginController">
    <children>
-      <Button fx:id="backBtn" layoutX="444.0" layoutY="526.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="39.0" prefWidth="120.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
+      <Button fx:id="backBtn" layoutX="531.0" layoutY="526.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="39.0" prefWidth="94.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Button fx:id="loginBtn" layoutX="717.0" layoutY="526.0" mnemonicParsing="false" onAction="#login" prefHeight="39.0" prefWidth="120.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Login" textFill="WHITE">
+      <Button fx:id="loginBtn" layoutX="717.0" layoutY="526.0" mnemonicParsing="false" onAction="#login" prefHeight="39.0" prefWidth="94.0" text="Login" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <VBox alignment="BASELINE_CENTER" layoutX="-9.0" layoutY="-6.0" prefHeight="765.0" prefWidth="300.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <VBox alignment="BASELINE_CENTER" layoutY="-1.0" prefHeight="765.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
             </ImageView>
          </children>
       </VBox>
-      <ComboBox fx:id="cmbUser" editable="true" layoutX="577.0" layoutY="304.0" onAction="#Selectuser" prefWidth="150.0" promptText="enter user id" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/comboboxDesign.css" />
-      <Label layoutX="519.0" layoutY="300.0" prefHeight="39.0" prefWidth="55.0" text="User:" textFill="#6b5a32">
+      <Label layoutX="454.0" layoutY="197.0" prefHeight="39.0" prefWidth="441.0" text="Please insert your subscriber number" textFill="#c14302">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="Elephant" size="23.0" />
          </font>
       </Label>
-      <Label layoutX="519.0" layoutY="226.0" prefHeight="39.0" text="Please insert your user id" textFill="#6b5a32">
+      <ComboBox fx:id="cmbUser" editable="true" layoutX="584.0" layoutY="304.0" onAction="#Selectuser" prefWidth="150.0" promptText="enter user id" />
+      <Label layoutX="469.0" layoutY="299.0" prefHeight="39.0" prefWidth="150.0" text="User :" textFill="#c14302">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="Elephant" size="23.0" />
          </font>
       </Label>
-      <Label layoutX="444.0" layoutY="78.0" prefHeight="119.0" prefWidth="383.0" text="EKRUT Subscriber" textFill="#7c6435">
-         <font>
-            <Font name="Elephant" size="36.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="119.0" fitWidth="106.0" layoutX="338.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../CommonSem5Proj/Common/Common/images/subscriber.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

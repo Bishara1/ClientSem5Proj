@@ -14,50 +14,50 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.UserLoginController">
    <children>
-      <VBox alignment="BASELINE_CENTER" layoutX="-25.0" layoutY="-11.0" prefHeight="779.0" prefWidth="304.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;" AnchorPane.leftAnchor="-25.0">
+      <VBox alignment="BASELINE_CENTER" layoutX="-25.0" layoutY="-11.0" prefHeight="772.0" prefWidth="389.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;" AnchorPane.leftAnchor="-25.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="300.0" fitWidth="315.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
             </ImageView>
          </children>
       </VBox>
-      <Button fx:id="Loginbtn" layoutX="732.0" layoutY="626.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="48.0" prefWidth="130.0" text=" Login" textFill="WHITE">
+      <Button fx:id="Loginbtn" layoutX="786.0" layoutY="627.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="48.0" prefWidth="130.0" stylesheets="@../../../git/ClientSem5Proj/git/CommonSem5Proj/Common/Common/css/buttons.css" text=" Login" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Text fill="#7c6435" layoutX="484.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login" wrappingWidth="378.9999802261591">
+      <Text fill="#c14302" layoutX="473.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login" wrappingWidth="378.9999802261591">
          <font>
-            <Font name="Elephant" size="46.0" />
+            <Font name="Elephant" size="64.0" />
          </font>
       </Text>
-      <Button fx:id="Backbtn" layoutX="346.0" layoutY="626.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="48.0" prefWidth="130.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
+      <Button fx:id="Backbtn" layoutX="404.0" layoutY="627.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="48.0" prefWidth="130.0" stylesheets="@../../../git/CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <TextField fx:id="Usernametxt" layoutX="566.0" layoutY="356.0" prefHeight="36.0" prefWidth="166.0" style="-fx-background-radius: 10;" />
-      <Text fill="#7c6435" layoutX="449.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="113.00001300871372">
+      <TextField fx:id="Usernametxt" layoutX="575.0" layoutY="369.0" prefHeight="42.0" prefWidth="276.0" />
+      <Text fill="#c14302" layoutX="408.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="166.00001300871372">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="Elephant" size="29.0" />
          </font>
       </Text>
-      <Text fill="#7c6435" layoutX="449.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="166.00001300871372">
+      <Text fill="#c14302" layoutX="408.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="166.00001300871372">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="Elephant" size="29.0" />
          </font>
       </Text>
-      <ImageView fitHeight="48.0" fitWidth="59.0" layoutX="411.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="48.0" fitWidth="59.0" layoutX="400.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../CommonSem5Proj/Common/Common/images/user.png" />
          </image>
       </ImageView>
-      <PasswordField fx:id="passwordtxt" layoutX="566.0" layoutY="419.0" prefHeight="36.0" prefWidth="166.0" style="-fx-background-radius: 10;" />
+      <PasswordField fx:id="passwordtxt" layoutX="575.0" layoutY="436.0" prefHeight="42.0" prefWidth="276.0" />
    </children>
    <effect>
       <Blend mode="LIGHTEN" />

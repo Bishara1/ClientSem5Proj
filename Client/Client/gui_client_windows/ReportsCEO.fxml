@@ -12,38 +12,28 @@
 
 <Pane fx:id="cmbMachineId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ReportsCEOController">
    <children>
-      <Label layoutX="440.0" layoutY="42.0" text="Order Report" textFill="#7c6435">
+      <Label layoutX="455.0" layoutY="50.0" text="Report for %location %year %month" textFill="#c14302" underline="true">
          <font>
-            <Font name="Elephant" size="46.0" />
+            <Font name="Cooper Black" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="backBtn" layoutX="563.0" layoutY="662.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="42.0" prefWidth="99.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back">
+      <Button fx:id="backBtn" layoutX="634.0" layoutY="582.0" mnemonicParsing="false" onAction="#BackBtn" text="Back">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <PieChart fx:id="pieChart" layoutX="356.0" layoutY="160.0" />
-      <VBox alignment="BASELINE_CENTER" layoutX="-26.0" layoutY="-7.0" prefHeight="773.0" prefWidth="292.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <PieChart fx:id="pieChart" layoutX="408.0" layoutY="94.0" />
+      <VBox alignment="BASELINE_CENTER" layoutX="-26.0" layoutY="-7.0" prefHeight="773.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="201.0" fitWidth="178.0" opacity="0.82" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/orderreport.jpg" />
-               </image>
-            </ImageView>
          </children>
       </VBox>
-      <Label layoutX="491.0" layoutY="114.0" text="All the orders by spesific area" textFill="#7c6435">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
    </children>
 </Pane>

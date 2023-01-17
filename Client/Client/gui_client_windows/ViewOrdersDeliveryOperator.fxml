@@ -13,29 +13,29 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="916.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ViewOrdersDeliveryOperatorController">
    <children>
-      <VBox alignment="BASELINE_CENTER" layoutX="-14.0" layoutY="-10.0" prefHeight="789.0" prefWidth="324.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <Label fx:id="titlelbl" alignment="CENTER" contentDisplay="TOP" layoutX="375.0" layoutY="44.0" prefHeight="91.0" prefWidth="459.0" text="EKRUT" textFill="#7c6435">
+         <font>
+            <Font name="Constantia" size="62.0" />
+         </font>
+      </Label>
+      <VBox alignment="BASELINE_CENTER" layoutY="-5.0" prefHeight="779.0" prefWidth="304.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
             <ImageView fitHeight="300.0" fitWidth="300.0">
                <image>
-                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="182.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/delivery.png" />
+                  <Image url="@../../../../../Downloads/WhatsApp%20Image%202023-01-11%20at%2017.53.37.jpeg" />
                </image>
             </ImageView>
          </children>
       </VBox>
-      <Button fx:id="logOutBtn" layoutX="375.0" layoutY="659.0" mnemonicParsing="false" onAction="#logOutButton" prefHeight="44.0" prefWidth="98.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
+      <Button fx:id="logOutBtn" layoutX="440.0" layoutY="659.0" mnemonicParsing="false" onAction="#logOutButton" prefHeight="44.0" prefWidth="98.0" text="Logout" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <TableView fx:id="DeliveriesTable" editable="true" layoutX="375.0" layoutY="154.0" prefHeight="358.0" prefWidth="493.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/table.css">
+      <TableView fx:id="DeliveriesTable" editable="true" layoutX="358.0" layoutY="173.0" prefHeight="358.0" prefWidth="493.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/table.css">
         <columns>
           <TableColumn fx:id="orderNumberCol" prefWidth="65.0" text="Order #" />
           <TableColumn fx:id="customerIDCol" prefWidth="116.0" text="Customer ID" />
@@ -44,20 +44,15 @@
             <TableColumn fx:id="statusCol" onEditCommit="#ChangeStatus" prefWidth="112.0" text="Status" />
         </columns>
       </TableView>
-      <Button layoutX="737.0" layoutY="659.0" mnemonicParsing="false" onAction="#UpdateDeliveries" prefHeight="44.0" prefWidth="165.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Update" textFill="WHITE">
+      <Button layoutX="737.0" layoutY="659.0" mnemonicParsing="false" onAction="#UpdateDeliveries" prefHeight="44.0" prefWidth="165.0" text="Update" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="737.0" layoutY="598.0" mnemonicParsing="false" onAction="#ImportDeliveries" prefHeight="44.0" prefWidth="165.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Reset Changes" textFill="WHITE">
+      <Button layoutX="737.0" layoutY="598.0" mnemonicParsing="false" onAction="#ResetChangesBtn" prefHeight="44.0" prefWidth="165.0" text="Reset Changes" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Label fx:id="titlelbl1" alignment="CENTER" contentDisplay="TOP" layoutX="385.0" layoutY="35.0" prefHeight="91.0" prefWidth="451.0" text="View orders deliveries" textFill="#7c6435">
-         <font>
-            <Font name="Elephant" size="36.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

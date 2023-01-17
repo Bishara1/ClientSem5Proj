@@ -12,20 +12,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.UpdateStockController">
    <children>
-      <Button fx:id="logOutBtn" layoutX="447.0" layoutY="680.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="94.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
+      <Button fx:id="logOutBtn" layoutX="454.0" layoutY="702.0" mnemonicParsing="false" onAction="#LogoutBtn" prefHeight="39.0" prefWidth="100.0" text="Logout" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="updateBtn" layoutX="568.0" layoutY="362.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="169.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Update Stock" textFill="WHITE">
+      <Button fx:id="updateBtn" layoutX="720.0" layoutY="702.0" mnemonicParsing="false" onAction="#UpdateBtn" prefHeight="39.0" prefWidth="131.0" text="Update Stock" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </Button>
-      <VBox alignment="BASELINE_CENTER" layoutX="-14.0" layoutY="-9.0" prefHeight="773.0" prefWidth="315.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <VBox alignment="BASELINE_CENTER" layoutX="-35.0" prefHeight="765.0" prefWidth="387.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -35,60 +36,50 @@
                   <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="121.0" fitWidth="243.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/stock.jpg" />
-               </image>
-            </ImageView>
          </children>
       </VBox>
-      <TableView fx:id="machineTable" editable="true" layoutX="458.0" layoutY="319.0" prefHeight="310.0" prefWidth="389.0">
+      <TableView fx:id="machineTable" editable="true" layoutX="454.0" layoutY="281.0" prefHeight="250.0" prefWidth="396.0">
          <columns>
             <TableColumn fx:id="itemsCol" prefWidth="196.00006103515625" text="Items" />
             <TableColumn fx:id="amountCol" minWidth="0.0" onEditCommit="#checkModifications" prefWidth="198.0" text="Amount" />
          </columns>
       </TableView>
-      <Label fx:id="titlelbl" alignment="CENTER" contentDisplay="TOP" layoutX="504.0" layoutY="128.0" prefHeight="11.0" prefWidth="281.0" text="Update Stock" textFill="#7c6435">
+      <Label fx:id="titlelbl" alignment="CENTER" contentDisplay="TOP" layoutX="422.0" layoutY="37.0" prefHeight="91.0" prefWidth="459.0" text="EKRUT" textFill="#c14302">
          <font>
-            <Font name="Elephant" size="25.0" />
+            <Font name="Constantia" size="62.0" />
          </font>
       </Label>
-      <ComboBox fx:id="requestCmb" layoutX="625.0" layoutY="186.0" onAction="#UpdateTable" prefWidth="150.0" promptText="Request #" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/comboboxDesign.css" />
-      <Label fx:id="thresholdlbl" layoutX="457.0" layoutY="254.0" text="Threshold of machine: " textFill="#7c6435">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="requestIDlbl" layoutX="515.0" layoutY="188.0" text="Request ID:" textFill="#544220">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="machineItemslbl" layoutX="457.0" layoutY="294.0" text="Machine items:" textFill="#7c6435">
+      <ComboBox fx:id="requestCmb" layoutX="635.0" layoutY="162.0" onAction="#UpdateTable" prefWidth="150.0" promptText="Request #" />
+      <Label fx:id="thresholdlbl" layoutX="454.0" layoutY="221.0" text="Threshold of machine: ">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="machineLocationlbl" layoutX="457.0" layoutY="274.0" text="Machine location:" textFill="#7c6435">
+      <Label fx:id="requestIDlbl" layoutX="512.0" layoutY="164.0" text="Request ID:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="machineIDlbl" layoutX="457.0" layoutY="234.0" text="Machine ID:" textFill="#7c6435">
+      <Label fx:id="machineItemslbl" layoutX="454.0" layoutY="261.0" text="Machine items:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="resetBtn" layoutX="730.0" layoutY="680.0" mnemonicParsing="false" onAction="#DisplayOriginalValuesOfMachineToTable" prefHeight="39.0" text="Reset Changes" textFill="WHITE">
+      <Label fx:id="machineLocationlbl" layoutX="454.0" layoutY="241.0" text="Machine location:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="machineIDlbl" layoutX="454.0" layoutY="201.0" text="Machine ID:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="resetBtn" layoutX="720.0" layoutY="540.0" mnemonicParsing="false" onAction="#DisplayOriginalValuesOfMachineToTable" prefHeight="39.0" text="Reset Changes" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </Button>
-      <Label layoutX="423.0" layoutY="29.0" prefHeight="70.0" prefWidth="438.0" text="Welcome " textFill="#7c6435">
-         <font>
-            <Font name="Elephant" size="45.0" />
-         </font>
-      </Label>
    </children>
    <stylesheets>
       <URL value="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" />
