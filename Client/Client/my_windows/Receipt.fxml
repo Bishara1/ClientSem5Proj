@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ReceiptController">
+   <children>
+      <Label layoutX="555.0" layoutY="14.0" prefHeight="119.0" prefWidth="258.0" text="Receipt" textFill="#c14302">
+         <font>
+            <Font name="Cooper Black" size="60.0" />
+         </font>
+      </Label>
+      <Label layoutX="508.0" layoutY="111.0" prefHeight="31.0" prefWidth="342.0" text="Count the memories NOT the calories" textFill="#c14302">
+         <font>
+            <Font name="System Bold Italic" size="19.0" />
+         </font>
+      </Label>
+      <Button fx:id="okBtn" layoutX="766.0" layoutY="632.0" mnemonicParsing="false" onAction="#OKBtn" prefHeight="39.0" prefWidth="94.0" text="OK" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <TableView fx:id="receiptTable" layoutX="484.0" layoutY="155.0" opacity="0.9" prefHeight="461.0" prefWidth="372.0">
+         <columns>
+            <TableColumn fx:id="productIdCol" prefWidth="92.0" text="Product ID" />
+            <TableColumn fx:id="amountCol" prefWidth="169.0" text="Amount" />
+            <TableColumn fx:id="priceCol" prefWidth="104.0" text="Price" />
+         </columns>
+      </TableView>
+      <VBox alignment="BASELINE_CENTER" layoutX="-21.0" layoutY="-3.0" prefHeight="762.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <children>
+            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
+               </image>
+            </ImageView>
+         </children>
+         <stylesheets>
+            <URL value="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" />
+            <URL value="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" />
+         </stylesheets>
+      </VBox>
+      <Label fx:id="ordercodelbl" layoutX="484.0" layoutY="637.0" text="Order code :" textFill="#c14302">
+         <font>
+            <Font name="Cooper Black" size="24.0" />
+         </font>
+      </Label>
+   </children>
+   <stylesheets>
+      <URL value="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" />
+      <URL value="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" />
+   </stylesheets>
+</AnchorPane>

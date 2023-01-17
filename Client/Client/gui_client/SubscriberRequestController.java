@@ -42,11 +42,16 @@ public class SubscriberRequestController  implements Initializable
 	private TableColumn<ViewRequest,String> idcol;
 	@FXML
 	private TableColumn<ViewRequest,String> typecol;
-
+	
 	private ObservableList<ViewRequest> obs;
-
+	
 	Message messageToServer = new Message(null, null);
 
+	/**
+	 * Reads requests 
+	 * Calls loadTable()
+	 * 
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		messageToServer.setCommand(Command.ReadRequests);
@@ -57,6 +62,11 @@ public class SubscriberRequestController  implements Initializable
 		
 	}
 
+	/**
+	 * Updates the users is_subsriber field which dictates if he's a subscriber or not and gives said user a subscriber number
+	 * Updates the status of the request in the database
+	 * Reloads table
+	 */
 	public void Update()
 	{
 		    String[] user = new String[2] ;
@@ -89,6 +99,13 @@ public class SubscriberRequestController  implements Initializable
 			
 			
 	}
+	/**
+	 * Hides current window
+	 * Goes to WorkerUI.fxml window
+	 * 
+	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @throws Exception
+	 */
 	public void Back(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/WorkerUI.fxml"));
@@ -99,6 +116,10 @@ public class SubscriberRequestController  implements Initializable
 		primaryStage.show();	
 	}
 	
+	/**
+	 * Initializes table columns
+	 * Loads values into table from database
+	 */
 	public void loadTable()
 	{
 		ArrayList<ViewRequest> request= new ArrayList<>();
@@ -120,9 +141,19 @@ public class SubscriberRequestController  implements Initializable
 		
 	}
 	
+	/**
+	 * This class is used to view requests on a table
+	 *
+	 */
 	public class ViewRequest
 	{
-		private int id;
+		/**
+		 * request ID
+		 */
+		private int id; 
+		/**
+		 * the request type
+		 */
 		private String type;
 		
 		public int getID() {

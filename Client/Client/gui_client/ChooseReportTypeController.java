@@ -10,8 +10,8 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 /**
- * Class responsible for ceo window that displays 3 report types:
- * Monthly reports, inventory reports, user reports. The ceo can choose
+ * Class responsible for CEO window that displays 3 report types:
+ * Orders reports, inventory reports, user reports. The CEO can choose
  * what report to display.
  */
 public class ChooseReportTypeController {
@@ -20,7 +20,7 @@ public class ChooseReportTypeController {
 	@FXML
 	private Button backBtn;
 	@FXML
-	private Button monthlyReportBtn;
+	private Button ordersReportBtn;
 	@FXML
 	private Button inventoryReportBtn;
 	@FXML
@@ -36,11 +36,11 @@ public class ChooseReportTypeController {
 	}
 	
 	/**
-	 * displays monthly reports window when pressing monthlyReports window
+	 * displays monthly order reports window when pressing monthlyReports window
 	 * @param event Type of action that occurred in the window by the user (when pressing a button in this scenario)
 	 * @throws Exception
 	 */
-	public void MonthlyReportsBtn(ActionEvent event) throws Exception {
+	public void OrdersReportsBtn(ActionEvent event) throws Exception {
 		nextWindow(event,"/gui_client_windows/MonthlyReports.fxml","Monthly Reports");
 	}
 	

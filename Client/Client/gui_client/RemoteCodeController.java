@@ -27,7 +27,7 @@ import logic.Order;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
-public class RemoteCodeController implements Initializable {
+public class RemoteCodeController implements Initializable{
 
 	@FXML
 	private Button backbtn;
@@ -38,6 +38,15 @@ public class RemoteCodeController implements Initializable {
 	
 	private boolean flag = true;
 	
+	/**
+	 * Retrieves order by order_number in database and check if said order matches the criteria of remote order reception
+	 * If order code exists in database then conducts further checks
+	 * If the retrieved order matches the customer ID,supply method,machine ID and status then the order given to the user
+	 * then updates the order status and moves to Receipt.fxml window
+	 * Otherwise throws alert
+	 * 
+	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 */
 	public void ProceedSummary(ActionEvent event) {
 		flag = true;
 		if(Codetxt.getText().isEmpty())
@@ -100,6 +109,11 @@ public class RemoteCodeController implements Initializable {
 		}
 	}
 	
+	/**
+	 * Adds string of items to the static cart in ChatClient
+	 * 
+	 * @param items - a string of items to add 
+	 */
 	public void AddItemsToCart(String items)
 	{
 		ChatClient.cart = new ArrayList<Item>();
@@ -112,6 +126,13 @@ public class RemoteCodeController implements Initializable {
 		}
 	}
 	
+	/**
+	 * Hides current window
+	 * Goes back to UserUI.fxml window
+	 * 
+	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @throws IOException
+	 */
 	public void BackBtn(ActionEvent event) throws IOException {
 		((Node) event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/UserUI.fxml"));
@@ -122,6 +143,11 @@ public class RemoteCodeController implements Initializable {
 		primaryStage.show();
 	}
 
+	/**
+	 * Reads items 
+	 * Reads machines
+	 *
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		Message msg = new Message(null,null);
@@ -132,13 +158,14 @@ public class RemoteCodeController implements Initializable {
 		msg.setCommand(Command.ReadMachines);
 		msg.setContent(0);
 		ClientUI.chat.accept(msg);
-		
 	}
-
-	public void start(Stage primaryStage) throws Exception {
-		primaryStage.setTitle("Machine Location");
-	}   
 	
+	/**
+     * Gets the price of an item by name, searches the items ArrayList in ChatClient (Which holds all items)
+     * 
+     * @param name - item name
+     * @return Price of the item if found, otherwise returns -1
+     */
 	public int GetPrice(String name)
 	{
 		for(Item item : ChatClient.items)

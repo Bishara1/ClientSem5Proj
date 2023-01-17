@@ -1,12 +1,10 @@
 package gui_client;
 
+import java.net.URL;
 import java.util.ArrayList;
-
-
+import java.util.ResourceBundle;
 import client.ChatClient;
-import client.ClientController;
 import client.ClientUI;
-
 import common.Command;
 import common.Message;
 import javafx.collections.FXCollections;
@@ -14,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -28,7 +27,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import logic.Machine;
 
-public class StockTableController {
+/**
+ * This class shows the current stock of a chosen machine
+ */
+public class StockTableController implements Initializable{
 
 	Message messageToServer = new Message(null, null);
 	private static String machineCode;
@@ -51,58 +53,68 @@ public class StockTableController {
 	@FXML
 	private TableColumn<ViewItem,String> amountCol;
 	
+	/**
+	 * This method makes the table invisible when we first open the window
+	 */
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		machineTable.setVisible(false);
+	}
 	
+	/**
+	 * This method checks if machine id text field is empty,
+	 * if it's not empty it will call function LoadMachine
+	 * @param event
+	 * @throws Exception
+	 */
 	public void ShowStockBtn(ActionEvent event) throws Exception{
 		
 		machineCode = machineCodetxt.getText();
 		
-		if(machineCode.equals(""))
+		if(machineCode.equals(""))	// checking if no value was entered to machine id text field
 		{
 			Alert alert = new Alert(AlertType.ERROR,"Must enter machine id !",ButtonType.OK);
 			alert.showAndWait();
 		}
-		// ASK AVI IF MACHINE ID CAN CONTAIN LETTERS
-//		else if(machineCode.)
-//		{
-//			Alert alert = new Alert(AlertType.ERROR,"Must enter machine id !",ButtonType.OK);
-//			alert.showAndWait();
-//		}
-		else {
-//			ConnectNewClient();
+		else 
+		{
 			LoadMachine();
+			machineTable.setVisible(true);	// make the table visible
 		}
 	}
 	
-//	public void ConnectNewClient() {
-//		ClientUI.chat = new ClientController("localhost", 5555);  // new client connected
-//		///ClientUI.chat.accept("login"); // send to server that a client is connected
-//	}
-	
+	/**
+	 * This method reads machines from data base. And fills the table.
+	 */
 	public void LoadMachine() {
 				
-		messageToServer.setCommand(Command.ReadMachines);
-		messageToServer.setContent(Integer.parseInt(machineCode));	// machine id
+		messageToServer.setCommand(Command.ReadMachines);	// read machines from data base
+		messageToServer.setContent(Integer.parseInt(machineCode));	// find machine based on machine id
 		ClientUI.chat.accept(messageToServer); 
-		itemsCol.setCellValueFactory(new PropertyValueFactory<>("Name"));
+		
+		itemsCol.setCellValueFactory(new PropertyValueFactory<>("Name"));	// table columns
 		amountCol.setCellValueFactory(new PropertyValueFactory<>("Amount"));
 		ArrayList<ViewItem> items = new ArrayList<>();
 
-		if (ChatClient.machines.contains(null))
+		if (ChatClient.machines.contains(null))	// if the table doesn't have values
 		{	
 			Alert alert = new Alert(AlertType.ERROR,"Machine Id does not exist !",ButtonType.OK);
 			alert.showAndWait();
 		}
-		else {
-			try {
-				Machine temp = ChatClient.machines.get(0); //must check that 
+		else	// if the table has values
+		{
+			try 
+			{
+				Machine temp = ChatClient.machines.get(0);
 				int size = temp.getItems().size();
-				for(int i = 0;i<size;i++)
-				{
+				for(int i = 0;i<size;i++)	// loop to fill table
 					items.add(new ViewItem(temp.getItems().get(i),temp.getAmountItems().get(i).toString()));
-				}
+				
 				obs = FXCollections.observableArrayList(items);
 				machineTable.setItems(obs);
-			}catch(Exception e) {
+			}
+			catch (Exception e) 
+			{
 				Alert alert = new Alert(AlertType.ERROR,"Machine Id does not exist !",ButtonType.OK);
 				alert.showAndWait();
 			}
@@ -110,69 +122,69 @@ public class StockTableController {
 	}
 	
 	
+	/**
+	 * This method goes back to user page based on role
+	 * @param event
+	 * @throws Exception
+	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = null;
+		String title = "";
 		switch(ChatClient.role) {
 		
 		case "ceo":
 			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/CEOReports.fxml"));
-			break;
-		
-		case "rgm":
-			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
-			break;
-			
-		case "rgw":
-			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
+			title = "CEO Reports";
 			break;
 		
 		case "stm":
-			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
-			break;
-			
-		case "stw":
-			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
-			break;
-			
-		case "dlw":
-			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
-			break;
-			
-		case "inm":
-			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
-			break;
-			
-		case "customer":
-			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/WorkerUI.fxml"));
+			title = "Worker UI";
 			break;
 			
 		default:
 			break;
 		}
+		
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
-		primaryStage.setTitle("Update Stock");
+		primaryStage.setTitle(title);
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
 	}
 
+	/**
+	 * This class has getters to fill the table
+	 */
 	public class ViewItem
 	{
 		private String Name;
 		private String Amount;
 		
+		/**
+		 * @return Name
+		 */
 		public String getName() {
 			return Name;
 		}
 		
+		/**
+		 * @return Amount
+		 */
 		public String getAmount() {
 			return Amount;
 		}
 		
+		/**
+		 * Constructor
+		 * @param name
+		 * @param amount
+		 */
 		public ViewItem(String name,String amount) {
 			this.Name = name;
 			this.Amount = amount;
 		}
 	}
+
 }

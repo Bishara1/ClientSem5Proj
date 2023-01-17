@@ -30,13 +30,20 @@ import java.util.ArrayList;
  * @author Fran&ccedil;ois B&eacute;langer
  * @version July 2000
  */
+/**
+ * @author bish_
+ *
+ */
+/**
+ * @author bish_
+ *
+ */
 public class ChatClient extends AbstractClient
 {
   //Instance variables **********************************************
   
   /**
-   * The interface type variable.  It allows the implementation of 
-   * the display method in the client.
+   * Static variables which are objects that were imported from database for controllers to use
    */
   ChatIF clientUI; 
   public static ArrayList<Subscriber> subscribers;//+users
@@ -97,15 +104,16 @@ public class ChatClient extends AbstractClient
   /**
    * This method handles all data that comes in from the server.
    *
-   * @param msg The message from the server.
+   * @param msg The message object from the server.
    */
   @SuppressWarnings("unchecked")
   public void handleMessageFromServer(Object msg) {	  
-	  Message responseFromServer = (Message) msg;
+	  Message responseFromServer = (Message) msg; // message object
 	  
+	  // check message type (command)
 	  switch(responseFromServer.getCommand()) 
 	  {
-	 
+	  	
 	  	  case ReadUsers:
 	  		  subscribers = (ArrayList<Subscriber>) responseFromServer.getContent();
 	  		  break;
@@ -188,21 +196,22 @@ public class ChatClient extends AbstractClient
 		  break;
 	  	
 	  }
-	  awaitResponse = false;
+	  awaitResponse = false;  // allow thread to continue
   }
 
   /**
    * This method handles all data coming from the UI            
    *
-   * @param message The message from the UI.    
+   * @param message The message object from the UI.    
    */
   public void handleMessageFromClientUI(Object message)  
   {
 	  try
 	  {
 		  openConnection(); //in order to send more than one message
-    	  awaitResponse = true; 
-    	  sendToServer(message);
+    	  awaitResponse = true;  
+    	  sendToServer(message); // send message to server
+    	  //while hasn't got any response from server, wait.
     	  while (awaitResponse) {
 			  try {
 				  Thread.sleep(100);
@@ -223,6 +232,10 @@ public class ChatClient extends AbstractClient
 	  
   }
   
+  
+  /*
+   * Reset all the declared static variables to null when disconnecting
+   */
   public void Reset() { 
 	  subscribers = null;
 	  machines = null;

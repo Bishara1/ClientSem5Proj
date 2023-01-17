@@ -61,6 +61,11 @@ public class CartController implements Initializable{
 	private int Threshold = 0;
 	private int MachineNumber = -1;
 	
+	/**
+	 * Fetches local carts value from static cart in ChatClient
+	 * Initializes table columns
+	 * Loads values into table
+	 */
 	public void LoadAndSetTable() {
 		cart = ChatClient.cart;
 		productidcol.setCellValueFactory(new PropertyValueFactory<>("Label"));
@@ -71,6 +76,14 @@ public class CartController implements Initializable{
 		table.setItems(obs);  // load database colummns into table and display them
 	}
 	
+	/**
+	 * Checks if user is a subscriber and works accordingly
+	 * If user is a subscriber then calls InsertOrder()
+	 * Otherwise moves to Purchase window
+	 * 
+	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @throws Exception
+	 */
 	public void ProceedPayment(ActionEvent event) throws Exception {
 		
 		if(!cart.isEmpty())
@@ -111,6 +124,13 @@ public class CartController implements Initializable{
 			alert.showAndWait();
 		}
 	}
+	/**
+	 * Saves local carts value in static cart in ChatClient
+	 * Goes back to order window
+	 * 
+	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @throws Exception
+	 */
 	public void Back(ActionEvent event) throws Exception {
 		ChatClient.cart = this.cart;
 		((Node)event.getSource()).getScene().getWindow().hide();
@@ -122,18 +142,29 @@ public class CartController implements Initializable{
 		primaryStage.show();
 	}
 	
+	/**
+	 * Removes selected item
+	 * Throws an alert if there's no selected item
+	 * Updates total price value and labels value
+	 * Reloads table
+	 * Throws an alert after successful procedure
+	 */
 	public void RemoveItem() {
 		
 		try {
 			ItemTable remove = table.getSelectionModel().getSelectedItem();
 			int index = getItemIndex(remove.getLabel());
-			if(index != -1) {
-				cart.remove(index);
+			Alert alert = new Alert(AlertType.WARNING,"Are you sure you want to remove this item?",ButtonType.NO,ButtonType.YES);
+			Optional<ButtonType> result = alert.showAndWait();
+			if(result.get() == ButtonType.YES) {
+				if(index != -1) {
+					cart.remove(index);
+				}
+				updateTotalPrice();
+				LoadAndSetTable();
+				alert = new Alert(AlertType.CONFIRMATION,"Item removed successfully!",ButtonType.OK);
+				alert.showAndWait();
 			}
-			updateTotalPrice();
-			LoadAndSetTable();
-			Alert alert = new Alert(AlertType.CONFIRMATION,"Item removed successfully!",ButtonType.OK);
-			alert.showAndWait();
 				
 		}catch(NullPointerException e) {
 			
@@ -142,18 +173,30 @@ public class CartController implements Initializable{
 		}
 	}
 
+    /**
+     * Throws an alert that asks if user is sure he wants to remove
+     * Removes all items from cart
+     */
     public void RemoveAll() {
-    	
-    	cart.removeAll(cart);
-    	updateTotalPrice();
-    	LoadAndSetTable();
-    	Alert alert = new Alert(AlertType.CONFIRMATION,"Remove all items!",ButtonType.OK);
-		alert.showAndWait(); //**************************************************************** 
+    	Alert alert = new Alert(AlertType.WARNING,"Are you sure you want to remove all item?",ButtonType.NO,ButtonType.YES);
+		Optional<ButtonType> result = alert.showAndWait();
+		if(result.get() == ButtonType.YES) {
+	    	cart.removeAll(cart);
+	    	updateTotalPrice();
+	    	LoadAndSetTable();
+	    	alert = new Alert(AlertType.CONFIRMATION,"Remove all items!",ButtonType.OK);
+			alert.showAndWait(); //**************************************************************** 
 		//add an alert that asks the customer if hes sure he wants to remove all items
+		}
     	
     }
-    public void TotalPrice() {
-    }
+    
+	/**
+	 *	Calls FindMachineNumber()
+	 *	Calls LoadAndSetTable()
+	 *	updateTotalPrice()
+	 *	Initializes all window components
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -162,7 +205,11 @@ public class CartController implements Initializable{
 		updateTotalPrice();
 	}
 	
-	 public void updateTotalPrice()
+	 /**
+	 * Calculates total price 
+	 * Sets the total price label to new total price value
+	 */
+	public void updateTotalPrice()
 	 {
 	    	int sum = 0;
 	    	for(Item item : cart)
@@ -173,7 +220,15 @@ public class CartController implements Initializable{
 	    	return;
 	 }
 	 
-	 public int getPrice(String name)
+	 /**
+	  * Searches for an item in items ArrayList in ChatClient
+	  * returns the price of item if found
+	  * returns -1 if the item wasn't found
+	  * 
+	 * @param name - item name
+	 * @return price of an item if found, -1 otherwise
+	 */
+	public int getPrice(String name)
 	 {
 	    	for(Item item : ChatClient.items)
 	    	{
@@ -183,7 +238,15 @@ public class CartController implements Initializable{
 	    	return -1; 
 	 }
 	 
-	 public int getItemIndex(String name)
+	 /**
+	  * Searches for the item in local cart
+	  * Returns the index of the item in local cart if found
+	  * Returns -1 otherwise
+	  *
+	  * @param name - item name
+	  * @return index of an item in cart if found, -1 otherwise
+	 */
+	public int getItemIndex(String name)
 	 {
 		 int size = cart.size();
 		 for(int i =0;i<size;i++)
@@ -194,7 +257,10 @@ public class CartController implements Initializable{
 		 return -1;
 	 }
 	 
-	 public void createItemTableCart()
+	 /**
+	 * Generates cart using ItemTable instances
+	 */
+	public void createItemTableCart()
 	 {
 		 tableCart = new ArrayList<ItemTable>();
 		 for(Item item : cart)
@@ -203,7 +269,18 @@ public class CartController implements Initializable{
 		 }
 	 }
 	 
-	 public Optional<ButtonType> InsertOrder(ActionEvent event) throws IOException
+	 /**
+	  * Does preparations to move to purchase window
+	  * If cart is empty then throw an alert and stay in cart otherwise saves cart in static cart in ChatClient
+	  * Inserts order into database
+	  * Inserts Delivery into database if the user demanded a delivery
+	  * Updates the user status if this was his first order as a subscriber
+	  * 
+	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @return result of alert, ButtonType.YES if user pressed yes, ButtonType.NO otherwise 
+	 * @throws IOException
+	 */
+	public Optional<ButtonType> InsertOrder(ActionEvent event) throws IOException
 		{
 			Alert alert = new Alert(AlertType.WARNING,"Are you sure you want to continue?",ButtonType.NO,ButtonType.YES);
 			Optional<ButtonType> result = alert.showAndWait();
@@ -288,6 +365,11 @@ public class CartController implements Initializable{
 			return result;
 		}
 		
+		/**
+		 * Calculates total price based on items in cart
+		 * 
+		 * @return total price of items in cart
+		 */
 		public int calculateTotalPrice()
 		 {
 		    	int sum = 0;
@@ -298,6 +380,13 @@ public class CartController implements Initializable{
 		    	return sum;
 		 }
 		
+		/**
+		 * Calculates new stock based on availability of items and amount of items picked in cart
+		 * 
+		 * @param available - ArrayList of amount available per item
+		 * @param availableItems - ArrayList of names of available items
+		 * @return string representing new stock
+		 */
 		public String CreateNewStock(ArrayList<Integer> available,ArrayList<String> availableItems)
 		{
 			
@@ -323,6 +412,12 @@ public class CartController implements Initializable{
 			return newStock;
 		}
 		
+		/**
+		 * Calculates new inventory based on items in cart
+		 * 
+		 * @param newStock - string representing new stock
+		 * @return amount of items in stock
+		 */
 		public int CreateNewInventory(String newStock)
 		{
 			String[] items = newStock.split(",");
@@ -334,6 +429,12 @@ public class CartController implements Initializable{
 			return inv;
 		}
 		
+		/**
+		 * Finds the index of the current machine in machines ArrayList in ChatClient
+		 * Sets the value of index found in local variable "MachineNumber"
+		 * 
+		 * @param id - machine ID
+		 */
 		public void FindMachineNumber(int id)
 		  {
 		    	int size = ChatClient.machines.size();
@@ -344,11 +445,32 @@ public class CartController implements Initializable{
 				}
 		  }
 		
+		
+		/**
+		 * This class is used to represent items in table
+		 *
+		 */
 		public class ItemTable{
+			/**
+			 * item name
+			 */
 			private String label;
+			/**
+			 * item amount
+			 */
 			private Integer amount;
+			/**
+			 * item total price (price * amount)
+			 */
 			private Integer priceAll;
 			
+			/**
+			 * Constructor that calculates total price (amount times price)
+			 * 
+			 * @param label - name of item
+			 * @param amount - amount of item in stock
+			 * @param price - price of item
+			 */
 			public ItemTable(String label, Integer amount, Integer price) {
 				super();
 				this.label = label;
@@ -357,26 +479,56 @@ public class CartController implements Initializable{
 				this.priceAll = NewPrice;
 			}
 
+			/**
+			 * Returns item name
+			 * 
+			 * @return this.label
+			 */
 			public String getLabel() {
 				return label;
 			}
 
+			/**
+			 * Sets the item name to a new value
+			 * 
+			 * @param label - new item name
+			 */
 			public void setLabel(String label) {
 				this.label = label;
 			}
 
+			/**
+			 * returns item amount
+			 * 
+			 * @return this.amount
+			 */
 			public Integer getAmount() {
 				return amount;
 			}
 
+			/**
+			 * Sets the item amount to a new value
+			 * 
+			 * @param amount - new item amount
+			 */
 			public void setAmount(Integer amount) {
 				this.amount = amount;
 			}
 
+			/**
+			 * Returns the overall price of a singular item
+			 * 
+			 * @return this.priceAll
+			 */
 			public Integer getPriceAll() {
 				return priceAll;
 			}
 
+			/**
+			 * Sets the overall price of item to a new value
+			 * 
+			 * @param priceAll - new item overall price
+			 */
 			public void setPriceAll(Integer priceAll) {
 				this.priceAll = priceAll;
 			}

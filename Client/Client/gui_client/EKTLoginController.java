@@ -1,11 +1,11 @@
 package gui_client;
 
 import java.net.URL;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 import client.ChatClient;
-import client.ClientController;
 import client.ClientUI;
 import common.Command;
 import common.Message;
@@ -25,6 +25,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
+/**
+ * This class lets users sign in quickly
+ */
 public class EKTLoginController implements Initializable {
 	
 	public static String u = "";
@@ -43,29 +46,45 @@ public class EKTLoginController implements Initializable {
 	ObservableList<String> users;
 	
 	Message messageToServer = new Message(null, null);
+	
+	/**
+	 * This method saves the selected value from the combo box to the string u
+	 * @param event
+	 */
 	@FXML
 	public void Selectuser(ActionEvent event) {
 		u = cmbUser.getSelectionModel().getSelectedItem().toString();
 	}
 	
+	/**
+	 * This method initializes string u, and calls function setUserComboBox
+	 * @param location
+	 * @param resources
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		u = "";
 		setUserComboBox();
 	}
 	
-	
+	/**
+	 * This method initializes the combo box values
+	 */
 	public void setUserComboBox() {	
     	ArrayList<String> u = new ArrayList<String>(Arrays.asList("128763524","123456789","314887546"));
 		users = FXCollections.observableArrayList(u);
 		cmbUser.getItems().clear();
 		cmbUser.setItems(users);
-		
 	}
 	
+	/**
+	 * This method goes to the user page
+	 * @param event
+	 * @throws Exception
+	 */
 	public void login(ActionEvent event) throws Exception
 	{
-		if(u.isEmpty())
+		if(u.isEmpty())	// check if combo box was empty
 		{
 			Alert alert = new Alert(AlertType.ERROR,"You must enter an ID",ButtonType.OK);
 			alert.showAndWait();
@@ -73,21 +92,20 @@ public class EKTLoginController implements Initializable {
 		else
 		{
 			Message msg = new Message(u,Command.EKTConnect);
-			ConnectNewClient();
 			ClientUI.chat.accept(msg);
 		
-			if(p.type.equals("OK"))
+			if(p.type.equals("OK"))	// if configuration type is "OK"
 			{
-				if(ChatClient.ID != -1 && ChatClient.isSubscriber == true) {
-					nextWindow(event, "/gui_client_windows/UserUI.fxml", "USER UI");
+				if(ChatClient.ID != -1 && ChatClient.isSubscriber == true) {			// if the user exists
+					nextWindow(event, "/gui_client_windows/UserUI.fxml", "USER UI");	// goes to UserUI window
 				}
-				else
+				else	// the id doesn't exist in data base
 				{
 					Alert alert = new Alert(AlertType.ERROR,"The ID you entered can't use EKT",ButtonType.OK);
 					alert.showAndWait();
 				}
 			}
-			else
+			else	// configuration type is "OK"
 			{
 				if(ChatClient.ID == -1) {
 					Alert alert = new Alert(AlertType.ERROR,"The ID you entered can't use EKT",ButtonType.OK);
@@ -107,26 +125,30 @@ public class EKTLoginController implements Initializable {
 					}
 				}
 				else
-				{
-					
 					nextWindow(event, "/gui_client_windows/WorkerUI.fxml", "WORKER UI");
-				}
 			}
 		}
 	}
-	public void ConnectNewClient() { //added this method to LoginSubscriber
-		// the server ip is hardcoded
-		//ClientUI.chat = new ClientController("localhost", 5555);  // new client connected
-		///ClientUI.chat.accept("login"); // send to server that a client is connected
-	}
 	
+	/**
+	 * This method calls nextWindow function
+	 * @param event
+	 * @throws Exception
+	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		nextWindow(event,"/gui_client_windows/LoginEkrut.fxml","Login EKRUT");
 	}
 	
-	private void nextWindow(ActionEvent event, String window_location, String title) throws Exception {
+	/**
+	 * This method hides the currently open window and shows the desired window
+	 * @param event
+	 * @param path
+	 * @param title
+	 * @throws Exception
+	 */
+	private void nextWindow(ActionEvent event, String path, String title) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource(window_location));
+		Parent root = FXMLLoader.load(getClass().getResource(path));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 		primaryStage.setTitle(title);

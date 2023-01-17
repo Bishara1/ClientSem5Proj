@@ -26,6 +26,13 @@ public class RegionalManagerController implements Initializable {
     @FXML
     private Label welcomelbl;
 	
+	/**
+	 * Hides current window
+	 * Goes back to LoginEkrut.fxml window
+	 * 
+	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @throws Exception
+	 */
 	public void LogoutBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/LoginEkrut.fxml"));
@@ -36,6 +43,13 @@ public class RegionalManagerController implements Initializable {
 		primaryStage.show();		
 	}
 	
+	/**
+	 * Hides current window
+	 * Goes back to UpdateThresholdWindow.fxml window
+	 * 
+	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @throws Exception
+	 */
 	public void Threshold(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/UpdateThresholdWindow.fxml"));
@@ -45,9 +59,11 @@ public class RegionalManagerController implements Initializable {
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
 	}
-	
-	//show stock table button -> tali added to fxml
 
+	/**
+	 *	Initializes window components
+	 *	Sets the value of the welcome label to a new value
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		welcomelbl.setText("Weclome " + ChatClient.Fname);

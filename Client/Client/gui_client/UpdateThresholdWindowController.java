@@ -44,12 +44,22 @@ public class UpdateThresholdWindowController implements Initializable {
 	@FXML
 	private TextField thresholdValue;
 	
-	ObservableList<String> MachineIdList;
-	ObservableList<String> LocationList;
+	ObservableList<String> MachineIdList; //ArrayList of machine IDs
+	ObservableList<String> LocationList; //ArrayList of location names
 	
-	String selectedLocation = "";
-	String machineId = "";
+	String selectedLocation = ""; //variable that saves selected location name
+	String machineId = ""; //variable that saves machine ID
 	
+	/**
+	 * Updates the value of threshold in a specific location and machine ID according to the selected value of combo boxes
+	 * If either combo box doesn't have a selected value or the text field is empty then the method throws an exception
+	 * Otherwise checks if new threshold value is between 0 and 100 (including 0 and 100)
+	 * If it isn't then the method throws an alert
+	 * Otherwise updates new theshold value
+	 * 
+	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @throws Exception
+	 */
 	@FXML
 	public void UpdateBtn(ActionEvent event) throws Exception{
 		String newValue = "";
@@ -89,6 +99,13 @@ public class UpdateThresholdWindowController implements Initializable {
 		}
 	}
 	
+	/**
+	 * Hides current window
+	 * Goes to RegionalManager.fxml window
+	 * 
+	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @throws Exception
+	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/RegionalManager.fxml"));
@@ -99,6 +116,12 @@ public class UpdateThresholdWindowController implements Initializable {
 		primaryStage.show();		
 	}
 
+	/**
+	 *	Initializes window components
+	 *	Sets the value of field "selectedLocation" to locationName in ChatClient
+	 *	Sets the value of the label locationlbl to a new value
+	 *	Calls setMachineBox()
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		selectedLocation = ChatClient.locationName;
@@ -107,6 +130,10 @@ public class UpdateThresholdWindowController implements Initializable {
 	
 	}
 	
+	/**
+	 * Initializes the machine combo box according to the value of selected location combo box value
+	 * 
+	 */
 	public void setMachineBox()
 	{
 		ArrayList<String> typeMachine = new ArrayList<String>();
@@ -125,6 +152,12 @@ public class UpdateThresholdWindowController implements Initializable {
 		machineCode.setItems(MachineIdList);
 	}
 	
+	/**
+	 * This method dictates where the selected value of the combo box is saved
+	 * If there was no selected combo box value the method throws an alert
+	 * 
+	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 */
 	@FXML
 	public void SelectMachineId(ActionEvent event) {
 		try {

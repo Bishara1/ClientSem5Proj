@@ -20,6 +20,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * This class launches the account login page
+ */
 public class UserLoginController {
 
 	@FXML
@@ -35,50 +38,57 @@ public class UserLoginController {
 	@FXML
 	private Button Backbtn;
 	
-	
+	/**
+	 * This method lets the user login to his account
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	public void loginBtn(ActionEvent event) throws Exception {
-		String username = Usernametxt.getText();
+		String username = Usernametxt.getText();	// gets the text inserted from the text fields
 		String password = passwordtxt.getText();
 		
-		if(username.equals("") || password.equals(""))
+		if(username.equals("") || password.equals(""))	//checks if one the the text fields is empty
 		{
 			Alert alert = new Alert(AlertType.ERROR,"Must enter username and password",ButtonType.OK);
 			alert.showAndWait();
 		}
-		else {
-			Message msg = new Message(null, Command.Connect); //connects client to server
+		else 
+		{
+			Message msg = new Message(null, Command.Connect); // message to connect to server
 			String[] userPass = {username,password};
 			msg.setContent(userPass);
+			String title = "";
 			ClientUI.chat.accept(msg);
-//			ConnectNewClient();
-			//check if password is correct/ if client exists and then proceed;
-			if(ChatClient.password.equals(password))
+			//check if password is correct / if client exists and then proceed;
+			if(ChatClient.password.equals(password))	
 			{
 				((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
 				Stage primaryStage = new Stage();
 				Parent root = null;
-				if(OLOKPageController.type.equals("OK"))
+				if(OLOKPageController.type.equals("OK"))	// if configuration type is "OK"
 				{
 					root = FXMLLoader.load(getClass().getResource("/gui_client_windows/UserUI.fxml"));
 				}
 				else 
 				{
-					if(ChatClient.role.equals("customer"))
+					if(ChatClient.role.equals("customer"))	// if the user is customer
+						{
 						root = FXMLLoader.load(getClass().getResource("/gui_client_windows/UserUI.fxml"));
-					else
+						title = "UserUI";
+						}
+					else	// if the user is a worker
+						{
 						root = FXMLLoader.load(getClass().getResource("/gui_client_windows/WorkerUI.fxml"));
+						title = "WorkerUI";
+						}
 				}
-				
 				Scene scene = new Scene(root);
-				//Parent root2 = FXMLLoader.load(getClass().getResource("/gui_client_windows/StartOrder.fxml"));
-				//scene.getStylesheets().add(getClass().getResource("/gui/.css").toExternalForm());
-				primaryStage.setTitle(ChatClient.Fname + " Page");
+				primaryStage.setTitle(title);
 				primaryStage.setScene(scene);
-				
 				primaryStage.show();	
 			}
-			else
+			else	// checking user details
 			{
 				if(ChatClient.password.equals(""))
 				{
@@ -99,21 +109,18 @@ public class UserLoginController {
 				}			
 			}
 		}
-			
 	}
 	
-//	public void ConnectNewClient() { //MUST ADD A DYNAMIC IP GETTER
-//		// the server ip is hardcoded
-//		//ClientUI.chat = new ClientController("localhost", 5555);  // new client connected
-//		///ClientUI.chat.accept("login"); // send to server that a client is connected
-//	}
-	
+	/**
+	 * This method hides the currently open window and shows "LoginEkrut" window.
+	 * @param event
+	 * @throws Exception
+	 */
 	public void backBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/LoginEkrut.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
-	//	scene.getStylesheets().add(getClass().getResource("/gui/LoginEkrut.css").toExternalForm());
 		primaryStage.setTitle("Login Ekrut");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		

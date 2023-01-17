@@ -1,8 +1,8 @@
 package gui_client;
 
 import java.net.URL;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 
 import client.ChatClient;
@@ -27,6 +27,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import logic.Location;
 
+/**
+ * This class lets the user choose the shipment address
+ */
 public class ShipmentAddressController implements Initializable{
 	
 	@FXML
@@ -44,13 +47,29 @@ public class ShipmentAddressController implements Initializable{
 	
 	private String region = "";
 	
+	/**
+	 * This method reads locations and starts location combo box values
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		ClientUI.chat.accept(new Message(0,Command.ReadLocations));
-		setLocationBox();
+		
+	 	ArrayList<String> Locations = new ArrayList<String>();
+	 	
+    	for(Location loc : ChatClient.locations)
+    		Locations.add(loc.getLocation());
+    	
+    	obs = FXCollections.observableArrayList(Locations);
+		RegionBox.getItems().clear();
+		RegionBox.setItems(obs);
 	}
 	
-	public void SendYourRequest(ActionEvent event) throws Exception{
+	/**
+	 * This method saves the shipment address details
+	 * @param event
+	 * @throws Exception
+	 */
+	public void SendYourRequest(ActionEvent event) throws Exception {
 		if(region.isEmpty() || citytxt.getText().isEmpty() || streettxt.getText().isEmpty())
 		{
 			Alert alert = new Alert(AlertType.ERROR,"One or more fields is Empty!",ButtonType.OK);
@@ -67,38 +86,38 @@ public class ShipmentAddressController implements Initializable{
 			Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/RemoteLocation.fxml"));
 			Stage primaryStage = new Stage();
 			Scene scene = new Scene(root);
-			primaryStage.setTitle("Login EKRUT");
+			primaryStage.setTitle("Remote Location");
 			primaryStage.setScene(scene);		
 			primaryStage.show();	
 		}
 	}
 
+	/**
+	 * This method shows the previous page
+	 * @param event
+	 * @throws Exception
+	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/ShipmentMethod.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
-		primaryStage.setTitle("Login EKRUT");
+		primaryStage.setTitle("Shipment Method");
 		primaryStage.setScene(scene);		
 		primaryStage.show();	
 	}
 	
-	 public void setLocationBox() {	
-	    	ArrayList<String> Locations = new ArrayList<String>();
-	    	for(Location loc : ChatClient.locations)
-	    	{
-	    		Locations.add(loc.getLocation());
-	    	}
-	    	obs = FXCollections.observableArrayList(Locations);
-			RegionBox.getItems().clear();
-			RegionBox.setItems(obs);
-		}
 	 
-	 @FXML
+	 /**
+	  * This method saves the value of the region from the combo box
+	 * @param event
+	 */
+	@FXML
 		public void SelectLocation(ActionEvent event) {
 		 try {
 			region = RegionBox.getSelectionModel().getSelectedItem().toString();
-		 }catch(Exception e) {e.printStackTrace();}
+		 	}
+		 catch(Exception e) {e.printStackTrace();}
 		}
 
 }

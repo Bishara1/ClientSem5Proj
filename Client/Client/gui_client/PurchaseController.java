@@ -42,11 +42,27 @@ public class PurchaseController implements Initializable{
 	
 	
 	
+	/**
+	 * Calls nextWindow() with parameters of Cart.fxml window
+	 * 
+	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @throws Exception
+	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		nextWindow(event, "/gui_client_windows/Cart.fxml", "Cart");	
 	}
 	
 	
+	/**
+	 * Checks if creditCard textfield holds a valid credit card value or is empty
+	 * If its empty then read credit card info from database
+	 * Otherwise save credit card details and call InsertOrder()
+	 * After inserting order calls nextWindow() with parameters of Receipt.fxml window
+	 * Throws alert if credit card info is invalid and isn't empty
+	 * 
+	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @throws Exception
+	 */
 	public void Purchase(ActionEvent event) throws Exception {
 		if(creditCardtxt.getText().length() != 16)
 		{
@@ -89,7 +105,11 @@ public class PurchaseController implements Initializable{
 		}
 	}
 
-	 public void updateTotalPrice()
+	 /**
+	 * Calculates the new total price value
+	 * Sets price label value to new total price value 
+	 */
+	public void updateTotalPrice()
 	 {
 	    	int sum = 0;
 	    	for(Item item : ChatClient.cart)
@@ -100,7 +120,15 @@ public class PurchaseController implements Initializable{
 	    	return;
 	 }
 	 
-	 public int getPrice(String name)
+	 /**
+	  * Searches for item in items ArrayList in ChatClient 
+	  * If item is found then return price
+	  * Otherwise returns -1
+	  * 
+	 * @param name - item name
+	 * @return item price if found, -1 otherwise
+	 */
+	public int getPrice(String name)
 	 {
 	    	for(Item item : ChatClient.items)
 	    	{
@@ -110,6 +138,11 @@ public class PurchaseController implements Initializable{
 	    	return -1; 
 	 }
 	
+	/**
+	 * Calls FindMachineNumber()
+	 * Calls updateTotalPrice()
+	 * Initializes all window components
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		FindMachineNumber(ChatClient.machineToLoad);
@@ -117,6 +150,15 @@ public class PurchaseController implements Initializable{
 		
 	}
 	
+	/**
+	 * Hides current window
+	 * Moves to window based on location
+	 * 
+	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @param window_location - location of next window
+	 * @param title - title of next window
+	 * @throws Exception
+	 */
 	private void nextWindow(ActionEvent event, String window_location, String title) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource(window_location));
@@ -127,6 +169,17 @@ public class PurchaseController implements Initializable{
 		primaryStage.show();	
 	}
 	
+	/**
+	  * Does preparations to move to purchase window
+	  * If cart is empty then throw an alert and stay in cart otherwise saves cart in static cart in ChatClient
+	  * Inserts order into database
+	  * Inserts Delivery into database if the user demanded a delivery
+	  * Updates the user status if this was his first order as a subscriber
+	  * 
+	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @return result of alert, ButtonType.YES if user pressed yes, ButtonType.NO otherwise 
+	 * @throws IOException
+	 */
 	public void InsertOrder(ActionEvent event) throws IOException
 	{
 		
@@ -207,6 +260,11 @@ public class PurchaseController implements Initializable{
 			//Disconnect
 	}
 	
+	/**
+	 * Calculates total price based on items in static cart in ChatClient
+	 * 
+	 * @return total price
+	 */
 	public int calculateTotalPrice()
 	 {
 	    	int sum = 0;
@@ -217,6 +275,13 @@ public class PurchaseController implements Initializable{
 	    	return sum;
 	 }
 	
+	/**
+	 * Calculates new stock based on availability of items and amount of items picked in cart
+	 * 
+	 * @param available - ArrayList of amount available per item
+	 * @param availableItems - ArrayList of names of available items
+	 * @return string representing new stock
+	 */
 	public String CreateNewStock(ArrayList<Integer> available,ArrayList<String> availableItems)
 	{
 		
@@ -242,6 +307,12 @@ public class PurchaseController implements Initializable{
 		return newStock;
 	}
 	
+	/**
+	 * Calculates new inventory based on items in cart
+	 * 
+	 * @param newStock - string representing new stock
+	 * @return amount of items in stock
+	 */
 	public int CreateNewInventory(String newStock)
 	{
 		String[] items = newStock.split(",");
@@ -253,6 +324,12 @@ public class PurchaseController implements Initializable{
 		return inv;
 	}
 	
+	/**
+	 * Finds the index of the current machine in machines ArrayList in ChatClient
+	 * Sets the value of index found in local variable "MachineNumber"
+	 * 
+	 * @param id - machine ID
+	 */
 	public void FindMachineNumber(int id)
 	  {
 	    	int size = ChatClient.machines.size();

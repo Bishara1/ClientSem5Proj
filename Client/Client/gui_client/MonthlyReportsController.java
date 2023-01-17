@@ -17,7 +17,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import logic.Machine;
 import logic.Order;
 import logic.OrdersReports;
 import java.net.URL;
@@ -28,6 +27,9 @@ import client.ClientUI;
 import common.Command;
 import common.Message;
 
+/**
+ * This class lets the CEO decide which report he would like to view
+ */
 public class MonthlyReportsController implements Initializable {
 	
 	@FXML
@@ -41,8 +43,6 @@ public class MonthlyReportsController implements Initializable {
 	private ComboBox<String> cmbMonth;
 	@FXML
 	private ComboBox<String> cmbLocation;
-	@FXML
-	private ComboBox<String> cmbMachineId;
 	
 	private int flag = 0;
 	
@@ -61,52 +61,52 @@ public class MonthlyReportsController implements Initializable {
 	ObservableList<String> MonthList;
 	ObservableList<String> LocationList;
 	
-	
-	/* Functionality : get the selected option in "location" combo box
-	 * Input : event
-	 * Result : save combo box selected value to location
-	 * */
+	/**
+	 * This method saves the selected value from location combo box to static string "location"
+	 * @param event - representing some type of action
+	 */
 	@FXML
 	public void Select(ActionEvent event) {
 		location = cmbLocation.getSelectionModel().getSelectedItem().toString();
 	}
 	
-	/* Functionality : get the selected option in "year" combo box
-	 * Input : event
-	 * Result : save combo box selected value to year
-	 * */
+	/**
+	 * This method saves the selected value from year combo box to static string "year"
+	 * @param event - representing some type of action
+	 */
 	@FXML
 	public void SelectYear(ActionEvent event) {
 		year = cmbYear.getSelectionModel().getSelectedItem().toString();
 	}
 	
-	/* Functionality : get the selected option in "month" combo box
-	 * Input : event
-	 * Result : save combo box selected value to month
-	 * */
+	/**
+	 * This method saves the selected value from month combo box to static string "month"
+	 * @param event - representing some type of action
+	 */
 	@FXML
 	public void SelectMonth(ActionEvent event) {
 		month = cmbMonth.getSelectionModel().getSelectedItem().toString();
 	}
 	
-	/* Functionality : call functions to initialize all combo boxes and read machines from data base
-	 * Input : URL url , ResourceBundle rb
-	 * Result : start combo box values and read machines from data base
-	 * */
+	/**
+	 * This method calls functions to initialize combo box values and then reads machines from data base.
+	 * @param url -  Uniform ResourceLocator, a pointer to a "resource" on the WorldWide Web
+	 * @param rb -  ResourceBundle
+	 */
 	public void initialize(URL url, ResourceBundle rb) {
-		setYearComboBox();
+		setYearComboBox();	//initializes combo box
 		setMonthComboBox();
 		setLocationComboBox();
+		
 		// read machines now
 		messageToServer.setCommand(Command.ReadMachines);
 		messageToServer.setContent(0);	
 		ClientUI.chat.accept(messageToServer); 
 	}
 	
-	/* Functionality : sets year combo box
-	 * Input : yearList , cmbYear
-	 * Result : start combo box values
-	 * */
+    /**
+     * This method initializes year combo box values
+     */
     public void setYearComboBox() {	
     	ArrayList<String> year = new ArrayList<String>(Arrays.asList("2022","2023"));
     	
@@ -115,10 +115,9 @@ public class MonthlyReportsController implements Initializable {
 		cmbYear.setItems(yearList);
 	}
 	
-    /* Functionality : sets month combo box
-	 * Input : monthList , cmbMonth
-	 * Result : start combo box values
-	 * */
+	/**
+	 * This method initializes month combo box values
+	 */
 	public void setMonthComboBox() {
 		ArrayList<String> month = new ArrayList<String>(Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"));
 	
@@ -127,10 +126,9 @@ public class MonthlyReportsController implements Initializable {
 		cmbMonth.setItems(MonthList);
 	}
 	
-	/* Functionality : sets location combo box
-	 * Input : locationList , cmbLocation
-	 * Result : start combo box values
-	 * */
+	/**
+	 * This method initializes location combo box values
+	 */
 	public void setLocationComboBox() {
 		ArrayList<String> type = new ArrayList<String>(Arrays.asList("North", "South", "UAE"));
 				
@@ -139,11 +137,11 @@ public class MonthlyReportsController implements Initializable {
 		cmbLocation.setItems(LocationList);
 	}
 	
-	
-	/* Functionality : checks selected values of all combo boxes , calls function to find requested report
-	 * Input : cmbYear , cmbMonth , cmbLocation , event
-	 * Result : alert when combo box is empty, else call for function OrderReportSearch
-	 * */
+	/**
+	 * This method checks if all combo boxes were selected and calls function OrderReportSearch
+	 * @param event
+	 * @throws Exception -  indicates conditions that a reasonable application might want to catch
+	 */
 	public void ShowReportBtn(ActionEvent event) throws Exception{
 		// Checking if one or more fields are empty
 		if ((cmbYear.getValue() == null) || (cmbMonth.getValue() == null) || (cmbLocation.getValue() == null))
@@ -157,35 +155,39 @@ public class MonthlyReportsController implements Initializable {
 		}
 	}
 	
-	/* Functionality : checks the current date of today , then searches or builds the requested report
-	 * Input : event
-	 * Result : builds the report , or alerts that no data was found
-	 * */
+	/**
+	 * This method finds the report and shows it
+	 * @param event
+	 * @throws Exception -  indicates conditions that a reasonable application might want to catch 
+	 */
 	public void OrderReportSearch(ActionEvent event) throws Exception
 	{
-		boolean currentDate = checkCurrentDate();
+		boolean currentDate = checkCurrentDate(); 
+		
 		OrdersReports currentReport; 
-		// if dataFlag = true recreate this month's report
-		// else find the bloody report in data base, if you find it show it, else make it damn it
 	
 		Message msgToUpdate = new Message(null, null);
-		if (currentDate) 
+		
+		if (currentDate) // if currentDate = true recreate this month's report
 		{
 			currentReport = findCurrentReport();
 			createNewOrderReport();
-			if (flag==0) {System.out.println("no orders in the selected location");}
+			
+			if (flag==0) {	// if there are no reports in the selected location
+				Alert alert = new Alert(AlertType.ERROR,"There are no reports !",ButtonType.OK);
+				alert.showAndWait();
+				}
 			// there is no such report in data base (meaning requested year, month and machine id)
 			else if(currentReport == null)
 			{	// create new report
-				// call a bloody function to get all machines id to put them inn a bloody string
 				ArrayList<String> report = new ArrayList<String>(Arrays.asList("",location,fromArrayToString(newItems),month,year));
-				ReportmessageToServer.setCommand(Command.InsertOrderReport);
+				ReportmessageToServer.setCommand(Command.InsertOrderReport);	// insert order report
 				ReportmessageToServer.setContent(report);
 				ClientUI.chat.accept(ReportmessageToServer);
 			}
-			else
+			else // else find the report in data base, if you find it show it, else make it
 			{
-				//update the current report, insert newItems instead of the old ones //update data
+				//update the current report, insert newItems instead of the old ones , update data
 				ArrayList<String> WhatToUpdate = new ArrayList<>(Arrays.asList("ordersreport",currentReport.getReport_id(),fromArrayToString(newItems)));
 				msgToUpdate.setCommand(Command.DatabaseUpdate);
 				msgToUpdate.setContent(WhatToUpdate);
@@ -199,25 +201,32 @@ public class MonthlyReportsController implements Initializable {
 			 }
 	}
 	
-	// function that checks if the combo boxes values are today's date
-		public boolean checkCurrentDate() {	// MONTHVALUE IS PROBLEMATIC HERE ! IS IT 01 OR 1?!?!?!
+		/**
+		 * This method checks if the combo boxes values are today's date
+		 * @return true - if the selected date is now
+		 * @return false - if the selected date is not now
+		 */
+		public boolean checkCurrentDate() {
 			if ((year.equals(String.valueOf(LocalDate.now().getYear()))))
 				if ((month.equals(String.valueOf(LocalDate.now().getMonthValue()))))
 					return true;
 			return false;
-		}	//return true if we still are in the requested date
+		}
 		
-	
-		
+	/**
+	 * This method searches for a report in data base based on location month and year
+	 * @return orderReport - if the report exists in data base
+	 * @return null - if there is no such report in data base
+	 */
 	public OrdersReports findCurrentReport() {
 		// reads data base
 		ReportmessageToServer.setCommand(Command.ReadOrdersReports);
 		ReportmessageToServer.setContent(0);	
 		ClientUI.chat.accept(ReportmessageToServer);
 		try {
-			if(ChatClient.orderReport.get(0)==(null)) return null;
+			if(ChatClient.orderReport.get(0)==(null)) return null;	// if the table is empty
 			
-			for (OrdersReports orderReport : ChatClient.orderReport)
+			for (OrdersReports orderReport : ChatClient.orderReport)	// loop to find the report
 			{
 				// if combo box selected values exist in the orders report
 				if (orderReport.getLocation().equals(location.toString()) &&
@@ -227,20 +236,24 @@ public class MonthlyReportsController implements Initializable {
 				return orderReport;
 				}
 			}
-		}catch(Exception e) {
+		}
+		catch(Exception e) {
 			Alert alert = new Alert(AlertType.ERROR,"Couldn't find report",ButtonType.OK);
 			alert.showAndWait();
 		}
 		return null;
 	}
 		
+	/**
+	 * This method creates new order report to insert to data base
+	 */
 	public void createNewOrderReport() {
 		
 		orderToServer.setCommand(Command.ReadOrders);
 		orderToServer.setContent(0);
 		ClientUI.chat.accept(orderToServer);
 		String[] dateSplit = null;
-		for(Order o : ChatClient.orders)
+		for(Order o : ChatClient.orders)	// this loop to add items to report
 		{
 			dateSplit = o.getOrder_created().toString().split("-");
 			if(dateSplit[0].equals(year) && Integer.parseInt(dateSplit[1])==(Integer.parseInt(month)) && location.equals(o.getLocation()))
@@ -253,8 +266,10 @@ public class MonthlyReportsController implements Initializable {
 		}
 	}
 	
-	
-	
+	/**
+	 * This method scans whether items from data are already in the report or not
+	 * @param data - Items_in_order from data base
+	 */
 	public void scanOrder(String data) {
 		String[] temp = data.split("\\.");
 		
@@ -264,7 +279,10 @@ public class MonthlyReportsController implements Initializable {
 		
 	}
 	
-	// adds items o new report
+	/**
+	 * This method adds items to new report
+	 * @param data - string[] than has item names and their amount
+	 */
 	public void checkInReport(String data) {
 		String[] nameAmount = data.split(",");
 		String[] old = null;
@@ -282,6 +300,13 @@ public class MonthlyReportsController implements Initializable {
 		}
 	}
 	
+	/**
+	 * This method adds to array list the amount of item
+	 * @param arr - ArrayList that has item names and their amount
+	 * @param s - item name
+	 * @return i - index of the item name location in array list
+	 * @return (-1) - if the item name does not exist in the array list
+	 */
 	public int checkContains(ArrayList<String> arr, String s)
 	{
 		int size = arr.size();
@@ -295,6 +320,11 @@ public class MonthlyReportsController implements Initializable {
 		return -1;
 	}
 	
+	/**
+	 * This method changes from array list to string
+	 * @param arr - array list that contains items that were ordered
+	 * @return str - string that has the order report data
+	 */
 	public String fromArrayToString(ArrayList<String> arr)
 	{
 		int size = arr.size();
@@ -309,6 +339,11 @@ public class MonthlyReportsController implements Initializable {
 	}
 	
 	
+	/**
+	 * This method searches for the requested report
+	 * @param event
+	 * @throws Exception
+	 */
 	public void FindRequestedOrderReport(ActionEvent event) throws Exception{
 		
 		ReportmessageToServer.setCommand(Command.ReadOrdersReports);
@@ -319,20 +354,17 @@ public class MonthlyReportsController implements Initializable {
 		try {
 			if (ChatClient.orderReport.get(0)!=null)
 			{
-	
 				for (int j = 0; j < ChatClient.orderReport.size(); j++)
 			{	if (ChatClient.orderReport.get(j).getLocation().equals(location.toString()) &&
 					ChatClient.orderReport.get(j).getYear().equals(year.toString()) &&
-						ChatClient.orderReport.get(j).getMonth().equals(month.toString())) {
-				
+						ChatClient.orderReport.get(j).getMonth().equals(month.toString())) 
+					{
 							requestedReport = ChatClient.orderReport.get(j).getData();
 							flag = true;
 							break;
 					}
 			}
-				
-			
-		if (flag) {
+		if (flag) {	// if the report was found
 			nextWindow(event,"/gui_client_windows/ReportsCEO.fxml","Pie Chart (ReportsCEO)");
 		}
 
@@ -380,20 +412,30 @@ public class MonthlyReportsController implements Initializable {
 				Alert alert = new Alert(AlertType.ERROR,"No reports available!",ButtonType.OK);
 				alert.showAndWait();
 			}
-	}catch(Exception e) {
+		} // end of try
+		catch(Exception e) 
+		{
 		Alert alert = new Alert(AlertType.ERROR,"Couldn't find report",ButtonType.OK);
 		alert.showAndWait();
-		
-
-	}
+		}
 	}
 	
+	/**
+	 * This method calls funtion nextWindow to show ChooseReportType.fxml window
+	 * @param event
+	 * @throws Exception
+	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		nextWindow(event,"/gui_client_windows/ChooseReportType.fxml","Choose Report Type");
 	}
 	
-	
-	
+	/**
+	 * This method hides the currently open window and shows the requested window based on window_location, which is the given path
+	 * @param event
+	 * @param window_location
+	 * @param title
+	 * @throws Exception
+	 */
 	private void nextWindow(ActionEvent event, String window_location, String title) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource(window_location));

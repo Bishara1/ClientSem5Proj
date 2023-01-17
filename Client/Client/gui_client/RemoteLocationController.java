@@ -42,6 +42,10 @@ public class RemoteLocationController implements Initializable {
 	@FXML
 	private Button startorderbtn;
 	
+	/**
+	 *	Initializes window components
+	 *	Calls SetLocationComboBox()
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 //		GetLocations();
@@ -59,6 +63,10 @@ public class RemoteLocationController implements Initializable {
 //		LocationList = FXCollections.observableArrayList(locationsAsStrings);
 //	}
 	
+	/**
+	 * Initializes the location combo box 
+	 * 
+	 */
 	public void SetLocationComboBox() { 
 //		cmbLocation.getItems().clear();
 //		cmbLocation.setItems(LocationList);
@@ -73,6 +81,12 @@ public class RemoteLocationController implements Initializable {
 		cmbLocation.setItems(LocationList);
 	}
 	
+	/**
+	 * This method dictates where the selected value of the combo box is saved
+	 * Calls SetMachineIdComboBox()
+	 * 
+	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 */
 	@FXML
 	public void Select(ActionEvent event) {
 		selected = cmbLocation.getSelectionModel().getSelectedItem().toString();
@@ -80,6 +94,10 @@ public class RemoteLocationController implements Initializable {
 	}
 	
 	
+	/**
+	 * Initializes the machine combo box by location combo box selected value
+	 * 
+	 */
 	public void SetMachineIdComboBox() {
 		ArrayList<String> typeMachine = new ArrayList<String>();
 		messageToServer.setCommand(Command.ReadMachines);
@@ -97,27 +115,34 @@ public class RemoteLocationController implements Initializable {
 		cmbMachine.setItems(MachineIdList);
 	}
 
+	/**
+	 * Hides current window
+	 * Goes back to UserUI.fxml window
+	 * 
+	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @throws Exception
+	 */
 	public void BackBtn(ActionEvent event) throws Exception  { //fix this apparently its null
-		String title = "";
 		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/UserUI.fxml"));
-		
-		if (ChatClient.role.equals("customer")) {
-			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/UserUI.fxml"));
-			title = "USER UI";
-		} else {
-			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/WorkerUI.fxml"));
-			title = "WORKER UI";
-		}
-		
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/ShipmentMethod.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
-		primaryStage.setTitle(title);
+		primaryStage.setTitle("Shipment Method");
 		primaryStage.setScene(scene);		
 		primaryStage.show();
 	}
 	
+    /**
+     * Saved location combo box selected value in static location in ChatClient 
+     * Saved machine combo box selected value in static machineToLoad in ChatClient 
+     * Hides current window
+     * Goes to ekrutOrder.fxml window
+     * Throws alert if there was a combo box with no selected value
+     * 
+     * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
+     * @throws Exception
+     */
     public void StartOrderBtn(ActionEvent event) throws Exception {
     	try {
     	ChatClient.locationName = cmbLocation.getSelectionModel().getSelectedItem().toString();

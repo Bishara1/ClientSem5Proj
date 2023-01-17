@@ -30,8 +30,6 @@ public class CEOReportsController implements Initializable {
 	@FXML
 	private Button inventoryReportBtn;
 	@FXML
-	private Button viewSubscribersBtn;
-	@FXML
 	private Button backBtn;
 	@FXML
 	private Button viewdiscountBtn;
@@ -42,7 +40,7 @@ public class CEOReportsController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// set title to welcome and ceo name
-		this.titleLbl.setText("Welcome CEO " + ChatClient.Fname);
+		this.titleLbl.setText("Welcome " + ChatClient.Fname);
 	}
 	
 	
@@ -53,15 +51,6 @@ public class CEOReportsController implements Initializable {
 	 */
 	public void ViewMachines(ActionEvent event) throws Exception{
 		nextWindow(event,"/gui_client_windows/StockTable.fxml","Stock Table");
-	}
-
-	/**
-	 * Load Subscriber viewer table window when pressing View subscriber button
-	 * @param event Type of action that occurred in the window by the user (when pressing a button in this scenario)
-	 * @throws Exception
-	 */
-	public void ViewSubscribers(ActionEvent event) throws Exception  {
-		nextWindow(event,"/gui_client_windows/SubscribersViewer.fxml","Subscriber Viewer");
 	}
 
 	/*

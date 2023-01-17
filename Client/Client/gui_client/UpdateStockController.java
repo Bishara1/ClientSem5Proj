@@ -174,9 +174,21 @@ public class UpdateStockController implements Initializable{
 		dataForUpdate[4] = String.valueOf(currentMachine.getMachine_id());
 		
 		ClientUI.chat.accept(new Message(dataForUpdate, Command.UpdateMachineStock));
-		Alert alert = new Alert(AlertType.INFORMATION, "Updated machine stock successfully.", ButtonType.OK);
+		Alert alert = new Alert(AlertType.INFORMATION, "Updated machine stock and stock request successfully.", ButtonType.OK);
 		alert.showAndWait();
+		
+		UpdateStockRequest();
 		ReadMachinesAndStockRequests();
+	}
+	
+	private void UpdateStockRequest() {
+		String[] data = new String[2];
+		int chosenRequestID = Integer.parseInt(requestCmb.getSelectionModel().getSelectedItem().toString());
+		
+		data[0] = "updatestockrequest";
+		data[1] = String.valueOf(chosenRequestID);
+		
+		ClientUI.chat.accept(new Message(data, Command.UpdateStockRequest));
 	}
 	
 	/**

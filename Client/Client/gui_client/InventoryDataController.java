@@ -29,7 +29,6 @@ import logic.Item;
 
 /**
  * This class loads the data for inventory report.
- *
  */
 public class InventoryDataController implements Initializable{
 	
@@ -72,7 +71,6 @@ public class InventoryDataController implements Initializable{
 	
 	/**
 	 * This method initializes the labels in the inventory reports xml file. And calls loadAndSetData function.
-	 * 
 	 * @param location
 	 * @param resources
 	 */
@@ -108,7 +106,6 @@ public class InventoryDataController implements Initializable{
 	
 	/**
 	 * This method calculates the current stock and inventory then initializes the pie chart and table.
-	 * 
 	 * @param stock
 	 * @param inventory
 	 */
@@ -139,7 +136,6 @@ public class InventoryDataController implements Initializable{
 	
 	/**
 	 * This method reads items from data base and returns the price of the item
-	 * 
 	 * @param name
 	 * @return item.getPrice()
 	 */
@@ -157,10 +153,29 @@ public class InventoryDataController implements Initializable{
 	 */
 	public class ViewItem
 	{
+		/**
+		 * name of item
+		 */
 		private String name;
+		
+		/**
+		 * the unit price of the item
+		 */
 		private String unitPrice;
+		
+		/**
+		 * how much of the item is in the inventory
+		 */
 		private String inventory;
+		
+		/**
+		 * the current stock of the item
+		 */
 		private String stock;
+		
+		/**
+		 * the inventory value
+		 */
 		private String value;
 		
 		public String getName() {
@@ -183,6 +198,13 @@ public class InventoryDataController implements Initializable{
 			return value;
 		}
 		
+		/**
+		 * @param name - item name
+		 * @param unitPrice - item price
+		 * @param inventory - item inventory amount
+		 * @param stock - item current stock
+		 * @param value - inventory value
+		 */
 		public ViewItem(String name,String unitPrice,String inventory,String stock,String value) {
 			this.name = name;
 			this.unitPrice = unitPrice;

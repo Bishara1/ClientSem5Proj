@@ -26,6 +26,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import logic.UsersReports;
 
+/**
+ * This class lets the CEO choose which user report he would like to view
+ */
 public class UserReportPageController implements Initializable{
 
 	@FXML
@@ -48,17 +51,28 @@ public class UserReportPageController implements Initializable{
 	
 	Message messageToServer = new Message(null,null);
 	
+	/**
+	 * This method saves the selected value from the year combo box in static string
+	 * @param event
+	 */
 	@FXML
 	public void SelectYear(ActionEvent event) {
 		year = cmbYear.getSelectionModel().getSelectedItem().toString();
 	}
 	
+	/**
+	 * This method saves the selected value from the month combo box in static string
+	 * @param event
+	 */
 	@FXML
 	public void SelectMonth(ActionEvent event) {
 		month = cmbMonth.getSelectionModel().getSelectedItem().toString();
 	}
 	
 	
+	/**
+	 * This method initializes all the combo boxes in the window
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		ArrayList<String> year = new ArrayList<>(Arrays.asList("2022","2023"));
@@ -74,17 +88,21 @@ public class UserReportPageController implements Initializable{
 		cmbMonth.setItems(MonthList);
 	}
 	
+	/**
+	 * This method shows the report if it exists 
+	 * @param event
+	 * @throws Exception
+	 */
 	public void ShowReportBtn(ActionEvent event) throws Exception{
 		// Checking if one or more fields are empty
 		boolean foundReport = false;
-		if ((cmbYear.getValue() == null) || (cmbMonth.getValue() == null)/* || (cmbLocation.getValue() == null)*/)
+		if ((cmbYear.getValue() == null) || (cmbMonth.getValue() == null))
 		{
 			Alert alert = new Alert(AlertType.ERROR,"One or more feilds is Empty!",ButtonType.OK);
 			alert.showAndWait();
 		}
 		else
 			{
-			
 			messageToServer.setCommand(Command.ReadUserReports);
 			messageToServer.setContent(0);
 			ClientUI.chat.accept(messageToServer);
@@ -93,7 +111,7 @@ public class UserReportPageController implements Initializable{
 				if ((userReport.getMonth().equals(month)) && (userReport.getYear().equals(year)))
 				{
 					counters = userReport.getData();
-					foundReport = true;
+					foundReport = true;	// if the report was found
 					break;
 				}
 			}
@@ -106,11 +124,23 @@ public class UserReportPageController implements Initializable{
 		}
 	}
 	
+	/**
+	 * This method calls nextWindow function to show new windnow
+	 * @param event
+	 * @throws Exception
+	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		nextWindow(event, "/gui_client_windows/ChooseReportType.fxml", "Choose Report Type");
 	}
 	
 	
+	/**
+	 * This method hides the currently open window and shows the requested one (based on path)
+	 * @param event
+	 * @param path
+	 * @param title
+	 * @throws Exception
+	 */
 	private void nextWindow(ActionEvent event, String path, String title) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource(path));

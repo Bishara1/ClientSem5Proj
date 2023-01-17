@@ -172,7 +172,7 @@ public class DiscountLocationController implements Initializable {
 		//else, go back to CEO main page.
 		else {
 			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/CEOReports.fxml"));
-			title = "CEO Page";
+			title = "CEO Reports";
 		}
 		
 		Stage primaryStage = new Stage();

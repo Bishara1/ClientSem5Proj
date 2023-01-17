@@ -1,12 +1,10 @@
 package gui_client;
 
 import java.net.URL;
+
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import client.ChatClient;
-import client.ClientUI;
-import common.Command;
 import common.Message;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,18 +18,11 @@ import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import logic.Order;
-import logic.Subscriber;
-import logic.UsersReports;
 
 
 /**
  * This class shows users report.
- *
  */
 public class BarChartController implements Initializable{
 	
@@ -102,7 +93,6 @@ public class BarChartController implements Initializable{
 	
 	/**
 	 * This method hides the open window and shows a new one.
-	 * 
 	 * @param event
 	 * @param path
 	 * @param title

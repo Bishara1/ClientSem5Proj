@@ -33,6 +33,10 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import logic.Delivery;
 
+/**
+ * @author bish_
+ *
+ */
 public class ViewOrdersDeliveryOperatorController implements Initializable {
 	private ObservableList<Delivery> allDeliveries;
 	private ArrayList<Delivery> changedDeliveries = new ArrayList<>();
@@ -54,36 +58,55 @@ public class ViewOrdersDeliveryOperatorController implements Initializable {
 	private Label titlelbl;
 	
 	
+	/**
+	 * Initialize window components before wnidow starts
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		// set title
 		this.titlelbl.setText("Welcome " + ChatClient.Fname);
+		// import deliveries
 		ImportDeliveries();
 		
 		//allow status column to be editable
 		statusCol.setCellFactory(TextFieldTableCell.forTableColumn());
 	}
 	
+	/**
+	 * Import all entries of deliveries in database and display them
+	 */
 	public void ImportDeliveries() {
 		changedDeliveries.clear();
-		GetRemoteDeliveries();
-		DisplayDeliveries();
+		GetRemoteDeliveries();  // get entries
+		DisplayDeliveries(); // display entries in window
 		DeliveriesTable.refresh();
 	}
 	
+	/**
+	 * Reset changes done in table by user
+	 */
 	public void ResetChangesBtn() {
+		// Ask user to confirm action
 		boolean option = RaiseAlertConfirmation("Are you sure you want to reset changes?");
 		if (option == false)
 			return;
 		
+		// if confirmed, import deliveries again and display them
 		ImportDeliveries();
 	}
 	
+	/**
+	 * Get all entries of remote deliveries in database
+	 */
 	private void GetRemoteDeliveries() {
 		ClientUI.chat.accept(new Message(0, Command.ReadDeliveries));
 //		System.out.println(ChatClient.deliveries);
 		allDeliveries = FXCollections.observableArrayList(ChatClient.deliveries);
 	}
 	
+	/**
+	 * display entries of deliveries to table
+	 */
 	public void DisplayDeliveries() {
 		orderNumberCol.setCellValueFactory(new PropertyValueFactory<>("order_id"));
 		customerIDCol.setCellValueFactory(new PropertyValueFactory<>("customer_id"));
@@ -94,6 +117,11 @@ public class ViewOrdersDeliveryOperatorController implements Initializable {
 		DeliveriesTable.setItems(allDeliveries);
 	}
 	
+	/**
+	 * Goes back to previous window (worker ui)
+	 * @param event event done in window 
+	 * @throws Exception
+	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
 		Stage primaryStage = new Stage();
@@ -108,6 +136,10 @@ public class ViewOrdersDeliveryOperatorController implements Initializable {
 		primaryStage.show();
 	}
 	
+	/**
+	 * Change status of delivery in table
+	 * @param productStringCellEditEvent  event done in window ( change event in table)
+	 */
 	@FXML
 	public void ChangeStatus(TableColumn.CellEditEvent<Delivery, String> productStringCellEditEvent) {
 		Delivery selectedDelivery = DeliveriesTable.getSelectionModel().getSelectedItem();
@@ -147,6 +179,12 @@ public class ViewOrdersDeliveryOperatorController implements Initializable {
 		DeliveriesTable.refresh();
 	}
 	
+	/**
+	 * add changed deliveries to an arraylist
+	 * @param selectedDelivery changed deliveries in table
+	 * @param index index of changed deliveries
+	 * @param status  status of deliveries
+	 */
 	private void addToChangedList(Delivery selectedDelivery, int index, String status) {
 		selectedDelivery.setStatus(status);
 		allDeliveries.set(index, selectedDelivery);
@@ -155,6 +193,9 @@ public class ViewOrdersDeliveryOperatorController implements Initializable {
 			changedDeliveries.add(selectedDelivery);
 	}
 	
+	/**
+	 * update all deliveries to database
+	 */
 	public void UpdateDeliveries() {
 		boolean isConfirmed = RaiseAlertConfirmation("Are you sure you want to update deliveries.");
 		if (!isConfirmed)
@@ -192,6 +233,11 @@ public class ViewOrdersDeliveryOperatorController implements Initializable {
 		ClientUI.chat.accept(new Message(dataForUpdate, Command.UpdateOrders));
 	}
 	
+	/**
+	 * accepts date and increments 14 days to it, returns new date after incrementation
+	 * @param date date to update
+	 * @return return the updated date
+	 */
 	private String addDaysToDate(String date) {
 		String[] dateComponents = date.split("-");
 		int year = Integer.parseInt(dateComponents[0]);
@@ -203,6 +249,11 @@ public class ViewOrdersDeliveryOperatorController implements Initializable {
 		return newDate.toString();
 	}
 
+	/**
+	 * raise alert to client
+	 * @param message  message to display
+	 * @return whether pressed ok or cancel
+	 */
 	private boolean RaiseAlertConfirmation(String message) {
 		Alert alert = new Alert(AlertType.CONFIRMATION, message, ButtonType.OK, ButtonType.CANCEL);
 		alert.showAndWait();

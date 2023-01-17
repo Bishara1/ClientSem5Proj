@@ -15,19 +15,24 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+/**
+ * Class that defines the timer thread's behavior
+ *
+ */
 public class Timespent extends Application implements Runnable{
 
-	private int time;
-	
+	/**
+	 * Constructor that initializes Thread
+	 */
 	public Timespent() {
-		time = 0;
+		
 	}
 
-	public void reset()
-	{
-		time = 0;
-	}
-
+	/**
+	 * Method that defines what the thread that runs this instance works
+	 * Sleeps for 10 seconds 
+	 * If the thread wakes up it Disconnects user, empties values in ChatClient and goes back to LoginEkrut window 
+	 */
 	@Override
 	public void run() {
 		try {
@@ -79,6 +84,9 @@ public class Timespent extends Application implements Runnable{
 		
 	}
 
+	/**
+	 * Must have method to give the thread JavaFX permissions (Class extends Applications)
+	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		return;

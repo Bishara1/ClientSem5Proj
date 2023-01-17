@@ -32,11 +32,32 @@ import logic.*;
 
 public class ReceiptController implements Initializable {
 
+	/**
+	 * This class is used to represent items in table
+	 *
+	 */
 	public class ItemTable {
+		/**
+		 * item name
+		 */
 		private String label;
+		/**
+		 * item amount
+		 */
 		private Integer amount;
+		/**
+		 * item total price (price * amount)
+		 */
 		private Integer priceAll;
 
+		
+		/**
+		 * Constructor that calculates total price (amount times price)
+		 * 
+		 * @param label - name of item
+		 * @param amount - amount of item in stock
+		 * @param price - price of item
+		 */
 		public ItemTable(String label, Integer amount, Integer price) {
 			super();
 			this.label = label;
@@ -45,26 +66,59 @@ public class ReceiptController implements Initializable {
 			this.priceAll = NewPrice;
 		}
 
+		
+		/**
+		 * Returns item name
+		 * 
+		 * @return this.label
+		 */
 		public String getLabel() {
 			return label;
 		}
-
+		
+		
+		/**
+		 * Sets the item name to a new value
+		 * 
+		 * @param label - new item name
+		 */
 		public void setLabel(String label) {
 			this.label = label;
 		}
 
+		/**
+		 * returns item amount
+		 * 
+		 * @return this.amount
+		 */
 		public Integer getAmount() {
 			return amount;
 		}
 
+		
+		/**
+		 * Sets the item amount to a new value
+		 * 
+		 * @param amount - new item amount
+		 */
 		public void setAmount(Integer amount) {
 			this.amount = amount;
 		}
 
+		/**
+		 * Returns the overall price of a singular item
+		 * 
+		 * @return this.priceAll
+		 */
 		public Integer getPriceAll() {
 			return priceAll;
 		}
 
+		/**
+		 * Sets the overall price of item to a new value
+		 * 
+		 * @param priceAll - new item overall price
+		 */
 		public void setPriceAll(Integer priceAll) {
 			this.priceAll = priceAll;
 		}
@@ -95,6 +149,15 @@ public class ReceiptController implements Initializable {
 	@FXML
 	private Button backBtn;
 
+	/**
+	 * Initializes table columns
+	 * Calls FindMachineNumber() to find out which machine to load
+	 * Calls createItemTableCart()
+	 * Fetches threshold from loaded machines
+	 * Loads order number onto order code label 
+	 * Hides order number label if there's no order to load
+	 * Loads cart items onto table
+ 	 */
 	public void LoadAndSetTable() {
 		productIdCol.setCellValueFactory(new PropertyValueFactory<>("Label"));
 		amountCol.setCellValueFactory(new PropertyValueFactory<>("Amount"));
@@ -114,6 +177,14 @@ public class ReceiptController implements Initializable {
 		receiptTable.setItems(obs); // load database colummns into table and display them
 	}
 
+	/**
+	 * Hides current window
+	 * Disconnects user
+	 * Goes back to LoginEkrut window
+	 * 
+	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @throws Exception
+	 */
 	public void OKBtn(ActionEvent event) throws Exception {
 		Message msg = new Message(null,null);
     	msg.setCommand(Command.Disconnect);
@@ -126,28 +197,32 @@ public class ReceiptController implements Initializable {
 		primaryStage.show(); 
 	}
 
-	public void BackBtn(ActionEvent event) throws Exception {
-		((Node) event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Purchase.fxml"));
-		Stage primaryStage = new Stage();
-		Scene scene = new Scene(root);
-		primaryStage.setTitle("Cart");
-		primaryStage.setScene(scene);
-		primaryStage.show();
-	}
-
+	/**
+	 * Calls LoadAndSetTable()
+	 * Initializes window components
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		LoadAndSetTable();
 
 	}
 
+	/**
+	 * Creates new cart based on instances of ItemTable
+	 */
 	public void createItemTableCart() {
 		for (Item item : ChatClient.cart) {
 			tableCart.add(new ItemTable(item.getProductID(), Integer.parseInt(item.getAmount()), item.getPrice()));
 		}
 	}
 
+	/**
+	 * Calculates new stock based on availability of items and amount of items picked in cart
+	 * 
+	 * @param available - ArrayList of amount available per item
+	 * @param availableItems - ArrayList of names of available items
+	 * @return string representing new stock
+	 */
 	public String CreateNewStock(ArrayList<Integer> available, ArrayList<String> availableItems) {
 
 		int i, j = 0;
@@ -168,6 +243,12 @@ public class ReceiptController implements Initializable {
 		return newStock;
 	}
 
+	/**
+	 * Calculates new inventory based on items in cart
+	 * 
+	 * @param newStock - string representing new stock
+	 * @return amount of items in stock
+	 */
 	public int CreateNewInventory(String newStock) {
 		String[] items = newStock.split(",");
 		int inv = 0;
@@ -177,6 +258,12 @@ public class ReceiptController implements Initializable {
 		return inv;
 	}
 
+	/**
+	 * Finds the index of the current machine in machines ArrayList in ChatClient
+	 * Sets the value of index found in local variable "MachineNumber"
+	 * 
+	 * @param id - machine ID
+	 */
 	public void FindMachineNumber(int id) {
 		int size = ChatClient.machines.size();
 		for (int i = 0; i < size; i++) {
@@ -185,6 +272,14 @@ public class ReceiptController implements Initializable {
 		}
 	}
 
+	/**
+	 * Searches for item in items ArrayList in ChatClient by name
+	 * If item is found returns its index
+	 * Otherwise returns -1;
+	 * 
+	 * @param name - item name
+	 * @return item index if item is found, -1 otherwise
+	 */
 	public int findItemIndex(String name) {
 		int size = ChatClient.machines.get(MachineNumber).getItems().size();
 		for (int i = 0; i < size; i++) {
@@ -194,6 +289,14 @@ public class ReceiptController implements Initializable {
 		return -1;
 	}
 
+	/**
+	 * Searches for item in items ArrayList in ChatClient by name
+	 * If item is found then returns its price
+	 * Otherwise returns -1
+	 * 
+	 * @param name - item name
+	 * @return item price if found, -1 otherwise
+	 */
 	public int getPrice(String name) {
 		for (Item item : ChatClient.items) {
 			if (item.getProductID().equals(name))
@@ -202,6 +305,11 @@ public class ReceiptController implements Initializable {
 		return -1;
 	}
 
+	/**
+	 * Calculates total price of order
+	 * 
+	 * @return total price
+	 */
 	public int calculateTotalPrice() {
 		int sum = 0;
 		for (Item item : ChatClient.cart) {
