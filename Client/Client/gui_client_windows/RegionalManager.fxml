@@ -10,38 +10,33 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.RegionalManagerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.RegionalManagerController">
    <children>
-      <Button fx:id="logOutBtn" layoutX="444.0" layoutY="672.0" mnemonicParsing="false" onAction="#LogoutBtn" prefHeight="39.0" prefWidth="94.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Logout" textFill="WHITE">
+      <Button fx:id="logOutBtn" layoutX="269.0" layoutY="526.0" mnemonicParsing="false" onAction="#LogoutBtn" prefHeight="38.0" prefWidth="161.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Logout" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="updateBtn" layoutX="538.0" layoutY="330.0" mnemonicParsing="false" onAction="#Threshold" prefHeight="60.0" prefWidth="224.0" text="Update threshold" textFill="WHITE">
+      <Button fx:id="updateBtn" layoutX="392.0" layoutY="281.0" mnemonicParsing="false" onAction="#Threshold" prefHeight="38.0" prefWidth="193.0" text="Update threshold" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="registrationBtn" layoutX="538.0" layoutY="451.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="224.0" text="Registration requests" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Button>
-      <VBox alignment="BASELINE_CENTER" layoutY="-10.0" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <VBox alignment="BASELINE_CENTER" layoutY="-8.0" prefHeight="631.0" prefWidth="230.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="280.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
             </ImageView>
          </children>
       </VBox>
-      <Label fx:id="welcomelbl" layoutX="438.0" layoutY="147.0" prefHeight="142.0" prefWidth="490.0" text="Welcome" textFill="#c14302">
+      <Label fx:id="welcomelbl" alignment="CENTER" layoutX="230.0" layoutY="23.0" prefHeight="85.0" prefWidth="517.0" text="Welcome" textFill="#7c6435">
          <font>
-            <Font name="Elephant" size="56.0" />
+            <Font name="Elephant" size="40.0" />
          </font>
       </Label>
    </children>

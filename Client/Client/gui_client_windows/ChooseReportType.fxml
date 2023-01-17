@@ -9,39 +9,39 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../git/CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ChooseReportTypeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../git/CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ChooseReportTypeController">
    <children>
-      <Button fx:id="backBtn" layoutX="426.0" layoutY="675.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="47.0" prefWidth="107.0" stylesheets="@../../git/CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
+      <Button fx:id="backBtn" layoutX="269.0" layoutY="526.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="38.0" prefWidth="161.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Label fx:id="titleLbl" layoutX="524.0" layoutY="89.0" prefHeight="99.0" prefWidth="265.0" text="Report Type" textFill="#c14302">
+      <Label fx:id="titleLbl" alignment="CENTER" layoutX="221.0" layoutY="26.0" prefHeight="67.0" prefWidth="522.0" text="Report Type" textFill="#7c6435">
          <font>
-            <Font name="Elephant" size="41.0" />
+            <Font name="Elephant" size="40.0" />
          </font>
       </Label>
-      <Button layoutX="571.0" layoutY="295.0" mnemonicParsing="false" onAction="#MonthlyReportsBtn" prefHeight="54.0" prefWidth="160.0" text="Monthly Report" textFill="WHITE">
+      <Button layoutX="402.0" layoutY="214.0" mnemonicParsing="false" onAction="#OrdersReportsBtn" prefHeight="38.0" prefWidth="161.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Orders Report" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="571.0" layoutY="371.0" mnemonicParsing="false" onAction="#InventoryReportsBtn" prefHeight="54.0" prefWidth="160.0" text="Inventory Report" textFill="WHITE">
+      <Button layoutX="402.0" layoutY="293.0" mnemonicParsing="false" onAction="#InventoryReportsBtn" prefHeight="38.0" prefWidth="161.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Inventory Report" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="571.0" layoutY="451.0" mnemonicParsing="false" onAction="#UsersReportsBtn" prefHeight="55.0" prefWidth="160.0" text="User Report" textFill="WHITE">
+      <Button layoutX="402.0" layoutY="370.0" mnemonicParsing="false" onAction="#UsersReportsBtn" prefHeight="38.0" prefWidth="161.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Users Report" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <VBox alignment="BASELINE_CENTER" layoutX="-33.0" layoutY="-10.0" prefHeight="768.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <VBox alignment="BASELINE_CENTER" layoutX="-10.0" layoutY="-10.0" prefHeight="629.0" prefWidth="230.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="280.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>

@@ -9,56 +9,42 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.CEOReportsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.CEOReportsController">
    <children>
-      <Button fx:id="logOutBtn" layoutX="426.0" layoutY="675.0" mnemonicParsing="false" onAction="#LogOut" prefHeight="47.0" prefWidth="107.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Logout" textFill="WHITE">
+      <Button fx:id="backBtn" layoutX="269.0" layoutY="526.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="38.0" prefWidth="161.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Label fx:id="titleLbl" layoutX="412.0" layoutY="83.0" prefHeight="121.0" prefWidth="489.0" text="Welcome " textFill="#c14302">
+      <Label fx:id="titleLbl" alignment="CENTER" layoutX="211.0" layoutY="25.0" prefHeight="77.0" prefWidth="524.0" text="Welcome " textAlignment="CENTER" textFill="#7c6435">
          <font>
             <Font name="Elephant" size="41.0" />
          </font>
       </Label>
-      <Button fx:id="viewMachinesBtn" layoutX="600.0" layoutY="341.0" mnemonicParsing="false" onAction="#ViewMachines" prefHeight="54.0" prefWidth="160.0" text="View Machine" textFill="WHITE">
+      <Button fx:id="viewMachinesBtn" layoutX="375.0" layoutY="198.0" mnemonicParsing="false" onAction="#ViewMachines" prefHeight="38.0" prefWidth="161.0" text="View Machines" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
 
-      <Button layoutX="600.0" layoutY="417.0" mnemonicParsing="false" onAction="#ViewReports" prefHeight="54.0" prefWidth="160.0" text="View Reports" textFill="WHITE">
+      <Button layoutX="375.0" layoutY="274.0" mnemonicParsing="false" onAction="#ViewReports" prefHeight="38.0" prefWidth="161.0" text="View Reports" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />                                                         
          </font></Button>
-      <Button fx:id="viewSubscribersBtn" layoutX="600.0" layoutY="497.0" mnemonicParsing="false" onAction="#ViewSubscribers" prefHeight="55.0" prefWidth="160.0" text="View Subscribers" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></Button>
-      <Button fx:id="viewdiscountBtn" layoutX="600.0" layoutY="570.0" mnemonicParsing="false" onAction="#viewDiscount" prefHeight="54.0" prefWidth="160.0" text="View Discount" textFill="WHITE">
+      <Button fx:id="viewdiscountBtn" layoutX="375.0" layoutY="351.0" mnemonicParsing="false" onAction="#viewDiscount" prefHeight="38.0" prefWidth="161.0" text="View Discount" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <VBox alignment="BASELINE_CENTER" layoutX="-33.0" layoutY="-10.0" prefHeight="768.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <VBox alignment="BASELINE_CENTER" layoutX="-33.0" layoutY="-10.0" prefHeight="625.0" prefWidth="230.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="280.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="193.0" fitWidth="189.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/report.png" />
-               </image>
-            </ImageView>
          </children>
       </VBox>
-      <Label layoutX="387.0" layoutY="-10.0" prefHeight="93.0" prefWidth="213.0" text="CEO page" textFill="#c14302" underline="true">
-         <font>
-            <Font name="Elephant" size="20.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

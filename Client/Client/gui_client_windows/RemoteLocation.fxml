@@ -10,44 +10,50 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.RemoteLocationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.RemoteLocationController">
    <children>
-      <Button fx:id="backbtn" layoutX="440.0" layoutY="632.0" mnemonicParsing="false" onAction="#BackBtn" text="Back" textFill="WHITE">
+      <Button fx:id="backbtn" layoutX="269.0" layoutY="526.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="38.0" prefWidth="161.0" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="startorderbtn" layoutX="766.0" layoutY="632.0" mnemonicParsing="false" onAction="#StartOrderBtn" text="Start Order" textFill="WHITE">
+      <Button fx:id="startorderbtn" layoutX="525.0" layoutY="526.0" mnemonicParsing="false" onAction="#StartOrderBtn" prefHeight="38.0" prefWidth="161.0" text="Start Order" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <ComboBox fx:id="cmbLocation" layoutX="676.0" layoutY="225.0" onAction="#Select" prefHeight="25.0" prefWidth="125.0" promptText="location" />
-      <Label layoutX="572.0" layoutY="51.0" prefHeight="117.0" prefWidth="166.0" text="EKRUT" textFill="#c14302">
+      <ComboBox fx:id="cmbLocation" layoutX="493.0" layoutY="267.0" onAction="#Select" prefHeight="25.0" prefWidth="125.0" promptText="location" />
+      <Label layoutX="307.0" layoutY="44.0" prefHeight="117.0" prefWidth="372.0" text="Machine Location" textFill="#7c6435">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font name="Elephant" size="40.0" />
          </font>
       </Label>
-      <Label layoutX="446.0" layoutY="320.0" text="Choose Machine" textFill="#c14302">
-         <font>
-            <Font size="27.0" />
-         </font></Label>
-      <VBox alignment="BASELINE_CENTER" layoutX="-12.0" prefHeight="762.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <VBox alignment="BASELINE_CENTER" layoutX="-12.0" prefHeight="625.0" prefWidth="230.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="280.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
             </ImageView>
          </children>
       </VBox>
-      <Label layoutX="446.0" layoutY="218.0" text="Choose Loaction" textFill="#c14302">
+      <ComboBox fx:id="cmbMachine" layoutX="493.0" layoutY="321.0" prefHeight="25.0" prefWidth="125.0" promptText="Machine" />
+      <Label layoutX="324.0" layoutY="270.0" text="Choose Location" textFill="#7c6435">
          <font>
-            <Font size="27.0" />
+            <Font name="Elephant" size="17.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cmbMachine" layoutX="676.0" layoutY="327.0" prefHeight="25.0" prefWidth="125.0" promptText="Machine" />
+      <Label layoutX="326.0" layoutY="324.0" text="Choose machine" textFill="#7c6435">
+         <font>
+            <Font name="Elephant" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="326.0" layoutY="198.0" prefHeight="45.0" prefWidth="293.0" text="Choose machine to order from" textFill="#7c6435">
+         <font>
+            <Font name="Elephant" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

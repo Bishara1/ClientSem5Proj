@@ -15,9 +15,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="695.0" prefWidth="1184.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.InventoryDataController">
    <children>
-      <Label layoutX="479.0" prefHeight="91.0" prefWidth="374.0" text="Inventory report" textFill="#c14302">
+      <Label layoutX="479.0" prefHeight="91.0" prefWidth="374.0" text="Inventory report" textFill="#7c6435">
          <font>
-            <Font name="Cooper Black" size="40.0" />
+            <Font name="Elephant" size="40.0" />
          </font>
       </Label>
       <TableView fx:id="tableSub" layoutX="241.0" layoutY="164.0" opacity="0.9" prefHeight="386.0" prefWidth="539.0">
@@ -29,18 +29,18 @@
             <TableColumn fx:id="valueCol" prefWidth="113.0" text="Inventory value" />
          </columns>
       </TableView>
-      <Button layoutX="656.0" layoutY="608.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="39.0" prefWidth="94.0" stylesheets="@../../git/ClientSem5Proj/Client/git/CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
+      <Button layoutX="269.0" layoutY="610.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="38.0" prefWidth="161.0" stylesheets="@../../git/ClientSem5Proj/Client/git/CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
       <PieChart fx:id="pieChart" layoutX="795.0" layoutY="198.0" prefHeight="326.0" prefWidth="365.0" style="-fx-font-size: 15px;" />
-      <Label fx:id="locationLbl" layoutX="609.0" layoutY="73.0" prefHeight="24.0" prefWidth="94.0" text="Location" textFill="#c14302">
+      <Label fx:id="locationLbl" layoutX="609.0" layoutY="73.0" prefHeight="24.0" prefWidth="94.0" text="Location" textFill="#7c6435">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="monthYearLbl" layoutX="591.0" layoutY="102.0" prefHeight="24.0" prefWidth="139.0" text="month/year" textFill="#c14302">
+      <Label fx:id="monthYearLbl" layoutX="591.0" layoutY="102.0" prefHeight="24.0" prefWidth="139.0" text="month/year" textFill="#7c6435">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
@@ -50,7 +50,7 @@
             <Font name="Cooper Black" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="stockLbl" layoutX="805.0" layoutY="165.0" prefHeight="32.0" prefWidth="157.0" text="Current Stock : " textFill="#c14302">
+      <Label fx:id="stockLbl" layoutX="805.0" layoutY="165.0" prefHeight="32.0" prefWidth="157.0" text="Current Stock : " textFill="#7c6435">
          <font>
             <Font name="Cooper Black" size="18.0" />
          </font>
@@ -72,7 +72,7 @@
             <Image url="@../../../../../Desktop/pngfind.com-entertainment-icon-png-6800870.png" />
          </image>
       </ImageView>
-      <Label fx:id="machineIdLbl" layoutX="250.0" layoutY="128.0" prefHeight="32.0" prefWidth="186.0" text="machine id : " textFill="#c14302">
+      <Label fx:id="machineIdLbl" layoutX="250.0" layoutY="128.0" prefHeight="32.0" prefWidth="186.0" text="machine id : " textFill="#7c6435">
          <font>
             <Font name="Cooper Black" size="17.0" />
          </font>
