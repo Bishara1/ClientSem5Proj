@@ -93,14 +93,19 @@ public class StockTableController {
 			alert.showAndWait();
 		}
 		else {
-			Machine temp = ChatClient.machines.get(Integer.parseInt(machineCode)-1); //must check that 
-			int size = temp.getItems().size();
-			for(int i = 0;i<size;i++)
-			{
-				items.add(new ViewItem(temp.getItems().get(i),temp.getAmountItems().get(i).toString()));
+			try {
+				Machine temp = ChatClient.machines.get(0); //must check that 
+				int size = temp.getItems().size();
+				for(int i = 0;i<size;i++)
+				{
+					items.add(new ViewItem(temp.getItems().get(i),temp.getAmountItems().get(i).toString()));
+				}
+				obs = FXCollections.observableArrayList(items);
+				machineTable.setItems(obs);
+			}catch(Exception e) {
+				Alert alert = new Alert(AlertType.ERROR,"Machine Id does not exist !",ButtonType.OK);
+				alert.showAndWait();
 			}
-			obs = FXCollections.observableArrayList(items);
-			machineTable.setItems(obs);
 		}
 	}
 	

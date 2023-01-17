@@ -63,7 +63,7 @@ public class RemoteCodeController implements Initializable{
 			{
 				try {
 					Order order = ChatClient.orders.get(0);
-					if(ChatClient.ID == order.getCustomer_id() && !(order.getSupply_method().equals("Picked up")))
+					if(ChatClient.ID == order.getCustomer_id() && (order.getSupply_method().equals("Self pickup") && !(order.getOrder_status().equals("Picked up") && (order.getMachine_id() == ChatClient.machineToLoad))))
 					{
 						AddItemsToCart(order.getItems_in_order());
 						Message supplyMethod = new Message(null,null);
@@ -93,7 +93,6 @@ public class RemoteCodeController implements Initializable{
 					//Update Supply Method to "Picked Up"
 					//and go to receipt
 				}catch(Exception e) {
-					e.printStackTrace();
 					Alert alert = new Alert(AlertType.ERROR,"Order doesn't exist",ButtonType.OK);
 					alert.showAndWait();
 				}

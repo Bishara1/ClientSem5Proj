@@ -66,7 +66,7 @@ public class ChatClient extends AbstractClient
   private boolean FirstCart = false;
   public static int orderId = -1;
   public static int ID;
-  public static int machineToLoad = -1;
+  public static int machineToLoad = 1;
   public static Thread timer;
   //public static Stage primaryStage; //-> fixes the issue of windows popping up AND solves the timing thread
   
@@ -122,6 +122,7 @@ public class ChatClient extends AbstractClient
 	  		  break;
 	  		  
 	  	  case Disconnect:
+	  		  Reset();
 	  		  ClientUI.chat.display("Disconnected");
 	  		  break;
 	  	  
@@ -173,6 +174,10 @@ public class ChatClient extends AbstractClient
 	  		orderId = (int)responseFromServer.getContent();
 	  		break;
 	  		
+	  	case ReadDeliveries:
+	  		deliveries = (ArrayList<Delivery>)responseFromServer.getContent();
+	  		break;
+	  		
 	  default:
 		  System.out.println("ChatClient got response but didn't deal with it");
 		  break;
@@ -213,6 +218,38 @@ public class ChatClient extends AbstractClient
 	  
   }
   
+  public void Reset() { 
+	  subscribers = null;
+	  machines = null;
+	  items = null;
+	  orders = null;
+	  deliveries = null;
+	  orderReport = null;
+	  InventoryReport = null;
+	  locations = null;
+	  cart = null;
+	  availableItems = null;
+	  available = null;
+	  userRequest = null;
+	  stockRequests = null;
+	  password = null;
+	  role = null;
+	  Fname = null;
+	  locationName = "North";
+	  supplyMethod = "Immediate pickup";
+	  deliveryLocation = "";
+	  address = "";
+	  creditcard = "";
+	  awaitResponse = false;
+	  isSubscriber = false;
+	  FirstSubscriberOrder = false;
+	  FirstCart = false;
+	  orderId = -1;
+	  ID = (Integer) null;
+	  machineToLoad = -1;
+	  timer = null;
+  }
+  
   
   /**
    * This method terminates the client.
@@ -224,6 +261,8 @@ public class ChatClient extends AbstractClient
     catch(IOException e) {}
     System.exit(0);
   }
+  
+  
   
 }
 //End of ChatClient class

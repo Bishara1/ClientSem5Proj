@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -12,55 +11,51 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.UpdateThresholdWindowController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.UpdateThresholdWindowController">
    <children>
-      <Label layoutX="419.0" layoutY="302.0" text="Machine code:" textFill="#c14302">
+      <Label layoutX="436.0" layoutY="320.0" text="Machine code:" textFill="#614e2d">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="418.0" layoutY="363.0" prefHeight="30.0" prefWidth="163.0" text="Threshold value:" textFill="#c14302">
+      <Label layoutX="435.0" layoutY="381.0" prefHeight="30.0" prefWidth="163.0" text="Threshold value:" textFill="#614e2d">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="thresholdValue" layoutX="603.0" layoutY="363.0" prefWidth="150.0" />
-      <Button fx:id="backBtn" layoutX="453.0" layoutY="590.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="39.0" prefWidth="94.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
+      <TextField fx:id="thresholdValue" layoutX="620.0" layoutY="381.0" prefHeight="31.0" prefWidth="137.0" style="-fx-background-radius: 10;" />
+      <Button fx:id="backBtn" layoutX="419.0" layoutY="590.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="39.0" prefWidth="120.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="updateBtn" layoutX="728.0" layoutY="590.0" mnemonicParsing="false" onAction="#UpdateBtn" prefHeight="39.0" prefWidth="94.0" text="Update" textFill="WHITE">
+      <Button fx:id="updateBtn" layoutX="728.0" layoutY="590.0" mnemonicParsing="false" onAction="#UpdateBtn" prefHeight="39.0" prefWidth="120.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Update" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Label layoutX="487.0" layoutY="81.0" text="Update Threshold" textFill="#c14302">
+      <Label layoutX="440.0" layoutY="144.0" text="Update Threshold" textFill="#7c6435">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font name="Elephant" size="36.0" />
          </font>
       </Label>
-      <ComboBox fx:id="machineCode" layoutX="602.0" layoutY="305.0" onAction="#SelectMachineId" prefWidth="150.0" />
-      <VBox alignment="BASELINE_CENTER" layoutX="-35.0" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <ComboBox fx:id="machineCode" layoutX="619.0" layoutY="323.0" onAction="#SelectMachineId" prefHeight="26.0" prefWidth="137.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/comboboxDesign.css" />
+      <VBox alignment="BASELINE_CENTER" layoutX="-21.0" layoutY="-25.0" prefHeight="787.0" prefWidth="310.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
             </ImageView>
          </children>
       </VBox>
-      <Label fx:id="locationlbl" layoutX="419.0" layoutY="251.0" text="Location: " textFill="#c14302">
+      <Label fx:id="locationlbl" layoutX="436.0" layoutY="269.0" text="Location: " textFill="#614e2d">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
    </children>
-   <stylesheets>
-      <URL value="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" />
-      <URL value="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" />
-   </stylesheets>
 </AnchorPane>

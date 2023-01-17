@@ -41,6 +41,7 @@ public class LoginController {
 		 */
 		((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
 		Stage primaryStage = new Stage();
+		ConnectNewClient(); Message msg = new Message("", Command.Connect);
 		
 //		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/LoginEkrut.fxml"));
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/OLOKPage.fxml"));

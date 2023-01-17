@@ -38,8 +38,6 @@ public class UserUIController implements Initializable {
 	@FXML
 	private Label titletxt;
 	
-	public OLOKPageController p;
-	
 	public void SubReqBtn(ActionEvent event) throws Exception {
 		ArrayList<String> request;
 		int flag =0;
@@ -84,6 +82,7 @@ public class UserUIController implements Initializable {
 	}
 	
 	public void CreateOrderBtn(ActionEvent event) throws Exception {
+		ChatClient.machineToLoad = 1;
 		nextWindow(event, "/gui_client_windows/ekrutOrder.fxml", "ekrut Order");
 		
 	}
@@ -93,6 +92,10 @@ public class UserUIController implements Initializable {
 	}
 	
     public void BackBtn(ActionEvent event) throws Exception  {
+    	Message msg = new Message(null,null);
+    	msg.setCommand(Command.Disconnect);
+    	msg.setContent(ChatClient.ID);
+    	ClientUI.chat.accept(msg);
 		nextWindow(event, "/gui_client_windows/LoginEkrut.fxml", "Login Ekrut");
 	}
     
@@ -105,13 +108,13 @@ public class UserUIController implements Initializable {
     @Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.titletxt.setText("Welcome " + ChatClient.Fname);
-		if(p.type.equals("OK"))
+		if(OLOKPageController.type.equals("OK"))
 		{
 			remotecodebtn.setLayoutX(28);
 			remotecodebtn.setLayoutY(117);
 			createremotebtn.setVisible(false);
 		}
-		if(p.type.equals("OL")) {
+		if(OLOKPageController.type.equals("OL")) {
 			createorderbtn.setVisible(false);
 			createremotebtn.setLayoutX(28);
 			createremotebtn.setLayoutY(37);

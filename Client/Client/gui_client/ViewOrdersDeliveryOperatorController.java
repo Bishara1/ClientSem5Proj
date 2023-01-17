@@ -70,9 +70,17 @@ public class ViewOrdersDeliveryOperatorController implements Initializable {
 		DeliveriesTable.refresh();
 	}
 	
+	public void ResetChangesBtn() {
+		boolean option = RaiseAlertConfirmation("Are you sure you want to reset changes?");
+		if (option == false)
+			return;
+		
+		ImportDeliveries();
+	}
+	
 	private void GetRemoteDeliveries() {
 		ClientUI.chat.accept(new Message(0, Command.ReadDeliveries));
-		System.out.println(ChatClient.deliveries);
+//		System.out.println(ChatClient.deliveries);
 		allDeliveries = FXCollections.observableArrayList(ChatClient.deliveries);
 	}
 	
@@ -86,16 +94,15 @@ public class ViewOrdersDeliveryOperatorController implements Initializable {
 		DeliveriesTable.setItems(allDeliveries);
 	}
 	
-	public void logOutButton(ActionEvent event) throws Exception {
+	public void BackBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
 		Stage primaryStage = new Stage();
 		
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/LoginEkrut.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/WorkerUI.fxml"));
 		Scene scene = new Scene(root);
-		//disconnect
 		
-		String title = (ChatClient.role.equals("dlw")) ? "Deliverer" : "Delivery Operator";
-		primaryStage.setTitle(title);
+//		String title = (ChatClient.role.equals("dlw")) ? "Deliverer" : "Delivery Operator";
+		primaryStage.setTitle("WORKER UI");
 		primaryStage.setScene(scene);
 		
 		primaryStage.show();
@@ -149,10 +156,19 @@ public class ViewOrdersDeliveryOperatorController implements Initializable {
 	}
 	
 	public void UpdateDeliveries() {
+		boolean isConfirmed = RaiseAlertConfirmation("Are you sure you want to update deliveries.");
+		if (!isConfirmed)
+			return;
+		
 		String  estimatedDelivery;
 		int size = changedDeliveries.size();
 		String[] dataForUpdate = new String[size+1];
 		
+		if (size == 0) {
+			RaiseAlertConfirmation("No Changes have been made.");
+			return;
+		}
+			
 		dataForUpdate[0] = "delivery";
 		for (int i = 1; i < dataForUpdate.length; i++) {
 			if (ChatClient.role.equals("dlo") && changedDeliveries.get(i-1).getStatus().equals("Delivering")) {
@@ -160,18 +176,18 @@ public class ViewOrdersDeliveryOperatorController implements Initializable {
 			}
 			
 			else {
-				estimatedDelivery = changedDeliveries.get(i-1).getShipping_date().toString();
+				estimatedDelivery = changedDeliveries.get(i-1).getEstimated_Delivery().toString();
 			}
 			
 			dataForUpdate[i] = changedDeliveries.get(i-1).getOrder_id() + " " + changedDeliveries.get(i-1).getStatus() + " " + estimatedDelivery;
-			System.out.println(dataForUpdate[i]);
+//			System.out.println(dataForUpdate[i]);
 		}
 		ClientUI.chat.accept(new Message(dataForUpdate, Command.UpdateDeliveries));
 		
 		dataForUpdate[0] = "orders";
 		for (int i = 1; i < dataForUpdate.length; i++) {
 			dataForUpdate[i] = changedDeliveries.get(i-1).getOrder_id() + " " + changedDeliveries.get(i-1).getStatus();
-			System.out.println(dataForUpdate[i]);
+//			System.out.println(dataForUpdate[i]);
 		}
 		ClientUI.chat.accept(new Message(dataForUpdate, Command.UpdateOrders));
 	}
@@ -186,8 +202,12 @@ public class ViewOrdersDeliveryOperatorController implements Initializable {
 		return newDate.toString();
 	}
 
-	private void RaiseAlertConfirmation(String message) {
-		Alert alert = new Alert(AlertType.CONFIRMATION, message, ButtonType.OK);
+	private boolean RaiseAlertConfirmation(String message) {
+		Alert alert = new Alert(AlertType.CONFIRMATION, message, ButtonType.OK, ButtonType.CANCEL);
 		alert.showAndWait();
+		if (alert.getResult() == ButtonType.OK)
+			return true;
+		
+		return false;
 	}	
 }

@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.LoginController">
    <children>
-      <Label graphicTextGap="7.0" layoutX="527.0" layoutY="73.0" prefHeight="68.0" prefWidth="300.0" text="EKRUT Login" textFill="#c14302">
+      <Label graphicTextGap="7.0" layoutX="450.0" layoutY="72.0" prefHeight="68.0" prefWidth="300.0" text="EKRUT Login" textFill="#7c6435">
          <font>
             <Font name="Elephant" size="36.0" />
          </font>
@@ -24,28 +24,28 @@
          </effect>
       </Label>
       <ButtonBar layoutX="189.0" layoutY="335.0" />
-      <Button layoutX="634.0" layoutY="324.0" mnemonicParsing="false" onAction="#LoginBtn" prefHeight="45.0" prefWidth="86.0" text="Login" textFill="WHITE">
+      <Button layoutX="553.0" layoutY="340.0" mnemonicParsing="false" onAction="#LoginBtn" prefHeight="45.0" prefWidth="100.0" text="Login" textFill="WHITE">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
       </Button>
-      <Button layoutX="634.0" layoutY="427.0" mnemonicParsing="false" onAction="#ExitBtn" prefHeight="45.0" prefWidth="86.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Exit" textFill="WHITE">
+      <Button layoutX="553.0" layoutY="448.0" mnemonicParsing="false" onAction="#ExitBtn" prefHeight="45.0" prefWidth="100.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Exit" textFill="WHITE">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
       </Button>
-      <Label layoutX="545.0" layoutY="186.0" prefHeight="23.0" prefWidth="60.0" text="Host IP:" textFill="#c14302">
+      <Label layoutX="463.0" layoutY="209.0" prefHeight="23.0" prefWidth="60.0" text="Host IP:" textFill="#7c6435">
          <font>
-            <Font name="System Bold Italic" size="15.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="hostIptxt" layoutX="618.0" layoutY="182.0" prefHeight="25.0" prefWidth="143.0" />
-      <VBox alignment="BASELINE_CENTER" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <TextField fx:id="hostIptxt" layoutX="535.0" layoutY="205.0" prefHeight="25.0" prefWidth="143.0" style="-fx-background-radius: 10;" />
+      <VBox alignment="BASELINE_CENTER" layoutX="-9.0" layoutY="-11.0" prefHeight="720.0" prefWidth="297.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="300.0" fitWidth="315.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>

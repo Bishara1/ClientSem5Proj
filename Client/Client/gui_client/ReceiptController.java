@@ -115,7 +115,10 @@ public class ReceiptController implements Initializable {
 	}
 
 	public void OKBtn(ActionEvent event) throws Exception {
-		//Disconnect
+		Message msg = new Message(null,null);
+    	msg.setCommand(Command.Disconnect);
+    	msg.setContent(ChatClient.ID);
+    	ClientUI.chat.accept(msg);
 		((Node) event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/LoginEkrut.fxml")); Stage
 		primaryStage = new Stage(); Scene scene = new Scene(root);

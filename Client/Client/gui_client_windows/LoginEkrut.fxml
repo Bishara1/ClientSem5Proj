@@ -12,39 +12,39 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.LoginEkrutController">
    <children>
-   <VBox alignment="BASELINE_CENTER" layoutX="-25.0" layoutY="-11.0" prefHeight="771.0" prefWidth="389.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;" AnchorPane.leftAnchor="-25.0">
+   <VBox alignment="BASELINE_CENTER" layoutX="-25.0" layoutY="-11.0" prefHeight="771.0" prefWidth="318.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;" AnchorPane.leftAnchor="-25.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="361.0" fitWidth="392.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="300.0" fitWidth="315.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
             </ImageView>
          </children>
       </VBox>
-      <Button fx:id="ektBtn" layoutX="722.0" layoutY="518.0" mnemonicParsing="false" onAction="#EKTBtn" prefHeight="48.0" prefWidth="155.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="EKT Login" textFill="WHITE">
+      <Button fx:id="ektBtn" layoutX="731.0" layoutY="518.0" mnemonicParsing="false" onAction="#EKTBtn" prefHeight="48.0" prefWidth="146.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="EKT Login" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="445.0" layoutY="518.0" mnemonicParsing="false" onAction="#AccountLoginBtn" prefHeight="48.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Account Login" textFill="WHITE">
+      <Button layoutX="363.0" layoutY="518.0" mnemonicParsing="false" onAction="#AccountLoginBtn" prefHeight="48.0" prefWidth="146.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Account Login" textFill="WHITE">
       <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Text fill="#c14302" layoutX="410.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" wrappingWidth="344.08056640625">
+      <Text fill="#7c6435" layoutX="357.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" wrappingWidth="373.08056640625">
       <font>
-            <Font name="Cambria Math" size="75.0" />
+            <Font name="Elephant" size="56.0" />
          </font>
       </Text>
-      <Text fill="#c14302" layoutX="503.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="to EKRUT" wrappingWidth="437.0000066757202">
+      <Text fill="#7c6435" layoutX="486.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="to EKRUT" wrappingWidth="437.0000066757202">
          <font>
-            <Font name="Cambria Math" size="73.0" />
+            <Font name="Elephant" size="56.0" />
          </font>
       </Text>
-      <Button layoutX="609.0" layoutY="670.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="42.0" prefWidth="99.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
+      <Button layoutX="565.0" layoutY="669.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="42.0" prefWidth="99.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Exit" textFill="WHITE">
       <font>
             <Font name="System Bold" size="15.0" />
          </font>

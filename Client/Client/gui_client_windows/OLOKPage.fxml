@@ -9,35 +9,35 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="642.0" prefWidth="957.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../git/CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.OLOKPageController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../git/CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.OLOKPageController">
    <children>
-      <Label layoutX="510.0" layoutY="130.0" text="pick your bitch" textFill="#c14302">
+      <Label layoutX="362.0" layoutY="87.0" text="Pick your configuration" textFill="#7c6435">
          <font>
-            <Font name="Cooper Black" size="36.0" />
+            <Font name="Elephant" size="39.0" />
          </font>
       </Label>
-      <Button fx:id="olBtn" layoutX="460.0" layoutY="394.0" mnemonicParsing="false" onAction="#OLbtn" prefHeight="62.0" prefWidth="132.0" text="OL">
+      <Button fx:id="olBtn" layoutX="362.0" layoutY="482.0" mnemonicParsing="false" onAction="#OLbtn" prefHeight="50.0" prefWidth="132.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="OL">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="okBtn" layoutX="739.0" layoutY="396.0" mnemonicParsing="false" onAction="#OKbtn" prefHeight="62.0" prefWidth="132.0" text="OK">
+      <Button fx:id="okBtn" layoutX="688.0" layoutY="482.0" mnemonicParsing="false" onAction="#OKbtn" prefHeight="50.0" prefWidth="132.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="OK">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <VBox alignment="BASELINE_CENTER" layoutX="-20.0" prefHeight="642.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <VBox alignment="BASELINE_CENTER" layoutX="-20.0" layoutY="-7.0" prefHeight="719.0" prefWidth="310.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../git/CommonSem5Proj/Common/Common/images/ekrut.png" />
+                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
             </ImageView>
          </children>
       </VBox>
-      <Button fx:id="exitBtn" layoutX="605.0" layoutY="536.0" mnemonicParsing="false" onAction="#ExitBtn" prefHeight="41.0" prefWidth="93.0" text="Exit" />
+      <Button fx:id="exitBtn" layoutX="525.0" layoutY="618.0" mnemonicParsing="false" onAction="#ExitBtn" prefHeight="50.0" prefWidth="132.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Exit" />
    </children>
 </Pane>

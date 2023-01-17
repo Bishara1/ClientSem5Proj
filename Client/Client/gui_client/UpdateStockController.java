@@ -79,13 +79,17 @@ public class UpdateStockController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		DisplayComponentsInfo(false);
 		updateBtn.setDisable(true);
-		ClientUI.chat.accept(new Message(0, Command.ReadStockRequests));
-		ClientUI.chat.accept(new Message(0, Command.ReadMachines));
+		ReadMachinesAndStockRequests();
 		setRequestComboBox();
 		itemsCol.setCellValueFactory(new PropertyValueFactory<>("Name"));
 		amountCol.setCellValueFactory(new PropertyValueFactory<>("Amount"));
 		amountCol.setCellFactory(TextFieldTableCell.forTableColumn());
 		
+	}
+	
+	public void ReadMachinesAndStockRequests() {
+		ClientUI.chat.accept(new Message(0, Command.ReadStockRequests));
+		ClientUI.chat.accept(new Message(0, Command.ReadMachines));
 	}
 	
 	public void setRequestComboBox() {
@@ -172,7 +176,7 @@ public class UpdateStockController implements Initializable{
 		ClientUI.chat.accept(new Message(dataForUpdate, Command.UpdateMachineStock));
 		Alert alert = new Alert(AlertType.INFORMATION, "Updated machine stock successfully.", ButtonType.OK);
 		alert.showAndWait();
-		
+		ReadMachinesAndStockRequests();
 	}
 	
 	/**
@@ -236,11 +240,13 @@ public class UpdateStockController implements Initializable{
 	 * @return
 	 */
 	private Machine FindMachineNumber(int requestID) {
-		int sizeMachines = ChatClient.stockRequests.size();
+		int sizeMachines = ChatClient.machines.size();
     	int machineNumber = -1;
     	for (StockRequest sr : ChatClient.stockRequests) {
-    		if (sr.getStock_request_id() == requestID)
+    		if (sr.getStock_request_id() == requestID) {
     			machineNumber = sr.getMachine_id();
+    			break;
+    		}
     	}
     	
     	if (machineNumber == -1)

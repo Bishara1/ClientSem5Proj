@@ -12,36 +12,41 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../git/CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.InventoryReportController">
    <children>
-      <Label layoutX="509.0" layoutY="97.0" text="Inventory Report" textFill="#c14302">
+      <Label layoutX="460.0" layoutY="98.0" text="Inventory Report" textFill="#7c6435">
          <font>
-            <Font name="Cooper Black" size="36.0" />
+            <Font name="Elephant" size="36.0" />
          </font>
       </Label>
-      <Button fx:id="backBtn" layoutX="445.0" layoutY="551.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="35.0" prefWidth="72.0" text="Back">
+      <Button fx:id="backBtn" layoutX="418.0" layoutY="608.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="35.0" prefWidth="132.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="752.0" layoutY="548.0" mnemonicParsing="false" onAction="#ShowReport" prefHeight="41.0" prefWidth="132.0" text="Show Report">
+      <Button layoutX="682.0" layoutY="606.0" mnemonicParsing="false" onAction="#ShowReport" prefHeight="41.0" prefWidth="132.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Show Report">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <ComboBox fx:id="cmbLocation" layoutX="583.0" layoutY="282.0" onAction="#Select" prefHeight="41.0" prefWidth="132.0" promptText="Location" style="-fx-pref-height: 35;" />
-      <ComboBox fx:id="cmbMachineId" layoutX="583.0" layoutY="343.0" onAction="#SelectMachineId" prefWidth="132.0" promptText="Machine Id" style="-fx-pref-height: 35;" />
-      <VBox alignment="BASELINE_CENTER" layoutX="-20.0" prefHeight="756.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <ComboBox fx:id="cmbLocation" layoutX="550.0" layoutY="282.0" onAction="#Select" prefHeight="41.0" prefWidth="132.0" promptText="Location" style="-fx-pref-height: 35;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/comboboxDesign.css" />
+      <ComboBox fx:id="cmbMachineId" layoutX="550.0" layoutY="343.0" onAction="#SelectMachineId" prefWidth="132.0" promptText="Machine Id" style="-fx-pref-height: 35;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/comboboxDesign.css" />
+      <VBox alignment="BASELINE_CENTER" layoutX="-22.0" layoutY="-7.0" prefHeight="769.0" prefWidth="291.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
             </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/inventory.png" />
+               </image>
+            </ImageView>
          </children>
       </VBox>
-      <ComboBox fx:id="cmbYear" layoutX="451.0" layoutY="218.0" onAction="#SelectYear" prefHeight="35.0" prefWidth="149.0" promptText="Year" />
-      <ComboBox fx:id="cmbMonth" layoutX="690.0" layoutY="218.0" onAction="#SelectMonth" prefHeight="35.0" prefWidth="149.0" promptText="Month" />
+      <ComboBox fx:id="cmbYear" layoutX="418.0" layoutY="218.0" onAction="#SelectYear" prefHeight="35.0" prefWidth="149.0" promptText="Year" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/comboboxDesign.css" />
+      <ComboBox fx:id="cmbMonth" layoutX="657.0" layoutY="218.0" onAction="#SelectMonth" prefHeight="35.0" prefWidth="149.0" promptText="Month" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/comboboxDesign.css" />
    </children>
 </Pane>

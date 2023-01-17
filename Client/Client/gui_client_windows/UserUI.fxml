@@ -11,31 +11,36 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.UserUIController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.UserUIController">
    <children>
-      <VBox alignment="BASELINE_CENTER" layoutX="-25.0" layoutY="-11.0" prefHeight="775.0" prefWidth="389.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;" AnchorPane.leftAnchor="-25.0">
+      <VBox alignment="BASELINE_CENTER" layoutX="-25.0" layoutY="-11.0" prefHeight="775.0" prefWidth="300.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;" AnchorPane.leftAnchor="-25.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
             </ImageView>
+            <ImageView fitHeight="243.0" fitWidth="188.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/UserUI.png" />
+               </image>
+            </ImageView>
          </children>
       </VBox>
-      <Label fx:id="titletxt" layoutX="389.0" layoutY="169.0" prefHeight="71.0" prefWidth="519.0" text="Welcome" textFill="#c14302">
+      <Label fx:id="titletxt" layoutX="384.0" layoutY="130.0" prefHeight="71.0" prefWidth="494.0" text="Welcome" textFill="#7c6435">
          <font>
             <Font name="Elephant" size="56.0" />
          </font>
       </Label>
-      <Button fx:id="backbtn" layoutX="396.0" layoutY="661.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="48.0" prefWidth="130.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
+      <Button fx:id="backbtn" layoutX="367.0" layoutY="643.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="48.0" prefWidth="130.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Pane layoutX="516.0" layoutY="292.0" prefHeight="281.0" prefWidth="248.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css">
+      <Pane layoutX="487.0" layoutY="274.0" prefHeight="281.0" prefWidth="248.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css">
          <children>
             <Button fx:id="createorderbtn" layoutX="28.0" layoutY="37.0" mnemonicParsing="false" onAction="#CreateOrderBtn" prefHeight="48.0" prefWidth="192.0" stylesheets="@../../../git/CommonSem5Proj/Common/Common/css/buttons.css" text="Create Order" textFill="WHITE">
                <font>
@@ -55,6 +60,11 @@
             <Button fx:id="remotecodebtn" layoutX="28.0" layoutY="277.0" mnemonicParsing="false" onAction="#RemoteCode" prefHeight="48.0" prefWidth="192.0" text="Receive Remote Order" />
          </children>
       </Pane>
+      <Label layoutX="510.0" layoutY="230.0" text="What do you like to do?" textFill="#7c6435">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
    <effect>
       <Blend mode="LIGHTEN" />

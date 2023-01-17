@@ -52,12 +52,16 @@ public class PurchaseController implements Initializable{
 		{
 			if(creditCardtxt.getText().isEmpty())
 			{
-				Message msg = new Message(null,null);
-				msg.setContent(ChatClient.ID);
-				msg.setCommand(Command.ReadUserVisa);
-				ClientUI.chat.accept(msg);
-				InsertOrder(event);
-				nextWindow(event, "/gui_client_windows/Receipt.fxml", "Receipt");
+				Alert alert = new Alert(AlertType.WARNING,"Are you sure you want to continue?",ButtonType.NO,ButtonType.YES);
+				Optional<ButtonType> result = alert.showAndWait();
+				if(result.get() == ButtonType.YES) {
+					Message msg = new Message(null,null);
+					msg.setContent(ChatClient.ID);
+					msg.setCommand(Command.ReadUserVisa);
+					ClientUI.chat.accept(msg);
+					InsertOrder(event);
+					nextWindow(event, "/gui_client_windows/Receipt.fxml", "Receipt");
+				}
 			}
 			else
 			{
@@ -67,14 +71,19 @@ public class PurchaseController implements Initializable{
 		}
 		else
 		{
-			try {
-				Integer.parseInt(creditCardtxt.getText());
-				ChatClient.creditcard = creditCardtxt.getText();
-				InsertOrder(event);
-				nextWindow(event, "/gui_client_windows/Receipt.fxml", "Receipt");
-			}catch(Exception e) {
+			if (!creditCardtxt.getText().matches("[0-9]+")) {
 				Alert alert = new Alert(AlertType.ERROR,"Please enter valid credit card details, alternatively leave the field blank if you wish to use the credit card you signed up with",ButtonType.OK);
 				alert.showAndWait();
+			}
+			
+			else {
+				Alert alert = new Alert(AlertType.WARNING,"Are you sure you want to continue?",ButtonType.NO,ButtonType.YES);
+				Optional<ButtonType> result = alert.showAndWait();
+				if(result.get() == ButtonType.YES) {
+					ChatClient.creditcard = creditCardtxt.getText();
+					InsertOrder(event);
+					nextWindow(event, "/gui_client_windows/Receipt.fxml", "Receipt");
+				}
 			}
 			
 		}
@@ -120,10 +129,7 @@ public class PurchaseController implements Initializable{
 	
 	public void InsertOrder(ActionEvent event) throws IOException
 	{
-		Alert alert = new Alert(AlertType.WARNING,"Are you sure you want to continue?",ButtonType.NO,ButtonType.YES);
-		Optional<ButtonType> result = alert.showAndWait();
-		if(result.get() == ButtonType.YES)
-		{
+		
 			int size = ChatClient.availableItems.size();
 			ArrayList<Integer> itemAmount = ChatClient.available;
 			String itemsToFill = "";
@@ -199,7 +205,6 @@ public class PurchaseController implements Initializable{
 				ChatClient.FirstSubscriberOrder = false;
 			}
 			//Disconnect
-		}
 	}
 	
 	public int calculateTotalPrice()

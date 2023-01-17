@@ -46,6 +46,7 @@ public class RegionalManagerController implements Initializable {
 		primaryStage.show();		
 	}
 	
+	//show stock table button -> tali added to fxml
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

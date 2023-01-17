@@ -19,9 +19,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import logic.Request;
@@ -81,14 +84,17 @@ public class SubscriberRequestController  implements Initializable
 			messageToServer.setCommand(Command.UpdateRequest);
 			messageToServer.setContent(request);
 			ClientUI.chat.accept(messageToServer);
+			Alert alert = new Alert(AlertType.INFORMATION,"Updated status into subsriber",ButtonType.OK);
+			alert.showAndWait();
+			
 			
 	}
 	public void Back(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/LoginEkrut.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/WorkerUI.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
-		primaryStage.setTitle("Login Ekrut");
+		primaryStage.setTitle("WORKER UI");
 		primaryStage.setScene(scene);		
 		primaryStage.show();	
 	}
@@ -99,16 +105,14 @@ public class SubscriberRequestController  implements Initializable
 		idcol.setCellValueFactory(new PropertyValueFactory<>("ID"));
 		typecol.setCellValueFactory(new PropertyValueFactory<>("Type"));
 		
+		
 		for (Request r : ChatClient.userRequest)
 		{
 			if(r.getStatus().equals("Pending")) {
 				request.add(new ViewRequest(r.getCustomer_id(), r.getType()));
 
 			}
-			else
-			{
-				System.out.println("ex");
-			}
+			
 			
 		}
 		obs = FXCollections.observableArrayList(request);

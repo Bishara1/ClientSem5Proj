@@ -43,7 +43,11 @@ public class ShipmentMethodController {
 	
 	public void BackBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Cart.fxml"));
+		Parent root = null;
+		if(ChatClient.role.equals("customer"))
+			root =FXMLLoader.load(getClass().getResource("/gui_client_windows/UserUI.fxml"));
+		else
+			root =FXMLLoader.load(getClass().getResource("/gui_client_windows/WorkerUI.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 		primaryStage.setTitle("Cart");

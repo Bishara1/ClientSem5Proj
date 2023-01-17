@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -13,51 +12,51 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.StockTableController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.StockTableController">
    <children>
-      <Button fx:id="backBtn" layoutX="445.0" layoutY="661.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="39.0" prefWidth="94.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
+      <Button fx:id="backBtn" layoutX="404.0" layoutY="676.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="39.0" prefWidth="120.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="showStockBtn" layoutX="466.0" layoutY="139.0" mnemonicParsing="false" onAction="#ShowStockBtn" prefHeight="39.0" prefWidth="122.0" text="Show stock" textFill="WHITE">
+      <Button fx:id="showStockBtn" layoutX="695.0" layoutY="158.0" mnemonicParsing="false" onAction="#ShowStockBtn" prefHeight="39.0" prefWidth="122.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" text="Show stock" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="updateBtn" layoutX="787.0" layoutY="661.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="94.0" text="Update" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Button>
-      <Label layoutX="469.0" layoutY="86.0" text="Machine code:" textFill="#c14302">
+      <Label layoutX="417.0" layoutY="133.0" text="Machine code:" textFill="#7c6435">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="machineCodetxt" layoutX="620.0" layoutY="86.0" promptText="machine code" />
-      <TableView fx:id="machineTable" layoutX="483.0" layoutY="203.0" prefHeight="396.0" prefWidth="379.0">
+      <TextField fx:id="machineCodetxt" layoutX="416.0" layoutY="166.0" prefHeight="31.0" prefWidth="166.0" promptText="machine code" style="-fx-background-radius: 10;" />
+      <TableView fx:id="machineTable" layoutX="416.0" layoutY="206.0" prefHeight="418.0" prefWidth="403.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/table.css">
         <columns>
           <TableColumn fx:id="itemsCol" prefWidth="193.0" text="Items" />
-          <TableColumn fx:id="amountCol" minWidth="0.0" prefWidth="185.0" text="Amount" />
+          <TableColumn fx:id="amountCol" minWidth="0.0" prefWidth="209.0" text="Amount" />
         </columns>
       </TableView>
-      <VBox alignment="BASELINE_CENTER" layoutX="-16.0" layoutY="-10.0" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <VBox alignment="BASELINE_CENTER" layoutX="-16.0" layoutY="-10.0" prefHeight="776.0" prefWidth="272.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
             </ImageView>
+            <ImageView fitHeight="122.0" fitWidth="213.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/stock.jpg" />
+               </image>
+            </ImageView>
          </children>
       </VBox>
+      <Label layoutX="471.0" layoutY="41.0" prefHeight="53.0" prefWidth="283.0" text="Stock tracking" textFill="#7c6435">
+         <font>
+            <Font name="Elephant" size="36.0" />
+         </font>
+      </Label>
    </children>
-   <stylesheets>
-      <URL value="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" />
-      <URL value="@../../../../CommonSem5Proj/Common/Common/css/table.css" />
-      <URL value="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" />
-   </stylesheets>
 </AnchorPane>

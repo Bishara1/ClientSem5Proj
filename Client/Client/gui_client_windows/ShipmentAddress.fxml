@@ -11,52 +11,62 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ShipmentAddressController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="938.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ShipmentAddressController">
    <children>
-      <VBox alignment="BASELINE_CENTER" layoutX="-16.0" layoutY="-10.0" prefHeight="776.0" prefWidth="409.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
+      <VBox alignment="BASELINE_CENTER" layoutX="-16.0" layoutY="-10.0" prefHeight="776.0" prefWidth="292.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="358.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
                </image>
             </ImageView>
          </children>
       </VBox>
-      <Label layoutX="426.0" layoutY="144.0" prefHeight="55.0" prefWidth="448.0" text="Insert your address for shipment request" textFill="#c14302">
+      <Label layoutX="419.0" layoutY="192.0" prefHeight="55.0" prefWidth="448.0" text="Please insert your address for shipment request" textFill="#7c6435">
          <font>
-            <Font name="Elephant" size="22.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="494.0" layoutY="227.0" />
-      <Label layoutX="532.0" layoutY="337.0" text="City" textFill="#c14302">
+      <Label layoutX="468.0" layoutY="247.0" />
+      <Label layoutX="516.0" layoutY="357.0" text="City" textFill="#7c6435">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="backBtn" layoutX="440.0" layoutY="639.0" mnemonicParsing="false" onAction="#BackBtn" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
+      <Button fx:id="backBtn" layoutX="419.0" layoutY="639.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="37.0" prefWidth="105.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="sendreqBtn" layoutX="724.0" layoutY="639.0" mnemonicParsing="false" onAction="#SendYourRequest" prefHeight="37.0" prefWidth="166.0" text="Send your request" textFill="WHITE">
+      <Button fx:id="sendreqBtn" layoutX="698.0" layoutY="639.0" mnemonicParsing="false" onAction="#SendYourRequest" prefHeight="37.0" prefWidth="166.0" text="Send your request" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Label layoutX="532.0" layoutY="398.0" text="Street" textFill="#c14302">
+      <Label layoutX="516.0" layoutY="421.0" text="Street" textFill="#7c6435">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="System Bold" size="18.0" />
          </font></Label>
-      <TextField fx:id="citytxt" layoutX="617.0" layoutY="335.0" />
-      <TextField fx:id="streettxt" layoutX="617.0" layoutY="396.0" />
-      <Label layoutX="532.0" layoutY="260.0" text="Region" textFill="#c14302">
+      <TextField fx:id="citytxt" layoutX="583.0" layoutY="352.0" prefHeight="31.0" prefWidth="155.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="streettxt" layoutX="583.0" layoutY="416.0" prefHeight="31.0" prefWidth="155.0" style="-fx-background-radius: 10;" />
+      <Label layoutX="516.0" layoutY="283.0" text="Region" textFill="#7c6435">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <ComboBox fx:id="RegionBox" layoutX="616.0" layoutY="258.0" onAction="#SelectLocation" />
+      <ComboBox fx:id="RegionBox" layoutX="590.0" layoutY="278.0" onAction="#SelectLocation" prefHeight="31.0" prefWidth="70.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/comboboxDesign.css" />
+      <Label layoutX="467.0" layoutY="93.0" text="Shipment Details" textFill="#7c6435">
+         <font>
+            <Font name="Elephant" size="36.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="64.0" fitWidth="63.0" layoutX="404.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../CommonSem5Proj/Common/Common/images/details.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

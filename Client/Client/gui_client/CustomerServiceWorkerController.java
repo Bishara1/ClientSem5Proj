@@ -1,5 +1,8 @@
 package gui_client;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import client.ChatClient;
 import client.ClientUI;
 import common.Command;
@@ -7,6 +10,7 @@ import common.Message;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,7 +22,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import logic.Subscriber;
 
-public class CustomerServiceWorkerController {
+public class CustomerServiceWorkerController implements Initializable{
 
 	@FXML
 	private TextField FirstNametxt;
@@ -38,7 +42,6 @@ public class CustomerServiceWorkerController {
 	private TextField Passwordtxt;
 	@FXML
 	private TextField Roletxt;
-
 	@FXML
 	private Button addBtn;
 	@FXML
@@ -78,12 +81,18 @@ public class CustomerServiceWorkerController {
 
 	public void Logout(ActionEvent event) throws Exception {
 		((Node) event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/UserLogin.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/WorkerUI.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
 		primaryStage.setTitle("User Login");
 		primaryStage.setScene(scene);
 		primaryStage.show();
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		//settitle
+		
 	}
 
 }

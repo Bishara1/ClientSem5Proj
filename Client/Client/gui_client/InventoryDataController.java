@@ -27,6 +27,10 @@ import javafx.stage.Stage;
 import logic.InventoryReports;
 import logic.Item;
 
+/**
+ * This class loads the data for inventory report.
+ *
+ */
 public class InventoryDataController implements Initializable{
 	
 	private ObservableList<ViewItem> obs;
@@ -66,6 +70,12 @@ public class InventoryDataController implements Initializable{
 	
 	InventoryReports report = InventoryReportController.requestedInventoryReport;
 	
+	/**
+	 * This method initializes the labels in the inventory reports xml file. And calls loadAndSetData function.
+	 * 
+	 * @param location
+	 * @param resources
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.dateLbl.setText(String.valueOf(LocalDate.now()));
@@ -75,12 +85,16 @@ public class InventoryDataController implements Initializable{
 		loadAndSetData();
 	}
 	
+	/**
+	 * This method fills the table
+	 */
 	public void loadAndSetData() {
 		
 		messageToServer.setCommand(Command.ReadItems);
 		messageToServer.setContent(0);	
 		ClientUI.chat.accept(messageToServer); 
-		splitItems(report.getStock());
+		
+		splitItems(report.getStock(), report.getInventory());
 		
 		nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
 		unitPriceCol.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
@@ -92,19 +106,28 @@ public class InventoryDataController implements Initializable{
 	}
 	
 	
-	// calculates the current stock and initializes the pie chart
-	public void splitItems(String string)
+	/**
+	 * This method calculates the current stock and inventory then initializes the pie chart and table.
+	 * 
+	 * @param stock
+	 * @param inventory
+	 */
+	public void splitItems(String stock, String inventory)
 	 {
-		 String[] dotSplit = string.split("\\.");
-		 String[] finalSplit = null;
+		 String[] stockSplit = stock.split("\\.");
+		 String[] inventorySplit = inventory.split("\\.");
+		 String[] stockFinalSplit = null;
+		 String[] inventoryFinalSplit = null;
 		 int price;
 		 int val;
-		 for (String s : dotSplit) {
-			finalSplit = s.split(",");
-			price = getUnitPriceColumn(finalSplit[0]);
-			val = price*1;
-			items.add(new ViewItem(finalSplit[0], String.valueOf(price), "safwan", finalSplit[1] , String.valueOf(val)));
-			data.add(new PieChart.Data(finalSplit[0], Integer.parseInt(finalSplit[1])));
+		 int i = 0;
+		 for (String s : stockSplit) {
+			stockFinalSplit = s.split(",");
+			inventoryFinalSplit = inventorySplit[i++].split(",");
+			price = getUnitPriceColumn(stockFinalSplit[0]);
+			val = price*Integer.parseInt(inventoryFinalSplit[1]);
+			items.add(new ViewItem(stockFinalSplit[0], String.valueOf(price)+" NIS", inventoryFinalSplit[1], stockFinalSplit[1] , String.valueOf(val)+" NIS"));
+			data.add(new PieChart.Data(stockFinalSplit[0], Integer.parseInt(stockFinalSplit[1])));
 			
 		}
 		 
@@ -114,6 +137,12 @@ public class InventoryDataController implements Initializable{
 		
 	 }
 	
+	/**
+	 * This method reads items from data base and returns the price of the item
+	 * 
+	 * @param name
+	 * @return item.getPrice()
+	 */
 	public int getUnitPriceColumn(String name) {
 		
 		for (Item item : ChatClient.items)
@@ -122,6 +151,10 @@ public class InventoryDataController implements Initializable{
 		return 0;
 	}
 	
+	
+	/**
+	 * This class shows relevant information about an item.
+	 */
 	public class ViewItem
 	{
 		private String name;
@@ -159,6 +192,12 @@ public class InventoryDataController implements Initializable{
 		}
 	}
 
+	/**
+	 * This method hides the currently open window and shows InventoryReport window.
+	 * 
+	 * @param event
+	 * @throws Exception
+	 */
 	public void BackBtn(ActionEvent event) throws Exception
 	{
 		((Node)event.getSource()).getScene().getWindow().hide();

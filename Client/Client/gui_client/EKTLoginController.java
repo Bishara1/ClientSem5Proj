@@ -18,13 +18,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class EKTLoginController implements Initializable {
 	
-	public static String u;
+	public static String u = "";
 	
 	public OLOKPageController p;
 	
@@ -47,6 +50,7 @@ public class EKTLoginController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		u = "";
 		setUserComboBox();
 	}
 	
@@ -61,40 +65,51 @@ public class EKTLoginController implements Initializable {
 	
 	public void login(ActionEvent event) throws Exception
 	{
-		Message msg = new Message(u,Command.EKTConnect);
-		ConnectNewClient();
-		ClientUI.chat.accept(msg);
-
-		if(p.type.equals("OK"))
+		if(u.isEmpty())
 		{
-			nextWindow(event, "/gui_client_windows/UserUI.fxml", "USER UI");
+			Alert alert = new Alert(AlertType.ERROR,"You must enter an ID",ButtonType.OK);
+			alert.showAndWait();
 		}
 		else
 		{
-			switch (ChatClient.role) 
+			Message msg = new Message(u,Command.EKTConnect);
+			ConnectNewClient();
+			ClientUI.chat.accept(msg);
+		
+			if(p.type.equals("OK"))
 			{
-			case "customer":
-				nextWindow(event,"/gui_client_windows/UserUI.fxml","USER UI");
-			    break;
-	
-			case "ceo":
-				nextWindow(event,"/gui_client_windows/CEOReports.fxml","CEO Reports");
-			    break;
-			    
-			case "mkm" :
-				nextWindow(event,"/gui_client_windows/DiscountLocation.fxml","Discount Location");
-				break;
-				
-			default:
-				System.out.println("default entered");
-				break;
+				if(ChatClient.ID != -1 && ChatClient.isSubscriber == true) {
+					nextWindow(event, "/gui_client_windows/UserUI.fxml", "USER UI");
+				}
+				else
+				{
+					Alert alert = new Alert(AlertType.ERROR,"The ID you entered can't use EKT",ButtonType.OK);
+					alert.showAndWait();
+				}
+			}
+			else
+			{
+				if(ChatClient.role.equals("customer"))
+				{
+					if(ChatClient.isSubscriber == true) {
+						nextWindow(event,"/gui_client_windows/UserUI.fxml","USER UI");
+					    return;
+					}
+					else {
+						Alert alert = new Alert(AlertType.ERROR,"The ID you entered can't use EKT",ButtonType.OK);
+						alert.showAndWait();
+					}
+				}
+				else
+				{
+					nextWindow(event, "/gui_client_windows/WorkerUI.fxml", "WORKER UI");
+				}
 			}
 		}
-		
 	}
 	public void ConnectNewClient() { //added this method to LoginSubscriber
 		// the server ip is hardcoded
-		ClientUI.chat = new ClientController("localhost", 5555);  // new client connected
+		//ClientUI.chat = new ClientController("localhost", 5555);  // new client connected
 		///ClientUI.chat.accept("login"); // send to server that a client is connected
 	}
 	

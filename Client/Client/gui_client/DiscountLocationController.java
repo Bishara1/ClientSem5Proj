@@ -52,7 +52,7 @@ public class DiscountLocationController implements Initializable {
 	@FXML
 	public void Select(ActionEvent event) {
 		location = cmbLocation.getSelectionModel().getSelectedItem().toString();
-		}
+	}
 	
 	public void setLocationComboBox() {
 		ArrayList<String> type = new ArrayList<String>(Arrays.asList("North", "South", "UAE"));
@@ -110,6 +110,8 @@ public class DiscountLocationController implements Initializable {
 			default:
 				break;
 			}
+			Alert alert = new Alert(AlertType.CONFIRMATION,"Discount applied successfully.",ButtonType.OK);
+			alert.showAndWait();
 		}
 		else {
 			Alert alert = new Alert(AlertType.ERROR,"Discount not in range\nRange must a number be between 0 and 100.",ButtonType.OK);
@@ -120,10 +122,10 @@ public class DiscountLocationController implements Initializable {
 	
     public void BackBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/LoginEkrut.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/WorkerUI.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
-		primaryStage.setTitle("LOGIN EKRUT");
+		primaryStage.setTitle("WORKER UI");
 		primaryStage.setScene(scene);		
 		primaryStage.show();
 	}

@@ -33,47 +33,7 @@ import logic.Item;
 import logic.Subscriber;
 
 
-public class CartController implements Initializable{
-
-	public class ItemTable{
-		private String label;
-		private Integer amount;
-		private Integer priceAll;
-		
-		public ItemTable(String label, Integer amount, Integer price) {
-			super();
-			this.label = label;
-			this.amount = amount;
-			int NewPrice = amount * price;
-			this.priceAll = NewPrice;
-		}
-
-		public String getLabel() {
-			return label;
-		}
-
-		public void setLabel(String label) {
-			this.label = label;
-		}
-
-		public Integer getAmount() {
-			return amount;
-		}
-
-		public void setAmount(Integer amount) {
-			this.amount = amount;
-		}
-
-		public Integer getPriceAll() {
-			return priceAll;
-		}
-
-		public void setPriceAll(Integer priceAll) {
-			this.priceAll = priceAll;
-		}
-		
-	}
-	
+public class CartController implements Initializable{	
 	@FXML
 	private Button removebtn;
 	@FXML
@@ -96,13 +56,9 @@ public class CartController implements Initializable{
 	private TableColumn<ItemTable,String> pricecol;
 
 	private ArrayList<Item> cart;
-	
 	private ArrayList<ItemTable> tableCart;
-	
 	private ObservableList<ItemTable> obs;
-	
 	private int Threshold = 0;
-	
 	private int MachineNumber = -1;
 	
 	public void LoadAndSetTable() {
@@ -387,5 +343,44 @@ public class CartController implements Initializable{
 						MachineNumber = i;
 				}
 		  }
+		
+		public class ItemTable{
+			private String label;
+			private Integer amount;
+			private Integer priceAll;
+			
+			public ItemTable(String label, Integer amount, Integer price) {
+				super();
+				this.label = label;
+				this.amount = amount;
+				int NewPrice = amount * price;
+				this.priceAll = NewPrice;
+			}
+
+			public String getLabel() {
+				return label;
+			}
+
+			public void setLabel(String label) {
+				this.label = label;
+			}
+
+			public Integer getAmount() {
+				return amount;
+			}
+
+			public void setAmount(Integer amount) {
+				this.amount = amount;
+			}
+
+			public Integer getPriceAll() {
+				return priceAll;
+			}
+
+			public void setPriceAll(Integer priceAll) {
+				this.priceAll = priceAll;
+			}
+			
+		}
 }
 
