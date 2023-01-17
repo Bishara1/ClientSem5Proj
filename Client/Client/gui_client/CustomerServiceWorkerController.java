@@ -22,8 +22,13 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import logic.Subscriber;
 
-public class CustomerServiceWorkerController implements Initializable{
 
+/**
+ * Controller class for customer service window
+ */
+public class CustomerServiceWorkerController implements Initializable {
+	
+	//Window components
 	@FXML
 	private TextField FirstNametxt;
 	@FXML
@@ -45,23 +50,35 @@ public class CustomerServiceWorkerController implements Initializable{
 	@FXML
 	private Button addBtn;
 	@FXML
-	private Button logoutBtn;
-
+	private Button backBtn;
+	
+	//message objects to send to server
 	Message messageToServer = new Message(null, null);
 	Message ReadUsersMessage = new Message(null, null);
 
-	public void Add(ActionEvent event) throws Exception
-	{
+	
+	/*
+	 * Registers user and adds (saves) their details to database.
+	 * @param event Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @throws Exception
+	 */
+	public void Add(ActionEvent event) throws Exception {
 		boolean flag = true;
+		
+		// Get details from textfields and insert them to a string
 		String newUser = FirstNametxt.getText() + " " + LastNametxt.getText() + " " + Idtxt.getText() + " " 
 				+ PhoneNumbertxt.getText() + " " + Emailtxt.getText() + " " + CreditCardtxt.getText() + " -1 " + 
 				Usernametxt.getText() + " " + Passwordtxt.getText() + " " + Roletxt.getText();
-		ReadUsersMessage.setCommand(Command.ReadUsers);
-		ReadUsersMessage.setContent(0);
-		ClientUI.chat.accept(ReadUsersMessage);
 		
+		// Read all users to check if user details are already in database 9if user is already registered)
+		ReadUsersMessage.setCommand(Command.ReadUsers);  
+		ReadUsersMessage.setContent(0);
+		ClientUI.chat.accept(ReadUsersMessage);  // send the request to server to read all users
+		
+		// loop through all users and check if the user already exists
 		for(Subscriber s : ChatClient.subscribers)
 		{
+			// if user already exists, show an alert and set flag to false so that the user won't be registered again
 			if ((s.getId()== Integer.parseInt(Idtxt.getText()) || s.getUserName().equals(Usernametxt.getText()) ||
 					s.getPhoneNum().equals(PhoneNumbertxt.getText())))
 			{
@@ -70,16 +87,26 @@ public class CustomerServiceWorkerController implements Initializable{
 				flag = false;
 			}
 		}
+		
+		//if user doesn't exist, register them
 		if (flag)
 		{
+			//insert user to database
 			messageToServer.setCommand(Command.InsertUser);
 			messageToServer.setContent(newUser);
 			ClientUI.chat.accept(messageToServer);
+			
+			//Prompt that user has been addded
 			Alert alert = new Alert(AlertType.CONFIRMATION,"User successfully added",ButtonType.OK);
 			alert.showAndWait();}
 	}
 
-	public void Logout(ActionEvent event) throws Exception {
+	/**
+	 * back to main page of customer service worker (worker ui)
+	 * @param event Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @throws Exception
+	 */
+	public void BackBtn(ActionEvent event) throws Exception {
 		((Node) event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/WorkerUI.fxml"));
 		Stage primaryStage = new Stage();
@@ -89,10 +116,13 @@ public class CustomerServiceWorkerController implements Initializable{
 		primaryStage.show();
 	}
 
+	
+	/*
+	 * Initialize window components before window starts
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		//settitle
-		
 	}
 
 }

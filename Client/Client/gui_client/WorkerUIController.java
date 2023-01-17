@@ -118,8 +118,7 @@ public class WorkerUIController implements Initializable{
 		primaryStage.show();	
 	}
 	
-	public void CreateRemoteOrderBtn(ActionEvent event) throws Exception
-	{
+	public void CreateRemoteOrderBtn(ActionEvent event) throws Exception {
 		nextWindow(event, "/gui_client_windows/ShipmentMethod.fxml", "Shipment Method");
 	}
 	

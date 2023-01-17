@@ -44,7 +44,8 @@ public class ShipmentMethodController {
 	public void BackBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = null;
-		if(ChatClient.role.equals("customer"))
+		System.out.println(ChatClient.role);
+		if(ChatClient.role.equals("customer")) 
 			root =FXMLLoader.load(getClass().getResource("/gui_client_windows/UserUI.fxml"));
 		else
 			root =FXMLLoader.load(getClass().getResource("/gui_client_windows/WorkerUI.fxml"));

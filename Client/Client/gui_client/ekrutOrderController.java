@@ -21,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
@@ -540,6 +541,7 @@ public class ekrutOrderController implements Initializable{
     		switch(str) {
     			case "Item":
     				lbl.setText(generatedItems.get(num));
+    				setImageURL(generatedItems.get(num),index-1);
     				break;
     			case "Price":
     				lbl.setText(this.getPrice(generatedItems.get(num)) + " NIS");
@@ -679,6 +681,115 @@ public class ekrutOrderController implements Initializable{
     			generatedItems.add(name);
     	}
     	return;
+    }
+    
+    public void setImageURL(String name,int index)
+    {
+    	
+		String actual = "";
+		String path = "";
+		Image im = null;
+		try {
+			switch(name)
+			{
+			case "bamba":
+				actual = "/images/bamba.jpg";
+				path = this.getClass().getResource(actual).toExternalForm();
+				im = new Image(path,true);
+				break;
+			
+			case "bisli":
+				actual = "/images/bisli.jpg";
+				path = this.getClass().getResource(actual).toExternalForm();
+				im = new Image(path,true);
+				break;
+				
+			case "bueno":
+				actual = "/images/bueno.jpg";
+				path = this.getClass().getResource(actual).toExternalForm();
+				im = new Image(path,true);
+				break;
+				
+			case "dorritos":
+				actual = "/images/dorritos.jpg";
+				path = this.getClass().getResource(actual).toExternalForm();
+				im = new Image(path,true);
+				break;
+				
+			case "mms":
+				actual = "/images/mms.jpg";
+				path = this.getClass().getResource(actual).toExternalForm();
+				im = new Image(path,true);
+				break;
+				
+			case "skittles":
+				actual = "/images/skittles.jpg";
+				path = this.getClass().getResource(actual).toExternalForm();
+				im = new Image(path,true);
+				break;
+				
+			case "cola":
+				actual = "/images/cola.jpg";
+				path = this.getClass().getResource(actual).toExternalForm();
+				im = new Image(path,true);
+				break;
+				
+			case "chips":
+				actual = "/images/chips.jpg";
+				path = this.getClass().getResource(actual).toExternalForm();
+				im = new Image(path,true);
+				break;
+				
+			case "kitkat":
+				actual = "/images/kitkat.jpg";
+				path = this.getClass().getResource(actual).toExternalForm();
+				im = new Image(path,true);
+				break;
+				
+			case "mango":
+				actual = "/images/mango.jpg";
+				path = this.getClass().getResource(actual).toExternalForm();
+				im = new Image(path,true);
+				break;
+				
+			case "pringles":
+				actual = "/images/pringles.jpg";
+				path = this.getClass().getResource(actual).toExternalForm();
+				im = new Image(path,true);
+				break;
+				
+			case "snickers":
+				actual = "/images/snickers.jpg";
+				path = this.getClass().getResource(actual).toExternalForm();
+				im = new Image(path,true);
+				break;
+				
+				
+			}
+		}catch(Exception e)
+		{
+			path = this.getClass().getResource("/images/cart.jpg").toExternalForm();
+			im = new Image(path,true);
+		}
+		
+		switch(index)
+		{
+			case 0:
+				image1.setImage(im);
+				return;
+			
+			case 1:
+				image2.setImage(im);
+				return;
+				
+			case 2:
+				image3.setImage(im);
+				return;
+				
+			case 3:
+				image4.setImage(im);
+				return;
+		}
     }
 }
 

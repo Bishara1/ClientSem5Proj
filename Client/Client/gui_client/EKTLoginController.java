@@ -89,6 +89,12 @@ public class EKTLoginController implements Initializable {
 			}
 			else
 			{
+				if(ChatClient.ID == -1) {
+					Alert alert = new Alert(AlertType.ERROR,"The ID you entered can't use EKT",ButtonType.OK);
+					alert.showAndWait();
+					return;
+				}
+				
 				if(ChatClient.role.equals("customer"))
 				{
 					if(ChatClient.isSubscriber == true) {
@@ -102,6 +108,7 @@ public class EKTLoginController implements Initializable {
 				}
 				else
 				{
+					
 					nextWindow(event, "/gui_client_windows/WorkerUI.fxml", "WORKER UI");
 				}
 			}

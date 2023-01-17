@@ -180,6 +180,7 @@ public class UpdateStockController implements Initializable{
 	}
 	
 	/**
+	 * 
 	 * @param productStringCellEditEvent
 	 */
 	public void checkModifications(TableColumn.CellEditEvent<ViewItem, String> productStringCellEditEvent) {

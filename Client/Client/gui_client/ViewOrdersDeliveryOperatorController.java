@@ -198,7 +198,8 @@ public class ViewOrdersDeliveryOperatorController implements Initializable {
 		int month = Integer.parseInt(dateComponents[1]);
 		int day = Integer.parseInt(dateComponents[2]);
 		
-		LocalDate newDate = LocalDate.of(year, month, day).plusDays(14);
+		// Add 14 days to date
+		LocalDate newDate = LocalDate.of(year, month, day).plusDays(15);
 		return newDate.toString();
 	}
 

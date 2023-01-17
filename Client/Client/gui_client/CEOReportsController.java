@@ -15,8 +15,12 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 
+/**
+ * Class responsible for ceo reports window
+ */
 public class CEOReportsController implements Initializable {
 	
+	// Buttons in window
 	@FXML
 	private Label titleLbl;
 	@FXML
@@ -28,35 +32,72 @@ public class CEOReportsController implements Initializable {
 	@FXML
 	private Button viewSubscribersBtn;
 	@FXML
-	private Button logOutBtn;
+	private Button backBtn;
 	@FXML
 	private Button viewdiscountBtn;
 	
+	/**
+	 * Method that runs before displaying the window.
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		// set title to welcome and ceo name
 		this.titleLbl.setText("Welcome CEO " + ChatClient.Fname);
 	}
 	
+	
+	/**
+	 * Load Stock table window when pressing View Machines button
+	 * @param event Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @throws Exception
+	 */
 	public void ViewMachines(ActionEvent event) throws Exception{
 		nextWindow(event,"/gui_client_windows/StockTable.fxml","Stock Table");
 	}
 
+	/**
+	 * Load Subscriber viewer table window when pressing View subscriber button
+	 * @param event Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @throws Exception
+	 */
 	public void ViewSubscribers(ActionEvent event) throws Exception  {
 		nextWindow(event,"/gui_client_windows/SubscribersViewer.fxml","Subscriber Viewer");
 	}
-	
+
+	/*
+	 * Load discount for location window when pressing viewDiscount button
+	 * @param event Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @throws Exception
+	 */
 	public void viewDiscount(ActionEvent event) throws Exception {
 		nextWindow(event,"/gui_client_windows/DiscountLocation.fxml","Discount Location");
 	}
 	
+	/*
+	 * Load reports window window when pressing viewReports button
+	 * @param event Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @throws Exception
+	 */
 	public void ViewReports(ActionEvent event) throws Exception {
 		nextWindow(event,"/gui_client_windows/ChooseReportType.fxml","Choose Report Type");
 	}
 
-	public void LogOut(ActionEvent event) throws Exception {
-		nextWindow(event,"/gui_client_windows/LoginEkrut.fxml","Login Ekrut");
+	/*
+	 * back to main window
+	 * @param event Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @throws Exception
+	 */
+	public void BackBtn(ActionEvent event) throws Exception {
+		nextWindow(event,"/gui_client_windows/WorkerUI.fxml","WORKER UI");
 	}
 	
+	/*
+	 * Loads desired window with the desired title
+	 * @param event Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @param window_location Window location to load
+	 * @param title Title of window
+	 * @throws Exception
+	 */
 	private void nextWindow(ActionEvent event, String window_location, String title) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource(window_location));

@@ -27,7 +27,7 @@ import logic.Order;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
-public class RemoteCodeController implements Initializable{
+public class RemoteCodeController implements Initializable {
 
 	@FXML
 	private Button backbtn;
@@ -132,7 +132,12 @@ public class RemoteCodeController implements Initializable{
 		msg.setCommand(Command.ReadMachines);
 		msg.setContent(0);
 		ClientUI.chat.accept(msg);
+		
 	}
+
+	public void start(Stage primaryStage) throws Exception {
+		primaryStage.setTitle("Machine Location");
+	}   
 	
 	public int GetPrice(String name)
 	{
