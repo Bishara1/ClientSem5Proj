@@ -22,7 +22,7 @@ public class LoginEkrutController {
 	
 	/**
 	 * This method starts the "LoginEkut" fxml window
-	 * @param primaryStage
+	 * @param primaryStage 
 	 * @throws Exception
 	 */
 	public void start(Stage primaryStage) throws Exception {
