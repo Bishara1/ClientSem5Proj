@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
+import client.ChatClient;
+import client.ClientUI;
+import common.Command;
+import common.Message;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,6 +24,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import logic.UsersReports;
 
 public class UserReportPageController implements Initializable{
 
@@ -33,11 +38,15 @@ public class UserReportPageController implements Initializable{
 	@FXML
 	private ComboBox<String> cmbMonth;
 	
-	public static String year;
-	public static String month;
+	public String year;
+	public String month;
+	
+	public static String counters;
 	
 	ObservableList<String> yearList;
 	ObservableList<String> MonthList;
+	
+	Message messageToServer = new Message(null,null);
 	
 	@FXML
 	public void SelectYear(ActionEvent event) {
@@ -67,6 +76,7 @@ public class UserReportPageController implements Initializable{
 	
 	public void ShowReportBtn(ActionEvent event) throws Exception{
 		// Checking if one or more fields are empty
+		boolean foundReport = false;
 		if ((cmbYear.getValue() == null) || (cmbMonth.getValue() == null)/* || (cmbLocation.getValue() == null)*/)
 		{
 			Alert alert = new Alert(AlertType.ERROR,"One or more feilds is Empty!",ButtonType.OK);
@@ -74,8 +84,26 @@ public class UserReportPageController implements Initializable{
 		}
 		else
 			{
-			nextWindow(event, "/gui_client_windows/BarChart.fxml", "Bar Chart (Users Report)");
+			
+			messageToServer.setCommand(Command.ReadUserReports);
+			messageToServer.setContent(0);
+			ClientUI.chat.accept(messageToServer);
+			
+			for (UsersReports userReport : ChatClient.usersReport) {
+				if ((userReport.getMonth().equals(month)) && (userReport.getYear().equals(year)))
+				{
+					counters = userReport.getData();
+					foundReport = true;
+					break;
+				}
 			}
+			if (foundReport)
+			nextWindow(event, "/gui_client_windows/BarChart.fxml", "Bar Chart (Users Report)");
+			else {
+				Alert alert = new Alert(AlertType.ERROR,"Couldn't find report",ButtonType.OK);
+				alert.showAndWait();
+			}
+		}
 	}
 	
 	public void BackBtn(ActionEvent event) throws Exception {

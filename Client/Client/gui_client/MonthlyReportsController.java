@@ -108,7 +108,7 @@ public class MonthlyReportsController implements Initializable {
 	 * Result : start combo box values
 	 * */
     public void setYearComboBox() {	
-    	ArrayList<String> year = new ArrayList<String>(Arrays.asList("2015","2016","2017","2018","2019","2020","2021","2022","2023"));
+    	ArrayList<String> year = new ArrayList<String>(Arrays.asList("2022","2023"));
     	
 		yearList = FXCollections.observableArrayList(year);
 		cmbYear.getItems().clear();

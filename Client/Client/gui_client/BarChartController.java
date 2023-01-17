@@ -20,6 +20,9 @@ import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import logic.Order;
 import logic.Subscriber;
@@ -51,7 +54,6 @@ public class BarChartController implements Initializable{
 	private int cnt4 = 0;
 	private int cnt5 = 0;
 	
-	
 	/**
 	 * This method loads the pie chart data.
 	 * @param location
@@ -60,13 +62,7 @@ public class BarChartController implements Initializable{
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle rb) {
-		
-		messageToServer.setCommand(Command.ReadUserReports);
-		messageToServer.setContent(0);
-		ClientUI.chat.accept(messageToServer);
-		
-		int ordersCount = 0;
-		String[] counters = null;
+		String[] numbers = null;
 		XYChart.Series data0 = new XYChart.Series<>();
 		XYChart.Series data1 = new XYChart.Series<>();
 		XYChart.Series data2 = new XYChart.Series<>();
@@ -80,23 +76,14 @@ public class BarChartController implements Initializable{
 		data4.setName("16-20");
 		data5.setName("21-25");
 		
-		for (UsersReports userReport : ChatClient.usersReport) {
-			
-			// add if condition to find the requested user report
-			// might need to add another window
-			if ((userReport.getMonth().equals(usr.month)) && (userReport.getYear().equals(usr.year)))
-			{
-				counters = userReport.getData().split(",");
-			
-				cnt0 = Integer.parseInt(counters[0]);
-				cnt1 = Integer.parseInt(counters[1]);
-				cnt2 = Integer.parseInt(counters[2]);
-				cnt3 = Integer.parseInt(counters[3]);
-				cnt4 = Integer.parseInt(counters[4]);
-				cnt5 = Integer.parseInt(counters[5]);
-			}
-			
-		}
+		numbers = UserReportPageController.counters.split(",");
+	
+		cnt0 = Integer.parseInt(numbers[0]);
+		cnt1 = Integer.parseInt(numbers[1]);
+		cnt2 = Integer.parseInt(numbers[2]);
+		cnt3 = Integer.parseInt(numbers[3]);
+		cnt4 = Integer.parseInt(numbers[4]);
+		cnt5 = Integer.parseInt(numbers[5]);
 		
 		data0.getData().add(new XYChart.Data("", cnt0));
 		data1.getData().add(new XYChart.Data("", cnt1));

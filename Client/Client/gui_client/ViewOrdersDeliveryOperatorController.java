@@ -49,7 +49,7 @@ public class ViewOrdersDeliveryOperatorController implements Initializable {
 	@FXML
 	private TableColumn<Delivery,String> statusCol;
 	@FXML
-	private Button logOutBtn;
+	private Button backBtn;
 	@FXML
 	private Label titlelbl;
 	
