@@ -52,6 +52,7 @@ public class ChatClient extends AbstractClient
   public static ArrayList<Integer> available; 
   public static ArrayList<Request> userRequest;
   public static ArrayList<StockRequest> stockRequests;
+  public static ArrayList<UsersReports> usersReport;
   public static String password;
   public static String role;
   public static String Fname;
@@ -174,6 +175,10 @@ public class ChatClient extends AbstractClient
 	  		orderId = (int)responseFromServer.getContent();
 	  		break;
 	  		
+	  	case ReadUserReports:
+	  		usersReport = (ArrayList<UsersReports>) (responseFromServer.getContent());
+	  		break;
+	  		
 	  	case ReadDeliveries:
 	  		deliveries = (ArrayList<Delivery>)responseFromServer.getContent();
 	  		break;
@@ -232,6 +237,7 @@ public class ChatClient extends AbstractClient
 	  available = null;
 	  userRequest = null;
 	  stockRequests = null;
+	  usersReport = null;
 	  password = null;
 	  role = null;
 	  Fname = null;

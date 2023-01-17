@@ -23,6 +23,7 @@ import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 import logic.Order;
 import logic.Subscriber;
+import logic.UsersReports;
 
 
 /**
@@ -41,6 +42,8 @@ public class BarChartController implements Initializable{
 
 	Message messageToServer = new Message(null,null);
 	
+	UserReportPageController usr;
+	
 	private int cnt0 = 0;
 	private int cnt1 = 0;
 	private int cnt2 = 0;
@@ -58,18 +61,12 @@ public class BarChartController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle rb) {
 		
-		// read users from data base.
-		messageToServer.setCommand(Command.ReadUsers);
-		messageToServer.setContent(0);	
-		ClientUI.chat.accept(messageToServer); 
-		
-		// reads orders from data base.
-		messageToServer.setCommand(Command.ReadOrders);
-		messageToServer.setContent(0);	
-		ClientUI.chat.accept(messageToServer); 
+		messageToServer.setCommand(Command.ReadUserReports);
+		messageToServer.setContent(0);
+		ClientUI.chat.accept(messageToServer);
 		
 		int ordersCount = 0;
-		
+		String[] counters = null;
 		XYChart.Series data0 = new XYChart.Series<>();
 		XYChart.Series data1 = new XYChart.Series<>();
 		XYChart.Series data2 = new XYChart.Series<>();
@@ -83,23 +80,22 @@ public class BarChartController implements Initializable{
 		data4.setName("16-20");
 		data5.setName("21-25");
 		
-		// loop to go over users and gathers the data.
-		for (Subscriber user : ChatClient.subscribers) {
+		for (UsersReports userReport : ChatClient.usersReport) {
 			
-				ordersCount = findUserOrdersCount(user.getId());
-				
-				if(ordersCount == 0)
-					cnt0++;
-				if ((ordersCount > 0) && (ordersCount <= 5))
-					cnt1++;
-				if ((ordersCount > 5) && (ordersCount <= 10))
-					cnt2++;
-				if ((ordersCount > 10) && (ordersCount <= 15))
-					cnt3++;
-				if ((ordersCount > 15) && (ordersCount <= 20))
-					cnt4++;
-				if ((ordersCount > 20) && (ordersCount <= 25))
-					cnt5++;
+			// add if condition to find the requested user report
+			// might need to add another window
+			if ((userReport.getMonth().equals(usr.month)) && (userReport.getYear().equals(usr.year)))
+			{
+				counters = userReport.getData().split(",");
+			
+				cnt0 = Integer.parseInt(counters[0]);
+				cnt1 = Integer.parseInt(counters[1]);
+				cnt2 = Integer.parseInt(counters[2]);
+				cnt3 = Integer.parseInt(counters[3]);
+				cnt4 = Integer.parseInt(counters[4]);
+				cnt5 = Integer.parseInt(counters[5]);
+			}
+			
 		}
 		
 		data0.getData().add(new XYChart.Data("", cnt0));
@@ -118,21 +114,6 @@ public class BarChartController implements Initializable{
 	}
 	
 	/**
-	 * This method counts how many order did each user make.
-	 * 
-	 * @param id
-	 * @return cnt - the amount of orders each user made.
-	 */
-	public int findUserOrdersCount(int id) {
-		int cnt = 0;
-		for (Order i : ChatClient.orders) {	// loop to go over all the orders
-			if (i.getCustomer_id() == id)
-				cnt++;
-		}
-		return cnt;
-	}
-
-	/**
 	 * This method hides the open window and shows a new one.
 	 * 
 	 * @param event
@@ -142,10 +123,10 @@ public class BarChartController implements Initializable{
 	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/ChooseReportType.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/UserReportPage.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
-		primaryStage.setTitle("Choose Report Type");
+		primaryStage.setTitle("User Report Type");
 		primaryStage.setScene(scene);		
 		primaryStage.show();	
 	}
