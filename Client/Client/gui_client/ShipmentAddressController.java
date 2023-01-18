@@ -24,6 +24,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import logic.Location;
 
@@ -42,6 +44,8 @@ public class ShipmentAddressController implements Initializable{
 	private Button backBtn;
 	@FXML
 	private Button sendreqBtn;
+	@FXML
+	private ImageView image;
 	
 	private ObservableList<String> obs;
 	
@@ -52,6 +56,9 @@ public class ShipmentAddressController implements Initializable{
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
+		
 		ClientUI.chat.accept(new Message(0,Command.ReadLocations));
 		
 	 	ArrayList<String> Locations = new ArrayList<String>();
@@ -86,6 +93,7 @@ public class ShipmentAddressController implements Initializable{
 			Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/RemoteLocation.fxml"));
 			Stage primaryStage = new Stage();
 			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 			primaryStage.setTitle("Remote Location");
 			primaryStage.setScene(scene);		
 			primaryStage.show();	
@@ -102,6 +110,7 @@ public class ShipmentAddressController implements Initializable{
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/ShipmentMethod.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle("Shipment Method");
 		primaryStage.setScene(scene);		
 		primaryStage.show();	

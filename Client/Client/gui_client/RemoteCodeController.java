@@ -25,6 +25,8 @@ import javafx.scene.control.TextField;
 import logic.Item;
 import logic.Order;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class RemoteCodeController implements Initializable{
@@ -35,6 +37,8 @@ public class RemoteCodeController implements Initializable{
 	private Button OrderSummaryBtn;
 	@FXML
 	private TextField Codetxt;
+	@FXML
+	private ImageView image;
 	
 	private boolean flag = true;
 	
@@ -138,6 +142,7 @@ public class RemoteCodeController implements Initializable{
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/UserUI.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle("EKRUT");
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -150,6 +155,8 @@ public class RemoteCodeController implements Initializable{
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
 		Message msg = new Message(null,null);
 		msg.setCommand(Command.ReadItems);
 		msg.setContent(0);

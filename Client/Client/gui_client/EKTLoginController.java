@@ -23,6 +23,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -36,12 +38,12 @@ public class EKTLoginController implements Initializable {
 	
 	@FXML
 	private ComboBox<String> cmbUser;
-	
 	@FXML
 	private Button backBtn;
-	
 	@FXML
 	private Button loginBtn;
+	@FXML
+	private ImageView image;
 	
 	ObservableList<String> users;
 	
@@ -63,6 +65,8 @@ public class EKTLoginController implements Initializable {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
 		u = "";
 		setUserComboBox();
 	}
@@ -151,6 +155,7 @@ public class EKTLoginController implements Initializable {
 		Parent root = FXMLLoader.load(getClass().getResource(path));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle(title);
 		primaryStage.setScene(scene);		
 		primaryStage.show();	

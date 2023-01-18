@@ -29,6 +29,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import logic.Delivery;
 import logic.Machine;
@@ -46,6 +48,8 @@ public class UpdateStockController implements Initializable{
 	private Machine currentMachine = null;
 	private boolean hasUpdatedValues = false;
 	
+	@FXML
+	private ImageView image;
 	@FXML
 	private Button logOutBtn;
 	@FXML
@@ -77,6 +81,8 @@ public class UpdateStockController implements Initializable{
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
 		DisplayComponentsInfo(false);
 		updateBtn.setDisable(true);
 		ReadMachinesAndStockRequests();
@@ -111,6 +117,7 @@ public class UpdateStockController implements Initializable{
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/LoginEkrut.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle("Login Ekrut");
 		primaryStage.setScene(scene);		
 		primaryStage.show();

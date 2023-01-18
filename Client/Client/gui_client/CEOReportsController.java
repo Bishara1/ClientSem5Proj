@@ -12,6 +12,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 
@@ -33,12 +35,16 @@ public class CEOReportsController implements Initializable {
 	private Button backBtn;
 	@FXML
 	private Button viewdiscountBtn;
+	@FXML
+	private ImageView image;
 	
 	/**
 	 * Method that runs before displaying the window.
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
 		// set title to welcome and ceo name
 		this.titleLbl.setText("Welcome " + ChatClient.Fname);
 	}
@@ -92,6 +98,7 @@ public class CEOReportsController implements Initializable {
 		Parent root = FXMLLoader.load(getClass().getResource(window_location));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle(title);
 		primaryStage.setScene(scene);		
 		primaryStage.show();	

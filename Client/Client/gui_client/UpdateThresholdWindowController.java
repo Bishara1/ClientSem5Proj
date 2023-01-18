@@ -25,6 +25,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import logic.Machine;
 
@@ -43,6 +45,8 @@ public class UpdateThresholdWindowController implements Initializable {
 	private ComboBox<String> machineCode;
 	@FXML
 	private TextField thresholdValue;
+	@FXML
+	private ImageView image;
 	
 	ObservableList<String> MachineIdList; //ArrayList of machine IDs
 	ObservableList<String> LocationList; //ArrayList of location names
@@ -111,6 +115,7 @@ public class UpdateThresholdWindowController implements Initializable {
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/RegionalManager.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle("Regional Manager");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
@@ -124,6 +129,8 @@ public class UpdateThresholdWindowController implements Initializable {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
 		selectedLocation = ChatClient.locationName;
 		locationlbl.setText(locationlbl.getText() + selectedLocation);
 		setMachineBox();

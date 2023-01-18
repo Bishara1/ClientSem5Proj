@@ -5,38 +5,33 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" style="-fx-background-color: #e3c68c;" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ShipmentAddressController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.ShipmentAddressController">
    <children>
       <VBox alignment="BASELINE_CENTER" layoutX="-16.0" layoutY="-10.0" prefHeight="625.0" prefWidth="230.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="280.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="image" fitHeight="280.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </VBox>
-      <Label layoutX="310.0" layoutY="129.0" prefHeight="55.0" prefWidth="368.0" text="Insert your address for shipment request" textFill="#7c6435">
+      <Label alignment="CENTER" layoutX="310.0" layoutY="129.0" prefHeight="55.0" prefWidth="368.0" text="Insert address for shipment request" textFill="#7c6435">
          <font>
             <Font name="Elephant" size="18.0" />
          </font>
       </Label>
       <Label layoutX="494.0" layoutY="227.0" />
-      <Label layoutX="351.0" layoutY="278.0" text="City" textFill="#7c6435">
+      <Label layoutX="350.0" layoutY="278.0" text="City" textFill="#7c6435">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Button fx:id="backBtn" layoutX="269.0" layoutY="526.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="38.0" prefWidth="161.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
+      <Button id="backBtn" fx:id="backBtn" layoutX="269.0" layoutY="526.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="38.0" prefWidth="161.0" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -46,7 +41,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Label layoutX="351.0" layoutY="341.0" text="Street" textFill="#7c6435">
+      <Label layoutX="353.0" layoutY="341.0" text="Street" textFill="#7c6435">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>

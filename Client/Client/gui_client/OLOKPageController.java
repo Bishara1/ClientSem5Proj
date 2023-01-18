@@ -1,18 +1,24 @@
 package gui_client;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
  * This class lets the user decide which configuration he would like to use.
  */
-public class OLOKPageController {
+public class OLOKPageController implements Initializable {
 
 	@FXML
 	private Button olBtn;
@@ -22,6 +28,8 @@ public class OLOKPageController {
 	
 	@FXML
 	private Button backBtn;
+	@FXML
+	private ImageView image;
 	
 	public static String type;	// static string for configuration type
 	
@@ -67,9 +75,16 @@ public class OLOKPageController {
 		Parent root = FXMLLoader.load(getClass().getResource(path));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle(title);
 		primaryStage.setScene(scene);		
 		primaryStage.show();	
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
 	}
 	
 }

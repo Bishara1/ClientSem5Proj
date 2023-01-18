@@ -1,6 +1,9 @@
 package gui_client;
 
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import client.ChatClient;
 import client.ClientUI;
 import common.Command;
@@ -8,6 +11,7 @@ import common.Message;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,6 +20,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import logic.Subscriber;
@@ -24,7 +30,7 @@ import logic.Subscriber;
 /**
  * Controller class for customer service window
  */
-public class CustomerServiceWorkerController {
+public class CustomerServiceWorkerController implements Initializable{
 	
 	//Window components
 	@FXML
@@ -51,6 +57,8 @@ public class CustomerServiceWorkerController {
 	private Button backBtn;
 	@FXML
 	private Label titleLbl;
+	@FXML
+	private ImageView image;
 	
 	//message objects to send to server
 	Message messageToServer = new Message(null, null);
@@ -111,8 +119,15 @@ public class CustomerServiceWorkerController {
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/WorkerUI.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
-		primaryStage.setTitle("User Login");
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
+		primaryStage.setTitle("worker UI");
 		primaryStage.setScene(scene);
 		primaryStage.show();
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);	
 	}
 }

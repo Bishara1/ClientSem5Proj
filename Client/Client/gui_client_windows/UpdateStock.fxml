@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -15,14 +13,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" style="-fx-background-color: #e3c68c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.UpdateStockController">
    <children>
-      <Button fx:id="logOutBtn" layoutX="269.0" layoutY="526.0" mnemonicParsing="false" onAction="#LogoutBtn" prefHeight="38.0" prefWidth="161.0" text="Logout" textFill="WHITE">
+      <Button id="backBtn" fx:id="logOutBtn" layoutX="269.0" layoutY="526.0" mnemonicParsing="false" onAction="#LogoutBtn" prefHeight="38.0" prefWidth="161.0" text="Logout" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
       <Button fx:id="updateBtn" layoutX="525.0" layoutY="526.0" mnemonicParsing="false" onAction="#UpdateBtn" prefHeight="38.0" prefWidth="161.0" text="Update Stock" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="22.0" />
+            <Font name="System Bold" size="16.0" />
          </font>
       </Button>
       <VBox alignment="BASELINE_CENTER" layoutX="-9.0" layoutY="-4.0" prefHeight="621.0" prefWidth="223.0" style="-fx-background-color: #FEF5EA; -fx-border-color: #c99531; -fx-border-width: 5;">
@@ -30,14 +28,10 @@
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="235.0" fitWidth="220.0">
-               <image>
-                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="image" fitHeight="235.0" fitWidth="220.0" />
          </children>
       </VBox>
-      <TableView fx:id="machineTable" editable="true" layoutX="279.0" layoutY="217.0" prefHeight="228.0" prefWidth="401.0">
+      <TableView fx:id="machineTable" editable="true" layoutX="279.0" layoutY="223.0" prefHeight="228.0" prefWidth="401.0">
          <columns>
             <TableColumn fx:id="itemsCol" prefWidth="207.0" text="Items" />
             <TableColumn fx:id="amountCol" minWidth="0.0" onEditCommit="#checkModifications" prefWidth="207.0" text="Amount" />
@@ -49,7 +43,7 @@
          </font>
       </Label>
       <ComboBox fx:id="requestCmb" layoutX="479.0" layoutY="98.0" onAction="#UpdateTable" prefWidth="150.0" promptText="Request #" />
-      <Label fx:id="thresholdlbl" layoutX="279.0" layoutY="159.0" text="Threshold of machine: " textFill="#7c6435">
+      <Label fx:id="thresholdlbl" layoutX="279.0" layoutY="160.0" text="Threshold of machine: " textFill="#7c6435">
          <font>
             <Font name="Elephant" size="14.0" />
          </font>
@@ -59,12 +53,12 @@
             <Font name="Elephant" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="machineItemslbl" layoutX="279.0" layoutY="199.0" text="Machine items:" textFill="#7c6435">
+      <Label fx:id="machineItemslbl" layoutX="279.0" layoutY="201.0" text="Machine items:" textFill="#7c6435">
          <font>
             <Font name="Elephant" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="machineLocationlbl" layoutX="279.0" layoutY="179.0" text="Machine location:" textFill="#7c6435">
+      <Label fx:id="machineLocationlbl" layoutX="279.0" layoutY="180.0" text="Machine location:" textFill="#7c6435">
          <font>
             <Font name="Elephant" size="14.0" />
          </font>
@@ -74,15 +68,10 @@
             <Font name="Elephant" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="resetBtn" layoutX="402.0" layoutY="452.0" mnemonicParsing="false" onAction="#DisplayOriginalValuesOfMachineToTable" prefHeight="38.0" prefWidth="161.0" text="Reset Changes" textFill="WHITE">
+      <Button fx:id="resetBtn" layoutX="402.0" layoutY="464.0" mnemonicParsing="false" onAction="#DisplayOriginalValuesOfMachineToTable" prefHeight="38.0" prefWidth="161.0" text="Reset Changes" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="22.0" />
+            <Font name="System Bold" size="16.0" />
          </font>
       </Button>
    </children>
-   <stylesheets>
-      <URL value="@../../../../CommonSem5Proj/Common/Common/css/buttons.css" />
-      <URL value="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" />
-      <URL value="@../../../../CommonSem5Proj/Common/Common/css/table.css" />
-   </stylesheets>
 </AnchorPane>

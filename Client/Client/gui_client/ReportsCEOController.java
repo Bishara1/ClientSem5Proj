@@ -16,6 +16,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -23,6 +25,8 @@ import javafx.stage.Stage;
  */
 public class ReportsCEOController implements Initializable{
 	
+	@FXML
+	private ImageView image;
 	@FXML
 	private Button backBtn;
 	
@@ -39,6 +43,8 @@ public class ReportsCEOController implements Initializable{
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
 		String s = mpc.requestedReport;	//static variable
 
 		ArrayList<PieChart.Data> data = new ArrayList<>();
@@ -64,6 +70,7 @@ public class ReportsCEOController implements Initializable{
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/MonthlyReports.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle("Monthly Reports");
 		primaryStage.setScene(scene);		
 		primaryStage.show();	

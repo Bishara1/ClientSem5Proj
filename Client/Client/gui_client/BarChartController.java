@@ -18,6 +18,8 @@ import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 
@@ -28,6 +30,8 @@ public class BarChartController implements Initializable{
 	
 	@FXML
 	private BarChart<String, Integer> barChart;
+	@FXML
+	private ImageView image;
 	
 	@FXML
 	private PieChart pieChart;
@@ -53,6 +57,9 @@ public class BarChartController implements Initializable{
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle rb) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
+		
 		String[] numbers = null;
 		XYChart.Series data0 = new XYChart.Series<>();
 		XYChart.Series data1 = new XYChart.Series<>();
@@ -103,10 +110,13 @@ public class BarChartController implements Initializable{
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/UserReportPage.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle("User Report Type");
 		primaryStage.setScene(scene);		
 		primaryStage.show();	
 	}
+	
+	
 	
 	
 }

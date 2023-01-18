@@ -25,6 +25,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 
@@ -42,6 +44,8 @@ public class DiscountLocationController implements Initializable {
 	private ComboBox cmbLocation;
 	@FXML
 	private TextField discount;
+	@FXML
+	private ImageView image;
 	
 	private String location;
 	private ObservableList<String> LocationList;
@@ -53,6 +57,8 @@ public class DiscountLocationController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		setLocationComboBox();
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
 	}
 	
 	/**
@@ -177,6 +183,7 @@ public class DiscountLocationController implements Initializable {
 		
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle(title);
 		primaryStage.setScene(scene);		
 		primaryStage.show();

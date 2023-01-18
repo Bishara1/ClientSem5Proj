@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.Blend?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -18,11 +17,7 @@
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="280.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="image" fitHeight="280.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </VBox>
       <Label fx:id="titletxt" alignment="CENTER" layoutX="207.0" layoutY="29.0" prefHeight="71.0" prefWidth="537.0" text="Welcome" textFill="#7c6435">
@@ -30,29 +25,32 @@
             <Font name="Elephant" size="56.0" />
          </font>
       </Label>
-      <Button fx:id="backbtn" layoutX="269.0" layoutY="526.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="38.0" prefWidth="161.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/exit-buttons.css" text="Back" textFill="WHITE">
+      <Button id="backBtn" fx:id="backbtn" layoutX="269.0" layoutY="526.0" mnemonicParsing="false" onAction="#BackBtn" prefHeight="38.0" prefWidth="161.0" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Pane layoutX="352.0" layoutY="151.0" prefHeight="329.0" prefWidth="248.0" stylesheets="@../../../../CommonSem5Proj/Common/Common/css/buttons.css">
+      <Pane layoutX="352.0" layoutY="151.0" prefHeight="329.0" prefWidth="248.0">
          <children>
-            <Button fx:id="createorderbtn" layoutX="28.0" layoutY="37.0" mnemonicParsing="false" onAction="#CreateOrderBtn" prefHeight="38.0" prefWidth="177.0" stylesheets="@../../../git/CommonSem5Proj/Common/Common/css/buttons.css" text="Create Order" textFill="WHITE">
+            <Button fx:id="createorderbtn" layoutX="28.0" layoutY="37.0" mnemonicParsing="false" onAction="#CreateOrderBtn" prefHeight="38.0" prefWidth="180.0" text="Create Order" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="createremotebtn" layoutX="28.0" layoutY="117.0" mnemonicParsing="false" onAction="#CreateRemoteOrderBtn" prefHeight="38.0" prefWidth="177.0" stylesheets="@../../../git/CommonSem5Proj/Common/Common/css/buttons.css" text="Create Remote Order" textFill="WHITE">
+            <Button fx:id="createremotebtn" layoutX="28.0" layoutY="117.0" mnemonicParsing="false" onAction="#CreateRemoteOrderBtn" prefHeight="38.0" prefWidth="180.0" text="Create Remote Order" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="subreqbtn" layoutX="28.0" layoutY="197.0" mnemonicParsing="false" onAction="#SubReqBtn" prefHeight="38.0" prefWidth="177.0" stylesheets="@../../../git/CommonSem5Proj/Common/Common/css/buttons.css" text="Subscriber request" textFill="WHITE">
+            <Button fx:id="subreqbtn" layoutX="28.0" layoutY="197.0" mnemonicParsing="false" onAction="#SubReqBtn" prefHeight="38.0" prefWidth="180.0" text="Subscriber request" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="remotecodebtn" layoutX="28.0" layoutY="277.0" mnemonicParsing="false" onAction="#RemoteCode" prefHeight="38.0" prefWidth="177.0" text="Receive Remote Order" />
+            <Button fx:id="remotecodebtn" layoutX="28.0" layoutY="277.0" mnemonicParsing="false" onAction="#RemoteCode" prefHeight="38.0" prefWidth="180.0" text="Receive Remote Order" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
          </children>
       </Pane>
       <Label layoutX="366.0" layoutY="124.0" text="What do you like to do?" textFill="#7c6435">

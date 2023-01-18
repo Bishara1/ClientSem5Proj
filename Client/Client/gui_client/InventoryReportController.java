@@ -23,6 +23,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import logic.InventoryReports;
 import logic.Machine;
@@ -54,6 +56,8 @@ public class InventoryReportController implements Initializable{
 	private ComboBox<String> cmbYear;
 	@FXML
 	private ComboBox<String> cmbMonth;
+	@FXML
+	private ImageView image;
 	
 	ObservableList<String> MachineIdList;
 	ObservableList<String> LocationList;
@@ -105,6 +109,8 @@ public class InventoryReportController implements Initializable{
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
 		ArrayList<String> locationStr = new ArrayList<String>(Arrays.asList("North", "South", "UAE"));
 		LocationList = FXCollections.observableArrayList(locationStr);
 		cmbLocation.getItems().clear();
@@ -201,6 +207,7 @@ public class InventoryReportController implements Initializable{
 		Parent root = FXMLLoader.load(getClass().getResource(path));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle(title);
 		primaryStage.setScene(scene);		
 		primaryStage.show();	

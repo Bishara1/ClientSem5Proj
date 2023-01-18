@@ -30,6 +30,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import logic.Delivery;
 
@@ -56,6 +58,8 @@ public class ViewOrdersDeliveryOperatorController implements Initializable {
 	private Button backBtn;
 	@FXML
 	private Label titlelbl;
+	@FXML
+	private ImageView image;
 	
 	
 	/**
@@ -63,6 +67,8 @@ public class ViewOrdersDeliveryOperatorController implements Initializable {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
 		// set title
 		this.titlelbl.setText("Welcome " + ChatClient.Fname);
 		// import deliveries
@@ -128,7 +134,7 @@ public class ViewOrdersDeliveryOperatorController implements Initializable {
 		
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/WorkerUI.fxml"));
 		Scene scene = new Scene(root);
-		
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 //		String title = (ChatClient.role.equals("dlw")) ? "Deliverer" : "Delivery Operator";
 		primaryStage.setTitle("WORKER UI");
 		primaryStage.setScene(scene);

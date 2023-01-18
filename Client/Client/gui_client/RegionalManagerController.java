@@ -13,6 +13,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class RegionalManagerController implements Initializable {
@@ -25,6 +27,8 @@ public class RegionalManagerController implements Initializable {
 	private Button registrationBtn;
     @FXML
     private Label welcomelbl;
+    @FXML
+	private ImageView image;
 	
 	/**
 	 * Hides current window
@@ -38,6 +42,7 @@ public class RegionalManagerController implements Initializable {
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/LoginEkrut.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle("Login Ekrut");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
@@ -55,7 +60,8 @@ public class RegionalManagerController implements Initializable {
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/UpdateThresholdWindow.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
-		primaryStage.setTitle("Login Ekrut");
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
+		primaryStage.setTitle("update threshold window");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
 	}
@@ -66,6 +72,8 @@ public class RegionalManagerController implements Initializable {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
 		welcomelbl.setText("Weclome " + ChatClient.Fname);
 	}
 	

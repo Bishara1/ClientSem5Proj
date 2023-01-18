@@ -5,7 +5,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -33,11 +32,7 @@
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="280.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="image" fitHeight="280.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </VBox>
       <TextField fx:id="discount" layoutX="439.0" layoutY="330.0" prefHeight="31.0" prefWidth="163.0" promptText="Discount Percentage" style="-fx-background-radius: 10;" />

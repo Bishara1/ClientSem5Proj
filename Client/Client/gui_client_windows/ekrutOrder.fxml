@@ -18,11 +18,7 @@
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="280.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="image" fitHeight="280.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </VBox>
       <Pane layoutX="255.0" layoutY="161.0" prefHeight="406.0" prefWidth="659.0" style="-fx-background-color: #e6cb9a; -fx-border-width: 3; -fx-border-color: #c99531;">

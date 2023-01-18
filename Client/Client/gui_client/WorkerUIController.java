@@ -21,6 +21,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import logic.Request;
 
@@ -31,12 +33,16 @@ public class WorkerUIController implements Initializable{
 	
 	@FXML
 	private Label titletxt;
+	@FXML
+	private ImageView image;
 
 	/**
 	 * This window initializes the text of a label
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
 		this.titletxt.setText("Welcome " + ChatClient.Fname);
 	}
 	
@@ -51,7 +57,6 @@ public class WorkerUIController implements Initializable{
 		Stage primaryStage = new Stage();
 		Parent root = null;
 		String title = "";
-		System.out.println(ChatClient.role);
 		switch(ChatClient.role) {
 		
 		case "ceo":
@@ -116,6 +121,7 @@ public class WorkerUIController implements Initializable{
 			break;
 		}
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle(title);
 		primaryStage.setScene(scene);
 		primaryStage.show();	
@@ -153,6 +159,7 @@ public class WorkerUIController implements Initializable{
 		Parent root = FXMLLoader.load(getClass().getResource(window_location));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle(title);
 		primaryStage.setScene(scene);		
 		primaryStage.show();	

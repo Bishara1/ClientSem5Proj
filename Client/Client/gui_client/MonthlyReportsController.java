@@ -16,6 +16,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import logic.Order;
 import logic.OrdersReports;
@@ -43,6 +45,8 @@ public class MonthlyReportsController implements Initializable {
 	private ComboBox<String> cmbMonth;
 	@FXML
 	private ComboBox<String> cmbLocation;
+	@FXML
+	private ImageView image;
 	
 	private int flag = 0;
 	
@@ -94,6 +98,8 @@ public class MonthlyReportsController implements Initializable {
 	 * @param rb -  ResourceBundle
 	 */
 	public void initialize(URL url, ResourceBundle rb) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
 		setYearComboBox();	//initializes combo box
 		setMonthComboBox();
 		setLocationComboBox();
@@ -441,6 +447,7 @@ public class MonthlyReportsController implements Initializable {
 		Parent root = FXMLLoader.load(getClass().getResource(window_location));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle(title);
 		primaryStage.setScene(scene);		
 		primaryStage.show();	

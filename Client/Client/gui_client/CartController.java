@@ -28,6 +28,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import logic.Item;
 import logic.Subscriber;
@@ -46,6 +47,8 @@ public class CartController implements Initializable{
 	private TextField removeidtxt;
 	@FXML
 	private TextField totalpricetxt;
+	@FXML
+	private ImageView image;
 	@FXML
 	private TableView<ItemTable> table;
 	@FXML
@@ -67,6 +70,7 @@ public class CartController implements Initializable{
 	 * Loads values into table
 	 */
 	public void LoadAndSetTable() {
+		
 		cart = ChatClient.cart;
 		productidcol.setCellValueFactory(new PropertyValueFactory<>("Label"));
 		amountcol.setCellValueFactory(new PropertyValueFactory<>("Amount"));
@@ -101,7 +105,8 @@ public class CartController implements Initializable{
 					root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Receipt.fxml"));
 					Stage primaryStage = new Stage();
 					Scene scene = new Scene(root);
-					primaryStage.setTitle("EKRUT");
+					scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
+					primaryStage.setTitle("Receipt");
 					primaryStage.setScene(scene);		
 					primaryStage.show();
 				}
@@ -112,7 +117,8 @@ public class CartController implements Initializable{
 				root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Purchase.fxml"));
 				Stage primaryStage = new Stage();
 				Scene scene = new Scene(root);
-				primaryStage.setTitle("EKRUT");
+				scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
+				primaryStage.setTitle("Purchase");
 				primaryStage.setScene(scene);		
 				primaryStage.show();
 			}
@@ -137,7 +143,9 @@ public class CartController implements Initializable{
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/ekrutOrder.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
-		primaryStage.setTitle("EKRUT");
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
+
+		primaryStage.setTitle("Ekrut Order");
 		primaryStage.setScene(scene);		
 		primaryStage.show();
 	}

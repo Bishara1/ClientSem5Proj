@@ -45,6 +45,7 @@ public class Timespent extends Application implements Runnable{
 		    	//hide all windows
 		    	//disconnect current user
 		    	ObservableList<Window> windows12;
+//		    	windows12.get(0).hide();
 		    	Iterator<Window> it = Stage.impl_getWindows();
 		    	ArrayList<Window> windows = new ArrayList<Window>();
 		    	while(it.hasNext())

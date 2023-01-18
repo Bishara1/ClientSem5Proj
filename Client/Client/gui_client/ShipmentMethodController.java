@@ -1,19 +1,25 @@
 package gui_client;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import client.ChatClient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
  * This method lets the user choose what shipment method he likes
  */
-public class ShipmentMethodController {
+public class ShipmentMethodController implements Initializable {
 	
 	@FXML
 	private Button backBtn;
@@ -21,6 +27,8 @@ public class ShipmentMethodController {
 	private Button immediatePickupBtn;
 	@FXML
 	private Button deliveryBtn;
+	@FXML
+	private ImageView image;
 	
 	
 	/**
@@ -34,6 +42,7 @@ public class ShipmentMethodController {
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/RemoteLocation.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle("Receipt");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
@@ -50,6 +59,7 @@ public class ShipmentMethodController {
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/ShipmentAddress.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle("Insert your address for shipment request");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
@@ -70,9 +80,16 @@ public class ShipmentMethodController {
 			root =FXMLLoader.load(getClass().getResource("/gui_client_windows/WorkerUI.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle("Cart");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
 	}
 
 }

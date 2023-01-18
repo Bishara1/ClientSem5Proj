@@ -26,6 +26,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import logic.Request;
 
@@ -42,6 +44,8 @@ public class SubscriberRequestController  implements Initializable
 	private TableColumn<ViewRequest,String> idcol;
 	@FXML
 	private TableColumn<ViewRequest,String> typecol;
+	@FXML
+	private ImageView image;
 	
 	private ObservableList<ViewRequest> obs;
 	
@@ -54,6 +58,8 @@ public class SubscriberRequestController  implements Initializable
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
 		messageToServer.setCommand(Command.ReadRequests);
 		messageToServer.setContent(0);
 		ClientUI.chat.accept(messageToServer);
@@ -111,6 +117,7 @@ public class SubscriberRequestController  implements Initializable
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/WorkerUI.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle("WORKER UI");
 		primaryStage.setScene(scene);		
 		primaryStage.show();	

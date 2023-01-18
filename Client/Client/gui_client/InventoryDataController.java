@@ -23,6 +23,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import logic.InventoryReports;
 import logic.Item;
@@ -48,6 +50,8 @@ public class InventoryDataController implements Initializable{
 	private Label stockLbl;
 	@FXML
 	private Label machineIdLbl;
+	@FXML
+	private ImageView image;
 	
 	@FXML
 	private TableView<ViewItem> tableSub;
@@ -76,6 +80,8 @@ public class InventoryDataController implements Initializable{
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
 		this.dateLbl.setText(String.valueOf(LocalDate.now()));
 		this.locationLbl.setText(report.getLocation());
 		this.monthYearLbl.setText(report.getMonth()+"/"+report.getYear());
@@ -226,6 +232,7 @@ public class InventoryDataController implements Initializable{
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/InventoryReport.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle("Inventory Report");
 		primaryStage.setScene(scene);		
 		primaryStage.show();	

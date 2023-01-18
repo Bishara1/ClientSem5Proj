@@ -60,11 +60,7 @@
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="209.0" fitWidth="224.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../CommonSem5Proj/Common/Common/images/ekrut.png" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="image" fitHeight="209.0" fitWidth="224.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </VBox>
       <ImageView fitHeight="39.0" fitWidth="43.0" layoutX="944.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">

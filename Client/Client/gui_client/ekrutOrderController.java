@@ -30,6 +30,14 @@ import logic.Item;
 import logic.Location;
 import logic.Machine;
 
+/**
+ * @author safwa
+ *
+ */
+/**
+ * @author safwa
+ *
+ */
 public class ekrutOrderController implements Initializable{
 	
 
@@ -120,6 +128,16 @@ public class ekrutOrderController implements Initializable{
 	
 	
 	
+	/**
+	 * Initializes window components
+	 * Reads all machines and items from database
+	 * Starts the timing thread
+	 * Updates sale according to user status and location status
+	 * Generates a list of all currently available items
+	 * Initializes local cart and rotation of items (item page number)
+	 * Calls LoadItems()
+	 * 
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		ClientUI.chat.accept(new Message(0, Command.ReadMachines));
@@ -179,6 +197,16 @@ public class ekrutOrderController implements Initializable{
 		
 	}
 	
+	/**
+	 * Saves local cart to ChatClient to a static public cart
+	 * Stops timer thread
+	 * Saves local machine stock in ChatClient to a static public ArrayList 
+	 * If local cart is empty throws an alert and stays at the same page
+	 * Moves to cart if everything is okay
+	 * 
+	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @throws Exception
+	 */
 	public void ProceedCartBtn(ActionEvent event) throws Exception {
 		//deal with threshold, send a message -> change the value of a static field in chatClient
 		ChatClient.timer.stop();
@@ -216,11 +244,21 @@ public class ekrutOrderController implements Initializable{
 			Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Cart.fxml"));
 			Stage primaryStage = new Stage();
 			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 			primaryStage.setTitle("Cart");
 			primaryStage.setScene(scene);		
 			primaryStage.show();
 		}
 	}
+	/**
+	 * Hides current window
+	 * Stop timer thread
+	 * Checks the field role in ChatClient 
+	 * Goes back to relevant page according to field role in ChatClient
+	 * 
+	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
+	 * @throws Exception
+	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		
 		ChatClient.timer.stop();
@@ -265,12 +303,19 @@ public class ekrutOrderController implements Initializable{
 		}
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle("EKRUT");
 		primaryStage.setScene(scene);		
 		primaryStage.show();	
 		
 	}
 	
+	/**
+	 * Moves to next page of items (Adds 1 from rotation which is the item page number)
+	 * Checks if were at the last page, if we are go back to page 1
+	 * Loads items of new item page
+	 * Restarts timer thread 
+	 */
 	public void NextItems()
 	{
 		if((rotation+1)*4 >= generatedItems.size())
@@ -284,6 +329,12 @@ public class ekrutOrderController implements Initializable{
 	
 	}
 	
+	/**
+	 * Moves to previous page of items (Subtracts 1 from rotation which is the item page number)
+	 * Checks if were at the first page, if we are go to the last page (Could be page 1 meaning we only have 1 page of items)
+	 * Loads items of new item page
+	 * Restarts timer thread 
+	 */
 	public void PrevItems()
 	{
 		if(rotation == 0)
@@ -300,6 +351,13 @@ public class ekrutOrderController implements Initializable{
 	
 	}
 	
+	/**
+	 * Subtracts 1 from the item amount of current cart if and only if this item's amount is at least 1 in local cart
+	 * Calculates new stock and new amount that we picked of item in place rotation*4 (First item in current page)
+	 * Sets availability, amount and total price labels
+	 * Updates local cart according to new amount picked
+	 * Resets timer thread
+	 */
 	public void LessItem1() //NEW *******************************
 	{
 		if(amount.get(rotation*4)>0)
@@ -321,6 +379,13 @@ public class ekrutOrderController implements Initializable{
 		
 	}
 	
+	/**
+	 * Adds 1 to the item amount of current cart if and only if this item's availability is at least 1 in stock
+	 * Calculates new stock and new amount that we picked of item in place rotation*4 (First item in current page)
+	 * Sets availability, amount and total price labels
+	 * Updates local cart according to new amount picked
+	 * Resets timer thread
+	 */
 	public void MoreItem1() //NEW *******************************
 	{
 		if(available.get(rotation*4)>0)
@@ -341,6 +406,13 @@ public class ekrutOrderController implements Initializable{
 		}
 	}
 	
+	/**
+	 * Subtracts 1 from the item amount of current cart if and only if this item's amount is at least 1 in local cart
+	 * Calculates new stock and new amount that we picked of item in place rotation*4 + 1 (Second item in current page)
+	 * Sets availability, amount and total price labels
+	 * Updates local cart according to new amount picked
+	 * Resets timer thread
+	 */
 	public void LessItem2() //NEW *******************************
 	{
 		if(amount.get(rotation*4+1)>0)
@@ -361,6 +433,13 @@ public class ekrutOrderController implements Initializable{
 		}
 	}
 	
+	/**
+	 * Adds 1 to the item amount of current cart if and only if this item's availability is at least 1 in stock
+	 * Calculates new stock and new amount that we picked of item in place rotation*4 + 1 (Second item in current page)
+	 * Sets availability, amount and total price labels
+	 * Updates local cart according to new amount picked
+	 * Resets timer thread
+	 */
 	public void MoreItem2() //NEW *******************************
 	{
 		if(available.get(rotation*4+1)>0)
@@ -381,6 +460,13 @@ public class ekrutOrderController implements Initializable{
 		}
 	}
 	
+	/**
+	 * Subtracts 1 from the item amount of current cart if and only if this item's amount is at least 1 in local cart
+	 * Calculates new stock and new amount that we picked of item in place rotation*4 + 2 (Third item in current page)
+	 * Sets availability, amount and total price labels
+	 * Updates local cart according to new amount picked
+	 * Resets timer thread
+	 */
 	public void LessItem3() //NEW *******************************
 	{
 		if(amount.get(rotation*4+2)>0)
@@ -401,6 +487,13 @@ public class ekrutOrderController implements Initializable{
 		}
 	}
 	
+	/**
+	 * Adds 1 to the item amount of current cart if and only if this item's availability is at least 1 in stock
+	 * Calculates new stock and new amount that we picked of item in place rotation*4 + 2 (Third item in current page)
+	 * Sets availability, amount and total price labels
+	 * Updates local cart according to new amount picked
+	 * Resets timer thread
+	 */
 	public void MoreItem3() //NEW *******************************
 	{
 		if(available.get(rotation*4+2)>0)
@@ -422,6 +515,13 @@ public class ekrutOrderController implements Initializable{
 		
 	}
 	
+	/**
+	 * Subtracts 1 from the item amount of current cart if and only if this item's amount is at least 1 in local cart
+	 * Calculates new stock and new amount that we picked of item in place rotation*4 + 3 (Fourth item in current page)
+	 * Sets availability, amount and total price labels
+	 * Updates local cart according to new amount picked
+	 * Resets timer thread
+	 */
 	public void LessItem4() //NEW *******************************
 	{
 		if(amount.get(rotation*4+3)>0)
@@ -442,6 +542,13 @@ public class ekrutOrderController implements Initializable{
 		}
 	}
 	
+	/**
+	 * Adds 1 to the item amount of current cart if and only if this item's availability is at least 1 in stock
+	 * Calculates new stock and new amount that we picked of item in place rotation*4 + 3 (Fourth item in current page)
+	 * Sets availability, amount and total price labels
+	 * Updates local cart according to new amount picked
+	 * Resets timer thread
+	 */
 	public void MoreItem4() //NEW *******************************
 	{
 		if(available.get(rotation*4+3)>0)
@@ -462,6 +569,9 @@ public class ekrutOrderController implements Initializable{
 		}
 	}
     
+	 /**
+     * Calls the method CheckAndLoadItem 4 times for each item in an item page (4 items per page, 16 times in total)
+     */
     public void LoadItems()
     {
     	CheckAndLoadItem(rotation*4,codeLbl1,"Item",1);
@@ -482,6 +592,18 @@ public class ekrutOrderController implements Initializable{
     	CheckAndLoadItem(rotation*4+3,amountCart4,"Amount",0);
     }
     
+    /**
+     * Checks if the current label were checking will show an item and hold its information
+     * If the item number is bigger than the amount of items that the machine holds then this method will hide its components
+     * If the item number is smaller than the amount of items that the machine holds then this method will show its components 
+     * and update the data labels and images of current item
+     * 
+     * 
+     * @param num - The index of the item we're trying to load
+     * @param lbl - The label we want to update
+     * @param str - The type of information we want to update onto our label (lbl)
+     * @param index - The index of the item on the page (item #1, item #2, item #3, item #4)
+     */
     public void CheckAndLoadItem(int num,Label lbl,String str,int index) //num = rotation*4 + i 
     {
     	if(num > generatedItems.size()-1)
@@ -557,6 +679,12 @@ public class ekrutOrderController implements Initializable{
     	
     }
     
+    /**
+     * Gets the price of an item by name, searches the items ArrayList in ChatClient (Which holds all items)
+     * 
+     * @param name - item name
+     * @return Price of the item if found, otherwise returns -1
+     */
     public int getPrice(String name)
     {
     	for(Item item : ChatClient.items)
@@ -567,6 +695,11 @@ public class ekrutOrderController implements Initializable{
     	return -1; 
     }
     
+    /**
+     * Calculates the maximum value of rotation, returns at least 0
+     * 
+     * @return The maximum value of rotation
+     */
     public int findMax()
     {
     	int size = generatedItems.size();
@@ -578,31 +711,10 @@ public class ekrutOrderController implements Initializable{
     	return temp;
     }
     
-    public void addItemsFromMachineToCart(String name,String amount) //PLEASE FIX
-    {
-    	if(!ChatClient.machines.get(MachineNumber).existItem(name))
-    		return;
-    	else
-    	{
-    		
-    		int size = cart.size();
-    			for(int i = 0;i<size;i++)
-    			{
-    				if(cart.get(i).getProductID().equals(name)) //item already in cart, add new amount to amountCart
-    				{
-    					int newAmount = Integer.parseInt(cart.get(i).getAmount()) + Integer.parseInt(amount);
-    					cart.get(i).setAmount(String.valueOf(newAmount));
-    					return;
-    				}
-    			
-    			}
-    			cart.add(new Item(name,amount,this.getPrice(name)));
-    		
-    		
-    		
-    	}
-    }
     
+    /**
+     * Updates the value inside TotalPrice label
+     */
     public void updateTotalPrice() 
     {
     	int sum = 0;
@@ -614,6 +726,14 @@ public class ekrutOrderController implements Initializable{
     	return;
     }
     
+    
+    /**
+     * Finds the index of requested machine in machines ArrayList in ChatClient according to the machine ID
+     * Sets the value of local variable MachineNumber to index found
+     * If a machine isn't found then it loads the first machine in the ArrayList
+     * 
+     * @param id - machine ID
+     */
     public void FindMachineNumber(int id)
     {
     	int size = ChatClient.machines.size();
@@ -624,6 +744,14 @@ public class ekrutOrderController implements Initializable{
 		}
     }
     
+    /**
+     * Looks for the index of item whose name is parameter "name"
+     * Returns the index of an item in items ArrayList in ChatClient according to the item name
+     * If the item name doesn't exist in ArrayList this method will return -1
+     * 
+     * @param name - item name
+     * @return the index of item in items ArrayList
+     */
     public int getItemIndex(String name)
     {
     	int size = ChatClient.machines.get(MachineNumber).getItems().size();
@@ -635,6 +763,14 @@ public class ekrutOrderController implements Initializable{
     	return -1;
     }
     
+    /**
+     * Looks for the index of item whose name is parameter "name"
+     * Returns the index of an item in cart in ChatClient according to the item name
+     * If the item name doesn't exist in cart this method will return -1
+     * 
+     * @param name - item name
+     * @return the index of item in cart
+     */
     public int getItemIndexCart(String name)
     {
     	int size = ChatClient.cart.size();
@@ -646,6 +782,12 @@ public class ekrutOrderController implements Initializable{
     	return -1;
     }
     
+    /**
+     * Looks for a sale in current machine's location
+     * If there's a sale in current machine's location then it returns the new price after sale in percentage
+     * 
+     * @return price after sale in percentage (value between 0 and 100)
+     */
     public int updateSale() 
     {
     	if(ChatClient.isSubscriber == true) {
@@ -661,6 +803,12 @@ public class ekrutOrderController implements Initializable{
     		return 100;
     }
     
+    /**
+     * Calculates price after sale and parses it to an int value
+     * 
+     * @param normalPrice - price before sale
+     * @return price after sale (Integer)
+     */
     public int calculatePrice(int normalPrice)
     {
     	double sale = this.sale;
@@ -671,6 +819,9 @@ public class ekrutOrderController implements Initializable{
     	return newPriceInt;
     }
     
+    /**
+     * Adds all items that are available to local String ArrayList "generatedItems"
+     */
     public void GenerateMachineItems()
     {
     	generatedItems = new ArrayList<String>();
@@ -682,6 +833,10 @@ public class ekrutOrderController implements Initializable{
     	}
     	return;
     }
+
+
+
+
     
     public void setImageURL(String name,int index)
     {
@@ -766,7 +921,7 @@ public class ekrutOrderController implements Initializable{
 				
 				
 			}
-		}catch(Exception e)
+		} catch(Exception e)
 		{
 			path = this.getClass().getResource("/images/cart.jpg").toExternalForm();
 			im = new Image(path,true);

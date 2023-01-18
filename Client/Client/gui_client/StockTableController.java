@@ -24,6 +24,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import logic.Machine;
 
@@ -41,7 +43,8 @@ public class StockTableController implements Initializable{
 	private Button updateBtn;
 	@FXML
 	private Button backBtn;
-	
+	@FXML
+	private ImageView image;
 	@FXML
 	private TextField machineCodetxt;
 	
@@ -58,6 +61,8 @@ public class StockTableController implements Initializable{
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
 		machineTable.setVisible(false);
 	}
 	
@@ -149,6 +154,7 @@ public class StockTableController implements Initializable{
 		
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle(title);
 		primaryStage.setScene(scene);		
 		primaryStage.show();		

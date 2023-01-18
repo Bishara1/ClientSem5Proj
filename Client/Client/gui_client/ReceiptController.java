@@ -27,6 +27,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import logic.*;
 
@@ -124,7 +126,9 @@ public class ReceiptController implements Initializable {
 		}
 
 	}
-
+	
+	@FXML
+	private ImageView image;
 	@FXML
 	private TableView<ItemTable> receiptTable;
 	@FXML
@@ -192,8 +196,10 @@ public class ReceiptController implements Initializable {
     	ClientUI.chat.accept(msg);
 		((Node) event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/LoginEkrut.fxml")); Stage
-		primaryStage = new Stage(); Scene scene = new Scene(root);
-		primaryStage.setTitle("Login"); primaryStage.setScene(scene);
+		primaryStage = new Stage(); 
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
+		primaryStage.setTitle("Login ekrut"); primaryStage.setScene(scene);
 		primaryStage.show(); 
 	}
 
@@ -203,6 +209,8 @@ public class ReceiptController implements Initializable {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
 		LoadAndSetTable();
 
 	}

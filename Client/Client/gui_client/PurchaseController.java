@@ -22,6 +22,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import logic.Item;
 
@@ -35,6 +37,8 @@ public class PurchaseController implements Initializable{
 	private Button purchaseBtn;
 	@FXML
 	private TextField priceLbl;
+	@FXML
+	private ImageView image;
 	
 	private int Threshold = 0;
 	
@@ -145,6 +149,8 @@ public class PurchaseController implements Initializable{
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
 		FindMachineNumber(ChatClient.machineToLoad);
 		updateTotalPrice();
 		
@@ -164,6 +170,7 @@ public class PurchaseController implements Initializable{
 		Parent root = FXMLLoader.load(getClass().getResource(window_location));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle(title);
 		primaryStage.setScene(scene);		
 		primaryStage.show();	

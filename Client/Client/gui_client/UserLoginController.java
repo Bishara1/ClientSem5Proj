@@ -1,5 +1,9 @@
 package gui_client;
 
+import java.net.URL;
+import java.security.DomainCombiner;
+import java.util.ResourceBundle;
+
 import client.ChatClient;
 
 import client.ClientUI;
@@ -8,23 +12,29 @@ import common.Message;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
  * This class launches the account login page
  */
-public class UserLoginController {
+public class UserLoginController implements Initializable {
 
+	@FXML
+	private AnchorPane anchorPane;
 	@FXML
 	private TextField Usernametxt;
 	@FXML
@@ -37,6 +47,8 @@ public class UserLoginController {
 	private Button Loginbtn;
 	@FXML
 	private Button Backbtn;
+	@FXML
+	private ImageView image;
 	
 	/**
 	 * This method lets the user login to his account
@@ -47,6 +59,7 @@ public class UserLoginController {
 	public void loginBtn(ActionEvent event) throws Exception {
 		String username = Usernametxt.getText();	// gets the text inserted from the text fields
 		String password = passwordtxt.getText();
+		
 		
 		if(username.equals("") || password.equals(""))	//checks if one the the text fields is empty
 		{
@@ -84,6 +97,7 @@ public class UserLoginController {
 						}
 				}
 				Scene scene = new Scene(root);
+				scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 				primaryStage.setTitle(title);
 				primaryStage.setScene(scene);
 				primaryStage.show();	
@@ -121,9 +135,16 @@ public class UserLoginController {
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/LoginEkrut.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle("Login Ekrut");
 		primaryStage.setScene(scene);		
 		primaryStage.show();		
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
 	}
 	
 }

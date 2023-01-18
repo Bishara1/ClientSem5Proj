@@ -1,24 +1,32 @@
 package gui_client;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
  * This class lets the user decide sign in method
  */
-public class LoginEkrutController {
+public class LoginEkrutController implements Initializable {
 	
 	@FXML
 	private Button accountlogin;
 	@FXML
 	private Button ektBtn;
+	@FXML
+	private ImageView image;
 	
 	/**
 	 * This method starts the "LoginEkut" fxml window
@@ -62,8 +70,8 @@ public class LoginEkrutController {
 	
 	/**
 	 * This method hides the currently open window and shows the desired window
-	 * @param event
-	 * @param path
+	 * @param event 
+	 * @param path 
 	 * @param title
 	 * @throws Exception
 	 */
@@ -72,9 +80,16 @@ public class LoginEkrutController {
 		Parent root = FXMLLoader.load(getClass().getResource(path));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		primaryStage.setTitle(title);
 		primaryStage.setScene(scene);		
 		primaryStage.show();	
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
 	}
 	
 }

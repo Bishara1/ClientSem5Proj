@@ -23,6 +23,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import logic.Location;
 import logic.Machine;
 import javafx.stage.Stage;
@@ -33,6 +35,8 @@ public class RemoteLocationController implements Initializable {
 	private ObservableList<String> MachineIdList;
 	private ObservableList<String> LocationList;
 	
+	@FXML
+	private ImageView image;
 	@FXML
 	private ComboBox<String> cmbLocation;
 	@FXML
@@ -48,6 +52,8 @@ public class RemoteLocationController implements Initializable {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
+		image.setImage(logo);
 //		GetLocations();
 		SetLocationComboBox();
 		
@@ -127,6 +133,7 @@ public class RemoteLocationController implements Initializable {
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/ShipmentMethod.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
 		primaryStage.setTitle("Shipment Method");
 		primaryStage.setScene(scene);		
@@ -151,6 +158,7 @@ public class RemoteLocationController implements Initializable {
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/ekrutOrder.fxml"));
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 		//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
 		primaryStage.setTitle("EKRUT");
 		primaryStage.setScene(scene);		
