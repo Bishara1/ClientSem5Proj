@@ -79,7 +79,10 @@ public class LoginController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
-		image.setImage(logo);
+		String actual = "/images/ekrut.png" ;
+		String path = this.getClass().getResource(actual).toExternalForm();
+		Image img = new Image(path,true);
+		
+		image.setImage(img);
 	}
 }

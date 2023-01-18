@@ -102,6 +102,8 @@ public class ekrutOrderController implements Initializable{
 	@FXML
 	private Label amountBtnLbl;
 	@FXML
+	private ImageView image;
+	@FXML
 	private ImageView image1;
 	@FXML
 	private ImageView image2;
@@ -140,6 +142,11 @@ public class ekrutOrderController implements Initializable{
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		String actual = "/images/ekrut.png" ;
+		String path = this.getClass().getResource(actual).toExternalForm();
+		Image img = new Image(path,true);
+		
+		image.setImage(img);
 		ClientUI.chat.accept(new Message(0, Command.ReadMachines));
 		ClientUI.chat.accept(new Message(0,Command.ReadItems));
 		ChatClient.timer = new Thread(new Timespent());

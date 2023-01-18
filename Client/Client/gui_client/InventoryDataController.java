@@ -80,8 +80,11 @@ public class InventoryDataController implements Initializable{
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
-		image.setImage(logo);
+		String actual = "/images/ekrut.png" ;
+		String path = this.getClass().getResource(actual).toExternalForm();
+		Image img = new Image(path,true);
+		
+		image.setImage(img);
 		this.dateLbl.setText(String.valueOf(LocalDate.now()));
 		this.locationLbl.setText(report.getLocation());
 		this.monthYearLbl.setText(report.getMonth()+"/"+report.getYear());

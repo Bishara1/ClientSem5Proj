@@ -28,6 +28,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import logic.Item;
@@ -207,7 +208,11 @@ public class CartController implements Initializable{
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		String actual = "/images/ekrut.png" ;
+		String path = this.getClass().getResource(actual).toExternalForm();
+		Image img = new Image(path,true);
+		
+		image.setImage(img);
 		FindMachineNumber(ChatClient.machineToLoad);
 		LoadAndSetTable();
 		updateTotalPrice();

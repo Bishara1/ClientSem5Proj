@@ -57,8 +57,11 @@ public class BarChartController implements Initializable{
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle rb) {
-		Image logo = StyleSheetManager.GetImage(this.getClass(), "ekrut.png");
-		image.setImage(logo);
+		String actual = "/images/ekrut.png" ;
+		String path = this.getClass().getResource(actual).toExternalForm();
+		Image img = new Image(path,true);
+		
+		image.setImage(img);
 		
 		String[] numbers = null;
 		XYChart.Series data0 = new XYChart.Series<>();
