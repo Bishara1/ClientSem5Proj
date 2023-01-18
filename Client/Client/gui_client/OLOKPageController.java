@@ -51,7 +51,7 @@ public class OLOKPageController implements Initializable {
 	 */
 	public void OKbtn(ActionEvent event) throws Exception {
 		type = "OK";
-		nextWindow(event,"/gui_client_windows/LoginEkrut.fxml","Login Ekrut");
+		nextWindow(event,"/gui_client_windows/LoginEkrut.fxml", "Login Ekrut");
 	}
 	
 	/**
