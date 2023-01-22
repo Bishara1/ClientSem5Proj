@@ -34,10 +34,6 @@ import logic.Machine;
  * @author safwa
  *
  */
-/**
- * @author safwa
- *
- */
 public class ekrutOrderController implements Initializable{
 	
 
@@ -102,6 +98,10 @@ public class ekrutOrderController implements Initializable{
 	@FXML
 	private Label amountBtnLbl;
 	@FXML
+	private ImageView Arrow;
+	@FXML
+	private ImageView Arrow1;
+	@FXML
 	private ImageView image;
 	@FXML
 	private ImageView image1;
@@ -145,8 +145,15 @@ public class ekrutOrderController implements Initializable{
 		String actual = "/images/ekrut.png" ;
 		String path = this.getClass().getResource(actual).toExternalForm();
 		Image img = new Image(path,true);
-		
 		image.setImage(img);
+		actual = "/images/arrowR.png" ;
+		path = this.getClass().getResource(actual).toExternalForm();
+		img = new Image(path,true);
+		Arrow.setImage(img);
+		actual = "/images/arrowR.png" ;
+		path = this.getClass().getResource(actual).toExternalForm();
+		img = new Image(path,true);
+		Arrow1.setImage(img);
 		ClientUI.chat.accept(new Message(0, Command.ReadMachines));
 		ClientUI.chat.accept(new Message(0,Command.ReadItems));
 		ChatClient.timer = new Thread(new Timespent());
@@ -212,7 +219,7 @@ public class ekrutOrderController implements Initializable{
 	 * Moves to cart if everything is okay
 	 * 
 	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
-	 * @throws Exception
+	 * @throws Exception exception
 	 */
 	public void ProceedCartBtn(ActionEvent event) throws Exception {
 		//deal with threshold, send a message -> change the value of a static field in chatClient
@@ -264,49 +271,27 @@ public class ekrutOrderController implements Initializable{
 	 * Goes back to relevant page according to field role in ChatClient
 	 * 
 	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
-	 * @throws Exception
+	 * @throws Exception exception
 	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		
 		ChatClient.timer.stop();
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = null;
-		switch(ChatClient.role) {
-		
-		case "ceo":
-			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/CEOReports.fxml"));
-			break;
-		
-		case "rgm":
-			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
-			break;
-			
-		case "rgw":
-			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
-			break;
-		
-		case "stm":
-			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
-			break;
-			
-		case "stw":
-			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
-			break;
-			
-		case "dlw":
-			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
-			break;
-			
-		case "inm":
-			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
-			break;
-			
-		case "customer":
+		if(OLOKPageController.type.equals("OK"))	// if configuration type is "OK"
+		{
 			root = FXMLLoader.load(getClass().getResource("/gui_client_windows/UserUI.fxml"));
-			break;
-			
-		default:
-			break;
+		}
+		else 
+		{
+			if(ChatClient.role.equals("customer"))	// if the user is customer
+				{
+					root = FXMLLoader.load(getClass().getResource("/gui_client_windows/UserUI.fxml"));
+				}
+			else	// if the user is a worker
+				{
+					root = FXMLLoader.load(getClass().getResource("/gui_client_windows/WorkerUI.fxml"));
+				}
 		}
 		Stage primaryStage = new Stage();
 		Scene scene = new Scene(root);

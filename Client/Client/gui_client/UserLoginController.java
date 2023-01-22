@@ -52,8 +52,8 @@ public class UserLoginController implements Initializable {
 	
 	/**
 	 * This method lets the user login to his account
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	@FXML
 	public void loginBtn(ActionEvent event) throws Exception {
@@ -127,8 +127,8 @@ public class UserLoginController implements Initializable {
 	
 	/**
 	 * This method hides the currently open window and shows "LoginEkrut" window.
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void backBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();

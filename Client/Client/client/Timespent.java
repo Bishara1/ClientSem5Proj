@@ -37,9 +37,10 @@ public class Timespent extends Application implements Runnable{
 	public void run() {
 		try {
 			
-			Thread.sleep(10000);
+			Thread.sleep(30000);
 			
-		Platform.runLater(new Runnable() {
+		
+			Platform.runLater(new Runnable() {
 			@Override
 		    public void run() {
 		    	//hide all windows
@@ -71,6 +72,7 @@ public class Timespent extends Application implements Runnable{
 				ChatClient.cart = new ArrayList<>();
 				Stage primaryStage = new Stage();
 				Scene scene = new Scene(root);
+				scene.getStylesheets().add(getClass().getResource("/css/everything.css").toExternalForm());
 				//scene.getStylesheets().add(getClass().getResource("/gui/loginsubscriber.css").toExternalForm());
 				primaryStage.setTitle("EKRUT");
 				primaryStage.setScene(scene);		

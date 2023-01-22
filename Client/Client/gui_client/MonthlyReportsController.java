@@ -148,7 +148,7 @@ public class MonthlyReportsController implements Initializable {
 	
 	/**
 	 * This method checks if all combo boxes were selected and calls function OrderReportSearch
-	 * @param event
+	 * @param event event
 	 * @throws Exception -  indicates conditions that a reasonable application might want to catch
 	 */
 	public void ShowReportBtn(ActionEvent event) throws Exception{
@@ -166,7 +166,7 @@ public class MonthlyReportsController implements Initializable {
 	
 	/**
 	 * This method finds the report and shows it
-	 * @param event
+	 * @param event event
 	 * @throws Exception -  indicates conditions that a reasonable application might want to catch 
 	 */
 	public void OrderReportSearch(ActionEvent event) throws Exception
@@ -350,8 +350,8 @@ public class MonthlyReportsController implements Initializable {
 	
 	/**
 	 * This method searches for the requested report
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void FindRequestedOrderReport(ActionEvent event) throws Exception{
 		
@@ -431,8 +431,8 @@ public class MonthlyReportsController implements Initializable {
 	
 	/**
 	 * This method calls funtion nextWindow to show ChooseReportType.fxml window
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		nextWindow(event,"/gui_client_windows/ChooseReportType.fxml","Choose Report Type");
@@ -440,10 +440,10 @@ public class MonthlyReportsController implements Initializable {
 	
 	/**
 	 * This method hides the currently open window and shows the requested window based on window_location, which is the given path
-	 * @param event
-	 * @param window_location
-	 * @param title
-	 * @throws Exception
+	 * @param event event
+	 * @param window_location window location
+	 * @param title title
+	 * @throws Exception exception
 	 */
 	private void nextWindow(ActionEvent event, String window_location, String title) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();

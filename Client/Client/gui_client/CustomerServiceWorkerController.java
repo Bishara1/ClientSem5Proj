@@ -112,7 +112,7 @@ public class CustomerServiceWorkerController implements Initializable{
 	/**
 	 * back to main page of customer service worker (worker ui)
 	 * @param event Type of action that occurred in the window by the user (when pressing a button in this scenario)
-	 * @throws Exception
+	 * @throws Exception exception
 	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		((Node) event.getSource()).getScene().getWindow().hide();

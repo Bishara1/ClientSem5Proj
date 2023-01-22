@@ -56,7 +56,7 @@ public class CEOReportsController implements Initializable {
 	/**
 	 * Load Stock table window when pressing View Machines button
 	 * @param event Type of action that occurred in the window by the user (when pressing a button in this scenario)
-	 * @throws Exception
+	 * @throws Exception exception
 	 */
 	public void ViewMachines(ActionEvent event) throws Exception{
 		nextWindow(event,"/gui_client_windows/StockTable.fxml","Stock Table");

@@ -41,7 +41,7 @@ public class CartController implements Initializable{
 	@FXML
 	private Button paymentbtn;
 	@FXML
-	private Button removeallbtn;
+	private ImageView removeallbtn;
 	@FXML
 	private Button backbtn;
 	@FXML
@@ -87,7 +87,7 @@ public class CartController implements Initializable{
 	 * Otherwise moves to Purchase window
 	 * 
 	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
-	 * @throws Exception
+	 * @throws Exception exception
 	 */
 	public void ProceedPayment(ActionEvent event) throws Exception {
 		
@@ -136,7 +136,7 @@ public class CartController implements Initializable{
 	 * Goes back to order window
 	 * 
 	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
-	 * @throws Exception
+	 * @throws Exception  exception
 	 */
 	public void Back(ActionEvent event) throws Exception {
 		ChatClient.cart = this.cart;
@@ -291,7 +291,7 @@ public class CartController implements Initializable{
 	  * 
 	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
 	 * @return result of alert, ButtonType.YES if user pressed yes, ButtonType.NO otherwise 
-	 * @throws IOException
+	 * @throws IOException  exception
 	 */
 	public Optional<ButtonType> InsertOrder(ActionEvent event) throws IOException
 		{

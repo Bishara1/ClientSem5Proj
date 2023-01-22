@@ -67,7 +67,7 @@ public class InventoryReportController implements Initializable{
 	/**
 	 * This method saves the location value selected from the location combo box.
 	 * Then calls setMachineIdComboBox function.
-	 * @param event
+	 * @param event event
 	 */
 	@FXML
 	public void Select(ActionEvent event) {
@@ -77,7 +77,7 @@ public class InventoryReportController implements Initializable{
 	
 	/**
 	 * This method saves the machine Id value selected from the machine Id combo box.
-	 * @param event
+	 * @param event event
 	 */
 	@FXML
 	public void SelectMachineId(ActionEvent event) {
@@ -86,7 +86,7 @@ public class InventoryReportController implements Initializable{
 	
 	/**
 	 * This method saves the month value selected from the month combo box.
-	 * @param event
+	 * @param event event
 	 */
 	@FXML
 	public void SelectMonth(ActionEvent event) {
@@ -95,7 +95,7 @@ public class InventoryReportController implements Initializable{
 	
 	/**
 	 * This method saves the year value selected from the year combo box.
-	 * @param event
+	 * @param event event
 	 */
 	@FXML
 	public void SelectYear(ActionEvent event) {
@@ -104,8 +104,8 @@ public class InventoryReportController implements Initializable{
 	
 	/**
 	 * This method initializes all the combo boxes in the window.
-	 * @param location
-	 * @param resources
+	 * @param location location
+	 * @param resources resources
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -154,8 +154,8 @@ public class InventoryReportController implements Initializable{
 
 	/**
 	 * This method shows the requested report.
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public  void ShowReport(ActionEvent event) throws Exception{
 		// checking if one of the combo boxes was not selected.
@@ -191,8 +191,8 @@ public class InventoryReportController implements Initializable{
 
 	/**
 	 * This method calls nextWindow function.
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		nextWindow(event,"/gui_client_windows/ChooseReportType.fxml","Choose Report Type");
@@ -200,10 +200,10 @@ public class InventoryReportController implements Initializable{
 	
 	/**
 	 * This method hides the currently open window and shows the requested window.
-	 * @param event
-	 * @param path
-	 * @param title
-	 * @throws Exception
+	 * @param event event
+	 * @param path path
+	 * @param title title 
+	 * @throws Exception exception
 	 */
 	private void nextWindow(ActionEvent event, String path, String title) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();

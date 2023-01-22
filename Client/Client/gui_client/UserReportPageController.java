@@ -57,7 +57,7 @@ public class UserReportPageController implements Initializable{
 	
 	/**
 	 * This method saves the selected value from the year combo box in static string
-	 * @param event
+	 * @param event event
 	 */
 	@FXML
 	public void SelectYear(ActionEvent event) {
@@ -66,7 +66,7 @@ public class UserReportPageController implements Initializable{
 	
 	/**
 	 * This method saves the selected value from the month combo box in static string
-	 * @param event
+	 * @param event event
 	 */
 	@FXML
 	public void SelectMonth(ActionEvent event) {
@@ -99,8 +99,8 @@ public class UserReportPageController implements Initializable{
 	
 	/**
 	 * This method shows the report if it exists 
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void ShowReportBtn(ActionEvent event) throws Exception{
 		// Checking if one or more fields are empty
@@ -135,8 +135,8 @@ public class UserReportPageController implements Initializable{
 	
 	/**
 	 * This method calls nextWindow function to show new windnow
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		nextWindow(event, "/gui_client_windows/ChooseReportType.fxml", "Choose Report Type");
@@ -145,10 +145,10 @@ public class UserReportPageController implements Initializable{
 	
 	/**
 	 * This method hides the currently open window and shows the requested one (based on path)
-	 * @param event
-	 * @param path
-	 * @param title
-	 * @throws Exception
+	 * @param event event
+	 * @param path path
+	 * @param title title
+	 * @throws Exception exception
 	 */
 	private void nextWindow(ActionEvent event, String path, String title) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();

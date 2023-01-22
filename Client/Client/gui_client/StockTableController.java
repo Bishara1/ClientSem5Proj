@@ -72,8 +72,8 @@ public class StockTableController implements Initializable{
 	/**
 	 * This method checks if machine id text field is empty,
 	 * if it's not empty it will call function LoadMachine
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void ShowStockBtn(ActionEvent event) throws Exception{
 		
@@ -132,8 +132,8 @@ public class StockTableController implements Initializable{
 	
 	/**
 	 * This method goes back to user page based on role
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
@@ -179,7 +179,7 @@ public class StockTableController implements Initializable{
 		}
 		
 		/**
-		 * @return Amount
+		 * @return Amount amount
 		 */
 		public String getAmount() {
 			return Amount;
@@ -187,8 +187,8 @@ public class StockTableController implements Initializable{
 		
 		/**
 		 * Constructor
-		 * @param name
-		 * @param amount
+		 * @param name name
+		 * @param amount amount
 		 */
 		public ViewItem(String name,String amount) {
 			this.Name = name;

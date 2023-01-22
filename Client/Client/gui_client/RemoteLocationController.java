@@ -129,7 +129,7 @@ public class RemoteLocationController implements Initializable {
 	 * Goes back to UserUI.fxml window
 	 * 
 	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
-	 * @throws Exception
+	 * @throws Exception exception
 	 */
 	public void BackBtn(ActionEvent event) throws Exception  { //fix this apparently its null
 		((Node)event.getSource()).getScene().getWindow().hide();
@@ -151,8 +151,8 @@ public class RemoteLocationController implements Initializable {
      * Throws alert if there was a combo box with no selected value
      * 
      * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
-     * @throws Exception
-     */
+     * @throws Exception exception
+     */ 
     public void StartOrderBtn(ActionEvent event) throws Exception {
     	try {
     	ChatClient.locationName = cmbLocation.getSelectionModel().getSelectedItem().toString();

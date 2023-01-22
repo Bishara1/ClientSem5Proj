@@ -112,9 +112,10 @@ public class UpdateStockController implements Initializable{
 	}
 
 	/**
+	 * logout
 	 * @param event Detected event
-	 * @throws Exception
-	 */
+	 * @throws Exception exception
+	 */ 
 	public void LogoutBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/LoginEkrut.fxml"));
@@ -129,6 +130,7 @@ public class UpdateStockController implements Initializable{
 	
 	
 	/**
+	 * update table
 	 * @param event
 	 */
 	@FXML
@@ -157,7 +159,7 @@ public class UpdateStockController implements Initializable{
 	}
 	
 	/**
-	 * 
+	 *  update stock
 	 */
 	public void UpdateBtn() {
 		String[] dataForUpdate = new String[5];  //{"machinesAmount", amount_per_item, items, total_inventory, machine_id}
@@ -202,8 +204,8 @@ public class UpdateStockController implements Initializable{
 	}
 	
 	/**
-	 * 
-	 * @param productStringCellEditEvent
+	 *  check modifications
+	 * @param productStringCellEditEvent 
 	 */
 	public void checkModifications(TableColumn.CellEditEvent<ViewItem, String> productStringCellEditEvent) {
 		String newVal = productStringCellEditEvent.getNewValue();
@@ -247,7 +249,7 @@ public class UpdateStockController implements Initializable{
 	}
 	
 	/**
-	 * @param condition
+	 * @param condition condition
 	 */
 	private void DisplayComponentsInfo(boolean condition) {
 		thresholdlbl.setVisible(condition);
@@ -259,8 +261,8 @@ public class UpdateStockController implements Initializable{
 	}
 	
 	/**
-	 * @param requestID
-	 * @return
+	 * @param requestID request id
+	 * @return null if not machine not found, else return machine
 	 */
 	private Machine FindMachineNumber(int requestID) {
 		int sizeMachines = ChatClient.machines.size();
@@ -284,7 +286,7 @@ public class UpdateStockController implements Initializable{
 	}
 	
 	/**
-	 * @param message
+	 * @param message message
 	 */
 	private void RaiseAlertError(String message) {
 		Alert alert = new Alert(AlertType.ERROR, message, ButtonType.OK);

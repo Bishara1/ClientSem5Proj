@@ -34,8 +34,8 @@ public class LoginController implements Initializable {
 
 	/**
 	 * This method starts the fxml file "Login"
-	 * @param primaryStage
-	 * @throws Exception
+	 * @param primaryStage stage
+	 * @throws Exception exception
 	 */
 	public void start(Stage primaryStage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/Login.fxml"));
@@ -55,8 +55,8 @@ public class LoginController implements Initializable {
 	
 	/**
 	 * This method hides "Login" fxml window, connects to data base and shows "OLOKPage" fxml window.
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void LoginBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window

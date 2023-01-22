@@ -36,8 +36,8 @@ public class OLOKPageController implements Initializable {
 	
 	/**
 	 * This method sets type = "OL" and calls nextWindow function.
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void OLbtn(ActionEvent event) throws Exception {
 		type = "OL";
@@ -46,8 +46,8 @@ public class OLOKPageController implements Initializable {
 	
 	/**
 	 *  This method sets type = "OK" and calls nextWindow function.
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void OKbtn(ActionEvent event) throws Exception {
 		type = "OK";
@@ -56,8 +56,8 @@ public class OLOKPageController implements Initializable {
 	
 	/**
 	 * This method closes all window and exists system.
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		nextWindow(event, "/gui_client_windows/Login.fxml", "Login");
@@ -65,10 +65,10 @@ public class OLOKPageController implements Initializable {
 	
 	/**
 	 * This method hides the currently open window and shows the desired window
-	 * @param event
-	 * @param path
-	 * @param title
-	 * @throws Exception
+	 * @param event event
+	 * @param path path
+	 * @param title title
+	 * @throws Exception exception
 	 */
 	private void nextWindow(ActionEvent event, String path, String title) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();

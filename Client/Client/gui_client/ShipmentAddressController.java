@@ -76,8 +76,8 @@ public class ShipmentAddressController implements Initializable{
 	
 	/**
 	 * This method saves the shipment address details
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void SendYourRequest(ActionEvent event) throws Exception {
 		if(region.isEmpty() || citytxt.getText().isEmpty() || streettxt.getText().isEmpty())
@@ -105,8 +105,8 @@ public class ShipmentAddressController implements Initializable{
 
 	/**
 	 * This method shows the previous page
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
@@ -122,7 +122,7 @@ public class ShipmentAddressController implements Initializable{
 	 
 	 /**
 	  * This method saves the value of the region from the combo box
-	 * @param event
+	 * @param event event
 	 */
 	@FXML
 		public void SelectLocation(ActionEvent event) {

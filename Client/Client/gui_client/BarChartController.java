@@ -51,8 +51,8 @@ public class BarChartController implements Initializable{
 	
 	/**
 	 * This method loads the pie chart data.
-	 * @param location
-	 * @param rb
+	 * @param location location
+	 * @param rb rb
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
@@ -101,12 +101,11 @@ public class BarChartController implements Initializable{
 		pieChart.getData().addAll(pieChartData);
 	}
 	
+
 	/**
 	 * This method hides the open window and shows a new one.
-	 * @param event
-	 * @param path
-	 * @param title
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();

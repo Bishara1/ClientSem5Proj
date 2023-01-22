@@ -51,7 +51,7 @@ public class EKTLoginController implements Initializable {
 	
 	/**
 	 * This method saves the selected value from the combo box to the string u
-	 * @param event
+	 * @param event event
 	 */
 	@FXML
 	public void Selectuser(ActionEvent event) {
@@ -60,8 +60,8 @@ public class EKTLoginController implements Initializable {
 	
 	/**
 	 * This method initializes string u, and calls function setUserComboBox
-	 * @param location
-	 * @param resources
+	 * @param location location
+	 * @param resources resources
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -86,8 +86,8 @@ public class EKTLoginController implements Initializable {
 	
 	/**
 	 * This method goes to the user page
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void login(ActionEvent event) throws Exception
 	{
@@ -139,8 +139,8 @@ public class EKTLoginController implements Initializable {
 	
 	/**
 	 * This method calls nextWindow function
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		nextWindow(event,"/gui_client_windows/LoginEkrut.fxml","Login EKRUT");
@@ -148,10 +148,10 @@ public class EKTLoginController implements Initializable {
 	
 	/**
 	 * This method hides the currently open window and shows the desired window
-	 * @param event
-	 * @param path
-	 * @param title
-	 * @throws Exception
+	 * @param event event
+	 * @param path path
+	 * @param title title
+	 * @throws Exception exception
 	 */
 	private void nextWindow(ActionEvent event, String path, String title) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();

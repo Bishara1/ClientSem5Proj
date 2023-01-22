@@ -187,7 +187,7 @@ public class ReceiptController implements Initializable {
 	 * Goes back to LoginEkrut window
 	 * 
 	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
-	 * @throws Exception
+	 * @throws Exception exception
 	 */
 	public void OKBtn(ActionEvent event) throws Exception {
 		Message msg = new Message(null,null);

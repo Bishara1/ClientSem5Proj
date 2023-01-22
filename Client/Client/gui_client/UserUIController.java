@@ -79,8 +79,8 @@ public class UserUIController implements Initializable {
 	
 	/**
 	 * This method is responsible for user user request to become a subscriber
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void SubReqBtn(ActionEvent event) throws Exception {
 		ArrayList<String> request;
@@ -126,8 +126,8 @@ public class UserUIController implements Initializable {
 	
 	/**
 	 * This method sets machineToLoad = 1 and calls nextWindow function
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void CreateOrderBtn(ActionEvent event) throws Exception {
 		ChatClient.machineToLoad = 1;
@@ -137,8 +137,8 @@ public class UserUIController implements Initializable {
 	
 	/**
 	 * This method calls function nextWindow to show ShipmentMethod.fxml window
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void CreateRemoteOrderBtn(ActionEvent event) throws Exception {
 		nextWindow(event, "/gui_client_windows/ShipmentMethod.fxml", "Shipment Method");
@@ -146,8 +146,8 @@ public class UserUIController implements Initializable {
 	
     /**
      * This method disconnects from server and calls nextWindow function to go back to LoginEkrurt page
-     * @param event
-     * @throws Exception
+     * @param event event
+     * @throws Exception exception
      */
     public void BackBtn(ActionEvent event) throws Exception  {
     	Message msg = new Message(null,null);
@@ -159,8 +159,8 @@ public class UserUIController implements Initializable {
     
     /**
      * This method calls function nextWindow to show RemoteCode.fxml window
-     * @param event
-     * @throws Exception
+     * @param event event
+     * @throws Exception exception
      */
     public void RemoteCode(ActionEvent event) throws Exception {
 		nextWindow(event, "/gui_client_windows/RemoteCode.fxml", "Remote Code");
@@ -170,10 +170,10 @@ public class UserUIController implements Initializable {
     
     /**
      * This method hides the currently open window and shows the requested window based on window_location
-     * @param event
-     * @param window_location
-     * @param title
-     * @throws Exception
+     * @param event event
+     * @param window_location window loaction
+     * @param title title
+     * @throws Exception exception
      */
     private void nextWindow(ActionEvent event, String window_location, String title) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();

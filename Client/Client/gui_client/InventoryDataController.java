@@ -75,8 +75,8 @@ public class InventoryDataController implements Initializable{
 	
 	/**
 	 * This method initializes the labels in the inventory reports xml file. And calls loadAndSetData function.
-	 * @param location
-	 * @param resources
+	 * @param location location
+	 * @param resources resources
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -115,8 +115,8 @@ public class InventoryDataController implements Initializable{
 	
 	/**
 	 * This method calculates the current stock and inventory then initializes the pie chart and table.
-	 * @param stock
-	 * @param inventory
+	 * @param stock current stock of machine
+	 * @param inventory stock of machine at the start of the month
 	 */
 	public void splitItems(String stock, String inventory)
 	 {
@@ -145,7 +145,7 @@ public class InventoryDataController implements Initializable{
 	
 	/**
 	 * This method reads items from data base and returns the price of the item
-	 * @param name
+	 * @param name item name
 	 * @return item.getPrice()
 	 */
 	public int getUnitPriceColumn(String name) {
@@ -226,8 +226,8 @@ public class InventoryDataController implements Initializable{
 	/**
 	 * This method hides the currently open window and shows InventoryReport window.
 	 * 
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void BackBtn(ActionEvent event) throws Exception
 	{

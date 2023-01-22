@@ -132,8 +132,8 @@ public class WorkerUIController implements Initializable{
 	
 	/**
 	 * This method calls function nextWindow to show ShipmentMethod.fxml
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void CreateRemoteOrderBtn(ActionEvent event) throws Exception {
 		nextWindow(event, "/gui_client_windows/ShipmentMethod.fxml", "Shipment Method");
@@ -141,8 +141,8 @@ public class WorkerUIController implements Initializable{
 	
 	/**
 	 * This method calls function nextWindow to show LoginEkrut.fxml
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void LogOutBtn(ActionEvent event) throws Exception
 	{
@@ -152,10 +152,10 @@ public class WorkerUIController implements Initializable{
 	
 	/**
 	 * This method hides the currently open window and shows the desired window
-	 * @param event
-	 * @param window_location
-	 * @param title
-	 * @throws Exception
+	 * @param event event
+	 * @param window_location window location
+	 * @param title title
+	 * @throws Exception exception
 	 */
 	private void nextWindow(ActionEvent event, String window_location, String title) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();

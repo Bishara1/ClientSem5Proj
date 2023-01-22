@@ -50,7 +50,7 @@ public class PurchaseController implements Initializable{
 	 * Calls nextWindow() with parameters of Cart.fxml window
 	 * 
 	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
-	 * @throws Exception
+	 * @throws Exception exception
 	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		nextWindow(event, "/gui_client_windows/Cart.fxml", "Cart");	
@@ -65,7 +65,7 @@ public class PurchaseController implements Initializable{
 	 * Throws alert if credit card info is invalid and isn't empty
 	 * 
 	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
-	 * @throws Exception
+	 * @throws Exception exception
 	 */
 	public void Purchase(ActionEvent event) throws Exception {
 		if(creditCardtxt.getText().length() != 16)
@@ -166,7 +166,7 @@ public class PurchaseController implements Initializable{
 	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
 	 * @param window_location - location of next window
 	 * @param title - title of next window
-	 * @throws Exception
+	 * @throws Exception exception
 	 */
 	private void nextWindow(ActionEvent event, String window_location, String title) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
@@ -187,8 +187,7 @@ public class PurchaseController implements Initializable{
 	  * Updates the user status if this was his first order as a subscriber
 	  * 
 	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
-	 * @return result of alert, ButtonType.YES if user pressed yes, ButtonType.NO otherwise 
-	 * @throws IOException
+	 * @throws IOException io exception
 	 */
 	public void InsertOrder(ActionEvent event) throws IOException
 	{

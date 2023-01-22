@@ -135,7 +135,7 @@ public class RemoteCodeController implements Initializable{
 	 * Goes back to UserUI.fxml window
 	 * 
 	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
-	 * @throws IOException
+	 * @throws IOException io Exception
 	 */
 	public void BackBtn(ActionEvent event) throws IOException {
 		((Node) event.getSource()).getScene().getWindow().hide();

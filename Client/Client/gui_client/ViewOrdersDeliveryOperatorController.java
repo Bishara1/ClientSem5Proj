@@ -128,8 +128,8 @@ public class ViewOrdersDeliveryOperatorController implements Initializable {
 	
 	/**
 	 * Goes back to previous window (worker ui)
-	 * @param event event done in window 
-	 * @throws Exception
+	 * @param event event done in window  param
+	 * @throws Exception exception
 	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window

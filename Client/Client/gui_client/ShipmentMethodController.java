@@ -33,8 +33,8 @@ public class ShipmentMethodController implements Initializable {
 	
 	/**
 	 * This method sets supply method as "self pickup" and shows RemoteLocation.fxml
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void ImmediatePickupBtn(ActionEvent event) throws Exception {
 		ChatClient.supplyMethod = "Self pickup";
@@ -50,8 +50,8 @@ public class ShipmentMethodController implements Initializable {
 	
 	/**
 	 * This method sets supply method as "delivery" and shows ShipmentAddress.fxml
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void DeliveryBtn(ActionEvent event) throws Exception {
 		ChatClient.supplyMethod = "Delivery";
@@ -67,8 +67,8 @@ public class ShipmentMethodController implements Initializable {
 	
 	/**
 	 * This method shows the window of the user that is currently using the system
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();

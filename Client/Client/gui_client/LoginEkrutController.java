@@ -30,8 +30,8 @@ public class LoginEkrutController implements Initializable {
 	
 	/**
 	 * This method starts the "LoginEkut" fxml window
-	 * @param primaryStage 
-	 * @throws Exception
+	 * @param primaryStage stage
+	 * @throws Exception exception
 	 */
 	public void start(Stage primaryStage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client_windows/LoginEkrut.fxml"));
@@ -43,8 +43,8 @@ public class LoginEkrutController implements Initializable {
 	
 	/**
 	 * This method calls function nextWindow to go to requested path
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void AccountLoginBtn(ActionEvent event) throws Exception { 
 		nextWindow(event, "/gui_client_windows/UserLogin.fxml", "User Login");
@@ -52,8 +52,8 @@ public class LoginEkrutController implements Initializable {
 	
 	/**
 	 * This method calls function nextWindow to go to requested path
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void EKTBtn(ActionEvent event) throws Exception{
 		nextWindow(event, "/gui_client_windows/EKTLogin.fxml", "EKT Login");
@@ -61,8 +61,8 @@ public class LoginEkrutController implements Initializable {
 	
 	/**
 	 * This method calls function nextWindow to go to requested path
-	 * @param event
-	 * @throws Exception
+	 * @param event event
+	 * @throws Exception exception
 	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		nextWindow(event, "/gui_client_windows/OLOKPage.fxml", "OL OK Page");
@@ -70,10 +70,10 @@ public class LoginEkrutController implements Initializable {
 	
 	/**
 	 * This method hides the currently open window and shows the desired window
-	 * @param event 
-	 * @param path 
-	 * @param title
-	 * @throws Exception
+	 * @param event event
+	 * @param path path
+	 * @param title title
+	 * @throws Exception exception
 	 */
 	private void nextWindow(ActionEvent event, String path, String title) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();

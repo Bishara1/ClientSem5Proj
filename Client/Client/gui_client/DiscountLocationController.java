@@ -162,7 +162,7 @@ public class DiscountLocationController implements Initializable {
 	 * Back to main page of user. If user is a marketing manager (mkm), go back to worker ui, else, go back to CEO main page.
 	 * Only CEO and Marketing manager can view this page
 	 * @param event Type of action that occurred in the window by the user (when pressing a button in this scenario)
-	 * @throws Exception
+	 * @throws Exception exception
 	 */
     public void BackBtn(ActionEvent event) throws Exception {
     	// new window title

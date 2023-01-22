@@ -37,7 +37,7 @@ public class ChooseReportTypeController implements Initializable {
 	/**
 	 * back to ceo reports page
 	 * @param event Type of action that occurred in the window by the user (when pressing a button in this scenario)
-	 * @throws Exception
+	 * @throws Exception exception
 	 */
 	public void BackBtn(ActionEvent event) throws Exception {
 		nextWindow(event,"/gui_client_windows/CEOReports.fxml","CEO Reports");
@@ -46,7 +46,7 @@ public class ChooseReportTypeController implements Initializable {
 	/**
 	 * displays monthly order reports window when pressing monthlyReports window
 	 * @param event Type of action that occurred in the window by the user (when pressing a button in this scenario)
-	 * @throws Exception
+	 * @throws Exception exception
 	 */
 	public void OrdersReportsBtn(ActionEvent event) throws Exception {
 		nextWindow(event,"/gui_client_windows/MonthlyReports.fxml","Monthly Reports");
@@ -55,7 +55,7 @@ public class ChooseReportTypeController implements Initializable {
 	/**
 	 * display inventory reports window when pressing inventoryReports window
 	 * @param event Type of action that occurred in the window by the user (when pressing a button in this scenario)
-	 * @throws Exception
+	 * @throws Exception exception
 	 */
 	public void InventoryReportsBtn(ActionEvent event) throws Exception {
 		nextWindow(event,"/gui_client_windows/InventoryReport.fxml","Inventory Report");
@@ -64,16 +64,19 @@ public class ChooseReportTypeController implements Initializable {
 	/**
 	 * display user reports window when pressing userReports button
 	 * @param event Type of action that occurred in the window by the user (when pressing a button in this scenario)
-	 * @throws Exception
+	 * @throws Exception exception
 	 */
 	public void UsersReportsBtn(ActionEvent event) throws Exception {
 		nextWindow(event,"/gui_client_windows/UserReportPage.fxml","User Reports");
 	}
 	
+	
 	/**
-	 * Loads desired window with the desired title
+	 *  Loads desired window with the desired title
 	 * @param event Type of action that occurred in the window by the user (when pressing a button in this scenario)
-	 * @throws Exception
+	 * @param window_location window
+	 * @param title title
+	 * @throws Exception exception
 	 */
 	private void nextWindow(ActionEvent event, String window_location, String title) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();

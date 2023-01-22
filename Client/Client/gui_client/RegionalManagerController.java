@@ -35,7 +35,7 @@ public class RegionalManagerController implements Initializable {
 	 * Goes back to LoginEkrut.fxml window
 	 * 
 	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
-	 * @throws Exception
+	 * @throws Exception exception
 	 */
 	public void LogoutBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
@@ -53,7 +53,7 @@ public class RegionalManagerController implements Initializable {
 	 * Goes back to UpdateThresholdWindow.fxml window
 	 * 
 	 * @param event - Type of action that occurred in the window by the user (when pressing a button in this scenario)
-	 * @throws Exception
+	 * @throws Exception exception
 	 */
 	public void Threshold(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide();
